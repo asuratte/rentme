@@ -79,8 +79,10 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="DAL\" />
-    <Folder Include="DB\" />
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\createDBScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
