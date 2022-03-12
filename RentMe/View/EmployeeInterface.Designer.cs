@@ -38,7 +38,9 @@
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.employeeNameSeparatorLabel = new System.Windows.Forms.Label();
             this.employeeUsernameLabel = new System.Windows.Forms.Label();
+            this.memberInformationUserControl1 = new RentMe.UserControls.MemberInformationUserControl();
             this.employeeInterfaceTabControl.SuspendLayout();
+            this.memberInformationTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,10 +59,11 @@
             // 
             // memberInformationTabPage
             // 
+            this.memberInformationTabPage.Controls.Add(this.memberInformationUserControl1);
             this.memberInformationTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberInformationTabPage.Location = new System.Drawing.Point(4, 26);
             this.memberInformationTabPage.Name = "memberInformationTabPage";
-            this.memberInformationTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.memberInformationTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.memberInformationTabPage.Size = new System.Drawing.Size(776, 431);
             this.memberInformationTabPage.TabIndex = 0;
             this.memberInformationTabPage.Text = "Member Information";
@@ -71,7 +74,7 @@
             this.rentFurnitureTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rentFurnitureTabPage.Location = new System.Drawing.Point(4, 26);
             this.rentFurnitureTabPage.Name = "rentFurnitureTabPage";
-            this.rentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.rentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.rentFurnitureTabPage.Size = new System.Drawing.Size(776, 431);
             this.rentFurnitureTabPage.TabIndex = 1;
             this.rentFurnitureTabPage.Text = "Rent Furniture";
@@ -139,6 +142,13 @@
             this.employeeUsernameLabel.TabIndex = 5;
             this.employeeUsernameLabel.Text = "Employee Username";
             // 
+            // memberInformationUserControl1
+            // 
+            this.memberInformationUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.memberInformationUserControl1.Name = "memberInformationUserControl1";
+            this.memberInformationUserControl1.Size = new System.Drawing.Size(770, 425);
+            this.memberInformationUserControl1.TabIndex = 0;
+            // 
             // EmployeeInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,6 +166,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe Employee Interface";
             this.employeeInterfaceTabControl.ResumeLayout(false);
+            this.memberInformationTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,5 +184,6 @@
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label employeeNameSeparatorLabel;
         private System.Windows.Forms.Label employeeUsernameLabel;
+        private UserControls.MemberInformationUserControl memberInformationUserControl1;
     }
 }
