@@ -10,5 +10,7 @@
         public string LastName { get; set; }
 
         public string Username { get; set; }
+
+        public int EmployeeID { get; set; }
     }
 }

@@ -38,5 +38,15 @@ namespace RentMe.Controller
         {
             return this.employeeDAL.GetEmployeeByUsername(username);
         }
+
+        /// <summary>
+        /// Checks if employee is admin by ID.
+        /// </summary>
+        /// <param name="employeeID">The employee identifier.</param>
+        /// <returns>True if employee is admin.</returns>
+        public bool CheckIfEmployeeIsAdmin(int employeeID)
+        {
+            return this.employeeDAL.CheckIfEmployeeIsAdmin(employeeID);
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace RentMe.View
         {
             this.usernameTextBox.Text = "";
             this.passwordTextBox.Text = "";
+            this.errorMessageLabel.Visible = false;
         }
 
         private void LoginTextBox_TextChanged(object sender, EventArgs e)
@@ -40,21 +41,45 @@ namespace RentMe.View
             if (validCredentials) 
             {
                 Employee employee = this.employeeController.GetEmployeeByUsername(usernameTextBox.Text);
-                using (EmployeeInterface employeeInterface = new EmployeeInterface())
+                bool isAdmin = this.employeeController.CheckIfEmployeeIsAdmin(employee.EmployeeID);
+                
+                if (isAdmin)
                 {
-                    this.Hide();
-                    employeeInterface.SetEmployee(employee);
-                    DialogResult result = employeeInterface.ShowDialog();
-                    if (result == DialogResult.OK)
+                    using (AdminInterface adminInterface = new AdminInterface())
                     {
-                        this.ClearFields();
-                        this.Show();
+                        this.Hide();
+                        adminInterface.SetEmployee(employee);
+                        DialogResult result = adminInterface.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            this.ClearFields();
+                            this.Show();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
+                        this.usernameTextBox.Focus();
                     }
-                    else if (result == DialogResult.Cancel)
+                }
+                else
+                {
+                    using (EmployeeInterface employeeInterface = new EmployeeInterface())
                     {
-                        this.Close();
+                        this.Hide();
+                        employeeInterface.SetEmployee(employee);
+                        DialogResult result = employeeInterface.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            this.ClearFields();
+                            this.Show();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            this.Close();
+                        }
+                        this.usernameTextBox.Focus();
                     }
-                    this.usernameTextBox.Focus();
                 }
             }
             else

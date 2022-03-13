@@ -59,7 +59,7 @@ namespace RentMe.DAL
             Employee employee = null;
 
             string selectStatement =
-                "SELECT firstName, lastName, username " +
+                "SELECT employeeID, firstName, lastName, username " +
                 "FROM employee " +
                 "WHERE username = @username";
 
@@ -78,6 +78,7 @@ namespace RentMe.DAL
                         {
                             employee = new Employee()
                             {
+                                EmployeeID = (int)reader["employeeID"],
                                 FirstName = reader["firstName"].ToString(),
                                 LastName = reader["lastName"].ToString(),
                                 Username = reader["username"].ToString()
@@ -87,6 +88,42 @@ namespace RentMe.DAL
                 }
             }
             return employee;
+        }
+
+        /// <summary>
+        /// Checks if employee is admin by ID.
+        /// </summary>
+        /// <param name="employeeID">The employee identifier.</param>
+        /// <returns>True if employee is admin</returns>
+        public bool CheckIfEmployeeIsAdmin(int employeeID)
+        {
+            int count;
+
+            string selectStatement =
+                "SELECT COUNT(*) " +
+                "FROM employee e JOIN admin_employee ae ON e.employeeID = ae.employeeID " +
+                "WHERE e.employeeID = @employeeID ";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@employeeID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@employeeID"].Value = employeeID;
+
+                    count = Convert.ToInt32(selectCommand.ExecuteScalar());
+                }
+            }
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
