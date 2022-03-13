@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using RentMe.Model;
+using System.Windows.Forms;
 
 namespace RentMe.View
 {
@@ -13,6 +14,21 @@ namespace RentMe.View
         public EmployeeInterface()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Sets the employee information on the interface.
+        /// </summary>
+        /// <param name="employee">The employee.</param>
+        public void SetEmployee(Employee employee)
+        {
+            this.employeeNameLabel.Text = employee.FirstName + " " + employee.LastName;
+            this.employeeUsernameLabel.Text = employee.Username;
+        }
+
+        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

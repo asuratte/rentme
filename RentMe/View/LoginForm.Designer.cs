@@ -30,7 +30,6 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.loginHeaderLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
@@ -38,25 +37,16 @@ namespace RentMe.View
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Image = global::RentMe.Properties.Resources.rentme_logo_header;
-            this.logoPictureBox.Location = new System.Drawing.Point(51, 50);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(125, 94);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 0;
-            this.logoPictureBox.TabStop = false;
             // 
             // loginHeaderLabel
             // 
             this.loginHeaderLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginHeaderLabel.Location = new System.Drawing.Point(38, 147);
+            this.loginHeaderLabel.Location = new System.Drawing.Point(31, 170);
             this.loginHeaderLabel.Name = "loginHeaderLabel";
-            this.loginHeaderLabel.Size = new System.Drawing.Size(150, 68);
+            this.loginHeaderLabel.Size = new System.Drawing.Size(180, 53);
             this.loginHeaderLabel.TabIndex = 1;
             this.loginHeaderLabel.Text = "Welcome to the RentMe Store Portal";
             this.loginHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,7 +65,7 @@ namespace RentMe.View
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(239, 120);
+            this.passwordLabel.Location = new System.Drawing.Point(239, 119);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(67, 19);
             this.passwordLabel.TabIndex = 3;
@@ -88,40 +78,54 @@ namespace RentMe.View
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 25);
             this.usernameTextBox.TabIndex = 4;
+            this.usernameTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(243, 142);
+            this.passwordTextBox.Location = new System.Drawing.Point(243, 141);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(200, 25);
             this.passwordTextBox.TabIndex = 5;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             // 
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(343, 193);
+            this.loginButton.Location = new System.Drawing.Point(343, 182);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(100, 30);
             this.loginButton.TabIndex = 6;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorMessageLabel.Location = new System.Drawing.Point(243, 235);
+            this.errorMessageLabel.Location = new System.Drawing.Point(243, 224);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(200, 30);
             this.errorMessageLabel.TabIndex = 7;
+            this.errorMessageLabel.Text = "Invalid username or password";
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = global::RentMe.Properties.Resources.rentme_logo_login;
+            this.logoPictureBox.Location = new System.Drawing.Point(31, 32);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(180, 135);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 0;
+            this.logoPictureBox.TabStop = false;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 291);
+            this.ClientSize = new System.Drawing.Size(484, 281);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordTextBox);
