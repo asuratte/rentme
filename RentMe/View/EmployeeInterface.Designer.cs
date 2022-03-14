@@ -38,7 +38,7 @@
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.employeeNameSeparatorLabel = new System.Windows.Forms.Label();
             this.employeeUsernameLabel = new System.Windows.Forms.Label();
-            this.memberInformationUserControl1 = new RentMe.UserControls.MemberInformationUserControl();
+            this.memberInformationUserControl = new RentMe.UserControls.MemberInformationUserControl();
             this.employeeInterfaceTabControl.SuspendLayout();
             this.memberInformationTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).BeginInit();
@@ -56,10 +56,11 @@
             this.employeeInterfaceTabControl.SelectedIndex = 0;
             this.employeeInterfaceTabControl.Size = new System.Drawing.Size(784, 461);
             this.employeeInterfaceTabControl.TabIndex = 0;
+            this.employeeInterfaceTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.EmployeeInterfaceOnTabSelected);
             // 
             // memberInformationTabPage
             // 
-            this.memberInformationTabPage.Controls.Add(this.memberInformationUserControl1);
+            this.memberInformationTabPage.Controls.Add(this.memberInformationUserControl);
             this.memberInformationTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberInformationTabPage.Location = new System.Drawing.Point(4, 26);
             this.memberInformationTabPage.Name = "memberInformationTabPage";
@@ -142,12 +143,13 @@
             this.employeeUsernameLabel.TabIndex = 5;
             this.employeeUsernameLabel.Text = "Employee Username";
             // 
-            // memberInformationUserControl1
+            // memberInformationUserControl
             // 
-            this.memberInformationUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.memberInformationUserControl1.Name = "memberInformationUserControl1";
-            this.memberInformationUserControl1.Size = new System.Drawing.Size(770, 425);
-            this.memberInformationUserControl1.TabIndex = 0;
+            this.memberInformationUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberInformationUserControl.Location = new System.Drawing.Point(0, 0);
+            this.memberInformationUserControl.Name = "memberInformationUserControl";
+            this.memberInformationUserControl.Size = new System.Drawing.Size(770, 425);
+            this.memberInformationUserControl.TabIndex = 0;
             // 
             // EmployeeInterface
             // 
@@ -165,6 +167,7 @@
             this.Name = "EmployeeInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe Employee Interface";
+            this.Load += new System.EventHandler(this.EmployeeInterfaceOnLoad);
             this.employeeInterfaceTabControl.ResumeLayout(false);
             this.memberInformationTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();
@@ -184,6 +187,6 @@
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label employeeNameSeparatorLabel;
         private System.Windows.Forms.Label employeeUsernameLabel;
-        private UserControls.MemberInformationUserControl memberInformationUserControl1;
+        private UserControls.MemberInformationUserControl memberInformationUserControl;
     }
 }

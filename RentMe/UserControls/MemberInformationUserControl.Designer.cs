@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.memberSearchDescriptionLabel = new System.Windows.Forms.Label();
             this.memberIDSearchLabel = new System.Windows.Forms.Label();
             this.phoneSearchLabel = new System.Windows.Forms.Label();
@@ -40,10 +41,9 @@
             this.memberIDFormLabel = new System.Windows.Forms.Label();
             this.memberIDFormValue = new System.Windows.Forms.Label();
             this.firstNameFormLabel = new System.Windows.Forms.Label();
-            this.firstNameFormTextBox = new System.Windows.Forms.TextBox();
             this.lastNameFormTextBox = new System.Windows.Forms.TextBox();
             this.lastNameFormLabel = new System.Windows.Forms.Label();
-            this.dateOfBirthTextBox = new System.Windows.Forms.TextBox();
+            this.dateOfBirthFormTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthFormLabel = new System.Windows.Forms.Label();
             this.sexFormLabel = new System.Windows.Forms.Label();
             this.sexFormComboBox = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,9 @@
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.addNewMemberButton = new System.Windows.Forms.Button();
             this.updateMemberInformationButton = new System.Windows.Forms.Button();
+            this.firstNameFormTextBox = new System.Windows.Forms.TextBox();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // memberSearchDescriptionLabel
@@ -182,16 +185,9 @@
             this.firstNameFormLabel.TabIndex = 12;
             this.firstNameFormLabel.Text = "First Name";
             // 
-            // firstNameFormTextBox
-            // 
-            this.firstNameFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameFormTextBox.Location = new System.Drawing.Point(95, 157);
-            this.firstNameFormTextBox.Name = "firstNameFormTextBox";
-            this.firstNameFormTextBox.Size = new System.Drawing.Size(280, 25);
-            this.firstNameFormTextBox.TabIndex = 13;
-            // 
             // lastNameFormTextBox
             // 
+            this.lastNameFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "LastName", true));
             this.lastNameFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastNameFormTextBox.Location = new System.Drawing.Point(483, 157);
             this.lastNameFormTextBox.Name = "lastNameFormTextBox";
@@ -208,13 +204,14 @@
             this.lastNameFormLabel.TabIndex = 14;
             this.lastNameFormLabel.Text = "Last Name";
             // 
-            // dateOfBirthTextBox
+            // dateOfBirthFormTextBox
             // 
-            this.dateOfBirthTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(95, 193);
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(183, 25);
-            this.dateOfBirthTextBox.TabIndex = 17;
+            this.dateOfBirthFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "DateOfBirth", true));
+            this.dateOfBirthFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfBirthFormTextBox.Location = new System.Drawing.Point(95, 193);
+            this.dateOfBirthFormTextBox.Name = "dateOfBirthFormTextBox";
+            this.dateOfBirthFormTextBox.Size = new System.Drawing.Size(183, 25);
+            this.dateOfBirthFormTextBox.TabIndex = 17;
             // 
             // dateOfBirthFormLabel
             // 
@@ -238,6 +235,7 @@
             // 
             // sexFormComboBox
             // 
+            this.sexFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sexFormComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sexFormComboBox.FormattingEnabled = true;
             this.sexFormComboBox.Location = new System.Drawing.Point(334, 193);
@@ -247,6 +245,7 @@
             // 
             // phoneFormTextBox
             // 
+            this.phoneFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Phone", true));
             this.phoneFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneFormTextBox.Location = new System.Drawing.Point(595, 193);
             this.phoneFormTextBox.Name = "phoneFormTextBox";
@@ -265,6 +264,7 @@
             // 
             // address1FormTextBox
             // 
+            this.address1FormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Address1", true));
             this.address1FormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address1FormTextBox.Location = new System.Drawing.Point(95, 229);
             this.address1FormTextBox.Name = "address1FormTextBox";
@@ -283,6 +283,7 @@
             // 
             // address2FormTextBox
             // 
+            this.address2FormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "Address2", true));
             this.address2FormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address2FormTextBox.Location = new System.Drawing.Point(95, 264);
             this.address2FormTextBox.Name = "address2FormTextBox";
@@ -301,6 +302,7 @@
             // 
             // cityFormTextBox
             // 
+            this.cityFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "City", true));
             this.cityFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityFormTextBox.Location = new System.Drawing.Point(95, 299);
             this.cityFormTextBox.Name = "cityFormTextBox";
@@ -319,6 +321,7 @@
             // 
             // stateFormTextBox
             // 
+            this.stateFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "State", true));
             this.stateFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stateFormTextBox.Location = new System.Drawing.Point(444, 299);
             this.stateFormTextBox.Name = "stateFormTextBox";
@@ -337,6 +340,7 @@
             // 
             // zipCodeFormTextBox
             // 
+            this.zipCodeFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "ZipCode", true));
             this.zipCodeFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zipCodeFormTextBox.Location = new System.Drawing.Point(587, 299);
             this.zipCodeFormTextBox.Name = "zipCodeFormTextBox";
@@ -389,10 +393,24 @@
             this.updateMemberInformationButton.Text = "Update Member Information";
             this.updateMemberInformationButton.UseVisualStyleBackColor = false;
             // 
+            // firstNameFormTextBox
+            // 
+            this.firstNameFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "FirstName", true));
+            this.firstNameFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameFormTextBox.Location = new System.Drawing.Point(95, 157);
+            this.firstNameFormTextBox.Name = "firstNameFormTextBox";
+            this.firstNameFormTextBox.Size = new System.Drawing.Size(302, 25);
+            this.firstNameFormTextBox.TabIndex = 37;
+            // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
+            // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.firstNameFormTextBox);
             this.Controls.Add(this.updateMemberInformationButton);
             this.Controls.Add(this.addNewMemberButton);
             this.Controls.Add(this.errorMessageLabel);
@@ -410,11 +428,10 @@
             this.Controls.Add(this.phoneFormLabel);
             this.Controls.Add(this.sexFormComboBox);
             this.Controls.Add(this.sexFormLabel);
-            this.Controls.Add(this.dateOfBirthTextBox);
+            this.Controls.Add(this.dateOfBirthFormTextBox);
             this.Controls.Add(this.dateOfBirthFormLabel);
             this.Controls.Add(this.lastNameFormTextBox);
             this.Controls.Add(this.lastNameFormLabel);
-            this.Controls.Add(this.firstNameFormTextBox);
             this.Controls.Add(this.firstNameFormLabel);
             this.Controls.Add(this.memberIDFormValue);
             this.Controls.Add(this.memberIDFormLabel);
@@ -429,7 +446,8 @@
             this.Controls.Add(this.memberSearchDescriptionLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MemberInformationUserControl";
-            this.Size = new System.Drawing.Size(770, 425);
+            this.Size = new System.Drawing.Size(784, 437);
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,10 +467,9 @@
         private System.Windows.Forms.Label memberIDFormLabel;
         private System.Windows.Forms.Label memberIDFormValue;
         private System.Windows.Forms.Label firstNameFormLabel;
-        private System.Windows.Forms.TextBox firstNameFormTextBox;
         private System.Windows.Forms.TextBox lastNameFormTextBox;
         private System.Windows.Forms.Label lastNameFormLabel;
-        private System.Windows.Forms.TextBox dateOfBirthTextBox;
+        private System.Windows.Forms.TextBox dateOfBirthFormTextBox;
         private System.Windows.Forms.Label dateOfBirthFormLabel;
         private System.Windows.Forms.Label sexFormLabel;
         private System.Windows.Forms.ComboBox sexFormComboBox;
@@ -471,5 +488,7 @@
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.Button addNewMemberButton;
         private System.Windows.Forms.Button updateMemberInformationButton;
+        private System.Windows.Forms.BindingSource memberBindingSource;
+        private System.Windows.Forms.TextBox firstNameFormTextBox;
     }
 }
