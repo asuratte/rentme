@@ -1,4 +1,5 @@
 ﻿using RentMe.Model;
+using System;
 using System.Data.SqlClient;
 
 namespace RentMe.DAL
@@ -25,7 +26,7 @@ namespace RentMe.DAL
                 {
                     insertCommand.Parameters.Add("@Sex", System.Data.SqlDbType.Char, 1);
                     insertCommand.Parameters["@Sex"].Value = theMember.Sex;
-                    insertCommand.Parameters.Add("@DateOfBirth", System.Data.SqlDbType.DateTime);
+                    insertCommand.Parameters.Add("@DateOfBirth", System.Data.SqlDbType.Date);
                     insertCommand.Parameters["@DateOfBirth"].Value = theMember.DateOfBirth;
                     insertCommand.Parameters.Add("@FirstName", System.Data.SqlDbType.VarChar);
                     insertCommand.Parameters["@FirstName"].Value = theMember.FirstName;
@@ -35,10 +36,20 @@ namespace RentMe.DAL
                     insertCommand.Parameters["@Phone"].Value = theMember.Phone;
                     insertCommand.Parameters.Add("@Address1", System.Data.SqlDbType.VarChar);
                     insertCommand.Parameters["@Address1"].Value = theMember.Address1;
-                    insertCommand.Parameters.Add("@Address2", System.Data.SqlDbType.VarChar);
-                    insertCommand.Parameters["@Address2"].Value = theMember.Address2;
+                    if (theMember.Address2 != null)
+                    {
+                        insertCommand.Parameters.Add("@Address2", System.Data.SqlDbType.VarChar);
+                        insertCommand.Parameters["@Address2"].Value = theMember.Address2;
+                    }
+                    else 
+                    {
+                        insertCommand.Parameters.Add("@Address2", System.Data.SqlDbType.VarChar);
+                        insertCommand.Parameters["@Address2"].Value = DBNull.Value;
+                    }
                     insertCommand.Parameters.Add("@City", System.Data.SqlDbType.VarChar);
                     insertCommand.Parameters["@City"].Value = theMember.City;
+                    insertCommand.Parameters.Add("@State", System.Data.SqlDbType.Char, 2);
+                    insertCommand.Parameters["@State"].Value = theMember.State;
                     insertCommand.Parameters.Add("@ZipCode", System.Data.SqlDbType.Char, 5);
                     insertCommand.Parameters["@ZipCode"].Value = theMember.ZipCode;
                     insertCommand.ExecuteNonQuery();
