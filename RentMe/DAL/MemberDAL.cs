@@ -65,8 +65,8 @@ namespace RentMe.DAL
         public Member GetMemberByID(int memberID)
         {
             string selectStatement =
-                @"SELECT firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, `state`, zipCode
-                FROM Members
+                @"SELECT firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, state, zipCode
+                FROM member
                 WHERE memberID = @MemberID";
 
             Member theMember = new Member();
@@ -109,8 +109,8 @@ namespace RentMe.DAL
         public List<Member> GetMembersByPhoneNumber(string phoneNumber)
         {
             string selectStatement =
-                @"SELECT memberID, firstName, lastName, dateOfBirth, sex, address1, address2, city, `state`, zipCode
-                FROM Members
+                @"SELECT memberID, firstName, lastName, dateOfBirth, sex, address1, address2, city, state, zipCode
+                FROM member
                 WHERE phone = @Phone";
 
             List<Member> theMemberList = new List<Member>();
@@ -155,8 +155,8 @@ namespace RentMe.DAL
         public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
         {
             string selectStatement =
-                @"SELECT memberID, firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, `state`, zipCode
-                FROM Members
+                @"SELECT memberID, firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, state, zipCode
+                FROM member
                 WHERE firstName = @FirstName
                 AND lastName = @LastName";
 
