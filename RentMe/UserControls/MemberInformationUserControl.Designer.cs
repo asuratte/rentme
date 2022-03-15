@@ -413,7 +413,7 @@
             this.stateFormComboBox.Location = new System.Drawing.Point(356, 299);
             this.stateFormComboBox.Name = "stateFormComboBox";
             this.stateFormComboBox.Size = new System.Drawing.Size(185, 25);
-            this.stateFormComboBox.TabIndex = 18;
+            this.stateFormComboBox.TabIndex = 13;
             this.stateFormComboBox.ValueMember = "State";
             // 
             // MemberInformationUserControl

@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,6 +17,7 @@ namespace RentMe.UserControls
         private readonly SortedDictionary<string, string> sexList;
         private readonly MemberController theMemberController;
         private readonly StateController theStateController;
+        private MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
 
         /// <summary>
         /// Initialize the member information user interface
@@ -31,6 +33,7 @@ namespace RentMe.UserControls
             };
             this.theMemberController = new MemberController();
             this.theStateController = new StateController();
+            this.theMemberRegistrationConfirmationForm = new MemberRegistrationConfirmationForm();
         }
 
         /// <summary>
@@ -40,6 +43,21 @@ namespace RentMe.UserControls
         {
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
+            this.ClearMemberFormInputs();
+        }
+
+        private void ClearMemberFormInputs()
+        {
+            this.lastNameFormTextBox.Text = "";
+            this.firstNameFormTextBox.Text = "";
+            this.dateOfBirthFormTextBox.Text = "";
+            this.phoneFormTextBox.Text = "";
+            this.address1FormTextBox.Text = "";
+            this.address2FormTextBox.Text = "";
+            this.cityFormTextBox.Text = "";
+            this.zipCodeFormTextBox.Text = "";
+            this.stateFormComboBox.SelectedIndex = 0;
+            this.sexFormComboBox.SelectedIndex = 0;
         }
 
         private void LoadComboBoxes()
@@ -64,13 +82,23 @@ namespace RentMe.UserControls
         private void AddNewMemberButtonClick(object sender, System.EventArgs e)
         {
             this.errorMessageLabel.Text = "";
-            if (this.IsValidEntry()) { 
+            if (this.IsValidEntry()) 
+            {
                 try
                 {
-                    Member newMember = this.CreateNewMember();
-                    this.theMemberController.AddMember(newMember);
-                    this.errorMessageLabel.Text = "Member successfully added.";
-                    this.errorMessageLabel.ForeColor = Color.Green;
+                    this.theMemberRegistrationConfirmationForm.MemberName = this.firstNameFormTextBox.Text + " " + this.lastNameFormTextBox.Text;
+                    this.theMemberRegistrationConfirmationForm.MemberPhone = this.phoneFormTextBox.Text;
+                    this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthFormTextBox.Text;
+                    this.theMemberRegistrationConfirmationForm.MemberAddress = this.FormatAddressString(this.address1FormTextBox.Text, this.address2FormTextBox.Text, this.cityFormTextBox.Text, this.stateFormComboBox.SelectedValue.ToString(), this.zipCodeFormTextBox.Text);
+                    this.theMemberRegistrationConfirmationForm.ShowDialog();
+                    if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
+                    {
+                        Member newMember = this.CreateNewMember();
+                        this.theMemberController.AddMember(newMember);
+                        this.ClearMemberFormInputs();
+                        this.errorMessageLabel.Text = "Member successfully added.";
+                        this.errorMessageLabel.ForeColor = Color.Green;
+                    }
                 }
                 catch (Exception)
                 {
@@ -132,6 +160,17 @@ namespace RentMe.UserControls
                 return false;
             }
             return true;
+        }
+
+        private string FormatAddressString(string address1, string address2, string city, string state, string zipCode)
+        {
+            string formattedAddress = address1 + Environment.NewLine;
+            if (address2 != null && address2 != "")
+            {
+                formattedAddress += (address2 + Environment.NewLine + "yooo this is address2");
+            }
+            formattedAddress += (city + ", " + state + " " + zipCode);
+            return formattedAddress;
         }
     }
 }
