@@ -1,6 +1,7 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
 using System;
+using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
@@ -30,6 +31,49 @@ namespace RentMe.Controller
                 throw new ArgumentNullException("Member must not be null.");
             }
             this.memberDAL.AddMember(theMember);
+        }
+
+        /// <summary>
+        /// Gets member matching specific ID 
+        /// </summary>
+        /// <returns>Member matching specific ID</returns>
+        public Member GetMemberByID(int memberID)
+        {
+            if (memberID <= 0)
+            {
+                throw new ArgumentException("Member ID must be a positive whole number.");
+            }
+            return this.memberDAL.GetMemberByID(memberID);
+        }
+
+        /// <summary>
+        /// Gets members matching specific phone number
+        /// </summary>
+        /// <returns>Members matching specific phone number</returns>
+        public List<Member> GetMembersByPhoneNumber(string phoneNumber)
+        {
+            if (phoneNumber == null)
+            {
+                throw new ArgumentNullException("Phone number must not be null.");
+            }
+            return this.memberDAL.GetMembersByPhoneNumber(phoneNumber);
+        }
+
+        /// <summary>
+        /// Gets members matching specific first and last name
+        /// </summary>
+        /// <returns>Members matching specific first and last name</returns>
+        public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
+        {
+            if (firstName == null)
+            {
+                throw new ArgumentNullException("First Name must not be null.");
+            }
+            if (lastName == null)
+            {
+                throw new ArgumentNullException("Last Name must not be null.");
+            }
+            return this.memberDAL.GetMembersByFirstAndLastName(firstName, lastName);
         }
     }
 }

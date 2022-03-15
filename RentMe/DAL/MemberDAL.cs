@@ -1,5 +1,6 @@
 ﻿using RentMe.Model;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace RentMe.DAL
@@ -56,5 +57,145 @@ namespace RentMe.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets member matching specific ID 
+        /// </summary>
+        /// <returns>Member matching specific ID</returns>
+        public Member GetMemberByID(int memberID)
+        {
+            string selectStatement =
+                @"SELECT firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, `state`, zipCode
+                FROM Members
+                WHERE memberID = @MemberID";
+
+            Member theMember = new Member();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@MemberID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@MemberID"].Value = memberID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            theMember.MemberID = memberID;
+                            theMember.DateOfBirth = (DateTime)reader["dateOfBirth"];
+                            theMember.FirstName = reader["firstName"].ToString();
+                            theMember.LastName = reader["lastName"].ToString();
+                            theMember.Phone = reader["phone"].ToString();
+                            theMember.Sex = reader["sex"].ToString();
+                            theMember.Address1 = reader["address1"].ToString();
+                            theMember.Address2 = reader["address2"].ToString();
+                            theMember.City = reader["city"].ToString();
+                            theMember.State = reader["state"].ToString();
+                            theMember.ZipCode = reader["zipCode"].ToString();
+                        }
+                    }
+                }
+            }
+            return theMember;
+        }
+
+        /// <summary>
+        /// Gets members matching specific phone number
+        /// </summary>
+        /// <returns>Members matching specific phone number</returns>
+        public List<Member> GetMembersByPhoneNumber(string phoneNumber)
+        {
+            string selectStatement =
+                @"SELECT memberID, firstName, lastName, dateOfBirth, sex, address1, address2, city, `state`, zipCode
+                FROM Members
+                WHERE phone = @Phone";
+
+            List<Member> theMemberList = new List<Member>();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@Phone", System.Data.SqlDbType.Char, 10);
+                    selectCommand.Parameters["@Phone"].Value = phoneNumber;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member theMember = new Member();
+                            theMember.MemberID = Convert.ToInt32(reader["memberID"]);
+                            theMember.DateOfBirth = (DateTime)reader["dateOfBirth"];
+                            theMember.FirstName = reader["firstName"].ToString();
+                            theMember.LastName = reader["lastName"].ToString();
+                            theMember.Phone = phoneNumber;
+                            theMember.Sex = reader["sex"].ToString();
+                            theMember.Address1 = reader["address1"].ToString();
+                            theMember.Address2 = reader["address2"].ToString();
+                            theMember.City = reader["city"].ToString();
+                            theMember.State = reader["state"].ToString();
+                            theMember.ZipCode = reader["zipCode"].ToString();
+                            theMemberList.Add(theMember);
+                        }
+                    }
+                }
+            }
+            return theMemberList;
+        }
+
+        /// <summary>
+        /// Gets members matching specific first and last name
+        /// </summary>
+        /// <returns>Members matching specific first and last name</returns>
+        public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
+        {
+            string selectStatement =
+                @"SELECT memberID, firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, `state`, zipCode
+                FROM Members
+                WHERE firstName = @FirstName
+                AND lastName = @LastName";
+
+            List<Member> theMemberList = new List<Member>();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@FirstName", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@FirstName"].Value = firstName;
+                    selectCommand.Parameters.Add("@LastName", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@LastName"].Value = lastName;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member theMember = new Member();
+                            theMember.MemberID = Convert.ToInt32(reader["memberID"]);
+                            theMember.DateOfBirth = (DateTime)reader["dateOfBirth"];
+                            theMember.FirstName = reader["firstName"].ToString();
+                            theMember.LastName = reader["lastName"].ToString();
+                            theMember.Phone = reader["phone"].ToString();
+                            theMember.Sex = reader["sex"].ToString();
+                            theMember.Address1 = reader["address1"].ToString();
+                            theMember.Address2 = reader["address2"].ToString();
+                            theMember.City = reader["city"].ToString();
+                            theMember.State = reader["state"].ToString();
+                            theMember.ZipCode = reader["zipCode"].ToString();
+                            theMemberList.Add(theMember);
+                        }
+                    }
+                }
+            }
+            return theMemberList;
+        }
+
     }
 }
