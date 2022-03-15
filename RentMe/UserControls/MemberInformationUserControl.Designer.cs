@@ -42,11 +42,11 @@
             this.memberIDFormValue = new System.Windows.Forms.Label();
             this.firstNameFormLabel = new System.Windows.Forms.Label();
             this.lastNameFormTextBox = new System.Windows.Forms.TextBox();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lastNameFormLabel = new System.Windows.Forms.Label();
             this.dateOfBirthFormTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthFormLabel = new System.Windows.Forms.Label();
             this.sexFormLabel = new System.Windows.Forms.Label();
-            this.sexFormComboBox = new System.Windows.Forms.ComboBox();
             this.phoneFormTextBox = new System.Windows.Forms.TextBox();
             this.phoneFormLabel = new System.Windows.Forms.Label();
             this.address1FormTextBox = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             this.addNewMemberButton = new System.Windows.Forms.Button();
             this.updateMemberInformationButton = new System.Windows.Forms.Button();
             this.firstNameFormTextBox = new System.Windows.Forms.TextBox();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sexFormComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,6 +194,10 @@
             this.lastNameFormTextBox.Size = new System.Drawing.Size(280, 25);
             this.lastNameFormTextBox.TabIndex = 15;
             // 
+            // memberBindingSource
+            // 
+            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
+            // 
             // lastNameFormLabel
             // 
             this.lastNameFormLabel.AutoSize = true;
@@ -232,16 +236,6 @@
             this.sexFormLabel.Size = new System.Drawing.Size(29, 19);
             this.sexFormLabel.TabIndex = 18;
             this.sexFormLabel.Text = "Sex";
-            // 
-            // sexFormComboBox
-            // 
-            this.sexFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sexFormComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sexFormComboBox.FormattingEnabled = true;
-            this.sexFormComboBox.Location = new System.Drawing.Point(334, 193);
-            this.sexFormComboBox.Name = "sexFormComboBox";
-            this.sexFormComboBox.Size = new System.Drawing.Size(186, 25);
-            this.sexFormComboBox.TabIndex = 19;
             // 
             // phoneFormTextBox
             // 
@@ -362,7 +356,7 @@
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessageLabel.Location = new System.Drawing.Point(7, 342);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(756, 24);
+            this.errorMessageLabel.Size = new System.Drawing.Size(756, 45);
             this.errorMessageLabel.TabIndex = 32;
             // 
             // addNewMemberButton
@@ -378,6 +372,7 @@
             this.addNewMemberButton.TabIndex = 33;
             this.addNewMemberButton.Text = "Add New Member";
             this.addNewMemberButton.UseVisualStyleBackColor = false;
+            this.addNewMemberButton.Click += new System.EventHandler(this.AddNewMemberButtonClick);
             // 
             // updateMemberInformationButton
             // 
@@ -402,14 +397,25 @@
             this.firstNameFormTextBox.Size = new System.Drawing.Size(302, 25);
             this.firstNameFormTextBox.TabIndex = 37;
             // 
-            // memberBindingSource
+            // sexFormComboBox
             // 
-            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
+            this.sexFormComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.memberBindingSource, "Sex", true));
+            this.sexFormComboBox.DataSource = this.memberBindingSource;
+            this.sexFormComboBox.DisplayMember = "Sex";
+            this.sexFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sexFormComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sexFormComboBox.FormattingEnabled = true;
+            this.sexFormComboBox.Location = new System.Drawing.Point(333, 193);
+            this.sexFormComboBox.Name = "sexFormComboBox";
+            this.sexFormComboBox.Size = new System.Drawing.Size(187, 25);
+            this.sexFormComboBox.TabIndex = 38;
+            this.sexFormComboBox.ValueMember = "Sex";
             // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.sexFormComboBox);
             this.Controls.Add(this.firstNameFormTextBox);
             this.Controls.Add(this.updateMemberInformationButton);
             this.Controls.Add(this.addNewMemberButton);
@@ -426,7 +432,6 @@
             this.Controls.Add(this.address1FormLabel);
             this.Controls.Add(this.phoneFormTextBox);
             this.Controls.Add(this.phoneFormLabel);
-            this.Controls.Add(this.sexFormComboBox);
             this.Controls.Add(this.sexFormLabel);
             this.Controls.Add(this.dateOfBirthFormTextBox);
             this.Controls.Add(this.dateOfBirthFormLabel);
@@ -472,7 +477,6 @@
         private System.Windows.Forms.TextBox dateOfBirthFormTextBox;
         private System.Windows.Forms.Label dateOfBirthFormLabel;
         private System.Windows.Forms.Label sexFormLabel;
-        private System.Windows.Forms.ComboBox sexFormComboBox;
         private System.Windows.Forms.TextBox phoneFormTextBox;
         private System.Windows.Forms.Label phoneFormLabel;
         private System.Windows.Forms.TextBox address1FormTextBox;
@@ -490,5 +494,6 @@
         private System.Windows.Forms.Button updateMemberInformationButton;
         private System.Windows.Forms.BindingSource memberBindingSource;
         private System.Windows.Forms.TextBox firstNameFormTextBox;
+        private System.Windows.Forms.ComboBox sexFormComboBox;
     }
 }
