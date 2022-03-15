@@ -36,7 +36,7 @@ namespace RentMe.DAL
                     insertCommand.Parameters["@Phone"].Value = theMember.Phone;
                     insertCommand.Parameters.Add("@Address1", System.Data.SqlDbType.VarChar);
                     insertCommand.Parameters["@Address1"].Value = theMember.Address1;
-                    if (theMember.Address2 != null)
+                    if (theMember.Address2 != null && theMember.Address2 != "")
                     {
                         insertCommand.Parameters.Add("@Address2", System.Data.SqlDbType.VarChar);
                         insertCommand.Parameters["@Address2"].Value = theMember.Address2;
