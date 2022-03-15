@@ -50,6 +50,7 @@
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\MemberInformationUserControl.cs">

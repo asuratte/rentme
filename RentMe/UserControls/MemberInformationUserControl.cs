@@ -49,58 +49,18 @@ namespace RentMe.UserControls
 
         private void AddNewMemberButtonClick(object sender, System.EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.firstNameFormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "First Name must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.lastNameFormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "Last Name must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.dateOfBirthFormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "Date of Birth must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (!DateTime.TryParseExact(this.dateOfBirthFormTextBox.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateOfBirth))
-            {
-                this.errorMessageLabel.Text = "Date of Birth must be in MM/DD/YYYY format.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.phoneFormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "Phone must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.address1FormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "Address 1 must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.cityFormTextBox.Text))
-            {
-                this.errorMessageLabel.Text = "City must not be blank.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else if (string.IsNullOrEmpty(this.zipCodeFormTextBox.Text) || this.zipCodeFormTextBox.Text.Length != 5)
-            {
-                this.errorMessageLabel.Text = "Zip Code must be a 5 digit number.";
-                this.errorMessageLabel.ForeColor = Color.Red;
-            }
-            else
-            {
+            this.errorMessageLabel.Text = "";
+            if (this.IsValidEntry()) { 
                 try
                 {
                     Member newMember = this.CreateNewMember();
                     this.theMemberController.AddMember(newMember);
-                    this.errorMessageLabel.Text = "Member successfully added. ";
+                    this.errorMessageLabel.Text = "Member successfully added.";
                     this.errorMessageLabel.ForeColor = Color.Green;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "Invalid input, please try again. " + ex.Message;
+                    this.errorMessageLabel.Text = "There was a problem saving your input, please try again.";
                     this.errorMessageLabel.ForeColor = Color.Red;
                 }
             }
@@ -126,6 +86,38 @@ namespace RentMe.UserControls
         {
             phoneNumber = phoneNumber.Replace("-", "");
             return phoneNumber;
+        }
+
+        private bool IsValidEntry()
+        {
+            if (!Validator.IsFieldFilled(this.firstNameFormTextBox)
+                || !Validator.IsFieldFilled(this.lastNameFormTextBox)
+                || !Validator.IsFieldFilled(this.address1FormTextBox)
+                || !Validator.IsFieldFilled(this.cityFormTextBox))
+            {
+                this.errorMessageLabel.Text = "This is a required field.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+                return false;
+            }
+            else if (!Validator.IsDate(this.dateOfBirthFormTextBox))
+            {
+                this.errorMessageLabel.Text = "Please enter a valid date in the format mm/dd/yyyy.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+                return false;
+            }
+            else if (!Validator.IsPhoneNumber(this.phoneFormTextBox))
+            {
+                this.errorMessageLabel.Text = "Please enter a valid phone number in the format 999-999-9999";
+                this.errorMessageLabel.ForeColor = Color.Red;
+                return false;
+            }
+            else if (!Validator.IsZipCode(this.zipCodeFormTextBox))
+            {
+                this.errorMessageLabel.Text = "Please enter a valid 6 digit zip code.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+                return false;
+            }
+            return true;
         }
     }
 }
