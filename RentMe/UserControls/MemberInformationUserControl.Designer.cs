@@ -84,7 +84,7 @@
             this.memberIDSearchLabel.Location = new System.Drawing.Point(3, 41);
             this.memberIDSearchLabel.Name = "memberIDSearchLabel";
             this.memberIDSearchLabel.Size = new System.Drawing.Size(79, 19);
-            this.memberIDSearchLabel.TabIndex = 1;
+            this.memberIDSearchLabel.TabIndex = 0;
             this.memberIDSearchLabel.Text = "Member ID";
             // 
             // phoneSearchLabel
@@ -94,7 +94,7 @@
             this.phoneSearchLabel.Location = new System.Drawing.Point(194, 41);
             this.phoneSearchLabel.Name = "phoneSearchLabel";
             this.phoneSearchLabel.Size = new System.Drawing.Size(48, 19);
-            this.phoneSearchLabel.TabIndex = 2;
+            this.phoneSearchLabel.TabIndex = 0;
             this.phoneSearchLabel.Text = "Phone";
             // 
             // nameSearchLabel
@@ -104,7 +104,7 @@
             this.nameSearchLabel.Location = new System.Drawing.Point(377, 41);
             this.nameSearchLabel.Name = "nameSearchLabel";
             this.nameSearchLabel.Size = new System.Drawing.Size(45, 19);
-            this.nameSearchLabel.TabIndex = 3;
+            this.nameSearchLabel.TabIndex = 0;
             this.nameSearchLabel.Text = "Name";
             // 
             // memberIDSearchTextBox
@@ -113,7 +113,7 @@
             this.memberIDSearchTextBox.Location = new System.Drawing.Point(7, 63);
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
             this.memberIDSearchTextBox.Size = new System.Drawing.Size(172, 25);
-            this.memberIDSearchTextBox.TabIndex = 4;
+            this.memberIDSearchTextBox.TabIndex = 1;
             // 
             // phoneSearchTextBox
             // 
@@ -121,7 +121,7 @@
             this.phoneSearchTextBox.Location = new System.Drawing.Point(198, 63);
             this.phoneSearchTextBox.Name = "phoneSearchTextBox";
             this.phoneSearchTextBox.Size = new System.Drawing.Size(165, 25);
-            this.phoneSearchTextBox.TabIndex = 5;
+            this.phoneSearchTextBox.TabIndex = 2;
             // 
             // nameSearchTextBox
             // 
@@ -129,7 +129,7 @@
             this.nameSearchTextBox.Location = new System.Drawing.Point(381, 63);
             this.nameSearchTextBox.Name = "nameSearchTextBox";
             this.nameSearchTextBox.Size = new System.Drawing.Size(286, 25);
-            this.nameSearchTextBox.TabIndex = 6;
+            this.nameSearchTextBox.TabIndex = 3;
             // 
             // memberSearchButton
             // 
@@ -141,7 +141,7 @@
             this.memberSearchButton.Location = new System.Drawing.Point(684, 62);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(79, 27);
-            this.memberSearchButton.TabIndex = 8;
+            this.memberSearchButton.TabIndex = 4;
             this.memberSearchButton.Text = "Search";
             this.memberSearchButton.UseVisualStyleBackColor = false;
             // 
@@ -162,7 +162,7 @@
             this.memberIDFormLabel.Location = new System.Drawing.Point(3, 128);
             this.memberIDFormLabel.Name = "memberIDFormLabel";
             this.memberIDFormLabel.Size = new System.Drawing.Size(79, 19);
-            this.memberIDFormLabel.TabIndex = 10;
+            this.memberIDFormLabel.TabIndex = 0;
             this.memberIDFormLabel.Text = "Member ID";
             // 
             // memberIDFormValue
@@ -172,7 +172,7 @@
             this.memberIDFormValue.Location = new System.Drawing.Point(91, 128);
             this.memberIDFormValue.Name = "memberIDFormValue";
             this.memberIDFormValue.Size = new System.Drawing.Size(33, 19);
-            this.memberIDFormValue.TabIndex = 11;
+            this.memberIDFormValue.TabIndex = 0;
             this.memberIDFormValue.Text = "###";
             // 
             // firstNameFormLabel
@@ -182,7 +182,7 @@
             this.firstNameFormLabel.Location = new System.Drawing.Point(3, 160);
             this.firstNameFormLabel.Name = "firstNameFormLabel";
             this.firstNameFormLabel.Size = new System.Drawing.Size(75, 19);
-            this.firstNameFormLabel.TabIndex = 12;
+            this.firstNameFormLabel.TabIndex = 0;
             this.firstNameFormLabel.Text = "First Name";
             // 
             // lastNameFormTextBox
@@ -192,7 +192,7 @@
             this.lastNameFormTextBox.Location = new System.Drawing.Point(483, 157);
             this.lastNameFormTextBox.Name = "lastNameFormTextBox";
             this.lastNameFormTextBox.Size = new System.Drawing.Size(280, 25);
-            this.lastNameFormTextBox.TabIndex = 15;
+            this.lastNameFormTextBox.TabIndex = 6;
             // 
             // memberBindingSource
             // 
@@ -205,7 +205,7 @@
             this.lastNameFormLabel.Location = new System.Drawing.Point(403, 160);
             this.lastNameFormLabel.Name = "lastNameFormLabel";
             this.lastNameFormLabel.Size = new System.Drawing.Size(74, 19);
-            this.lastNameFormLabel.TabIndex = 14;
+            this.lastNameFormLabel.TabIndex = 0;
             this.lastNameFormLabel.Text = "Last Name";
             // 
             // dateOfBirthFormTextBox
@@ -215,7 +215,7 @@
             this.dateOfBirthFormTextBox.Location = new System.Drawing.Point(95, 193);
             this.dateOfBirthFormTextBox.Name = "dateOfBirthFormTextBox";
             this.dateOfBirthFormTextBox.Size = new System.Drawing.Size(183, 25);
-            this.dateOfBirthFormTextBox.TabIndex = 17;
+            this.dateOfBirthFormTextBox.TabIndex = 7;
             // 
             // dateOfBirthFormLabel
             // 
@@ -224,7 +224,7 @@
             this.dateOfBirthFormLabel.Location = new System.Drawing.Point(3, 196);
             this.dateOfBirthFormLabel.Name = "dateOfBirthFormLabel";
             this.dateOfBirthFormLabel.Size = new System.Drawing.Size(87, 19);
-            this.dateOfBirthFormLabel.TabIndex = 16;
+            this.dateOfBirthFormLabel.TabIndex = 0;
             this.dateOfBirthFormLabel.Text = "Date of Birth";
             // 
             // sexFormLabel
@@ -234,7 +234,7 @@
             this.sexFormLabel.Location = new System.Drawing.Point(298, 196);
             this.sexFormLabel.Name = "sexFormLabel";
             this.sexFormLabel.Size = new System.Drawing.Size(29, 19);
-            this.sexFormLabel.TabIndex = 18;
+            this.sexFormLabel.TabIndex = 0;
             this.sexFormLabel.Text = "Sex";
             // 
             // phoneFormTextBox
@@ -244,7 +244,7 @@
             this.phoneFormTextBox.Location = new System.Drawing.Point(595, 193);
             this.phoneFormTextBox.Name = "phoneFormTextBox";
             this.phoneFormTextBox.Size = new System.Drawing.Size(168, 25);
-            this.phoneFormTextBox.TabIndex = 21;
+            this.phoneFormTextBox.TabIndex = 9;
             // 
             // phoneFormLabel
             // 
@@ -253,7 +253,7 @@
             this.phoneFormLabel.Location = new System.Drawing.Point(537, 196);
             this.phoneFormLabel.Name = "phoneFormLabel";
             this.phoneFormLabel.Size = new System.Drawing.Size(48, 19);
-            this.phoneFormLabel.TabIndex = 20;
+            this.phoneFormLabel.TabIndex = 0;
             this.phoneFormLabel.Text = "Phone";
             // 
             // address1FormTextBox
@@ -263,7 +263,7 @@
             this.address1FormTextBox.Location = new System.Drawing.Point(95, 229);
             this.address1FormTextBox.Name = "address1FormTextBox";
             this.address1FormTextBox.Size = new System.Drawing.Size(668, 25);
-            this.address1FormTextBox.TabIndex = 23;
+            this.address1FormTextBox.TabIndex = 10;
             // 
             // address1FormLabel
             // 
@@ -272,7 +272,7 @@
             this.address1FormLabel.Location = new System.Drawing.Point(3, 232);
             this.address1FormLabel.Name = "address1FormLabel";
             this.address1FormLabel.Size = new System.Drawing.Size(70, 19);
-            this.address1FormLabel.TabIndex = 22;
+            this.address1FormLabel.TabIndex = 0;
             this.address1FormLabel.Text = "Address 1";
             // 
             // address2FormTextBox
@@ -282,7 +282,7 @@
             this.address2FormTextBox.Location = new System.Drawing.Point(95, 264);
             this.address2FormTextBox.Name = "address2FormTextBox";
             this.address2FormTextBox.Size = new System.Drawing.Size(668, 25);
-            this.address2FormTextBox.TabIndex = 25;
+            this.address2FormTextBox.TabIndex = 11;
             // 
             // address2FormLabel
             // 
@@ -291,7 +291,7 @@
             this.address2FormLabel.Location = new System.Drawing.Point(3, 267);
             this.address2FormLabel.Name = "address2FormLabel";
             this.address2FormLabel.Size = new System.Drawing.Size(70, 19);
-            this.address2FormLabel.TabIndex = 24;
+            this.address2FormLabel.TabIndex = 0;
             this.address2FormLabel.Text = "Address 2";
             // 
             // cityFormTextBox
@@ -301,7 +301,7 @@
             this.cityFormTextBox.Location = new System.Drawing.Point(95, 299);
             this.cityFormTextBox.Name = "cityFormTextBox";
             this.cityFormTextBox.Size = new System.Drawing.Size(280, 25);
-            this.cityFormTextBox.TabIndex = 27;
+            this.cityFormTextBox.TabIndex = 12;
             // 
             // cityFormLabel
             // 
@@ -310,7 +310,7 @@
             this.cityFormLabel.Location = new System.Drawing.Point(3, 302);
             this.cityFormLabel.Name = "cityFormLabel";
             this.cityFormLabel.Size = new System.Drawing.Size(33, 19);
-            this.cityFormLabel.TabIndex = 26;
+            this.cityFormLabel.TabIndex = 0;
             this.cityFormLabel.Text = "City";
             // 
             // stateFormTextBox
@@ -320,7 +320,7 @@
             this.stateFormTextBox.Location = new System.Drawing.Point(444, 299);
             this.stateFormTextBox.Name = "stateFormTextBox";
             this.stateFormTextBox.Size = new System.Drawing.Size(52, 25);
-            this.stateFormTextBox.TabIndex = 29;
+            this.stateFormTextBox.TabIndex = 13;
             // 
             // stateFormLabel
             // 
@@ -329,7 +329,7 @@
             this.stateFormLabel.Location = new System.Drawing.Point(398, 302);
             this.stateFormLabel.Name = "stateFormLabel";
             this.stateFormLabel.Size = new System.Drawing.Size(40, 19);
-            this.stateFormLabel.TabIndex = 28;
+            this.stateFormLabel.TabIndex = 0;
             this.stateFormLabel.Text = "State";
             // 
             // zipCodeFormTextBox
@@ -339,7 +339,7 @@
             this.zipCodeFormTextBox.Location = new System.Drawing.Point(587, 299);
             this.zipCodeFormTextBox.Name = "zipCodeFormTextBox";
             this.zipCodeFormTextBox.Size = new System.Drawing.Size(176, 25);
-            this.zipCodeFormTextBox.TabIndex = 31;
+            this.zipCodeFormTextBox.TabIndex = 14;
             // 
             // zipCodeFormLabel
             // 
@@ -348,7 +348,7 @@
             this.zipCodeFormLabel.Location = new System.Drawing.Point(517, 302);
             this.zipCodeFormLabel.Name = "zipCodeFormLabel";
             this.zipCodeFormLabel.Size = new System.Drawing.Size(64, 19);
-            this.zipCodeFormLabel.TabIndex = 30;
+            this.zipCodeFormLabel.TabIndex = 0;
             this.zipCodeFormLabel.Text = "Zip Code";
             // 
             // errorMessageLabel
@@ -357,7 +357,7 @@
             this.errorMessageLabel.Location = new System.Drawing.Point(7, 342);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(756, 45);
-            this.errorMessageLabel.TabIndex = 32;
+            this.errorMessageLabel.TabIndex = 0;
             // 
             // addNewMemberButton
             // 
@@ -369,7 +369,7 @@
             this.addNewMemberButton.Location = new System.Drawing.Point(7, 390);
             this.addNewMemberButton.Name = "addNewMemberButton";
             this.addNewMemberButton.Size = new System.Drawing.Size(157, 27);
-            this.addNewMemberButton.TabIndex = 33;
+            this.addNewMemberButton.TabIndex = 16;
             this.addNewMemberButton.Text = "Add New Member";
             this.addNewMemberButton.UseVisualStyleBackColor = false;
             this.addNewMemberButton.Click += new System.EventHandler(this.AddNewMemberButtonClick);
@@ -384,7 +384,7 @@
             this.updateMemberInformationButton.Location = new System.Drawing.Point(285, 390);
             this.updateMemberInformationButton.Name = "updateMemberInformationButton";
             this.updateMemberInformationButton.Size = new System.Drawing.Size(235, 27);
-            this.updateMemberInformationButton.TabIndex = 35;
+            this.updateMemberInformationButton.TabIndex = 17;
             this.updateMemberInformationButton.Text = "Update Member Information";
             this.updateMemberInformationButton.UseVisualStyleBackColor = false;
             // 
@@ -395,7 +395,7 @@
             this.firstNameFormTextBox.Location = new System.Drawing.Point(95, 157);
             this.firstNameFormTextBox.Name = "firstNameFormTextBox";
             this.firstNameFormTextBox.Size = new System.Drawing.Size(302, 25);
-            this.firstNameFormTextBox.TabIndex = 37;
+            this.firstNameFormTextBox.TabIndex = 5;
             // 
             // sexFormComboBox
             // 
@@ -408,7 +408,7 @@
             this.sexFormComboBox.Location = new System.Drawing.Point(333, 193);
             this.sexFormComboBox.Name = "sexFormComboBox";
             this.sexFormComboBox.Size = new System.Drawing.Size(187, 25);
-            this.sexFormComboBox.TabIndex = 38;
+            this.sexFormComboBox.TabIndex = 8;
             this.sexFormComboBox.ValueMember = "Sex";
             // 
             // MemberInformationUserControl
