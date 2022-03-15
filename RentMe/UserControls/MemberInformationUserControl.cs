@@ -113,13 +113,19 @@ namespace RentMe.UserControls
             newMember.LastName = this.lastNameFormTextBox.Text;
             newMember.Sex = this.sexFormComboBox.SelectedValue.ToString();
             newMember.DateOfBirth = Convert.ToDateTime(this.dateOfBirthFormTextBox.Text);
-            newMember.Phone = this.phoneFormTextBox.Text;
+            newMember.Phone = this.UnformatPhoneNumber(this.phoneFormTextBox.Text);
             newMember.Address1 = this.address1FormTextBox.Text;
             newMember.Address2 = this.address2FormTextBox.Text;
             newMember.City = this.cityFormTextBox.Text;
-            newMember.State = this.stateFormTextBox.Text;
+            newMember.State = this.stateFormTextBox.Text.ToUpper();
             newMember.ZipCode = this.zipCodeFormTextBox.Text;
             return newMember;
+        }
+
+        private string UnformatPhoneNumber(string phoneNumber)
+        {
+            phoneNumber = phoneNumber.Replace("-", "");
+            return phoneNumber;
         }
     }
 }
