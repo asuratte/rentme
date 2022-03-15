@@ -43,6 +43,7 @@ namespace RentMe.UserControls
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
             this.ClearMemberFormInputs();
+            this.ClearSearchFormInputs();
         }
 
         private void ClearMemberFormInputs()
@@ -57,6 +58,14 @@ namespace RentMe.UserControls
             this.zipCodeFormTextBox.Text = "";
             this.stateFormComboBox.SelectedIndex = 0;
             this.sexFormComboBox.SelectedIndex = 0;
+            this.memberIDFormValue.Text = "";
+        }
+
+        private void ClearSearchFormInputs()
+        {
+            this.memberIDSearchTextBox.Text = "";
+            this.nameSearchTextBox.Text = "";
+            this.phoneSearchTextBox.Text = "";
         }
 
         private void LoadComboBoxes()
@@ -200,6 +209,8 @@ namespace RentMe.UserControls
                         theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
                         memberBindingSource.Clear();
                         memberBindingSource.Add(theMember);
+                        this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
+                        this.ClearSearchFormInputs();
                     }
                     else 
                     {
