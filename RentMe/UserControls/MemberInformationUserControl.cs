@@ -4,7 +4,6 @@ using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace RentMe.UserControls
@@ -130,6 +129,19 @@ namespace RentMe.UserControls
             return phoneNumber;
         }
 
+        private string FormatPhoneNumber(string phoneNumber)
+        {
+            string formattedPhoneNumber = "";
+            if (phoneNumber.Length == 10)
+            { 
+                formattedPhoneNumber = phoneNumber.Substring(0, 3) + 
+                    "-" + phoneNumber.Substring(3,3) + 
+                    "-" + phoneNumber.Substring(6,4);
+                return formattedPhoneNumber;
+            }
+            return null;
+        }
+
         private bool IsValidEntry()
         {
             if (!Validator.IsFieldFilled(this.firstNameFormTextBox)
@@ -167,10 +179,40 @@ namespace RentMe.UserControls
             string formattedAddress = address1 + Environment.NewLine;
             if (address2 != null && address2 != "")
             {
-                formattedAddress += (address2 + Environment.NewLine + "yooo this is address2");
+                formattedAddress += (address2 + Environment.NewLine);
             }
             formattedAddress += (city + ", " + state + " " + zipCode);
             return formattedAddress;
+        }
+
+        private void MemberSearchButtonClick(object sender, EventArgs e)
+        {
+            this.ClearMemberFormInputs();
+            this.errorMessageLabel.Text = "";
+            if (this.memberIDSearchTextBox.Text != null && this.memberIDSearchTextBox.Text != "")
+            {
+                try
+                {
+                    int memberID = Convert.ToInt32(this.memberIDSearchTextBox.Text);
+                    Member theMember = this.theMemberController.GetMemberByID(memberID);
+                    if (theMember.FirstName != null)
+                    {
+                        theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
+                        memberBindingSource.Clear();
+                        memberBindingSource.Add(theMember);
+                    }
+                    else 
+                    {
+                        this.errorMessageLabel.Text = "Cannot find member with specified ID.";
+                        this.errorMessageLabel.ForeColor = Color.Red;
+                    }
+                }
+                catch (Exception)
+                {
+                    this.errorMessageLabel.Text = "There was an issue retrieving member information.";
+                    this.errorMessageLabel.ForeColor = Color.Red;
+                }
+            }
         }
     }
 }

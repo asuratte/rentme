@@ -144,6 +144,7 @@
             this.memberSearchButton.TabIndex = 4;
             this.memberSearchButton.Text = "Search";
             this.memberSearchButton.UseVisualStyleBackColor = false;
+            this.memberSearchButton.Click += new System.EventHandler(this.MemberSearchButtonClick);
             // 
             // horizontalDividerLineLabel
             // 
