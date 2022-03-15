@@ -68,6 +68,12 @@
     <Compile Include="View\EmployeeInterface.Designer.cs">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MemberLookupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MemberLookupForm.Designer.cs">
+      <DependentUpon>MemberLookupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MemberRegistrationConfirmationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeInterface.resx">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MemberLookupForm.resx">
+      <DependentUpon>MemberLookupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
