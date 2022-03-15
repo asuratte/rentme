@@ -15,6 +15,7 @@ namespace RentMe.UserControls
     {
         private readonly SortedDictionary<string, string> sexList;
         private readonly MemberController theMemberController;
+        private readonly StateController theStateController;
 
         /// <summary>
         /// Initialize the member information user interface
@@ -29,6 +30,7 @@ namespace RentMe.UserControls
                 { "Prefer not to say", "P"}
             };
             this.theMemberController = new MemberController();
+            this.theStateController = new StateController();
         }
 
         /// <summary>
@@ -45,6 +47,18 @@ namespace RentMe.UserControls
             this.sexFormComboBox.DataSource = new BindingSource(sexList, null);
             this.sexFormComboBox.DisplayMember = "Key";
             this.sexFormComboBox.ValueMember = "Value";
+            try
+            {
+                this.stateFormComboBox.DataSource = this.theStateController.GetAllStates();
+                this.stateFormComboBox.DisplayMember = "Name";
+                this.stateFormComboBox.ValueMember = "Code";
+            }
+            catch (Exception)
+            {
+                this.errorMessageLabel.Text = "There was a problem getting the list of states.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+            }
+            
         }
 
         private void AddNewMemberButtonClick(object sender, System.EventArgs e)
@@ -77,7 +91,7 @@ namespace RentMe.UserControls
             newMember.Address1 = this.address1FormTextBox.Text;
             newMember.Address2 = this.address2FormTextBox.Text;
             newMember.City = this.cityFormTextBox.Text;
-            newMember.State = this.stateFormTextBox.Text.ToUpper();
+            newMember.State = this.stateFormComboBox.SelectedValue.ToString();
             newMember.ZipCode = this.zipCodeFormTextBox.Text;
             return newMember;
         }

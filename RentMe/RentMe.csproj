@@ -47,9 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\MemberController.cs" />
+    <Compile Include="Controller\StateController.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="DAL\StateDAL.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

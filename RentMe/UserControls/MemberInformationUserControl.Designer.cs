@@ -55,7 +55,6 @@
             this.address2FormLabel = new System.Windows.Forms.Label();
             this.cityFormTextBox = new System.Windows.Forms.TextBox();
             this.cityFormLabel = new System.Windows.Forms.Label();
-            this.stateFormTextBox = new System.Windows.Forms.TextBox();
             this.stateFormLabel = new System.Windows.Forms.Label();
             this.zipCodeFormTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeFormLabel = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.updateMemberInformationButton = new System.Windows.Forms.Button();
             this.firstNameFormTextBox = new System.Windows.Forms.TextBox();
             this.sexFormComboBox = new System.Windows.Forms.ComboBox();
+            this.stateFormComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -300,7 +300,7 @@
             this.cityFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cityFormTextBox.Location = new System.Drawing.Point(95, 299);
             this.cityFormTextBox.Name = "cityFormTextBox";
-            this.cityFormTextBox.Size = new System.Drawing.Size(280, 25);
+            this.cityFormTextBox.Size = new System.Drawing.Size(195, 25);
             this.cityFormTextBox.TabIndex = 12;
             // 
             // cityFormLabel
@@ -313,20 +313,11 @@
             this.cityFormLabel.TabIndex = 0;
             this.cityFormLabel.Text = "City";
             // 
-            // stateFormTextBox
-            // 
-            this.stateFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "State", true));
-            this.stateFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateFormTextBox.Location = new System.Drawing.Point(444, 299);
-            this.stateFormTextBox.Name = "stateFormTextBox";
-            this.stateFormTextBox.Size = new System.Drawing.Size(52, 25);
-            this.stateFormTextBox.TabIndex = 13;
-            // 
             // stateFormLabel
             // 
             this.stateFormLabel.AutoSize = true;
             this.stateFormLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stateFormLabel.Location = new System.Drawing.Point(398, 302);
+            this.stateFormLabel.Location = new System.Drawing.Point(310, 302);
             this.stateFormLabel.Name = "stateFormLabel";
             this.stateFormLabel.Size = new System.Drawing.Size(40, 19);
             this.stateFormLabel.TabIndex = 0;
@@ -336,16 +327,16 @@
             // 
             this.zipCodeFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "ZipCode", true));
             this.zipCodeFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipCodeFormTextBox.Location = new System.Drawing.Point(587, 299);
+            this.zipCodeFormTextBox.Location = new System.Drawing.Point(630, 299);
             this.zipCodeFormTextBox.Name = "zipCodeFormTextBox";
-            this.zipCodeFormTextBox.Size = new System.Drawing.Size(176, 25);
+            this.zipCodeFormTextBox.Size = new System.Drawing.Size(133, 25);
             this.zipCodeFormTextBox.TabIndex = 14;
             // 
             // zipCodeFormLabel
             // 
             this.zipCodeFormLabel.AutoSize = true;
             this.zipCodeFormLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zipCodeFormLabel.Location = new System.Drawing.Point(517, 302);
+            this.zipCodeFormLabel.Location = new System.Drawing.Point(559, 302);
             this.zipCodeFormLabel.Name = "zipCodeFormLabel";
             this.zipCodeFormLabel.Size = new System.Drawing.Size(64, 19);
             this.zipCodeFormLabel.TabIndex = 0;
@@ -411,10 +402,25 @@
             this.sexFormComboBox.TabIndex = 8;
             this.sexFormComboBox.ValueMember = "Sex";
             // 
+            // stateFormComboBox
+            // 
+            this.stateFormComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.memberBindingSource, "State", true));
+            this.stateFormComboBox.DataSource = this.memberBindingSource;
+            this.stateFormComboBox.DisplayMember = "State";
+            this.stateFormComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.stateFormComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stateFormComboBox.FormattingEnabled = true;
+            this.stateFormComboBox.Location = new System.Drawing.Point(356, 299);
+            this.stateFormComboBox.Name = "stateFormComboBox";
+            this.stateFormComboBox.Size = new System.Drawing.Size(185, 25);
+            this.stateFormComboBox.TabIndex = 18;
+            this.stateFormComboBox.ValueMember = "State";
+            // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.stateFormComboBox);
             this.Controls.Add(this.sexFormComboBox);
             this.Controls.Add(this.firstNameFormTextBox);
             this.Controls.Add(this.updateMemberInformationButton);
@@ -422,7 +428,6 @@
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.zipCodeFormTextBox);
             this.Controls.Add(this.zipCodeFormLabel);
-            this.Controls.Add(this.stateFormTextBox);
             this.Controls.Add(this.stateFormLabel);
             this.Controls.Add(this.cityFormTextBox);
             this.Controls.Add(this.cityFormLabel);
@@ -485,7 +490,6 @@
         private System.Windows.Forms.Label address2FormLabel;
         private System.Windows.Forms.TextBox cityFormTextBox;
         private System.Windows.Forms.Label cityFormLabel;
-        private System.Windows.Forms.TextBox stateFormTextBox;
         private System.Windows.Forms.Label stateFormLabel;
         private System.Windows.Forms.TextBox zipCodeFormTextBox;
         private System.Windows.Forms.Label zipCodeFormLabel;
@@ -495,5 +499,6 @@
         private System.Windows.Forms.BindingSource memberBindingSource;
         private System.Windows.Forms.TextBox firstNameFormTextBox;
         private System.Windows.Forms.ComboBox sexFormComboBox;
+        private System.Windows.Forms.ComboBox stateFormComboBox;
     }
 }
