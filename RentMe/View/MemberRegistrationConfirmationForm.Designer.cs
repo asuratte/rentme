@@ -47,7 +47,6 @@
             this.memberNameValue.Name = "memberNameValue";
             this.memberNameValue.Size = new System.Drawing.Size(456, 23);
             this.memberNameValue.TabIndex = 0;
-            this.memberNameValue.Text = "Name";
             // 
             // memberPhoneLabel
             // 
@@ -113,6 +112,7 @@
             this.confirmAddButton.TabIndex = 9;
             this.confirmAddButton.Text = "Confirm and Add";
             this.confirmAddButton.UseVisualStyleBackColor = false;
+            this.confirmAddButton.Click += new System.EventHandler(this.ConfirmAddButtonClick);
             // 
             // cancelButton
             // 
@@ -127,6 +127,7 @@
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // MemberRegistrationConfirmationForm
             // 
