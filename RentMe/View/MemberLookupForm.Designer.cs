@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberLookupForm));
             this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.memberDataGridView = new System.Windows.Forms.DataGridView();
+            this.SelectMember = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +44,9 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectMember = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
+            this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // errorMessageLabel
@@ -56,10 +56,6 @@
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(784, 19);
             this.errorMessageLabel.TabIndex = 0;
-            // 
-            // memberBindingSource
-            // 
-            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
             // 
             // memberDataGridView
             // 
@@ -86,6 +82,15 @@
             this.memberDataGridView.ReadOnly = true;
             this.memberDataGridView.Size = new System.Drawing.Size(784, 407);
             this.memberDataGridView.TabIndex = 2;
+            this.memberDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MemberDataGridViewCellContentClick);
+            // 
+            // SelectMember
+            // 
+            this.SelectMember.HeaderText = "";
+            this.SelectMember.Name = "SelectMember";
+            this.SelectMember.ReadOnly = true;
+            this.SelectMember.Text = "Select";
+            this.SelectMember.UseColumnTextForButtonValue = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -164,13 +169,9 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
-            // SelectMember
+            // memberBindingSource
             // 
-            this.SelectMember.HeaderText = "";
-            this.SelectMember.Name = "SelectMember";
-            this.SelectMember.ReadOnly = true;
-            this.SelectMember.Text = "Select";
-            this.SelectMember.UseColumnTextForButtonValue = true;
+            this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
             // 
             // MemberLookupForm
             // 
@@ -186,8 +187,9 @@
             this.Name = "MemberLookupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Member Lookup";
-            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.OnMemberLookupFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

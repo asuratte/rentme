@@ -17,6 +17,7 @@ namespace RentMe.UserControls
         private readonly MemberController theMemberController;
         private readonly StateController theStateController;
         private MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
+        private MemberLookupForm theMemberLookupForm;
 
         /// <summary>
         /// Initialize the member information user interface
@@ -33,6 +34,7 @@ namespace RentMe.UserControls
             this.theMemberController = new MemberController();
             this.theStateController = new StateController();
             this.theMemberRegistrationConfirmationForm = new MemberRegistrationConfirmationForm();
+            this.theMemberLookupForm = new MemberLookupForm();
         }
 
         /// <summary>
@@ -204,7 +206,7 @@ namespace RentMe.UserControls
                 {
                     int memberID = Convert.ToInt32(this.memberIDSearchTextBox.Text);
                     Member theMember = this.theMemberController.GetMemberByID(memberID);
-                    if (theMember.FirstName != null)
+                    if (theMember != null)
                     {
                         theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
                         memberBindingSource.Clear();
@@ -212,7 +214,7 @@ namespace RentMe.UserControls
                         this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
                         this.ClearSearchFormInputs();
                     }
-                    else 
+                    else
                     {
                         this.errorMessageLabel.Text = "Cannot find member with specified ID.";
                         this.errorMessageLabel.ForeColor = Color.Red;
@@ -220,7 +222,42 @@ namespace RentMe.UserControls
                 }
                 catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "There was an issue retrieving member information.";
+                    this.errorMessageLabel.Text = "There was an issue retrieving member information by ID.";
+                    this.errorMessageLabel.ForeColor = Color.Red;
+                }
+            }
+            else if (this.phoneSearchTextBox.Text != null && this.phoneSearchTextBox.Text != "")
+            {
+                try
+                {
+                    string memberPhone = this.UnformatPhoneNumber(this.phoneSearchTextBox.Text);
+                    List<Member> theMemberList = this.theMemberController.GetMembersByPhoneNumber(memberPhone);
+                    if (theMemberList.Count > 0)
+                    {
+                        foreach (Member theMember in theMemberList)
+                        {
+                            theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
+                        }
+                        this.theMemberLookupForm.TheMemberList = theMemberList;
+                        this.theMemberLookupForm.ShowDialog();
+                        if (this.theMemberLookupForm.DialogResult == DialogResult.OK)
+                        {
+                            Member theMember = this.theMemberLookupForm.TheSelectedMember;
+                            memberBindingSource.Clear();
+                            memberBindingSource.Add(theMember);
+                            this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
+                            this.ClearSearchFormInputs();
+                        }
+                    }
+                    else
+                    {
+                        this.errorMessageLabel.Text = "Cannot find member with specified phone number.";
+                        this.errorMessageLabel.ForeColor = Color.Red;
+                    }
+                }
+                catch (Exception)
+                {
+                    this.errorMessageLabel.Text = "There was an issue retrieving member information by phone.";
                     this.errorMessageLabel.ForeColor = Color.Red;
                 }
             }
