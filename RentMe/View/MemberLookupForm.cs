@@ -56,5 +56,10 @@ namespace RentMe.View
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void CancelButtonOnClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
     }
 }

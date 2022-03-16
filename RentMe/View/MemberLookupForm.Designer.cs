@@ -33,6 +33,7 @@
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.memberDataGridView = new System.Windows.Forms.DataGridView();
             this.SelectMember = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,15 +53,16 @@
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.errorMessageLabel.Location = new System.Drawing.Point(12, 432);
+            this.errorMessageLabel.Location = new System.Drawing.Point(14, 278);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(784, 19);
+            this.errorMessageLabel.Size = new System.Drawing.Size(879, 27);
             this.errorMessageLabel.TabIndex = 0;
             // 
             // memberDataGridView
             // 
             this.memberDataGridView.AllowUserToAddRows = false;
             this.memberDataGridView.AllowUserToDeleteRows = false;
+            this.memberDataGridView.AllowUserToOrderColumns = true;
             this.memberDataGridView.AutoGenerateColumns = false;
             this.memberDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.memberDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -80,17 +82,33 @@
             this.memberDataGridView.Location = new System.Drawing.Point(12, 12);
             this.memberDataGridView.Name = "memberDataGridView";
             this.memberDataGridView.ReadOnly = true;
-            this.memberDataGridView.Size = new System.Drawing.Size(784, 407);
+            this.memberDataGridView.Size = new System.Drawing.Size(984, 244);
             this.memberDataGridView.TabIndex = 2;
             this.memberDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MemberDataGridViewCellContentClick);
             // 
             // SelectMember
             // 
+            this.SelectMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectMember.HeaderText = "";
             this.SelectMember.Name = "SelectMember";
             this.SelectMember.ReadOnly = true;
             this.SelectMember.Text = "Select";
             this.SelectMember.UseColumnTextForButtonValue = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.Color.DimGray;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.ForeColor = System.Drawing.Color.White;
+            this.cancelButton.Location = new System.Drawing.Point(912, 278);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(84, 27);
+            this.cancelButton.TabIndex = 11;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonOnClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -98,6 +116,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Member ID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 95;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -105,6 +124,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "First Name";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 90;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -112,6 +132,7 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Last Name";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 90;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -119,6 +140,7 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Phone";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 75;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -133,6 +155,7 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Sex";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 35;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -140,6 +163,7 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Address 1";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 95;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -147,6 +171,7 @@
             this.dataGridViewTextBoxColumn8.HeaderText = "Address 2";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 65;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -154,6 +179,7 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "City";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Width = 65;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -161,6 +187,7 @@
             this.dataGridViewTextBoxColumn10.HeaderText = "State";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 45;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -168,6 +195,7 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Zip Code";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 85;
             // 
             // memberBindingSource
             // 
@@ -177,7 +205,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 461);
+            this.ClientSize = new System.Drawing.Size(1008, 320);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.memberDataGridView);
             this.Controls.Add(this.errorMessageLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -211,5 +240,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewButtonColumn SelectMember;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
