@@ -82,7 +82,7 @@ namespace RentMe.DAL
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read())
                         {
                             theMember.MemberID = memberID;
                             theMember.DateOfBirth = (DateTime)reader["dateOfBirth"];
@@ -91,10 +91,17 @@ namespace RentMe.DAL
                             theMember.Phone = reader["phone"].ToString();
                             theMember.Sex = reader["sex"].ToString();
                             theMember.Address1 = reader["address1"].ToString();
-                            theMember.Address2 = reader["address2"].ToString();
+                            if (!(reader["address2"] is DBNull))
+                            {
+                                theMember.Address2 = reader["address2"].ToString();
+                            }
                             theMember.City = reader["city"].ToString();
                             theMember.State = reader["state"].ToString();
                             theMember.ZipCode = reader["zipCode"].ToString();
+                        }
+                        else
+                        {
+                            theMember = null;
                         }
                     }
                 }
@@ -109,7 +116,7 @@ namespace RentMe.DAL
         public List<Member> GetMembersByPhoneNumber(string phoneNumber)
         {
             string selectStatement =
-                @"SELECT memberID, firstName, lastName, dateOfBirth, sex, address1, address2, city, state, zipCode
+                @"SELECT memberID, firstName, lastName, phone, dateOfBirth, sex, address1, address2, city, state, zipCode
                 FROM member
                 WHERE phone = @Phone";
 
@@ -133,10 +140,13 @@ namespace RentMe.DAL
                             theMember.DateOfBirth = (DateTime)reader["dateOfBirth"];
                             theMember.FirstName = reader["firstName"].ToString();
                             theMember.LastName = reader["lastName"].ToString();
-                            theMember.Phone = phoneNumber;
+                            theMember.Phone = reader["phone"].ToString();
                             theMember.Sex = reader["sex"].ToString();
                             theMember.Address1 = reader["address1"].ToString();
-                            theMember.Address2 = reader["address2"].ToString();
+                            if (!(reader["address2"] is DBNull))
+                            {
+                                theMember.Address2 = reader["address2"].ToString();
+                            }
                             theMember.City = reader["city"].ToString();
                             theMember.State = reader["state"].ToString();
                             theMember.ZipCode = reader["zipCode"].ToString();
@@ -185,7 +195,10 @@ namespace RentMe.DAL
                             theMember.Phone = reader["phone"].ToString();
                             theMember.Sex = reader["sex"].ToString();
                             theMember.Address1 = reader["address1"].ToString();
-                            theMember.Address2 = reader["address2"].ToString();
+                            if (!(reader["address2"] is DBNull))
+                            {
+                                theMember.Address2 = reader["address2"].ToString();
+                            }
                             theMember.City = reader["city"].ToString();
                             theMember.State = reader["state"].ToString();
                             theMember.ZipCode = reader["zipCode"].ToString();
