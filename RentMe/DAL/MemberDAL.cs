@@ -251,5 +251,123 @@ namespace RentMe.DAL
             return memberExists;
         }
 
+        /// <summary>
+        /// Update existing member in the database
+        /// </summary>
+        /// <param name="oldMember"></param>
+        /// <param name="newMember"></param>
+        /// <returns>True if successful, false if not</returns>
+        public bool UpdateMember(Member oldMember, Member newMember)
+        {
+            string updateStatement =
+                @"UPDATE member SET
+                firstName = @NewFirstName,
+                lastName = @NewLastName,
+                dateOfBirth = @NewDateOfBirth,
+                sex = @NewSex,
+                phone = @NewPhone,
+                address1 = @NewAddress1
+                address2 = @NewAddress2,
+                city = @NewCity,
+                state = @NewState,
+                zipCode = @NewZipCode
+                WHERE memberID = @MemberID
+                AND firstName = @OldFirstName,
+                AND lastName = @OldLastName,
+                AND dateOfBirth = @OldDateOfBirth,
+                AND sex = @OldSex,
+                AND phone = @OldPhone,
+                AND address1 = @OldAddress1
+                AND (address2 = @OldAddress2 OR
+                address2 IS NULL AND @OldAddress2 IS NULL),
+                AND city = @OldCity,
+                AND state = @OldState,
+                AND zipCode = @OldZipCode";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.Add("@MemberID", System.Data.SqlDbType.Int);
+                    updateCommand.Parameters["@MemberID"].Value = oldMember.MemberID;
+
+                    updateCommand.Parameters.Add("@NewFirstName", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@NewFirstName"].Value = newMember.FirstName;
+                    updateCommand.Parameters.Add("@OldFirstName", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@OldFirstName"].Value = oldMember.FirstName;
+
+                    updateCommand.Parameters.Add("@NewLastName", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@NewLastName"].Value = newMember.LastName;
+                    updateCommand.Parameters.Add("@OldLastName", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@OldLastName"].Value = oldMember.LastName;
+
+                    updateCommand.Parameters.Add("@NewDateOfBirth", System.Data.SqlDbType.Date);
+                    updateCommand.Parameters["@NewDateOfBirth"].Value = newMember.DateOfBirth;
+                    updateCommand.Parameters.Add("@OldDateOfBirth", System.Data.SqlDbType.Date);
+                    updateCommand.Parameters["@OldDateOfBirth"].Value = oldMember.DateOfBirth;
+
+                    updateCommand.Parameters.Add("@NewSex", System.Data.SqlDbType.Char, 1);
+                    updateCommand.Parameters["@NewSex"].Value = newMember.Sex;
+                    updateCommand.Parameters.Add("@OldSex", System.Data.SqlDbType.Char, 1);
+                    updateCommand.Parameters["@OldSex"].Value = oldMember.Sex;
+
+                    updateCommand.Parameters.Add("@NewPhone", System.Data.SqlDbType.Char, 10);
+                    updateCommand.Parameters["@NewPhone"].Value = newMember.Phone;
+                    updateCommand.Parameters.Add("@OldPhone", System.Data.SqlDbType.Char, 10);
+                    updateCommand.Parameters["@OldPhone"].Value = oldMember.Phone;
+
+                    updateCommand.Parameters.Add("@NewAddress1", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@NewAddress1"].Value = newMember.Address1;
+                    updateCommand.Parameters.Add("@OldAddress1", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@OldAddress1"].Value = oldMember.Address1;
+
+                    if (newMember.Address2 == null || newMember.Address2 == "")
+                    {
+                        updateCommand.Parameters.Add("@NewAddress2", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@NewAddress2"].Value = DBNull.Value;
+                    }
+                    else 
+                    {
+                        updateCommand.Parameters.Add("@NewAddress2", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@NewAddress2"].Value = newMember.Address2;
+                    }
+                    if (oldMember.Address2 == null || oldMember.Address2 == "")
+                    {
+                        updateCommand.Parameters.Add("@OldAddress2", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@OldAddress2"].Value = DBNull.Value;
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.Add("@OldAddress2", System.Data.SqlDbType.VarChar);
+                        updateCommand.Parameters["@OldAddress2"].Value = oldMember.Address2;
+                    }
+
+                    updateCommand.Parameters.Add("@NewCity", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@NewCity"].Value = newMember.City;
+                    updateCommand.Parameters.Add("@OldCity", System.Data.SqlDbType.VarChar);
+                    updateCommand.Parameters["@OldCity"].Value = oldMember.City;
+
+                    updateCommand.Parameters.Add("@NewState", System.Data.SqlDbType.Char, 2);
+                    updateCommand.Parameters["@NewState"].Value = newMember.State;
+                    updateCommand.Parameters.Add("@OldState", System.Data.SqlDbType.Char, 2);
+                    updateCommand.Parameters["@OldState"].Value = oldMember.State;
+
+                    updateCommand.Parameters.Add("@NewZipCode", System.Data.SqlDbType.Char, 5);
+                    updateCommand.Parameters["@NewZipCode"].Value = newMember.ZipCode;
+                    updateCommand.Parameters.Add("@OldZipCode", System.Data.SqlDbType.Char, 5);
+                    updateCommand.Parameters["@OldZipCode"].Value = oldMember.ZipCode;
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+        }
+
     }
 }

@@ -99,5 +99,24 @@ namespace RentMe.Controller
             }
             return this.memberDAL.CheckMemberExists(firstName, lastName, phoneNumber);  
         }
+
+        /// <summary>
+        /// Update existing member in the database
+        /// </summary>
+        /// <param name="oldMember"></param>
+        /// <param name="newMember"></param>
+        /// <returns>True if successful, false if not</returns>
+        public bool UpdateMember(Member oldMember, Member newMember)
+        {
+            if (oldMember == null)
+            {
+                throw new ArgumentNullException("Old incident must not be null.");
+            }
+            if (newMember == null)
+            {
+                throw new ArgumentNullException("New incident must not be null.");
+            }
+            return this.memberDAL.UpdateMember(oldMember, newMember);
+        }
     }
 }
