@@ -42,11 +42,12 @@ namespace RentMe.UserControls
         /// </summary>
         public void ResetForm()
         {
+            this.memberBindingSource.Clear(); 
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
             this.ClearMemberFormInputs();
             this.ClearSearchFormInputs();
-            this.memberBindingSource.Clear();
+            this.updateMemberInformationButton.Enabled = false;
         }
 
         private void ClearMemberFormInputs()
@@ -104,7 +105,7 @@ namespace RentMe.UserControls
                     else
                     {
                         this.theMemberRegistrationConfirmationForm.MemberName = this.firstNameFormTextBox.Text + " " + this.lastNameFormTextBox.Text;
-                        this.theMemberRegistrationConfirmationForm.MemberPhone = this.phoneFormTextBox.Text;
+                        this.theMemberRegistrationConfirmationForm.MemberPhone = this.FormatPhoneNumber(this.phoneFormTextBox.Text);
                         this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthFormTextBox.Text;
                         this.theMemberRegistrationConfirmationForm.MemberAddress = this.FormatAddressString(this.address1FormTextBox.Text, this.address2FormTextBox.Text, this.cityFormTextBox.Text, this.stateFormComboBox.SelectedValue.ToString(), this.zipCodeFormTextBox.Text);
                         this.theMemberRegistrationConfirmationForm.ShowDialog();
@@ -118,9 +119,9 @@ namespace RentMe.UserControls
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    this.ShowErrorMessage("There was a problem saving your input, please try again.");
+                    this.ShowErrorMessage(ex.Message + "There was a problem saving your input, please try again.");
                 }
             }
         }
@@ -150,6 +151,7 @@ namespace RentMe.UserControls
         private string FormatPhoneNumber(string phoneNumber)
         {
             string formattedPhoneNumber = "";
+            phoneNumber = this.UnformatPhoneNumber(phoneNumber);
             if (phoneNumber.Length == 10)
             { 
                 formattedPhoneNumber = phoneNumber.Substring(0, 3) + 
@@ -216,6 +218,7 @@ namespace RentMe.UserControls
                         this.memberBindingSource.Add(theMember);
                         this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
                         this.ClearSearchFormInputs();
+                        this.updateMemberInformationButton.Enabled = true;
                     }
                     else
                     {
@@ -295,6 +298,7 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             this.errorMessageLabel.ForeColor = default(Color);
             this.memberBindingSource.Clear();
+            this.updateMemberInformationButton.Enabled = false;
         }
 
         private void DisplayMemberFromLookup()
@@ -304,6 +308,7 @@ namespace RentMe.UserControls
             this.memberBindingSource.Add(theMember);
             this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
             this.ClearSearchFormInputs();
+            this.updateMemberInformationButton.Enabled = true;
         }
 
         private void ShowMemberLookupForm(List<Member> theMemberList)
