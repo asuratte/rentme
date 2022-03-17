@@ -392,6 +392,7 @@
             this.updateMemberInformationButton.TabIndex = 17;
             this.updateMemberInformationButton.Text = "Update Member Information";
             this.updateMemberInformationButton.UseVisualStyleBackColor = false;
+            this.updateMemberInformationButton.Click += new System.EventHandler(this.UpdateMemberButtonClick);
             // 
             // firstNameFormTextBox
             // 

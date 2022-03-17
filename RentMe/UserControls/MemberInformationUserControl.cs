@@ -42,7 +42,7 @@ namespace RentMe.UserControls
         /// </summary>
         public void ResetForm()
         {
-            this.memberBindingSource.Clear(); 
+            this.memberBindingSource.Clear();
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
             this.ClearMemberFormInputs();
@@ -88,13 +88,13 @@ namespace RentMe.UserControls
             {
                 this.ShowErrorMessage("There was a problem getting the list of states.");
             }
-            
+
         }
 
         private void AddNewMemberButtonClick(object sender, System.EventArgs e)
         {
             this.errorMessageLabel.Text = "";
-            if (this.IsValidEntry()) 
+            if (this.IsValidEntry())
             {
                 try
                 {
@@ -119,9 +119,9 @@ namespace RentMe.UserControls
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    this.ShowErrorMessage(ex.Message + "There was a problem saving your input, please try again.");
+                    this.ShowErrorMessage("There was a problem saving your input, please try again.");
                 }
             }
         }
@@ -153,10 +153,10 @@ namespace RentMe.UserControls
             string formattedPhoneNumber = "";
             phoneNumber = this.UnformatPhoneNumber(phoneNumber);
             if (phoneNumber.Length == 10)
-            { 
-                formattedPhoneNumber = phoneNumber.Substring(0, 3) + 
-                    "-" + phoneNumber.Substring(3,3) + 
-                    "-" + phoneNumber.Substring(6,4);
+            {
+                formattedPhoneNumber = phoneNumber.Substring(0, 3) +
+                    "-" + phoneNumber.Substring(3, 3) +
+                    "-" + phoneNumber.Substring(6, 4);
                 return formattedPhoneNumber;
             }
             return null;
@@ -285,6 +285,59 @@ namespace RentMe.UserControls
             }
         }
 
+        private void UpdateMemberButtonClick(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            if (this.IsValidEntry())
+            {
+                try
+                {
+                    Member oldMember = this.theMemberController.GetMemberByID(Convert.ToInt32(this.memberIDFormValue.Text));
+                    Member newMember = this.CreateNewMember();
+                    if (this.CheckIfEditsMade(oldMember, newMember))
+                    {
+                        bool updateSuccessful = this.theMemberController.UpdateMember(oldMember, newMember);
+                        if (updateSuccessful)
+                        {
+                            this.errorMessageLabel.Text = "Member successfully updated.";
+                            this.errorMessageLabel.ForeColor = Color.Green;
+                        }
+                        else
+                        {
+                            this.ShowErrorMessage("Member update failed. The member's data has  changed since it was last loaded. Please search for the member again to get up-to-date data.");
+                        }
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("Please make an edit to the member information before clicking update.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was a problem saving your input, please try again.");
+                }
+            }
+        }
+
+        private bool CheckIfEditsMade(Member oldMember, Member newMember)
+        {
+            bool editsMade = false;
+            if (oldMember.FirstName != newMember.FirstName
+                || oldMember.LastName != newMember.LastName
+                || oldMember.DateOfBirth != newMember.DateOfBirth
+                || oldMember.Phone != newMember.Phone
+                || oldMember.Sex != newMember.Sex
+                || oldMember.Address1 != newMember.Address1
+                || oldMember.Address2 != newMember.Address2
+                || oldMember.City != newMember.City
+                || oldMember.State != newMember.State
+                || oldMember.ZipCode != newMember.ZipCode)
+            { 
+                editsMade = true;
+            }
+            return editsMade;
+        }
+
         private void OnTextEntered(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
@@ -293,12 +346,7 @@ namespace RentMe.UserControls
 
         private void ClearFormClick(object sender, EventArgs e)
         {
-            this.ClearMemberFormInputs();
-            this.ClearSearchFormInputs();
-            this.errorMessageLabel.Text = "";
-            this.errorMessageLabel.ForeColor = default(Color);
-            this.memberBindingSource.Clear();
-            this.updateMemberInformationButton.Enabled = false;
+            this.ResetForm();
         }
 
         private void DisplayMemberFromLookup()
