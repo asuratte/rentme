@@ -97,18 +97,25 @@ namespace RentMe.UserControls
             {
                 try
                 {
-                    this.theMemberRegistrationConfirmationForm.MemberName = this.firstNameFormTextBox.Text + " " + this.lastNameFormTextBox.Text;
-                    this.theMemberRegistrationConfirmationForm.MemberPhone = this.phoneFormTextBox.Text;
-                    this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthFormTextBox.Text;
-                    this.theMemberRegistrationConfirmationForm.MemberAddress = this.FormatAddressString(this.address1FormTextBox.Text, this.address2FormTextBox.Text, this.cityFormTextBox.Text, this.stateFormComboBox.SelectedValue.ToString(), this.zipCodeFormTextBox.Text);
-                    this.theMemberRegistrationConfirmationForm.ShowDialog();
-                    if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
+                    if (this.theMemberController.CheckMemberExists(this.firstNameFormTextBox.Text, this.lastNameFormTextBox.Text, this.UnformatPhoneNumber(this.phoneFormTextBox.Text)))
                     {
-                        Member newMember = this.CreateNewMember();
-                        this.theMemberController.AddMember(newMember);
-                        this.ClearMemberFormInputs();
-                        this.errorMessageLabel.Text = "Member successfully added.";
-                        this.errorMessageLabel.ForeColor = Color.Green;
+                        this.ShowErrorMessage("A member with this information already exists in the database. Try searching by First and Last Name or Phone.");
+                    }
+                    else
+                    {
+                        this.theMemberRegistrationConfirmationForm.MemberName = this.firstNameFormTextBox.Text + " " + this.lastNameFormTextBox.Text;
+                        this.theMemberRegistrationConfirmationForm.MemberPhone = this.phoneFormTextBox.Text;
+                        this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthFormTextBox.Text;
+                        this.theMemberRegistrationConfirmationForm.MemberAddress = this.FormatAddressString(this.address1FormTextBox.Text, this.address2FormTextBox.Text, this.cityFormTextBox.Text, this.stateFormComboBox.SelectedValue.ToString(), this.zipCodeFormTextBox.Text);
+                        this.theMemberRegistrationConfirmationForm.ShowDialog();
+                        if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
+                        {
+                            Member newMember = this.CreateNewMember();
+                            this.theMemberController.AddMember(newMember);
+                            this.ClearMemberFormInputs();
+                            this.errorMessageLabel.Text = "Member successfully added.";
+                            this.errorMessageLabel.ForeColor = Color.Green;
+                        }
                     }
                 }
                 catch (Exception)

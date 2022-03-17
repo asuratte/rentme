@@ -210,5 +210,46 @@ namespace RentMe.DAL
             return theMemberList;
         }
 
+        /// <summary>
+        /// Check if a member exists using a combination of first name, last name, and phone
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <returns>True if exists, false if not</returns>
+        public bool CheckMemberExists(string firstName, string lastName, string phoneNumber)
+        {
+            bool memberExists = false;
+
+            string selectStatement =
+                @"SELECT COUNT(*) 
+                  FROM member
+                  WHERE firstName = @FirstName
+                  AND lastName = @LastName
+                  AND phone = @PhoneNumber";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@FirstName", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@FirstName"].Value = firstName;
+                    selectCommand.Parameters.Add("@LastName", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@LastName"].Value = lastName;
+                    selectCommand.Parameters.Add("@PhoneNumber", System.Data.SqlDbType.Char, 10);
+                    selectCommand.Parameters["@PhoneNumber"].Value = phoneNumber;
+
+                    int numberOfRows = (int)selectCommand.ExecuteScalar();
+                    if (numberOfRows > 0)
+                    {
+                        memberExists = true;
+                    }
+                }
+            }
+            return memberExists;
+        }
+
     }
 }

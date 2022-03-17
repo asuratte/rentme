@@ -75,5 +75,29 @@ namespace RentMe.Controller
             }
             return this.memberDAL.GetMembersByFirstAndLastName(firstName, lastName);
         }
+
+        /// <summary>
+        /// Check if a member exists using a combination of first name, last name, and phone
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <returns>True if exists, false if not</returns>
+        public bool CheckMemberExists(string firstName, string lastName, string phoneNumber)
+        {
+            if (firstName == null)
+            {
+                throw new ArgumentNullException("First Name must not be null.");
+            }
+            if (lastName == null)
+            {
+                throw new ArgumentNullException("Last Name must not be null.");
+            }
+            if (phoneNumber == null)
+            {
+                throw new ArgumentNullException("Phone Number must not be null.");
+            }
+            return this.memberDAL.CheckMemberExists(firstName, lastName, phoneNumber);  
+        }
     }
 }
