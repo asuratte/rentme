@@ -66,7 +66,8 @@ namespace RentMe.UserControls
         private void ClearSearchFormInputs()
         {
             this.memberIDSearchTextBox.Text = "";
-            this.nameSearchTextBox.Text = "";
+            this.firstNameSearchTextBox.Text = "";
+            this.lastNameSearchTextBox.Text = "";
             this.phoneSearchTextBox.Text = "";
         }
 
@@ -261,6 +262,61 @@ namespace RentMe.UserControls
                     this.errorMessageLabel.ForeColor = Color.Red;
                 }
             }
+            else if (this.firstNameSearchTextBox.Text != null && this.firstNameSearchTextBox.Text != "" && this.lastNameSearchTextBox.Text != null && this.lastNameSearchTextBox.Text != "")
+            {
+                try
+                {
+                    string firstName = this.firstNameSearchTextBox.Text;
+                    string lastName = this.lastNameSearchTextBox.Text;
+                    List<Member> theMemberList = this.theMemberController.GetMembersByFirstAndLastName(firstName, lastName);
+                    if (theMemberList.Count > 0)
+                    {
+                        foreach (Member theMember in theMemberList)
+                        {
+                            theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
+                        }
+                        this.theMemberLookupForm.TheMemberList = theMemberList;
+                        this.theMemberLookupForm.ShowDialog();
+                        if (this.theMemberLookupForm.DialogResult == DialogResult.OK)
+                        {
+                            Member theMember = this.theMemberLookupForm.TheSelectedMember;
+                            memberBindingSource.Clear();
+                            memberBindingSource.Add(theMember);
+                            this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
+                            this.ClearSearchFormInputs();
+                        }
+                    }
+                    else
+                    {
+                        this.errorMessageLabel.Text = "Cannot find member with specified first and last name.";
+                        this.errorMessageLabel.ForeColor = Color.Red;
+                    }
+                }
+                catch (Exception)
+                {
+                    this.errorMessageLabel.Text = "There was an issue retrieving member information by first and last name.";
+                    this.errorMessageLabel.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                this.errorMessageLabel.Text = "Please enter either a Member ID, a Phone Number, or both a First and Last Name before clicking Search.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private void OnTextEntered(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default(Color);
+        }
+
+        private void ClearFormClick(object sender, EventArgs e)
+        {
+            this.ClearMemberFormInputs();
+            this.ClearSearchFormInputs();
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default(Color);
         }
     }
 }

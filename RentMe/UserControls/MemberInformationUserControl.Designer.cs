@@ -32,10 +32,10 @@
             this.memberSearchDescriptionLabel = new System.Windows.Forms.Label();
             this.memberIDSearchLabel = new System.Windows.Forms.Label();
             this.phoneSearchLabel = new System.Windows.Forms.Label();
-            this.nameSearchLabel = new System.Windows.Forms.Label();
+            this.firstNameSearchLabel = new System.Windows.Forms.Label();
             this.memberIDSearchTextBox = new System.Windows.Forms.TextBox();
             this.phoneSearchTextBox = new System.Windows.Forms.TextBox();
-            this.nameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.firstNameSearchTextBox = new System.Windows.Forms.TextBox();
             this.memberSearchButton = new System.Windows.Forms.Button();
             this.horizontalDividerLineLabel = new System.Windows.Forms.Label();
             this.memberIDFormLabel = new System.Windows.Forms.Label();
@@ -64,6 +64,9 @@
             this.firstNameFormTextBox = new System.Windows.Forms.TextBox();
             this.sexFormComboBox = new System.Windows.Forms.ComboBox();
             this.stateFormComboBox = new System.Windows.Forms.ComboBox();
+            this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameSearchLabel = new System.Windows.Forms.Label();
+            this.clearFormButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,45 +94,48 @@
             // 
             this.phoneSearchLabel.AutoSize = true;
             this.phoneSearchLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneSearchLabel.Location = new System.Drawing.Point(194, 41);
+            this.phoneSearchLabel.Location = new System.Drawing.Point(145, 41);
             this.phoneSearchLabel.Name = "phoneSearchLabel";
             this.phoneSearchLabel.Size = new System.Drawing.Size(48, 19);
             this.phoneSearchLabel.TabIndex = 0;
             this.phoneSearchLabel.Text = "Phone";
             // 
-            // nameSearchLabel
+            // firstNameSearchLabel
             // 
-            this.nameSearchLabel.AutoSize = true;
-            this.nameSearchLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameSearchLabel.Location = new System.Drawing.Point(377, 41);
-            this.nameSearchLabel.Name = "nameSearchLabel";
-            this.nameSearchLabel.Size = new System.Drawing.Size(45, 19);
-            this.nameSearchLabel.TabIndex = 0;
-            this.nameSearchLabel.Text = "Name";
+            this.firstNameSearchLabel.AutoSize = true;
+            this.firstNameSearchLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameSearchLabel.Location = new System.Drawing.Point(312, 41);
+            this.firstNameSearchLabel.Name = "firstNameSearchLabel";
+            this.firstNameSearchLabel.Size = new System.Drawing.Size(75, 19);
+            this.firstNameSearchLabel.TabIndex = 0;
+            this.firstNameSearchLabel.Text = "First Name";
             // 
             // memberIDSearchTextBox
             // 
             this.memberIDSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberIDSearchTextBox.Location = new System.Drawing.Point(7, 63);
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
-            this.memberIDSearchTextBox.Size = new System.Drawing.Size(172, 25);
+            this.memberIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
             this.memberIDSearchTextBox.TabIndex = 1;
+            this.memberIDSearchTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // phoneSearchTextBox
             // 
             this.phoneSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phoneSearchTextBox.Location = new System.Drawing.Point(198, 63);
+            this.phoneSearchTextBox.Location = new System.Drawing.Point(149, 63);
             this.phoneSearchTextBox.Name = "phoneSearchTextBox";
-            this.phoneSearchTextBox.Size = new System.Drawing.Size(165, 25);
+            this.phoneSearchTextBox.Size = new System.Drawing.Size(156, 25);
             this.phoneSearchTextBox.TabIndex = 2;
+            this.phoneSearchTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
-            // nameSearchTextBox
+            // firstNameSearchTextBox
             // 
-            this.nameSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameSearchTextBox.Location = new System.Drawing.Point(381, 63);
-            this.nameSearchTextBox.Name = "nameSearchTextBox";
-            this.nameSearchTextBox.Size = new System.Drawing.Size(286, 25);
-            this.nameSearchTextBox.TabIndex = 3;
+            this.firstNameSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstNameSearchTextBox.Location = new System.Drawing.Point(316, 63);
+            this.firstNameSearchTextBox.Name = "firstNameSearchTextBox";
+            this.firstNameSearchTextBox.Size = new System.Drawing.Size(173, 25);
+            this.firstNameSearchTextBox.TabIndex = 3;
+            this.firstNameSearchTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // memberSearchButton
             // 
@@ -194,6 +200,7 @@
             this.lastNameFormTextBox.Name = "lastNameFormTextBox";
             this.lastNameFormTextBox.Size = new System.Drawing.Size(280, 25);
             this.lastNameFormTextBox.TabIndex = 6;
+            this.lastNameFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // memberBindingSource
             // 
@@ -217,6 +224,7 @@
             this.dateOfBirthFormTextBox.Name = "dateOfBirthFormTextBox";
             this.dateOfBirthFormTextBox.Size = new System.Drawing.Size(183, 25);
             this.dateOfBirthFormTextBox.TabIndex = 7;
+            this.dateOfBirthFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // dateOfBirthFormLabel
             // 
@@ -246,6 +254,7 @@
             this.phoneFormTextBox.Name = "phoneFormTextBox";
             this.phoneFormTextBox.Size = new System.Drawing.Size(168, 25);
             this.phoneFormTextBox.TabIndex = 9;
+            this.phoneFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // phoneFormLabel
             // 
@@ -265,6 +274,7 @@
             this.address1FormTextBox.Name = "address1FormTextBox";
             this.address1FormTextBox.Size = new System.Drawing.Size(668, 25);
             this.address1FormTextBox.TabIndex = 10;
+            this.address1FormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // address1FormLabel
             // 
@@ -284,6 +294,7 @@
             this.address2FormTextBox.Name = "address2FormTextBox";
             this.address2FormTextBox.Size = new System.Drawing.Size(668, 25);
             this.address2FormTextBox.TabIndex = 11;
+            this.address2FormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // address2FormLabel
             // 
@@ -303,6 +314,7 @@
             this.cityFormTextBox.Name = "cityFormTextBox";
             this.cityFormTextBox.Size = new System.Drawing.Size(195, 25);
             this.cityFormTextBox.TabIndex = 12;
+            this.cityFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // cityFormLabel
             // 
@@ -332,6 +344,7 @@
             this.zipCodeFormTextBox.Name = "zipCodeFormTextBox";
             this.zipCodeFormTextBox.Size = new System.Drawing.Size(133, 25);
             this.zipCodeFormTextBox.TabIndex = 14;
+            this.zipCodeFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // zipCodeFormLabel
             // 
@@ -373,7 +386,7 @@
             this.updateMemberInformationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateMemberInformationButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateMemberInformationButton.ForeColor = System.Drawing.Color.White;
-            this.updateMemberInformationButton.Location = new System.Drawing.Point(285, 390);
+            this.updateMemberInformationButton.Location = new System.Drawing.Point(184, 390);
             this.updateMemberInformationButton.Name = "updateMemberInformationButton";
             this.updateMemberInformationButton.Size = new System.Drawing.Size(235, 27);
             this.updateMemberInformationButton.TabIndex = 17;
@@ -388,6 +401,7 @@
             this.firstNameFormTextBox.Name = "firstNameFormTextBox";
             this.firstNameFormTextBox.Size = new System.Drawing.Size(302, 25);
             this.firstNameFormTextBox.TabIndex = 5;
+            this.firstNameFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // sexFormComboBox
             // 
@@ -417,10 +431,47 @@
             this.stateFormComboBox.TabIndex = 13;
             this.stateFormComboBox.ValueMember = "State";
             // 
+            // lastNameSearchTextBox
+            // 
+            this.lastNameSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameSearchTextBox.Location = new System.Drawing.Point(500, 63);
+            this.lastNameSearchTextBox.Name = "lastNameSearchTextBox";
+            this.lastNameSearchTextBox.Size = new System.Drawing.Size(173, 25);
+            this.lastNameSearchTextBox.TabIndex = 4;
+            this.lastNameSearchTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
+            // 
+            // lastNameSearchLabel
+            // 
+            this.lastNameSearchLabel.AutoSize = true;
+            this.lastNameSearchLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastNameSearchLabel.Location = new System.Drawing.Point(496, 41);
+            this.lastNameSearchLabel.Name = "lastNameSearchLabel";
+            this.lastNameSearchLabel.Size = new System.Drawing.Size(74, 19);
+            this.lastNameSearchLabel.TabIndex = 18;
+            this.lastNameSearchLabel.Text = "Last Name";
+            // 
+            // clearFormButton
+            // 
+            this.clearFormButton.BackColor = System.Drawing.Color.DimGray;
+            this.clearFormButton.FlatAppearance.BorderSize = 0;
+            this.clearFormButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearFormButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearFormButton.ForeColor = System.Drawing.Color.White;
+            this.clearFormButton.Location = new System.Drawing.Point(659, 390);
+            this.clearFormButton.Name = "clearFormButton";
+            this.clearFormButton.Size = new System.Drawing.Size(105, 27);
+            this.clearFormButton.TabIndex = 19;
+            this.clearFormButton.Text = "Clear Form";
+            this.clearFormButton.UseVisualStyleBackColor = false;
+            this.clearFormButton.Click += new System.EventHandler(this.ClearFormClick);
+            // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clearFormButton);
+            this.Controls.Add(this.lastNameSearchTextBox);
+            this.Controls.Add(this.lastNameSearchLabel);
             this.Controls.Add(this.stateFormComboBox);
             this.Controls.Add(this.sexFormComboBox);
             this.Controls.Add(this.firstNameFormTextBox);
@@ -448,10 +499,10 @@
             this.Controls.Add(this.memberIDFormLabel);
             this.Controls.Add(this.horizontalDividerLineLabel);
             this.Controls.Add(this.memberSearchButton);
-            this.Controls.Add(this.nameSearchTextBox);
+            this.Controls.Add(this.firstNameSearchTextBox);
             this.Controls.Add(this.phoneSearchTextBox);
             this.Controls.Add(this.memberIDSearchTextBox);
-            this.Controls.Add(this.nameSearchLabel);
+            this.Controls.Add(this.firstNameSearchLabel);
             this.Controls.Add(this.phoneSearchLabel);
             this.Controls.Add(this.memberIDSearchLabel);
             this.Controls.Add(this.memberSearchDescriptionLabel);
@@ -469,10 +520,10 @@
         private System.Windows.Forms.Label memberSearchDescriptionLabel;
         private System.Windows.Forms.Label memberIDSearchLabel;
         private System.Windows.Forms.Label phoneSearchLabel;
-        private System.Windows.Forms.Label nameSearchLabel;
+        private System.Windows.Forms.Label firstNameSearchLabel;
         private System.Windows.Forms.TextBox memberIDSearchTextBox;
         private System.Windows.Forms.TextBox phoneSearchTextBox;
-        private System.Windows.Forms.TextBox nameSearchTextBox;
+        private System.Windows.Forms.TextBox firstNameSearchTextBox;
         private System.Windows.Forms.Button memberSearchButton;
         private System.Windows.Forms.Label horizontalDividerLineLabel;
         private System.Windows.Forms.Label memberIDFormLabel;
@@ -501,5 +552,8 @@
         private System.Windows.Forms.TextBox firstNameFormTextBox;
         private System.Windows.Forms.ComboBox sexFormComboBox;
         private System.Windows.Forms.ComboBox stateFormComboBox;
+        private System.Windows.Forms.TextBox lastNameSearchTextBox;
+        private System.Windows.Forms.Label lastNameSearchLabel;
+        private System.Windows.Forms.Button clearFormButton;
     }
 }
