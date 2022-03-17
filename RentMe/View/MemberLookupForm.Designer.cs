@@ -30,10 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberLookupForm));
-            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.memberDataGridView = new System.Windows.Forms.DataGridView();
-            this.SelectMember = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,18 +42,12 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectMember = new System.Windows.Forms.DataGridViewButtonColumn();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.memberDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // errorMessageLabel
-            // 
-            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.errorMessageLabel.Location = new System.Drawing.Point(14, 278);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(879, 27);
-            this.errorMessageLabel.TabIndex = 0;
             // 
             // memberDataGridView
             // 
@@ -85,30 +76,6 @@
             this.memberDataGridView.Size = new System.Drawing.Size(984, 244);
             this.memberDataGridView.TabIndex = 2;
             this.memberDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MemberDataGridViewCellContentClick);
-            // 
-            // SelectMember
-            // 
-            this.SelectMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SelectMember.HeaderText = "";
-            this.SelectMember.Name = "SelectMember";
-            this.SelectMember.ReadOnly = true;
-            this.SelectMember.Text = "Select";
-            this.SelectMember.UseColumnTextForButtonValue = true;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.DimGray;
-            this.cancelButton.FlatAppearance.BorderSize = 0;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(912, 278);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(84, 27);
-            this.cancelButton.TabIndex = 11;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButtonOnClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -197,9 +164,33 @@
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.Width = 85;
             // 
+            // SelectMember
+            // 
+            this.SelectMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SelectMember.HeaderText = "";
+            this.SelectMember.Name = "SelectMember";
+            this.SelectMember.ReadOnly = true;
+            this.SelectMember.Text = "Select";
+            this.SelectMember.UseColumnTextForButtonValue = true;
+            // 
             // memberBindingSource
             // 
             this.memberBindingSource.DataSource = typeof(RentMe.Model.Member);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.Color.DimGray;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.ForeColor = System.Drawing.Color.White;
+            this.cancelButton.Location = new System.Drawing.Point(912, 278);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(84, 27);
+            this.cancelButton.TabIndex = 11;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonOnClick);
             // 
             // MemberLookupForm
             // 
@@ -208,7 +199,6 @@
             this.ClientSize = new System.Drawing.Size(1008, 320);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.memberDataGridView);
-            this.Controls.Add(this.errorMessageLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -224,8 +214,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.BindingSource memberBindingSource;
         private System.Windows.Forms.DataGridView memberDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

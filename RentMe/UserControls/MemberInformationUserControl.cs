@@ -46,6 +46,7 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             this.ClearMemberFormInputs();
             this.ClearSearchFormInputs();
+            this.memberBindingSource.Clear();
         }
 
         private void ClearMemberFormInputs()
@@ -84,8 +85,7 @@ namespace RentMe.UserControls
             }
             catch (Exception)
             {
-                this.errorMessageLabel.Text = "There was a problem getting the list of states.";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("There was a problem getting the list of states.");
             }
             
         }
@@ -113,8 +113,7 @@ namespace RentMe.UserControls
                 }
                 catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "There was a problem saving your input, please try again.";
-                    this.errorMessageLabel.ForeColor = Color.Red;
+                    this.ShowErrorMessage("There was a problem saving your input, please try again.");
                 }
             }
         }
@@ -161,26 +160,22 @@ namespace RentMe.UserControls
                 || !Validator.IsFieldFilled(this.address1FormTextBox)
                 || !Validator.IsFieldFilled(this.cityFormTextBox))
             {
-                this.errorMessageLabel.Text = "This is a required field.";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("This is a required field.");
                 return false;
             }
             else if (!Validator.IsDate(this.dateOfBirthFormTextBox))
             {
-                this.errorMessageLabel.Text = "Please enter a valid date in the format mm/dd/yyyy.";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("Please enter a valid date in the format mm/dd/yyyy.");
                 return false;
             }
             else if (!Validator.IsPhoneNumber(this.phoneFormTextBox))
             {
-                this.errorMessageLabel.Text = "Please enter a valid phone number in the format 999-999-9999";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("Please enter a valid phone number in the format 999-999-9999");
                 return false;
             }
             else if (!Validator.IsZipCode(this.zipCodeFormTextBox))
             {
-                this.errorMessageLabel.Text = "Please enter a valid 6 digit zip code.";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("Please enter a valid 6 digit zip code.");
                 return false;
             }
             return true;
@@ -210,21 +205,19 @@ namespace RentMe.UserControls
                     if (theMember != null)
                     {
                         theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
-                        memberBindingSource.Clear();
-                        memberBindingSource.Add(theMember);
+                        this.memberBindingSource.Clear();
+                        this.memberBindingSource.Add(theMember);
                         this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
                         this.ClearSearchFormInputs();
                     }
                     else
                     {
-                        this.errorMessageLabel.Text = "Cannot find member with specified ID.";
-                        this.errorMessageLabel.ForeColor = Color.Red;
+                        this.ShowErrorMessage("Cannot find member with specified ID.");
                     }
                 }
                 catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "There was an issue retrieving member information by ID.";
-                    this.errorMessageLabel.ForeColor = Color.Red;
+                    this.ShowErrorMessage("There was an issue retrieving member information by ID.");
                 }
             }
             else if (this.phoneSearchTextBox.Text != null && this.phoneSearchTextBox.Text != "")
@@ -235,31 +228,20 @@ namespace RentMe.UserControls
                     List<Member> theMemberList = this.theMemberController.GetMembersByPhoneNumber(memberPhone);
                     if (theMemberList.Count > 0)
                     {
-                        foreach (Member theMember in theMemberList)
-                        {
-                            theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
-                        }
-                        this.theMemberLookupForm.TheMemberList = theMemberList;
-                        this.theMemberLookupForm.ShowDialog();
+                        this.ShowMemberLookupForm(theMemberList);
                         if (this.theMemberLookupForm.DialogResult == DialogResult.OK)
                         {
-                            Member theMember = this.theMemberLookupForm.TheSelectedMember;
-                            memberBindingSource.Clear();
-                            memberBindingSource.Add(theMember);
-                            this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
-                            this.ClearSearchFormInputs();
+                            this.DisplayMemberFromLookup();
                         }
                     }
                     else
                     {
-                        this.errorMessageLabel.Text = "Cannot find member with specified phone number.";
-                        this.errorMessageLabel.ForeColor = Color.Red;
+                        this.ShowErrorMessage("Cannot find member with specified phone number.");
                     }
                 }
                 catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "There was an issue retrieving member information by phone.";
-                    this.errorMessageLabel.ForeColor = Color.Red;
+                    this.ShowErrorMessage("There was an issue retrieving member information by phone.");
                 }
             }
             else if (this.firstNameSearchTextBox.Text != null && this.firstNameSearchTextBox.Text != "" && this.lastNameSearchTextBox.Text != null && this.lastNameSearchTextBox.Text != "")
@@ -271,37 +253,25 @@ namespace RentMe.UserControls
                     List<Member> theMemberList = this.theMemberController.GetMembersByFirstAndLastName(firstName, lastName);
                     if (theMemberList.Count > 0)
                     {
-                        foreach (Member theMember in theMemberList)
-                        {
-                            theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
-                        }
-                        this.theMemberLookupForm.TheMemberList = theMemberList;
-                        this.theMemberLookupForm.ShowDialog();
+                        this.ShowMemberLookupForm(theMemberList);
                         if (this.theMemberLookupForm.DialogResult == DialogResult.OK)
                         {
-                            Member theMember = this.theMemberLookupForm.TheSelectedMember;
-                            memberBindingSource.Clear();
-                            memberBindingSource.Add(theMember);
-                            this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
-                            this.ClearSearchFormInputs();
+                            this.DisplayMemberFromLookup();
                         }
                     }
                     else
                     {
-                        this.errorMessageLabel.Text = "Cannot find member with specified first and last name.";
-                        this.errorMessageLabel.ForeColor = Color.Red;
+                        this.ShowErrorMessage("Cannot find member with specified first and last name.");
                     }
                 }
                 catch (Exception)
                 {
-                    this.errorMessageLabel.Text = "There was an issue retrieving member information by first and last name.";
-                    this.errorMessageLabel.ForeColor = Color.Red;
+                    this.ShowErrorMessage("There was an issue retrieving member information by first and last name.");
                 }
             }
             else
             {
-                this.errorMessageLabel.Text = "Please enter either a Member ID, a Phone Number, or both a First and Last Name before clicking Search.";
-                this.errorMessageLabel.ForeColor = Color.Red;
+                this.ShowErrorMessage("Please enter either a Member ID, a Phone Number, or both a First and Last Name before clicking Search.");
             }
         }
 
@@ -317,6 +287,32 @@ namespace RentMe.UserControls
             this.ClearSearchFormInputs();
             this.errorMessageLabel.Text = "";
             this.errorMessageLabel.ForeColor = default(Color);
+            this.memberBindingSource.Clear();
+        }
+
+        private void DisplayMemberFromLookup()
+        {
+            Member theMember = this.theMemberLookupForm.TheSelectedMember;
+            this.memberBindingSource.Clear();
+            this.memberBindingSource.Add(theMember);
+            this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
+            this.ClearSearchFormInputs();
+        }
+
+        private void ShowMemberLookupForm(List<Member> theMemberList)
+        {
+            foreach (Member theMember in theMemberList)
+            {
+                theMember.Phone = this.FormatPhoneNumber(theMember.Phone);
+            }
+            this.theMemberLookupForm.TheMemberList = theMemberList;
+            this.theMemberLookupForm.ShowDialog();
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
         }
     }
 }
