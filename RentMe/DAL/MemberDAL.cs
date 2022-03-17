@@ -266,22 +266,22 @@ namespace RentMe.DAL
                 dateOfBirth = @NewDateOfBirth,
                 sex = @NewSex,
                 phone = @NewPhone,
-                address1 = @NewAddress1
+                address1 = @NewAddress1,
                 address2 = @NewAddress2,
                 city = @NewCity,
                 state = @NewState,
                 zipCode = @NewZipCode
                 WHERE memberID = @MemberID
-                AND firstName = @OldFirstName,
-                AND lastName = @OldLastName,
-                AND dateOfBirth = @OldDateOfBirth,
-                AND sex = @OldSex,
-                AND phone = @OldPhone,
+                AND firstName = @OldFirstName
+                AND lastName = @OldLastName
+                AND dateOfBirth = @OldDateOfBirth
+                AND sex = @OldSex
+                AND phone = @OldPhone
                 AND address1 = @OldAddress1
                 AND (address2 = @OldAddress2 OR
-                address2 IS NULL AND @OldAddress2 IS NULL),
-                AND city = @OldCity,
-                AND state = @OldState,
+                address2 IS NULL AND @OldAddress2 IS NULL)
+                AND city = @OldCity
+                AND state = @OldState
                 AND zipCode = @OldZipCode";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
