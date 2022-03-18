@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Defines a controller class that mediates between the StateDAL and the view.
+    /// </summary>
     public class StateController
     {
         private readonly StateDAL stateDAL;
