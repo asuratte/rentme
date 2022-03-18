@@ -44,7 +44,6 @@
             this.lastNameFormTextBox = new System.Windows.Forms.TextBox();
             this.memberBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lastNameFormLabel = new System.Windows.Forms.Label();
-            this.dateOfBirthFormTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthFormLabel = new System.Windows.Forms.Label();
             this.sexFormLabel = new System.Windows.Forms.Label();
             this.phoneFormTextBox = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@
             this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
             this.lastNameSearchLabel = new System.Windows.Forms.Label();
             this.clearFormButton = new System.Windows.Forms.Button();
+            this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,16 +215,6 @@
             this.lastNameFormLabel.Size = new System.Drawing.Size(74, 19);
             this.lastNameFormLabel.TabIndex = 0;
             this.lastNameFormLabel.Text = "Last Name";
-            // 
-            // dateOfBirthFormTextBox
-            // 
-            this.dateOfBirthFormTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.memberBindingSource, "DateOfBirth", true));
-            this.dateOfBirthFormTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateOfBirthFormTextBox.Location = new System.Drawing.Point(95, 193);
-            this.dateOfBirthFormTextBox.Name = "dateOfBirthFormTextBox";
-            this.dateOfBirthFormTextBox.Size = new System.Drawing.Size(183, 25);
-            this.dateOfBirthFormTextBox.TabIndex = 7;
-            this.dateOfBirthFormTextBox.TextChanged += new System.EventHandler(this.OnTextEntered);
             // 
             // dateOfBirthFormLabel
             // 
@@ -466,10 +456,22 @@
             this.clearFormButton.UseVisualStyleBackColor = false;
             this.clearFormButton.Click += new System.EventHandler(this.ClearFormClick);
             // 
+            // dateOfBirthDateTimePicker
+            // 
+            this.dateOfBirthDateTimePicker.CustomFormat = "";
+            this.dateOfBirthDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.memberBindingSource, "DateOfBirth", true));
+            this.dateOfBirthDateTimePicker.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfBirthDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(96, 193);
+            this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
+            this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(182, 25);
+            this.dateOfBirthDateTimePicker.TabIndex = 37;
+            // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.clearFormButton);
             this.Controls.Add(this.lastNameSearchTextBox);
             this.Controls.Add(this.lastNameSearchLabel);
@@ -491,7 +493,6 @@
             this.Controls.Add(this.phoneFormTextBox);
             this.Controls.Add(this.phoneFormLabel);
             this.Controls.Add(this.sexFormLabel);
-            this.Controls.Add(this.dateOfBirthFormTextBox);
             this.Controls.Add(this.dateOfBirthFormLabel);
             this.Controls.Add(this.lastNameFormTextBox);
             this.Controls.Add(this.lastNameFormLabel);
@@ -532,7 +533,6 @@
         private System.Windows.Forms.Label firstNameFormLabel;
         private System.Windows.Forms.TextBox lastNameFormTextBox;
         private System.Windows.Forms.Label lastNameFormLabel;
-        private System.Windows.Forms.TextBox dateOfBirthFormTextBox;
         private System.Windows.Forms.Label dateOfBirthFormLabel;
         private System.Windows.Forms.Label sexFormLabel;
         private System.Windows.Forms.TextBox phoneFormTextBox;
@@ -556,5 +556,6 @@
         private System.Windows.Forms.TextBox lastNameSearchTextBox;
         private System.Windows.Forms.Label lastNameSearchLabel;
         private System.Windows.Forms.Button clearFormButton;
+        private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
     }
 }

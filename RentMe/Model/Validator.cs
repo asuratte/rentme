@@ -92,24 +92,5 @@ namespace RentMe.Model
                 return false;
             }
         }
-
-        /// <summary>
-        /// Checks if the text box value is a valid date
-        /// </summary>
-        /// <param name="theTextBox"></param>
-        /// <returns>True if yes, false if no</returns>
-        public static bool IsDate(TextBox theTextBox)
-        {
-            try
-            {
-                DateTime theDate = DateTime.Parse(theTextBox.Text);
-                return true;
-            }
-            catch (Exception)
-            {
-                theTextBox.Focus();
-                return false;
-            }
-        }
     }
 }

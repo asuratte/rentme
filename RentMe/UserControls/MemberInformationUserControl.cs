@@ -54,7 +54,6 @@ namespace RentMe.UserControls
         {
             this.lastNameFormTextBox.Text = "";
             this.firstNameFormTextBox.Text = "";
-            this.dateOfBirthFormTextBox.Text = "";
             this.phoneFormTextBox.Text = "";
             this.address1FormTextBox.Text = "";
             this.address2FormTextBox.Text = "";
@@ -63,6 +62,7 @@ namespace RentMe.UserControls
             this.stateFormComboBox.SelectedIndex = 0;
             this.sexFormComboBox.SelectedIndex = 0;
             this.memberIDFormValue.Text = "";
+            this.dateOfBirthDateTimePicker.Value = DateTime.Now;
         }
 
         private void ClearSearchFormInputs()
@@ -106,7 +106,7 @@ namespace RentMe.UserControls
                     {
                         this.theMemberRegistrationConfirmationForm.MemberName = this.firstNameFormTextBox.Text + " " + this.lastNameFormTextBox.Text;
                         this.theMemberRegistrationConfirmationForm.MemberPhone = this.FormatPhoneNumber(this.phoneFormTextBox.Text);
-                        this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthFormTextBox.Text;
+                        this.theMemberRegistrationConfirmationForm.MemberDateOfBirth = this.dateOfBirthDateTimePicker.Text;
                         this.theMemberRegistrationConfirmationForm.MemberAddress = this.FormatAddressString(this.address1FormTextBox.Text, this.address2FormTextBox.Text, this.cityFormTextBox.Text, this.stateFormComboBox.SelectedValue.ToString(), this.zipCodeFormTextBox.Text);
                         this.theMemberRegistrationConfirmationForm.ShowDialog();
                         if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
@@ -132,7 +132,7 @@ namespace RentMe.UserControls
             newMember.FirstName = this.firstNameFormTextBox.Text;
             newMember.LastName = this.lastNameFormTextBox.Text;
             newMember.Sex = this.sexFormComboBox.SelectedValue.ToString();
-            newMember.DateOfBirth = Convert.ToDateTime(this.dateOfBirthFormTextBox.Text);
+            newMember.DateOfBirth = this.dateOfBirthDateTimePicker.Value;
             newMember.Phone = this.UnformatPhoneNumber(this.phoneFormTextBox.Text);
             newMember.Address1 = this.address1FormTextBox.Text;
             newMember.Address2 = this.address2FormTextBox.Text;
@@ -170,11 +170,6 @@ namespace RentMe.UserControls
                 || !Validator.IsFieldFilled(this.cityFormTextBox))
             {
                 this.ShowErrorMessage("This is a required field.");
-                return false;
-            }
-            else if (!Validator.IsDate(this.dateOfBirthFormTextBox))
-            {
-                this.ShowErrorMessage("Please enter a valid date in the format mm/dd/yyyy.");
                 return false;
             }
             else if (!Validator.IsPhoneNumber(this.phoneFormTextBox))
