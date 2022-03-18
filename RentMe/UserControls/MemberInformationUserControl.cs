@@ -184,7 +184,7 @@ namespace RentMe.UserControls
             }
             else if (!Validator.IsZipCode(this.zipCodeFormTextBox))
             {
-                this.ShowErrorMessage("Please enter a valid 6 digit zip code.");
+                this.ShowErrorMessage("Please enter a valid 5 digit zip code.");
                 return false;
             }
             return true;

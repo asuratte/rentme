@@ -52,13 +52,21 @@ namespace RentMe.Model
         /// <returns>True if yes, false if no</returns>
         public static bool IsZipCode(TextBox theTextBox)
         {
-            int zipCode = Convert.ToInt32(theTextBox.Text);
-            if (zipCode < 00001 || zipCode > 99950 || theTextBox.Text.Length != 5)
+            try
+            {
+                int zipCode = Convert.ToInt32(theTextBox.Text);
+                if (zipCode < 00001 || zipCode > 99950 || theTextBox.Text.Length != 5)
+                {
+                    theTextBox.Focus();
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception)
             {
                 theTextBox.Focus();
                 return false;
             }
-            return true;
         }
 
         /// <summary>
