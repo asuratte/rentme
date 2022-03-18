@@ -20,23 +20,33 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.employeeController = new EmployeeController();
-            this.errorMessageLabel.Visible = false;
+            this.errorMessageLabel.Text = "";
         }
 
         private void ClearFields()
         {
             this.usernameTextBox.Text = "";
             this.passwordTextBox.Text = "";
-            this.errorMessageLabel.Visible = false;
+            this.errorMessageLabel.Text = "";
         }
 
         private void LoginTextBox_TextChanged(object sender, EventArgs e)
         {
-            this.errorMessageLabel.Visible = false;
+            this.errorMessageLabel.Text = "";
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(usernameTextBox.Text))
+            {
+                this.errorMessageLabel.Text = "Please enter a username";
+                return;
+            }
+            else if (String.IsNullOrEmpty(passwordTextBox.Text))
+            {
+                this.errorMessageLabel.Text = "Please enter a password";
+                return;
+            }
             bool validCredentials = this.employeeController.CheckLoginCredentials(usernameTextBox.Text, passwordTextBox.Text);
             if (validCredentials) 
             {
@@ -84,7 +94,7 @@ namespace RentMe.View
             }
             else
             {
-                this.errorMessageLabel.Visible = true;
+                this.errorMessageLabel.Text = "Invalid username or password";
             }
         }
     }

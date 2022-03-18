@@ -77,7 +77,7 @@ namespace RentMe.View
             this.usernameTextBox.Location = new System.Drawing.Point(243, 72);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(200, 25);
-            this.usernameTextBox.TabIndex = 4;
+            this.usernameTextBox.TabIndex = 0;
             this.usernameTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             // 
             // passwordTextBox
@@ -87,7 +87,7 @@ namespace RentMe.View
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(200, 25);
-            this.passwordTextBox.TabIndex = 5;
+            this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.LoginTextBox_TextChanged);
             // 
             // loginButton
@@ -96,7 +96,7 @@ namespace RentMe.View
             this.loginButton.Location = new System.Drawing.Point(343, 182);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(100, 30);
-            this.loginButton.TabIndex = 6;
+            this.loginButton.TabIndex = 2;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -109,7 +109,6 @@ namespace RentMe.View
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(200, 30);
             this.errorMessageLabel.TabIndex = 7;
-            this.errorMessageLabel.Text = "Invalid username or password";
             // 
             // logoPictureBox
             // 
