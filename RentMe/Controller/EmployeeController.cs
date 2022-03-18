@@ -1,5 +1,6 @@
 ﻿using RentMe.DAL;
 using RentMe.Model;
+using System;
 
 namespace RentMe.Controller
 {
@@ -26,6 +27,14 @@ namespace RentMe.Controller
         /// <returns>True if credentials are valid.</returns>
         public bool CheckLoginCredentials(string username, string password)
         {
+            if (username == null)
+            {
+                throw new ArgumentNullException("Username must not be null");
+            }
+            if (password == null)
+            {
+                throw new ArgumentNullException("Password must not be null");
+            }
             return this.employeeDAL.CheckLoginCredentials(username, password);
         }
 
@@ -36,6 +45,10 @@ namespace RentMe.Controller
         /// <returns>Employee with the specified username.</returns>
         public Employee GetEmployeeByUsername(string username)
         {
+            if (username == null)
+            {
+                throw new ArgumentNullException("Username must not be null");
+            }
             return this.employeeDAL.GetEmployeeByUsername(username);
         }
 
@@ -46,6 +59,10 @@ namespace RentMe.Controller
         /// <returns>True if employee is admin.</returns>
         public bool CheckIfEmployeeIsAdmin(int employeeID)
         {
+            if (employeeID < 0)
+            {
+                throw new ArgumentException("EmployeeID must be a positive whole number");
+            }
             return this.employeeDAL.CheckIfEmployeeIsAdmin(employeeID);
         }
     }

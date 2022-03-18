@@ -47,55 +47,63 @@ namespace RentMe.View
                 this.errorMessageLabel.Text = "Please enter a password";
                 return;
             }
-            bool validCredentials = this.employeeController.CheckLoginCredentials(usernameTextBox.Text, passwordTextBox.Text);
-            if (validCredentials) 
+            try
             {
-                Employee employee = this.employeeController.GetEmployeeByUsername(usernameTextBox.Text);
-                bool isAdmin = this.employeeController.CheckIfEmployeeIsAdmin(employee.EmployeeID);
-                
-                if (isAdmin)
+                bool validCredentials = this.employeeController.CheckLoginCredentials(usernameTextBox.Text, passwordTextBox.Text);
+                if (validCredentials)
                 {
-                    using (AdminInterface adminInterface = new AdminInterface())
+                    Employee employee = this.employeeController.GetEmployeeByUsername(usernameTextBox.Text);
+                    bool isAdmin = this.employeeController.CheckIfEmployeeIsAdmin(employee.EmployeeID);
+
+                    if (isAdmin)
                     {
-                        this.Hide();
-                        adminInterface.SetEmployee(employee);
-                        DialogResult result = adminInterface.ShowDialog();
-                        if (result == DialogResult.OK)
+                        using (AdminInterface adminInterface = new AdminInterface())
                         {
-                            this.ClearFields();
-                            this.Show();
+                            this.Hide();
+                            adminInterface.SetEmployee(employee);
+                            DialogResult result = adminInterface.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                this.ClearFields();
+                                this.Show();
+                            }
+                            else if (result == DialogResult.Cancel)
+                            {
+                                this.Close();
+                            }
+                            this.usernameTextBox.Focus();
                         }
-                        else if (result == DialogResult.Cancel)
+                    }
+                    else
+                    {
+                        using (EmployeeInterface employeeInterface = new EmployeeInterface())
                         {
-                            this.Close();
+                            this.Hide();
+                            employeeInterface.SetEmployee(employee);
+                            DialogResult result = employeeInterface.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                this.ClearFields();
+                                this.Show();
+                            }
+                            else if (result == DialogResult.Cancel)
+                            {
+                                this.Close();
+                            }
+                            this.usernameTextBox.Focus();
                         }
-                        this.usernameTextBox.Focus();
                     }
                 }
                 else
                 {
-                    using (EmployeeInterface employeeInterface = new EmployeeInterface())
-                    {
-                        this.Hide();
-                        employeeInterface.SetEmployee(employee);
-                        DialogResult result = employeeInterface.ShowDialog();
-                        if (result == DialogResult.OK)
-                        {
-                            this.ClearFields();
-                            this.Show();
-                        }
-                        else if (result == DialogResult.Cancel)
-                        {
-                            this.Close();
-                        }
-                        this.usernameTextBox.Focus();
-                    }
+                    this.errorMessageLabel.Text = "Invalid username or password";
                 }
             }
-            else
+            catch (Exception)
             {
-                this.errorMessageLabel.Text = "Invalid username or password";
+                this.errorMessageLabel.Text = "There was an issue logging in";
             }
+            
         }
     }
 }
