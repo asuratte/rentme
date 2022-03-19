@@ -60,7 +60,7 @@
             this.memberInformationTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberInformationTabPage.Location = new System.Drawing.Point(4, 26);
             this.memberInformationTabPage.Name = "memberInformationTabPage";
-            this.memberInformationTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.memberInformationTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.memberInformationTabPage.Size = new System.Drawing.Size(776, 431);
             this.memberInformationTabPage.TabIndex = 0;
             this.memberInformationTabPage.Text = "Member Information";
@@ -71,7 +71,7 @@
             this.rentFurnitureTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rentFurnitureTabPage.Location = new System.Drawing.Point(4, 26);
             this.rentFurnitureTabPage.Name = "rentFurnitureTabPage";
-            this.rentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.rentFurnitureTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.rentFurnitureTabPage.Size = new System.Drawing.Size(776, 431);
             this.rentFurnitureTabPage.TabIndex = 1;
             this.rentFurnitureTabPage.Text = "Rent Furniture";
@@ -100,6 +100,7 @@
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
             // rentMeLogo
             // 

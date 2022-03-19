@@ -4,14 +4,14 @@ using System.Windows.Forms;
 namespace RentMe.View
 {
     /// <summary>
-    /// Represents the main employee interface of the RentMe Application
+    /// Represents the main admin interface of the RentMe Application
     /// </summary>
-    public partial class EmployeeInterface : Form
+    public partial class AdminInterface : Form
     {
         /// <summary>
-        /// Initialize the employee interface
+        /// Initializes a new instance of the <see cref="AdminInterface"/> class.
         /// </summary>
-        public EmployeeInterface()
+        public AdminInterface()
         {
             InitializeComponent();
         }
