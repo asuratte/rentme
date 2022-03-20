@@ -17,9 +17,9 @@ namespace RentMe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try 
+            try
             {
-                Application.Run(new EmployeeInterface());
+                Application.Run(new LoginForm());
             }
             catch (Exception ex)
             {

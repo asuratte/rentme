@@ -4,14 +4,14 @@ using System.Windows.Forms;
 namespace RentMe.View
 {
     /// <summary>
-    /// Represents the main employee interface of the RentMe Application
+    /// Represents the main admin interface of the RentMe Application
     /// </summary>
-    public partial class EmployeeInterface : Form
+    public partial class AdminInterface : Form
     {
         /// <summary>
-        /// Initialize the employee interface
+        /// Initializes a new instance of the <see cref="AdminInterface"/> class.
         /// </summary>
-        public EmployeeInterface()
+        public AdminInterface()
         {
             InitializeComponent();
         }
@@ -29,19 +29,6 @@ namespace RentMe.View
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void EmployeeInterfaceOnTabSelected(object sender, TabControlEventArgs e)
-        {
-            if (e.TabPageIndex == 0)
-            {
-                this.memberInformationUserControl.ResetForm();
-            }
-        }
-
-        private void EmployeeInterfaceOnLoad(object sender, System.EventArgs e)
-        {
-            this.memberInformationUserControl.ResetForm();
         }
     }
 }

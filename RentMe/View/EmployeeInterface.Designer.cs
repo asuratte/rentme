@@ -104,6 +104,7 @@
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
             // rentMeLogo
             // 

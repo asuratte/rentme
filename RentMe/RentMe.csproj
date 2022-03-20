@@ -46,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\EmployeeController.cs" />
+    <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StateController.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
-    <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\StateDAL.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\AdminInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminInterface.Designer.cs">
+      <DependentUpon>AdminInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MemberInformationUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +76,12 @@
     </Compile>
     <Compile Include="View\EmployeeInterface.Designer.cs">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MemberLookupForm.cs">
       <SubType>Form</SubType>
@@ -88,12 +103,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\AdminInterface.resx">
+      <DependentUpon>AdminInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberInformationUserControl.resx">
       <DependentUpon>MemberInformationUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeInterface.resx">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberLookupForm.resx">
       <DependentUpon>MemberLookupForm.cs</DependentUpon>
@@ -117,9 +139,16 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DB\createDBScript.sql" />
+    <Folder Include="DAL\" />
+    <Content Include="Images\rentme_logo_login.png" />
+    <None Include="Images\rentme_logo_header.png" />
     <Content Include="Images\rentme_icon.ico" />
     <Content Include="Images\rentme_logo_header.png" />
+    <Folder Include="Images\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\createDBScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
