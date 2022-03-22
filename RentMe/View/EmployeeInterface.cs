@@ -30,5 +30,18 @@ namespace RentMe.View
         {
             this.DialogResult = DialogResult.OK;
         }
+
+        private void EmployeeInterfaceOnTabSelected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPageIndex == 0)
+            {
+                this.memberInformationUserControl.ResetForm();
+            }
+        }
+
+        private void EmployeeInterfaceOnLoad(object sender, System.EventArgs e)
+        {
+            this.memberInformationUserControl.ResetForm();
+        }
     }
 }
