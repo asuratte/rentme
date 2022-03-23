@@ -139,16 +139,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Folder Include="DAL\" />
+    <Content Include="DB\createDBScript.sql" />
     <Content Include="Images\rentme_logo_login.png" />
     <None Include="Images\rentme_logo_header.png" />
     <Content Include="Images\rentme_icon.ico" />
     <Content Include="Images\rentme_logo_header.png" />
-    <Folder Include="Images\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DB\createDBScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
