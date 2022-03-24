@@ -111,6 +111,7 @@ namespace RentMe.UserControls
             // 
             // styleComboBox
             // 
+            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.styleComboBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.styleComboBox.FormattingEnabled = true;
             this.styleComboBox.Location = new System.Drawing.Point(240, 99);

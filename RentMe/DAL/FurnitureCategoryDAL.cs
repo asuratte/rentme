@@ -1,4 +1,4 @@
-﻿using System;
+﻿using RentMe.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -13,9 +13,9 @@ namespace RentMe.DAL
         /// Retrieve list of all category names from the furniture category table in the database
         /// </summary>
         /// <returns>List of all furniture category names in the database</returns>
-        public List<String> GetAllFurnitureCategories()
+        public List<FurnitureCategory> GetAllFurnitureCategories()
         {
-            List<String> categoryList = new List<String>();
+            List<FurnitureCategory> categoryList = new List<FurnitureCategory>();
 
             string selectStatement = "SELECT categoryName FROM Furniture_Category";
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -28,8 +28,9 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            String categoryName = reader["categoryName"].ToString();
-                            categoryList.Add(categoryName);
+                            FurnitureCategory furnitureCategory = new FurnitureCategory();
+                            furnitureCategory.CategoryName = reader["categoryName"].ToString();
+                            categoryList.Add(furnitureCategory);
                         }
                     }
                 }

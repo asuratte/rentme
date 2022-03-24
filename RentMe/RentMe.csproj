@@ -58,6 +58,8 @@
     <Compile Include="Controller\StateController.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\StateDAL.cs" />
+    <Compile Include="Model\FurnitureCategory.cs" />
+    <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />

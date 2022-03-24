@@ -1,5 +1,5 @@
 ﻿using RentMe.DAL;
-using System;
+using RentMe.Model;
 using System.Collections.Generic;
 
 namespace RentMe.Controller
@@ -23,7 +23,7 @@ namespace RentMe.Controller
         /// Retrieve list of all styles from the furniture style table in the database
         /// </summary>
         /// <returns>List of all furniture styles in the database</returns>
-        public List<String> GetAllFurnitureStyles()
+        public List<FurnitureStyle> GetAllFurnitureStyles()
         {
             return this.furnitureStyleDAL.GetAllFurnitureStyles();
         }
