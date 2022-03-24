@@ -46,11 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FurnitureController.cs" />
     <Compile Include="Controller\FurnitureCategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
     <Compile Include="Model\Employee.cs" />

@@ -15,6 +15,7 @@ namespace RentMe.UserControls
     {
         private readonly FurnitureCategoryController theFurnitureCategoryController;
         private readonly FurnitureStyleController theFurnitureStyleController;
+
         public RentFurnitureUserControl()
         {
             InitializeComponent();

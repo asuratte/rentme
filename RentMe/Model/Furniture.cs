@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RentMe.Model
+﻿namespace RentMe.Model
 {
     /// <summary>
     /// This class models a furniture item
     /// </summary>
     public class Furniture
     {
-        public int FurnitureID { get; set; }
+        public string FurnitureID { get; set; }
 
         public string Name { get; set; }
 
