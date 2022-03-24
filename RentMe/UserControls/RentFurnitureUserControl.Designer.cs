@@ -31,7 +31,7 @@ namespace RentMe.UserControls
         {
             this.categorySearchLabel = new System.Windows.Forms.Label();
             this.styleSearchLabel = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.furnitureIDSearchTextBox = new System.Windows.Forms.TextBox();
             this.furnitureIDSearchLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
@@ -59,13 +59,13 @@ namespace RentMe.UserControls
             this.styleSearchLabel.TabIndex = 10;
             this.styleSearchLabel.Text = "Style";
             // 
-            // textBox3
+            // furnitureIDSearchTextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(436, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(131, 25);
-            this.textBox3.TabIndex = 13;
+            this.furnitureIDSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.furnitureIDSearchTextBox.Location = new System.Drawing.Point(436, 99);
+            this.furnitureIDSearchTextBox.Name = "furnitureIDSearchTextBox";
+            this.furnitureIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
+            this.furnitureIDSearchTextBox.TabIndex = 13;
             // 
             // furnitureIDSearchLabel
             // 
@@ -127,7 +127,7 @@ namespace RentMe.UserControls
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.furnitureIDSearchTextBox);
             this.Controls.Add(this.furnitureIDSearchLabel);
             this.Controls.Add(this.styleSearchLabel);
             this.Controls.Add(this.categorySearchLabel);
@@ -141,7 +141,7 @@ namespace RentMe.UserControls
         #endregion
         private System.Windows.Forms.Label categorySearchLabel;
         private System.Windows.Forms.Label styleSearchLabel;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox furnitureIDSearchTextBox;
         private System.Windows.Forms.Label furnitureIDSearchLabel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label errorMessageLabel;
