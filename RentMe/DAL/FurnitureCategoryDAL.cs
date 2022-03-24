@@ -7,13 +7,13 @@ namespace RentMe.DAL
     /// <summary>
     /// Data Access Layer for Furniture Categories
     /// </summary>
-    public class CategoryDAL
+    public class FurnitureCategoryDAL
     {
         /// <summary>
         /// Retrieve list of all category names from the furniture category table in the database
         /// </summary>
         /// <returns>List of all furniture category names in the database</returns>
-        public List<String> GetAllCategories()
+        public List<String> GetAllFurnitureCategories()
         {
             List<String> categoryList = new List<String>();
 
@@ -28,8 +28,7 @@ namespace RentMe.DAL
                     {
                         while (reader.Read())
                         {
-                            String categoryName = "";
-                            categoryName = reader["categoryName"].ToString();
+                            String categoryName = reader["categoryName"].ToString();
                             categoryList.Add(categoryName);
                         }
                     }

@@ -12,12 +12,12 @@ namespace RentMe.UserControls
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class RentFurnitureUserControl : UserControl
     {
-        private readonly CategoryController theCategoryController;
+        private readonly FurnitureCategoryController theFurnitureCategoryController;
         //private readonly StyleController theStyleController;
         public RentFurnitureUserControl()
         {
             InitializeComponent();
-            this.theCategoryController = new CategoryController();
+            this.theFurnitureCategoryController = new FurnitureCategoryController();
             //this.theStyleController = new StyleController();
 
             this.LoadComboBoxes();
@@ -27,7 +27,7 @@ namespace RentMe.UserControls
         {
             try
             {
-                List<String> categoryList = this.theCategoryController.GetAllCategories();
+                List<String> categoryList = this.theFurnitureCategoryController.GetAllFurnitureCategories();
                 categoryList.Insert(0, "");
                 this.categoryComboBox.DataSource = categoryList;
                 this.categoryComboBox.DisplayMember = "CategoryName";
