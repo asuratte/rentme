@@ -57,7 +57,47 @@ namespace RentMe.DAL
             return furnitureItem;
         }
 
+        /// <summary>
+        /// Gets furniture items matching specific category
+        /// </summary>
+        /// <returns>Furniture items matching specific category</returns>
+        public List<Furniture> GetFurnitureByCategory(string category)
+        {
+            string selectStatement =
+                @"SELECT furnitureID, name, style, description, rentalRate, totalQuantity
+                FROM furniture
+                WHERE category = @Category";
 
+            List<Furniture> theFurnitureList = new List<Furniture>();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@Category", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@Category"].Value = category;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Furniture furnitureItem = new Furniture();
+                            furnitureItem.FurnitureID = reader["furnitureID"].ToString();
+                            furnitureItem.Name = reader["name"].ToString();
+                            furnitureItem.Style = reader["style"].ToString();
+                            furnitureItem.Category = category;
+                            furnitureItem.Description = reader["description"].ToString();
+                            furnitureItem.RentalRate = (decimal)reader["rentalRate"];
+                            furnitureItem.TotalQuantity = (int)reader["totalQuantity"];
+                            theFurnitureList.Add(furnitureItem);
+                        }
+                    }
+                }
+            }
+            return theFurnitureList;
+        }
 
     }
 }

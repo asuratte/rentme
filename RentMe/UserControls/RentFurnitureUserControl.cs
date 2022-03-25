@@ -78,12 +78,36 @@ namespace RentMe.UserControls
                     }
                     else
                     {
-                        this.ShowErrorMessage("Cannot find member with specified ID.");
+                        this.ShowErrorMessage("Cannot find furniture with specified ID.");
                     }
                 }
                 catch (Exception)
                 {
                     this.ShowErrorMessage("There was an issue retrieving furniture information by ID.");
+                }
+            }
+            else if (!string.IsNullOrEmpty(this.categoryComboBox.SelectedValue.ToString()))
+            {
+                try
+                {
+                    string category = this.categoryComboBox.SelectedValue.ToString();
+                    List<Furniture> theFurnitureList = this.theFurnitureController.GetFurnitureByCategory(category);
+                    if (theFurnitureList != null)
+                    {
+                        furnitureBindingSource.Clear();
+                        foreach (Furniture furnitureItem in theFurnitureList)
+                        {
+                            furnitureBindingSource.Add(furnitureItem);
+                        }
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("Cannot find furniture with specified category name.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue retrieving furniture information by category.");
                 }
             }
         }
