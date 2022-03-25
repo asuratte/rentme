@@ -15,13 +15,14 @@ namespace RentMe.UserControls
     {
         private readonly FurnitureCategoryController theFurnitureCategoryController;
         private readonly FurnitureStyleController theFurnitureStyleController;
+        private readonly FurnitureController theFurnitureController;
 
         public RentFurnitureUserControl()
         {
             InitializeComponent();
             this.theFurnitureCategoryController = new FurnitureCategoryController();
             this.theFurnitureStyleController = new FurnitureStyleController();
-
+            this.theFurnitureController = new FurnitureController();
             this.LoadComboBoxes();
         }
 
@@ -50,13 +51,41 @@ namespace RentMe.UserControls
             {
                 this.ShowErrorMessage("There was a problem getting the list of furniture categories or styles.");
             }
-
         }
+
+
 
         private void ShowErrorMessage(string message)
         {
             this.errorMessageLabel.Text = message;
             this.errorMessageLabel.ForeColor = Color.Red;
+        }
+
+        private void FurnitureSearchButtonClick(object sender, EventArgs e)
+        {
+            furnitureBindingSource.Clear();
+            this.errorMessageLabel.Text = "";
+            if (!string.IsNullOrEmpty(this.furnitureIDSearchTextBox.Text))
+            {
+                try
+                {
+                    string furnitureID = this.furnitureIDSearchTextBox.Text;
+                    Furniture furnitureItem = this.theFurnitureController.GetFurnitureByID(furnitureID);
+                    if (furnitureItem != null)
+                    {
+                        furnitureBindingSource.Clear();
+                        furnitureBindingSource.Add(furnitureItem);
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("Cannot find member with specified ID.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue retrieving furniture information by ID.");
+                }
+            }
         }
     }
 }
