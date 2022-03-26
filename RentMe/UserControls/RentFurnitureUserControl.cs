@@ -123,5 +123,11 @@ namespace RentMe.UserControls
             this.categoryComboBox.SelectedIndex = 0;
             this.styleComboBox.SelectedIndex = 0;
         }
+
+        private void OnSearchValueChanged(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default(Color);
+        }
     }
 }

@@ -46,7 +46,6 @@ namespace RentMe.UserControls
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
-            this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +53,7 @@ namespace RentMe.UserControls
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +85,7 @@ namespace RentMe.UserControls
             this.furnitureIDSearchTextBox.Name = "furnitureIDSearchTextBox";
             this.furnitureIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
             this.furnitureIDSearchTextBox.TabIndex = 13;
+            this.furnitureIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureIDSearchLabel
             // 
@@ -128,6 +129,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(170, 25);
             this.categoryComboBox.TabIndex = 16;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // styleComboBox
             // 
@@ -138,6 +140,7 @@ namespace RentMe.UserControls
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(170, 25);
             this.styleComboBox.TabIndex = 17;
+            this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureDataGridView
             // 
@@ -160,10 +163,6 @@ namespace RentMe.UserControls
             this.furnitureDataGridView.ReadOnly = true;
             this.furnitureDataGridView.Size = new System.Drawing.Size(752, 212);
             this.furnitureDataGridView.TabIndex = 18;
-            // 
-            // furnitureBindingSource
-            // 
-            this.furnitureBindingSource.DataSource = typeof(RentMe.Model.Furniture);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -231,6 +230,10 @@ namespace RentMe.UserControls
             this.dataGridViewTextBoxColumn7.HeaderText = "Quantity in Stock";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // furnitureBindingSource
+            // 
+            this.furnitureBindingSource.DataSource = typeof(RentMe.Model.Furniture);
             // 
             // RentFurnitureUserControl
             // 
