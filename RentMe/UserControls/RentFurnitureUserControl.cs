@@ -17,6 +17,9 @@ namespace RentMe.UserControls
         private readonly FurnitureStyleController theFurnitureStyleController;
         private readonly FurnitureController theFurnitureController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
+        /// </summary>
         public RentFurnitureUserControl()
         {
             InitializeComponent();
@@ -52,8 +55,6 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("There was a problem getting the list of furniture categories or styles.");
             }
         }
-
-
 
         private void ShowErrorMessage(string message)
         {

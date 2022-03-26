@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 
 namespace RentMe.DAL
 {
+    /// <summary>
+    /// Data Access Layer for Furniture Styles
+    /// </summary>
     public class FurnitureStyleDAL
     {
         /// <summary>

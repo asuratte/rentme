@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace RentMe.Controller
 {
+    /// <summary>
+    /// Defines a controller class that mediates between the FurnitureDAL and the view.
+    /// </summary>
     public class FurnitureController
     {
         private readonly FurnitureDAL furnitureDAL;
