@@ -31,36 +31,6 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets the furniture items matching specific category
-        /// </summary>
-        /// <param name="categoryName">Name of the category.</param>
-        /// <returns>Furniture items matching specific category</returns>
-        /// <exception cref="ArgumentNullException">Category name must not be null.</exception>
-        public List<Furniture> GetFurnitureByCategory(string category)
-        {
-            if (category == null)
-            {
-                throw new ArgumentNullException("Furniture category must not be null.");
-            }
-            return this.furnitureDAL.GetFurnitureByCategory(category);
-        }
-
-        /// <summary>
-        /// Gets the furniture items matching specific style
-        /// </summary>
-        /// <param name="style">Name of the style.</param>
-        /// <returns>Furniture items matching specific style</returns>
-        /// <exception cref="ArgumentNullException">Furniture style must not be null.</exception>
-        public List<Furniture> GetFurnitureByStyle(string style)
-        {
-            if (style == null)
-            {
-                throw new ArgumentNullException("Furniture style must not be null.");
-            }
-            return this.furnitureDAL.GetFurnitureByStyle(style);
-        }
-
-        /// <summary>
         /// Gets the furniture by category and style.
         /// </summary>
         /// <param name="category">The name of the category.</param>

@@ -85,7 +85,7 @@ namespace RentMe.UserControls
                     this.ShowErrorMessage("There was an issue retrieving furniture information by ID.");
                 }
             }
-            else if (!string.IsNullOrEmpty(this.categoryComboBox.SelectedValue.ToString()) && !string.IsNullOrEmpty(this.styleComboBox.SelectedValue.ToString()))
+            else if (!string.IsNullOrEmpty(this.categoryComboBox.SelectedValue.ToString()) || !string.IsNullOrEmpty(this.styleComboBox.SelectedValue.ToString()))
             {
                 try
                 {
@@ -101,58 +101,12 @@ namespace RentMe.UserControls
                     }
                     else
                     {
-                        this.ShowErrorMessage("Cannot find furniture with specified category and style.");
+                        this.ShowErrorMessage("Cannot find furniture with specified category or style.");
                     }
                 }
                 catch (Exception)
                 {
-                    this.ShowErrorMessage("There was an issue retrieving furniture information by category and style.");
-                }
-            }
-            else if (!string.IsNullOrEmpty(this.categoryComboBox.SelectedValue.ToString()))
-            {
-                try
-                {
-                    string category = this.categoryComboBox.SelectedValue.ToString();
-                    List<Furniture> theFurnitureList = this.theFurnitureController.GetFurnitureByCategory(category);
-                    if (theFurnitureList != null)
-                    {
-                        foreach (Furniture furnitureItem in theFurnitureList)
-                        {
-                            furnitureBindingSource.Add(furnitureItem);
-                        }
-                    }
-                    else
-                    {
-                        this.ShowErrorMessage("Cannot find furniture with specified category name.");
-                    }
-                }
-                catch (Exception)
-                {
-                    this.ShowErrorMessage("There was an issue retrieving furniture information by category.");
-                }
-            }
-            else if (!string.IsNullOrEmpty(this.styleComboBox.SelectedValue.ToString()))
-            {
-                try
-                {
-                    string style = this.styleComboBox.SelectedValue.ToString();
-                    List<Furniture> theFurnitureList = this.theFurnitureController.GetFurnitureByStyle(style);
-                    if (theFurnitureList != null)
-                    {
-                        foreach (Furniture furnitureItem in theFurnitureList)
-                        {
-                            furnitureBindingSource.Add(furnitureItem);
-                        }
-                    }
-                    else
-                    {
-                        this.ShowErrorMessage("Cannot find furniture with specified style name.");
-                    }
-                }
-                catch (Exception)
-                {
-                    this.ShowErrorMessage("There was an issue retrieving furniture information by style.");
+                    this.ShowErrorMessage("There was an issue retrieving furniture information by category or style.");
                 }
             }
         }
