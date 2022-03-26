@@ -74,6 +74,7 @@ namespace RentMe.UserControls
                     if (furnitureItem != null)
                     {
                         furnitureBindingSource.Add(furnitureItem);
+                        this.ClearSearchFormInputs();
                     }
                     else
                     {
@@ -92,11 +93,12 @@ namespace RentMe.UserControls
                     string category = this.categoryComboBox.SelectedValue.ToString();
                     string style = this.styleComboBox.SelectedValue.ToString();
                     List<Furniture> theFurnitureList = this.theFurnitureController.GetFurnitureByCategoryAndStyle(category, style);
-                    if (theFurnitureList != null)
+                    if (theFurnitureList.Count > 0)
                     {
                         foreach (Furniture furnitureItem in theFurnitureList)
                         {
                             furnitureBindingSource.Add(furnitureItem);
+                            this.ClearSearchFormInputs();
                         }
                     }
                     else
@@ -109,6 +111,17 @@ namespace RentMe.UserControls
                     this.ShowErrorMessage("There was an issue retrieving furniture information by category or style.");
                 }
             }
+            else
+            {
+                this.ShowErrorMessage("Please select either a Category or Style, or enter a Furniture ID before clicking Search.");
+            }
+        }
+
+        private void ClearSearchFormInputs()
+        {
+            this.furnitureIDSearchTextBox.Text = "";
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
         }
     }
 }
