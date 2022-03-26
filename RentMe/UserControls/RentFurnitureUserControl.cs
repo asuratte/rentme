@@ -26,7 +26,6 @@ namespace RentMe.UserControls
             this.theFurnitureCategoryController = new FurnitureCategoryController();
             this.theFurnitureStyleController = new FurnitureStyleController();
             this.theFurnitureController = new FurnitureController();
-            this.LoadComboBoxes();
         }
 
         private void LoadComboBoxes()
@@ -129,6 +128,17 @@ namespace RentMe.UserControls
         {
             this.errorMessageLabel.Text = "";
             this.errorMessageLabel.ForeColor = default(Color);
+        }
+
+        /// <summary>
+        /// Resets the form.
+        /// </summary>
+        public void ResetForm()
+        {
+            this.furnitureBindingSource.Clear();
+            this.LoadComboBoxes();
+            this.errorMessageLabel.Text = "";
+            this.ClearSearchFormInputs();
         }
     }
 }
