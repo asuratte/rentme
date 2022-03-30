@@ -46,19 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FurnitureController.cs" />
+    <Compile Include="Controller\FurnitureCategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
+    <Compile Include="Controller\FurnitureStyleController.cs" />
+    <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
+    <Compile Include="DAL\FurnitureStyleDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StateController.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\StateDAL.cs" />
+    <Compile Include="Model\Furniture.cs" />
+    <Compile Include="Model\FurnitureCategory.cs" />
+    <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\RentFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
+      <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +120,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
+      <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +141,7 @@
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
