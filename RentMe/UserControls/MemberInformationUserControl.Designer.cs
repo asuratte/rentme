@@ -407,6 +407,7 @@
             this.sexFormComboBox.Size = new System.Drawing.Size(187, 25);
             this.sexFormComboBox.TabIndex = 8;
             this.sexFormComboBox.ValueMember = "Sex";
+            this.sexFormComboBox.SelectedIndexChanged += new System.EventHandler(this.OnComboBoxSelectionChange);
             // 
             // stateFormComboBox
             // 
@@ -421,6 +422,7 @@
             this.stateFormComboBox.Size = new System.Drawing.Size(185, 25);
             this.stateFormComboBox.TabIndex = 13;
             this.stateFormComboBox.ValueMember = "State";
+            this.stateFormComboBox.SelectedIndexChanged += new System.EventHandler(this.OnComboBoxSelectionChange);
             // 
             // lastNameSearchTextBox
             // 
@@ -465,7 +467,7 @@
             this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(96, 193);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(182, 25);
-            this.dateOfBirthDateTimePicker.TabIndex = 37;
+            this.dateOfBirthDateTimePicker.TabIndex = 7;
             // 
             // MemberInformationUserControl
             // 
