@@ -46,14 +46,14 @@ namespace RentMe.UserControls
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxFurnitureIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxCategoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxStyleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxRentalRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxQuantityInStockColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +65,7 @@ namespace RentMe.UserControls
             this.categorySearchLabel.Location = new System.Drawing.Point(44, 77);
             this.categorySearchLabel.Name = "categorySearchLabel";
             this.categorySearchLabel.Size = new System.Drawing.Size(65, 19);
-            this.categorySearchLabel.TabIndex = 8;
+            this.categorySearchLabel.TabIndex = 0;
             this.categorySearchLabel.Text = "Category";
             // 
             // styleSearchLabel
@@ -75,7 +75,7 @@ namespace RentMe.UserControls
             this.styleSearchLabel.Location = new System.Drawing.Point(236, 77);
             this.styleSearchLabel.Name = "styleSearchLabel";
             this.styleSearchLabel.Size = new System.Drawing.Size(38, 19);
-            this.styleSearchLabel.TabIndex = 10;
+            this.styleSearchLabel.TabIndex = 0;
             this.styleSearchLabel.Text = "Style";
             // 
             // furnitureIDSearchTextBox
@@ -84,7 +84,7 @@ namespace RentMe.UserControls
             this.furnitureIDSearchTextBox.Location = new System.Drawing.Point(436, 99);
             this.furnitureIDSearchTextBox.Name = "furnitureIDSearchTextBox";
             this.furnitureIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
-            this.furnitureIDSearchTextBox.TabIndex = 13;
+            this.furnitureIDSearchTextBox.TabIndex = 3;
             this.furnitureIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureIDSearchLabel
@@ -94,7 +94,7 @@ namespace RentMe.UserControls
             this.furnitureIDSearchLabel.Location = new System.Drawing.Point(432, 77);
             this.furnitureIDSearchLabel.Name = "furnitureIDSearchLabel";
             this.furnitureIDSearchLabel.Size = new System.Drawing.Size(83, 19);
-            this.furnitureIDSearchLabel.TabIndex = 12;
+            this.furnitureIDSearchLabel.TabIndex = 0;
             this.furnitureIDSearchLabel.Text = "Furniture ID";
             // 
             // furnitureSearchButton
@@ -107,7 +107,7 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.Location = new System.Drawing.Point(632, 98);
             this.furnitureSearchButton.Name = "furnitureSearchButton";
             this.furnitureSearchButton.Size = new System.Drawing.Size(79, 27);
-            this.furnitureSearchButton.TabIndex = 14;
+            this.furnitureSearchButton.TabIndex = 4;
             this.furnitureSearchButton.Text = "Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = false;
             this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButtonClick);
@@ -128,7 +128,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Location = new System.Drawing.Point(48, 99);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(170, 25);
-            this.categoryComboBox.TabIndex = 16;
+            this.categoryComboBox.TabIndex = 1;
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // styleComboBox
@@ -139,7 +139,7 @@ namespace RentMe.UserControls
             this.styleComboBox.Location = new System.Drawing.Point(240, 99);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(170, 25);
-            this.styleComboBox.TabIndex = 17;
+            this.styleComboBox.TabIndex = 2;
             this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureDataGridView
@@ -150,90 +150,90 @@ namespace RentMe.UserControls
             this.furnitureDataGridView.AutoGenerateColumns = false;
             this.furnitureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.furnitureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
+            this.dataGridViewTextBoxFurnitureIDColumn,
+            this.dataGridViewTextBoxNameColumn,
+            this.dataGridViewTextBoxDescriptionColumn,
+            this.dataGridViewTextBoxCategoryColumn,
+            this.dataGridViewTextBoxStyleColumn,
+            this.dataGridViewTextBoxRentalRateColumn,
+            this.dataGridViewTextBoxQuantityInStockColumn});
             this.furnitureDataGridView.DataSource = this.furnitureBindingSource;
             this.furnitureDataGridView.Location = new System.Drawing.Point(11, 144);
             this.furnitureDataGridView.Name = "furnitureDataGridView";
             this.furnitureDataGridView.ReadOnly = true;
             this.furnitureDataGridView.Size = new System.Drawing.Size(752, 212);
-            this.furnitureDataGridView.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FurnitureID";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Furniture ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 95;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Description";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Category";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Style";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Style";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "C2";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Rental Rate";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "TotalQuantity";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Quantity in Stock";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.furnitureDataGridView.TabIndex = 5;
             // 
             // furnitureBindingSource
             // 
             this.furnitureBindingSource.DataSource = typeof(RentMe.Model.Furniture);
+            // 
+            // dataGridViewTextBoxFurnitureIDColumn
+            // 
+            this.dataGridViewTextBoxFurnitureIDColumn.DataPropertyName = "FurnitureID";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxFurnitureIDColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxFurnitureIDColumn.HeaderText = "Furniture ID";
+            this.dataGridViewTextBoxFurnitureIDColumn.Name = "dataGridViewTextBoxFurnitureIDColumn";
+            this.dataGridViewTextBoxFurnitureIDColumn.ReadOnly = true;
+            this.dataGridViewTextBoxFurnitureIDColumn.Width = 95;
+            // 
+            // dataGridViewTextBoxNameColumn
+            // 
+            this.dataGridViewTextBoxNameColumn.DataPropertyName = "Name";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxNameColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxNameColumn.HeaderText = "Name";
+            this.dataGridViewTextBoxNameColumn.Name = "dataGridViewTextBoxNameColumn";
+            this.dataGridViewTextBoxNameColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxDescriptionColumn
+            // 
+            this.dataGridViewTextBoxDescriptionColumn.DataPropertyName = "Description";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxDescriptionColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxDescriptionColumn.HeaderText = "Description";
+            this.dataGridViewTextBoxDescriptionColumn.Name = "dataGridViewTextBoxDescriptionColumn";
+            this.dataGridViewTextBoxDescriptionColumn.ReadOnly = true;
+            this.dataGridViewTextBoxDescriptionColumn.Width = 110;
+            // 
+            // dataGridViewTextBoxCategoryColumn
+            // 
+            this.dataGridViewTextBoxCategoryColumn.DataPropertyName = "Category";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxCategoryColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewTextBoxCategoryColumn.HeaderText = "Category";
+            this.dataGridViewTextBoxCategoryColumn.Name = "dataGridViewTextBoxCategoryColumn";
+            this.dataGridViewTextBoxCategoryColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxStyleColumn
+            // 
+            this.dataGridViewTextBoxStyleColumn.DataPropertyName = "Style";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxStyleColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxStyleColumn.HeaderText = "Style";
+            this.dataGridViewTextBoxStyleColumn.Name = "dataGridViewTextBoxStyleColumn";
+            this.dataGridViewTextBoxStyleColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxRentalRateColumn
+            // 
+            this.dataGridViewTextBoxRentalRateColumn.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxRentalRateColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxRentalRateColumn.HeaderText = "Rental Rate";
+            this.dataGridViewTextBoxRentalRateColumn.Name = "dataGridViewTextBoxRentalRateColumn";
+            this.dataGridViewTextBoxRentalRateColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxQuantityInStockColumn
+            // 
+            this.dataGridViewTextBoxQuantityInStockColumn.DataPropertyName = "TotalQuantity";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxQuantityInStockColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewTextBoxQuantityInStockColumn.HeaderText = "Quantity in Stock";
+            this.dataGridViewTextBoxQuantityInStockColumn.Name = "dataGridViewTextBoxQuantityInStockColumn";
+            this.dataGridViewTextBoxQuantityInStockColumn.ReadOnly = true;
             // 
             // RentFurnitureUserControl
             // 
@@ -269,12 +269,12 @@ namespace RentMe.UserControls
         private System.Windows.Forms.ComboBox styleComboBox;
         private System.Windows.Forms.BindingSource furnitureBindingSource;
         private System.Windows.Forms.DataGridView furnitureDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxFurnitureIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxDescriptionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxCategoryColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxStyleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxRentalRateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxQuantityInStockColumn;
     }
 }
