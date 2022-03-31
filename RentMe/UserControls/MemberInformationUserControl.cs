@@ -26,6 +26,7 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.sexList = new SortedDictionary<string, string> {
+                { "", "0"},
                 { "Male", "M"},
                 { "Female", "F"},
                 { "Other", "O"},
@@ -80,7 +81,12 @@ namespace RentMe.UserControls
             this.sexFormComboBox.ValueMember = "Value";
             try
             {
-                this.stateFormComboBox.DataSource = this.theStateController.GetAllStates();
+                List<State> theStateList = this.theStateController.GetAllStates();
+                theStateList.Insert(0, new State()
+                {
+                    Name = ""
+                });
+                this.stateFormComboBox.DataSource = theStateList;
                 this.stateFormComboBox.DisplayMember = "Name";
                 this.stateFormComboBox.ValueMember = "Code";
             }
@@ -172,6 +178,16 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("This is a required field.");
                 return false;
             }
+            else if (this.sexFormComboBox.SelectedIndex == 0)
+            {
+                this.ShowErrorMessage("Please select a Sex.");
+                return false;
+            }
+            else if (this.stateFormComboBox.SelectedIndex == 0)
+            {
+                this.ShowErrorMessage("Please select a State.");
+                return false;
+            }
             else if (!Validator.IsPhoneNumber(this.phoneFormTextBox))
             {
                 this.ShowErrorMessage("Please enter a valid phone number in the format 999-999-9999");
@@ -180,6 +196,11 @@ namespace RentMe.UserControls
             else if (!Validator.IsZipCode(this.zipCodeFormTextBox))
             {
                 this.ShowErrorMessage("Please enter a valid 5 digit zip code.");
+                return false;
+            }
+            else if (this.dateOfBirthDateTimePicker.Text == DateTime.Now.ToShortDateString())
+            {
+                this.ShowErrorMessage("Please choose a valid date of birth.");
                 return false;
             }
             return true;
@@ -368,6 +389,12 @@ namespace RentMe.UserControls
         {
             this.errorMessageLabel.Text = message;
             this.errorMessageLabel.ForeColor = Color.Red;
+        }
+
+        private void OnComboBoxSelectionChange(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default(Color);
         }
     }
 }

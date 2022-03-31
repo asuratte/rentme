@@ -104,6 +104,7 @@ namespace RentMe.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdminInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe Admin Interface";
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();
             this.ResumeLayout(false);
