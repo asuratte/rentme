@@ -337,18 +337,22 @@ namespace RentMe.UserControls
 
         private bool CheckIfEditsMade(Member oldMember, Member newMember)
         {
-            bool editsMade = false;
-            if (oldMember.FirstName != newMember.FirstName
-                || oldMember.LastName != newMember.LastName
-                || oldMember.DateOfBirth != newMember.DateOfBirth
-                || oldMember.Phone != newMember.Phone
-                || oldMember.Sex != newMember.Sex
-                || oldMember.Address1 != newMember.Address1
-                || oldMember.Address2 != newMember.Address2
-                || oldMember.City != newMember.City
-                || oldMember.State != newMember.State
-                || oldMember.ZipCode != newMember.ZipCode)
-            { 
+            bool editsMade;
+            if (oldMember.FirstName == newMember.FirstName
+                && oldMember.LastName == newMember.LastName
+                && oldMember.DateOfBirth == newMember.DateOfBirth
+                && oldMember.Phone == newMember.Phone
+                && oldMember.Sex == newMember.Sex
+                && oldMember.Address1 == newMember.Address1
+                && (oldMember.Address2 == null && newMember.Address2 == "" || oldMember.Address2 == newMember.Address2)
+                && oldMember.City == newMember.City
+                && oldMember.State == newMember.State
+                && oldMember.ZipCode == newMember.ZipCode)
+            {
+                editsMade = false;
+            }
+            else
+            {
                 editsMade = true;
             }
             return editsMade;
