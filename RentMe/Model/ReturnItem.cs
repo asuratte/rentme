@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RentMe.Model
+﻿namespace RentMe.Model
 {
     /// <summary>
     /// Defines a model class for a Return Item.
@@ -11,8 +9,5 @@ namespace RentMe.Model
         public int RentalTransactionID { get; set; }
         public string FurnitureID { get; set; }
         public int Quantity { get; set; }
-        public int MemberID { get; set; }
-        public DateTime RentalDate { get; set; }
-        public DateTime DueDate { get; set; }
     }
 }
