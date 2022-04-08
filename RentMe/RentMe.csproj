@@ -74,6 +74,12 @@
     <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.Designer.cs">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnFurnitureUserControl.resx">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
