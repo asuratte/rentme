@@ -64,6 +64,10 @@
     <Compile Include="Model\FurnitureCategory.cs" />
     <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
+    <Compile Include="Model\ReturnItem.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
