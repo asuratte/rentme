@@ -131,7 +131,7 @@ namespace RentMe.DAL
 
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                 {
-                    selectCommand.Parameters.Add("@FurnitureID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters.Add("@FurnitureID", System.Data.SqlDbType.VarChar);
                     selectCommand.Parameters["@FurnitureID"].Value = furnitureID;
 
                     using (SqlDataReader reader = selectCommand.ExecuteReader())

@@ -1,5 +1,7 @@
-﻿using RentMe.Model;
+﻿using RentMe.Controller;
+using RentMe.Model;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -11,6 +13,8 @@ namespace RentMe.View
     public partial class ReturnItemForm : Form
     {
         private RentalItem itemToReturn;
+        private FurnitureController theFurnitureController;
+
         public RentalItem ItemToReturn
         {
             get { return this.itemToReturn; }
@@ -30,6 +34,7 @@ namespace RentMe.View
         public ReturnItemForm()
         {
             InitializeComponent();
+            this.theFurnitureController = new FurnitureController();
         }
 
         private void OnReturnItemFormLoad(object sender, EventArgs e)
@@ -43,6 +48,58 @@ namespace RentMe.View
         private void CancelButtonOnClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void CalculateCostButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                decimal itemTotal = 0;
+                decimal amountPaid = 0;
+                decimal rentalRate = this.theFurnitureController.GetRentalRateByFurnitureID(this.itemToReturn.FurnitureID);
+                string itemTotalDisplay = "";
+                if (rentalRate == -1)
+                {
+                    this.errorMessageLabel.Text = "There was an issue getting the rental rate.";
+                }
+                else
+                {
+                    double numberOfDaysRented = Math.Round((DateTime.Now - this.itemToReturn.RentalDate).TotalDays);
+                    double plannedNumberOfDaysRented = Math.Round((this.itemToReturn.DueDate - this.itemToReturn.RentalDate).TotalDays);
+                    double numberOfDaysOverdue = Math.Round((DateTime.Now - this.itemToReturn.DueDate).TotalDays);
+                    amountPaid = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented), rentalRate);
+                    if (numberOfDaysRented == plannedNumberOfDaysRented)
+                    {
+                        itemTotal = 0;
+                    }
+                    else if (numberOfDaysRented < plannedNumberOfDaysRented)
+                    { 
+                        itemTotal = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented - numberOfDaysRented), rentalRate);
+                    }
+                    else if (numberOfDaysOverdue > 0)
+                    {
+                        itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue + plannedNumberOfDaysRented), rentalRate);
+                    }
+                }
+                if (itemTotal > amountPaid)
+                {
+                    itemTotalDisplay = "-$" + itemTotal.ToString();
+                }
+                else if (itemTotal < amountPaid)
+                {
+                    itemTotalDisplay = "+$" + itemTotal.ToString();
+                }
+                else
+                {
+                    itemTotalDisplay = "$" + itemTotal.ToString();
+                }
+                this.itemTotalTextBox.Text = itemTotalDisplay;
+            }
+            catch (Exception ex)
+            {
+                this.errorMessageLabel.Text = "There was an issue calculating the total." + ex.Message;
+                this.errorMessageLabel.ForeColor = Color.Red;
+            }
         }
     }
 }

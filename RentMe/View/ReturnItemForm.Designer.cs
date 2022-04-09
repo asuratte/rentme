@@ -126,6 +126,7 @@ namespace RentMe.View
             this.calculateCostButton.TabIndex = 2;
             this.calculateCostButton.Text = "Calculate Cost";
             this.calculateCostButton.UseVisualStyleBackColor = false;
+            this.calculateCostButton.Click += new System.EventHandler(this.CalculateCostButtonClick);
             // 
             // itemTotalTextBox
             // 
