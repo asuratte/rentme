@@ -77,7 +77,7 @@ namespace RentMe.View
             this.rentalTransactionIDLabel.Location = new System.Drawing.Point(12, 50);
             this.rentalTransactionIDLabel.Name = "rentalTransactionIDLabel";
             this.rentalTransactionIDLabel.Size = new System.Drawing.Size(141, 19);
-            this.rentalTransactionIDLabel.TabIndex = 2;
+            this.rentalTransactionIDLabel.TabIndex = 0;
             this.rentalTransactionIDLabel.Text = "Rental Transaction ID:";
             // 
             // returnDateValue
@@ -94,7 +94,7 @@ namespace RentMe.View
             this.returnDateLabel.Location = new System.Drawing.Point(337, 18);
             this.returnDateLabel.Name = "returnDateLabel";
             this.returnDateLabel.Size = new System.Drawing.Size(86, 19);
-            this.returnDateLabel.TabIndex = 4;
+            this.returnDateLabel.TabIndex = 0;
             this.returnDateLabel.Text = "Return Date:";
             // 
             // quantityLabel
@@ -103,7 +103,7 @@ namespace RentMe.View
             this.quantityLabel.Location = new System.Drawing.Point(337, 50);
             this.quantityLabel.Name = "quantityLabel";
             this.quantityLabel.Size = new System.Drawing.Size(66, 19);
-            this.quantityLabel.TabIndex = 6;
+            this.quantityLabel.TabIndex = 0;
             this.quantityLabel.Text = "Quantity:";
             // 
             // quantityTextBox
@@ -111,7 +111,7 @@ namespace RentMe.View
             this.quantityTextBox.Location = new System.Drawing.Point(409, 47);
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.Size = new System.Drawing.Size(100, 25);
-            this.quantityTextBox.TabIndex = 7;
+            this.quantityTextBox.TabIndex = 1;
             // 
             // calculateCostButton
             // 
@@ -123,7 +123,7 @@ namespace RentMe.View
             this.calculateCostButton.Location = new System.Drawing.Point(16, 103);
             this.calculateCostButton.Name = "calculateCostButton";
             this.calculateCostButton.Size = new System.Drawing.Size(125, 27);
-            this.calculateCostButton.TabIndex = 10;
+            this.calculateCostButton.TabIndex = 2;
             this.calculateCostButton.Text = "Calculate Cost";
             this.calculateCostButton.UseVisualStyleBackColor = false;
             // 
@@ -133,7 +133,8 @@ namespace RentMe.View
             this.itemTotalTextBox.Name = "itemTotalTextBox";
             this.itemTotalTextBox.ReadOnly = true;
             this.itemTotalTextBox.Size = new System.Drawing.Size(133, 25);
-            this.itemTotalTextBox.TabIndex = 12;
+            this.itemTotalTextBox.TabIndex = 0;
+            this.itemTotalTextBox.TabStop = false;
             // 
             // itemTotalLabel
             // 
@@ -141,7 +142,7 @@ namespace RentMe.View
             this.itemTotalLabel.Location = new System.Drawing.Point(14, 157);
             this.itemTotalLabel.Name = "itemTotalLabel";
             this.itemTotalLabel.Size = new System.Drawing.Size(73, 19);
-            this.itemTotalLabel.TabIndex = 11;
+            this.itemTotalLabel.TabIndex = 0;
             this.itemTotalLabel.Text = "Item Total:";
             // 
             // errorMessageLabel
@@ -163,7 +164,7 @@ namespace RentMe.View
             this.returnItemButton.Location = new System.Drawing.Point(279, 253);
             this.returnItemButton.Name = "returnItemButton";
             this.returnItemButton.Size = new System.Drawing.Size(124, 27);
-            this.returnItemButton.TabIndex = 18;
+            this.returnItemButton.TabIndex = 4;
             this.returnItemButton.Text = "Return Item";
             this.returnItemButton.UseVisualStyleBackColor = false;
             // 
@@ -177,9 +178,10 @@ namespace RentMe.View
             this.cancelButton.Location = new System.Drawing.Point(427, 253);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(83, 27);
-            this.cancelButton.TabIndex = 19;
+            this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonOnClick);
             // 
             // ReturnItemForm
             // 

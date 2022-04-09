@@ -37,7 +37,12 @@ namespace RentMe.View
             this.furnitureIDValue.Text = this.itemToReturn.FurnitureID;
             this.returnDateValue.Text = DateTime.Now.ToShortDateString();
             this.rentalTransactionIDValue.Text = this.itemToReturn.TransactionID.ToString();
-            this.rentalTransactionIDValue.Text = this.itemToReturn.Quantity.ToString();
+            this.quantityTextBox.Text = this.itemToReturn.Quantity.ToString();
+        }
+
+        private void CancelButtonOnClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
