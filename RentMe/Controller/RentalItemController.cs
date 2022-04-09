@@ -13,6 +13,14 @@ namespace RentMe.Controller
         private readonly RentalItemDAL rentalItemDAL;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="RentalItemController"/> class.
+        /// </summary>
+        public RentalItemController()
+        {
+            this.rentalItemDAL = new RentalItemDAL();
+        }
+
+        /// <summary>
         /// Get list of active (non-returned) rental items by member ID
         /// </summary>
         /// <param name="memberID">The memberID.</param>
