@@ -5,7 +5,7 @@ namespace RentMe.Model
     /// <summary>
     /// Defines a model class for a Rental Transaction.
     /// </summary>
-    class RentalTransaction
+    public class RentalTransaction
     {
         public int TransactionID { get; set; }
         public int MemberID { get; set; }

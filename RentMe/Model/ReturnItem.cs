@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines a model class for a Return Item.
     /// </summary>
-    class ReturnItem
+    public class ReturnItem
     {
         public int TransactionID { get; set; }
         public int RentalTransactionID { get; set; }

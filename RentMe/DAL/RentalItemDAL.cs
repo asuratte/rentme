@@ -8,11 +8,12 @@ namespace RentMe.DAL
     /// <summary>
     /// Data Access Layer for Rental Items
     /// </summary>
-    class RentalItemDAL
+    public class RentalItemDAL
     {
         /// <summary>
         /// Get list of active (non-returned) rental items by member ID
         /// </summary>
+        /// <param name="memberID">The memberID.</param>
         /// <returns>List of active rental items associated with the given member ID</returns>
         public List<RentalItem> GetActiveRentalItemsByMemberID(int memberID)
         {
