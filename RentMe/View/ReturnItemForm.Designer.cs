@@ -206,6 +206,7 @@ namespace RentMe.View
             this.Name = "ReturnItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Return Item";
+            this.Load += new System.EventHandler(this.OnReturnItemFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
 

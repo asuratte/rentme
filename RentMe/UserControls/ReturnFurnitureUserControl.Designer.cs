@@ -46,15 +46,15 @@ namespace RentMe.UserControls
             this.returnedItemsListView = new System.Windows.Forms.ListView();
             this.returnedItemsListViewColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DataGridViewHeaderLabel = new System.Windows.Forms.Label();
             this.dataGridViewMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRentalTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRentalDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewDueDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DataGridViewHeaderLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -171,24 +171,7 @@ namespace RentMe.UserControls
             this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(585, 274);
             this.rentalItemDataGridView.TabIndex = 20;
-            // 
-            // ReturnItemButton
-            // 
-            this.ReturnItemButton.HeaderText = "";
-            this.ReturnItemButton.Name = "ReturnItemButton";
-            this.ReturnItemButton.ReadOnly = true;
-            this.ReturnItemButton.Text = "Return Item";
-            this.ReturnItemButton.UseColumnTextForButtonValue = true;
-            this.ReturnItemButton.Width = 80;
-            // 
-            // DataGridViewHeaderLabel
-            // 
-            this.DataGridViewHeaderLabel.AutoSize = true;
-            this.DataGridViewHeaderLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridViewHeaderLabel.Location = new System.Drawing.Point(13, 60);
-            this.DataGridViewHeaderLabel.Name = "DataGridViewHeaderLabel";
-            this.DataGridViewHeaderLabel.Size = new System.Drawing.Size(0, 15);
-            this.DataGridViewHeaderLabel.TabIndex = 21;
+            this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridViewCellContentClick);
             // 
             // dataGridViewMemberID
             // 
@@ -254,9 +237,27 @@ namespace RentMe.UserControls
             this.dataGridViewDueDateColumn.ReadOnly = true;
             this.dataGridViewDueDateColumn.Width = 82;
             // 
+            // ReturnItemButton
+            // 
+            this.ReturnItemButton.HeaderText = "";
+            this.ReturnItemButton.Name = "ReturnItemButton";
+            this.ReturnItemButton.ReadOnly = true;
+            this.ReturnItemButton.Text = "Return Item";
+            this.ReturnItemButton.UseColumnTextForButtonValue = true;
+            this.ReturnItemButton.Width = 80;
+            // 
             // rentalItemBindingSource
             // 
             this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            // 
+            // DataGridViewHeaderLabel
+            // 
+            this.DataGridViewHeaderLabel.AutoSize = true;
+            this.DataGridViewHeaderLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataGridViewHeaderLabel.Location = new System.Drawing.Point(13, 60);
+            this.DataGridViewHeaderLabel.Name = "DataGridViewHeaderLabel";
+            this.DataGridViewHeaderLabel.Size = new System.Drawing.Size(0, 15);
+            this.DataGridViewHeaderLabel.TabIndex = 21;
             // 
             // ReturnFurnitureUserControl
             // 

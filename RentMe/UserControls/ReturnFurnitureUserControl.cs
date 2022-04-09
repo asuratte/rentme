@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,6 +16,7 @@ namespace RentMe.UserControls
     {
         private readonly RentalItemController theRentalItemController;
         private readonly MemberController theMemberController;
+        private ReturnItemForm theReturnItemForm;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnFurnitureUserControl"/> class.
@@ -24,6 +26,7 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.theRentalItemController = new RentalItemController();
             this.theMemberController = new MemberController();
+            this.theReturnItemForm = new ReturnItemForm();
         }
 
         private void MemberSearchButtonClick(object sender, System.EventArgs e)
@@ -66,6 +69,22 @@ namespace RentMe.UserControls
             {
                 this.ShowErrorMessage("Please enter a member ID before clicking Search.");
             }
+        }
+
+        private void ReturnsDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                int i = e.RowIndex;
+                RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
+                this.ShowReturnItemForm(theRentalItem);
+            }
+        }
+
+        private void ShowReturnItemForm(RentalItem theRentalItem)
+        {
+            this.theReturnItemForm.ItemToReturn = theRentalItem;
+            this.theReturnItemForm.ShowDialog();
         }
 
         private void ShowErrorMessage(string message)
