@@ -14,6 +14,7 @@ namespace RentMe.UserControls
     public partial class ReturnFurnitureUserControl : UserControl
     {
         private readonly RentalItemController theRentalItemController;
+        private readonly MemberController theMemberController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnFurnitureUserControl"/> class.
@@ -22,19 +23,43 @@ namespace RentMe.UserControls
         {
             InitializeComponent();
             this.theRentalItemController = new RentalItemController();
+            this.theMemberController = new MemberController();
         }
 
         private void MemberSearchButtonClick(object sender, System.EventArgs e)
         {
+            this.DataGridViewHeaderLabel.Text = "";
             if (this.memberIDTextBox.Text != null && this.memberIDTextBox.Text != "")
             {
-                int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
-                List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
-
-                rentalItemBindingSource.Clear();
-                foreach (RentalItem theRentalItem in outstandingRentalItemsList)
+                try
                 {
-                    rentalItemBindingSource.Add(theRentalItem);
+                    int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
+                    Member theMember = this.theMemberController.GetMemberByID(memberID);
+                    if (theMember != null)
+                    {
+                        List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
+                        rentalItemBindingSource.Clear();
+                        if (outstandingRentalItemsList.Count > 0)
+                        {
+                            this.DataGridViewHeaderLabel.Text = "Items currently rented to " + theMember.FirstName + " " + theMember.LastName + ":";
+                            foreach (RentalItem theRentalItem in outstandingRentalItemsList)
+                            {
+                                rentalItemBindingSource.Add(theRentalItem);
+                            }
+                        }
+                        else
+                        {
+                            this.errorMessageLabel.Text = "Member currently has no oustanding rentals.";
+                        }
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("No member with that ID found.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue getting member rental information.");
                 }
             }
             else
