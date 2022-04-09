@@ -14,6 +14,7 @@ namespace RentMe.View
     {
         private RentalItem itemToReturn;
         private FurnitureController theFurnitureController;
+        private int quantityReturned;
 
         public RentalItem ItemToReturn
         {
@@ -26,6 +27,11 @@ namespace RentMe.View
                 }
                 this.itemToReturn = value;
             }
+        }
+
+        public int QuantityReturned
+        {
+            get { return this.quantityReturned; }
         }
 
         /// <summary>
@@ -100,6 +106,12 @@ namespace RentMe.View
                 this.errorMessageLabel.Text = "There was an issue calculating the total." + ex.Message;
                 this.errorMessageLabel.ForeColor = Color.Red;
             }
+        }
+
+        private void OnReturnItemButtonClick(object sender, EventArgs e)
+        {
+            this.quantityReturned = Convert.ToInt32(this.quantityTextBox.Text);
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

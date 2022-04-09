@@ -168,6 +168,7 @@ namespace RentMe.View
             this.returnItemButton.TabIndex = 4;
             this.returnItemButton.Text = "Return Item";
             this.returnItemButton.UseVisualStyleBackColor = false;
+            this.returnItemButton.Click += new System.EventHandler(this.OnReturnItemButtonClick);
             // 
             // cancelButton
             // 

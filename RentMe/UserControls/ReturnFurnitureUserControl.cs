@@ -77,14 +77,13 @@ namespace RentMe.UserControls
             {
                 int i = e.RowIndex;
                 RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
-                this.ShowReturnItemForm(theRentalItem);
+                this.theReturnItemForm.ItemToReturn = theRentalItem;
+                this.theReturnItemForm.ShowDialog();
+                if (this.theReturnItemForm.DialogResult == DialogResult.OK)
+                {
+                    this.returnedItemsListView.Items.Add(new ListViewItem(theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned));
+                }
             }
-        }
-
-        private void ShowReturnItemForm(RentalItem theRentalItem)
-        {
-            this.theReturnItemForm.ItemToReturn = theRentalItem;
-            this.theReturnItemForm.ShowDialog();
         }
 
         private void ShowErrorMessage(string message)
