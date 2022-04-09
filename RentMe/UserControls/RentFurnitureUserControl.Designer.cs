@@ -46,14 +46,15 @@ namespace RentMe.UserControls
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.styleComboBox = new System.Windows.Forms.ComboBox();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
-            this.AddToCart = new System.Windows.Forms.DataGridViewButtonColumn();
             this.memberIDSearchTextBox = new System.Windows.Forms.TextBox();
             this.memberIDSearchLabel = new System.Windows.Forms.Label();
             this.memberSearchButton = new System.Windows.Forms.Button();
             this.viewCartButton = new System.Windows.Forms.Button();
             this.resetCartButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cartForMemberLabel = new System.Windows.Forms.Label();
             this.horizontalDividerLineLabel = new System.Windows.Forms.Label();
+            this.AddToCart = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.currentMemberNameLabel = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxFurnitureIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,19 +171,8 @@ namespace RentMe.UserControls
             this.furnitureDataGridView.Location = new System.Drawing.Point(7, 165);
             this.furnitureDataGridView.Name = "furnitureDataGridView";
             this.furnitureDataGridView.ReadOnly = true;
-            this.furnitureDataGridView.Size = new System.Drawing.Size(770, 210);
+            this.furnitureDataGridView.Size = new System.Drawing.Size(756, 210);
             this.furnitureDataGridView.TabIndex = 5;
-            // 
-            // AddToCart
-            // 
-            this.AddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddToCart.HeaderText = "";
-            this.AddToCart.Name = "AddToCart";
-            this.AddToCart.ReadOnly = true;
-            this.AddToCart.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.AddToCart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.AddToCart.Text = "Add to Cart";
-            this.AddToCart.UseColumnTextForButtonValue = true;
             // 
             // memberIDSearchTextBox
             // 
@@ -191,6 +181,7 @@ namespace RentMe.UserControls
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
             this.memberIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
             this.memberIDSearchTextBox.TabIndex = 16;
+            this.memberIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // memberIDSearchLabel
             // 
@@ -215,6 +206,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.TabIndex = 18;
             this.memberSearchButton.Text = "Search";
             this.memberSearchButton.UseVisualStyleBackColor = false;
+            this.memberSearchButton.Click += new System.EventHandler(this.MemberSearchButtonClick);
             // 
             // viewCartButton
             // 
@@ -223,7 +215,7 @@ namespace RentMe.UserControls
             this.viewCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewCartButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewCartButton.ForeColor = System.Drawing.Color.White;
-            this.viewCartButton.Location = new System.Drawing.Point(524, 35);
+            this.viewCartButton.Location = new System.Drawing.Point(519, 35);
             this.viewCartButton.Name = "viewCartButton";
             this.viewCartButton.Size = new System.Drawing.Size(110, 27);
             this.viewCartButton.TabIndex = 19;
@@ -237,30 +229,50 @@ namespace RentMe.UserControls
             this.resetCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetCartButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetCartButton.ForeColor = System.Drawing.Color.White;
-            this.resetCartButton.Location = new System.Drawing.Point(667, 35);
+            this.resetCartButton.Location = new System.Drawing.Point(653, 35);
             this.resetCartButton.Name = "resetCartButton";
             this.resetCartButton.Size = new System.Drawing.Size(110, 27);
             this.resetCartButton.TabIndex = 20;
             this.resetCartButton.Text = "Reset Cart";
             this.resetCartButton.UseVisualStyleBackColor = false;
+            this.resetCartButton.Click += new System.EventHandler(this.ResetCartButtonClick);
             // 
-            // label1
+            // cartForMemberLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(520, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Cart For:";
+            this.cartForMemberLabel.AutoSize = true;
+            this.cartForMemberLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartForMemberLabel.Location = new System.Drawing.Point(515, 12);
+            this.cartForMemberLabel.Name = "cartForMemberLabel";
+            this.cartForMemberLabel.Size = new System.Drawing.Size(62, 19);
+            this.cartForMemberLabel.TabIndex = 21;
+            this.cartForMemberLabel.Text = "Cart For:";
             // 
             // horizontalDividerLineLabel
             // 
             this.horizontalDividerLineLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.horizontalDividerLineLabel.Location = new System.Drawing.Point(11, 80);
             this.horizontalDividerLineLabel.Name = "horizontalDividerLineLabel";
-            this.horizontalDividerLineLabel.Size = new System.Drawing.Size(768, 2);
+            this.horizontalDividerLineLabel.Size = new System.Drawing.Size(756, 2);
             this.horizontalDividerLineLabel.TabIndex = 22;
+            // 
+            // AddToCart
+            // 
+            this.AddToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddToCart.HeaderText = "";
+            this.AddToCart.Name = "AddToCart";
+            this.AddToCart.ReadOnly = true;
+            this.AddToCart.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.AddToCart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AddToCart.Text = "Add to Cart";
+            this.AddToCart.UseColumnTextForButtonValue = true;
+            // 
+            // currentMemberNameLabel
+            // 
+            this.currentMemberNameLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentMemberNameLabel.Location = new System.Drawing.Point(583, 12);
+            this.currentMemberNameLabel.Name = "currentMemberNameLabel";
+            this.currentMemberNameLabel.Size = new System.Drawing.Size(180, 19);
+            this.currentMemberNameLabel.TabIndex = 23;
             // 
             // dataGridViewTextBoxFurnitureIDColumn
             // 
@@ -280,6 +292,7 @@ namespace RentMe.UserControls
             this.dataGridViewTextBoxNameColumn.HeaderText = "Name";
             this.dataGridViewTextBoxNameColumn.Name = "dataGridViewTextBoxNameColumn";
             this.dataGridViewTextBoxNameColumn.ReadOnly = true;
+            this.dataGridViewTextBoxNameColumn.Width = 105;
             // 
             // dataGridViewTextBoxDescriptionColumn
             // 
@@ -340,8 +353,9 @@ namespace RentMe.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.currentMemberNameLabel);
             this.Controls.Add(this.horizontalDividerLineLabel);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cartForMemberLabel);
             this.Controls.Add(this.resetCartButton);
             this.Controls.Add(this.viewCartButton);
             this.Controls.Add(this.memberSearchButton);
@@ -382,6 +396,8 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button memberSearchButton;
         private System.Windows.Forms.Button viewCartButton;
         private System.Windows.Forms.Button resetCartButton;
+        private System.Windows.Forms.Label cartForMemberLabel;
+        private System.Windows.Forms.Label horizontalDividerLineLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxFurnitureIDColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxDescriptionColumn;
@@ -390,7 +406,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxRentalRateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxQuantityInStockColumn;
         private System.Windows.Forms.DataGridViewButtonColumn AddToCart;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label horizontalDividerLineLabel;
+        private System.Windows.Forms.Label currentMemberNameLabel;
     }
 }

@@ -16,6 +16,9 @@ namespace RentMe.UserControls
         private readonly FurnitureCategoryController theFurnitureCategoryController;
         private readonly FurnitureStyleController theFurnitureStyleController;
         private readonly FurnitureController theFurnitureController;
+        private readonly MemberController theMemberController;
+        private Member theMember;
+        private List<Furniture> theCart;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -26,6 +29,9 @@ namespace RentMe.UserControls
             this.theFurnitureCategoryController = new FurnitureCategoryController();
             this.theFurnitureStyleController = new FurnitureStyleController();
             this.theFurnitureController = new FurnitureController();
+            this.theMemberController = new MemberController();
+            this.theMember = null;
+            this.theCart = new List<Furniture>();
         }
 
         private void LoadComboBoxes()
@@ -139,6 +145,53 @@ namespace RentMe.UserControls
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
             this.ClearSearchFormInputs();
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void MemberSearchButtonClick(object sender, EventArgs e)
+        {
+            this.ResetCart();
+            if (!String.IsNullOrEmpty(this.memberIDSearchTextBox.Text))
+            {
+                try
+                {
+                    int memberID = Convert.ToInt32(this.memberIDSearchTextBox.Text);
+                    this.theMember = this.theMemberController.GetMemberByID(memberID);
+                    if (this.theMember != null)
+                    {
+                        this.cartForMemberLabel.Visible = true;
+                        this.currentMemberNameLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
+                        this.viewCartButton.Enabled = true;
+                        this.resetCartButton.Enabled = true;
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("Cannot find member with specified ID.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue retrieving member information by ID.");
+                }
+            }
+        }
+
+        private void ResetCartButtonClick(object sender, EventArgs e)
+        {
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void ResetCart()
+        {
+            this.cartForMemberLabel.Visible = false;
+            this.currentMemberNameLabel.Text = "";
+            this.viewCartButton.Enabled = false;
+            this.resetCartButton.Enabled = false;
+            this.theMember = null;
+            this.theCart.Clear();
+            this.errorMessageLabel.Text = "";
         }
     }
 }
