@@ -120,6 +120,12 @@
     <Compile Include="View\MemberRegistrationConfirmationForm.Designer.cs">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnItemForm.Designer.cs">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnItemForm.resx">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
