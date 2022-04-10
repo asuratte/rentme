@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,7 +19,7 @@ namespace RentMe.UserControls
         private readonly FurnitureController theFurnitureController;
         private readonly MemberController theMemberController;
         private Member theMember;
-        private List<Furniture> theCart;
+        private Dictionary<Furniture, int> theCart;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -31,7 +32,7 @@ namespace RentMe.UserControls
             this.theFurnitureController = new FurnitureController();
             this.theMemberController = new MemberController();
             this.theMember = null;
-            this.theCart = new List<Furniture>();
+            this.theCart = new Dictionary<Furniture, int>();
         }
 
         private void LoadComboBoxes()
@@ -192,6 +193,34 @@ namespace RentMe.UserControls
             this.theMember = null;
             this.theCart.Clear();
             this.errorMessageLabel.Text = "";
+        }
+
+        private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7)
+            {
+                int i = e.RowIndex;
+                Furniture theFurniture = (Furniture)furnitureBindingSource[i];
+                this.theCart.Add(theFurniture, 2);
+            }
+        }
+
+        private void ViewCartButtonClick(object sender, EventArgs e)
+        {
+            using (ViewCartForm theViewCartForm = new ViewCartForm())
+            {
+                if (this.theCart.Count > 0)
+                {
+                    theViewCartForm.TheFurnitureList = theCart;
+                    theViewCartForm.TheMember = this.theMember;
+                    DialogResult result = theViewCartForm.ShowDialog();
+                }
+                else
+                {
+                    this.ShowErrorMessage("The cart is currently empty.");
+                }
+            }
+            
         }
     }
 }
