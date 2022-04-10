@@ -15,6 +15,7 @@ namespace RentMe.View
         private RentalItem itemToReturn;
         private FurnitureController theFurnitureController;
         private int quantityReturned;
+        private decimal itemTotal;
 
         public RentalItem ItemToReturn
         {
@@ -32,6 +33,11 @@ namespace RentMe.View
         public int QuantityReturned
         {
             get { return this.quantityReturned; }
+        }
+
+        public decimal ItemTotal
+        {
+            get { return this.itemTotal; }
         }
 
         /// <summary>
@@ -58,52 +64,64 @@ namespace RentMe.View
 
         private void CalculateCostButtonClick(object sender, EventArgs e)
         {
-            try
+            this.errorMessageLabel.Text = "";
+            this.itemTotalTextBox.Text = "";
+            if (this.ValidateItemQuantity())
             {
-                decimal itemTotal = 0;
-                decimal amountPaid = 0;
-                decimal rentalRate = this.theFurnitureController.GetRentalRateByFurnitureID(this.itemToReturn.FurnitureID);
-                string itemTotalDisplay = "";
-                if (rentalRate == -1)
+                try
                 {
-                    this.errorMessageLabel.Text = "There was an issue getting the rental rate.";
-                }
-                else
-                {
-                    double numberOfDaysRented = Math.Round((DateTime.Now - this.itemToReturn.RentalDate).TotalDays);
-                    double plannedNumberOfDaysRented = Math.Round((this.itemToReturn.DueDate - this.itemToReturn.RentalDate).TotalDays);
-                    double numberOfDaysOverdue = Math.Round((DateTime.Now - this.itemToReturn.DueDate).TotalDays);
-                    amountPaid = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented), rentalRate);
-                    if (numberOfDaysRented == plannedNumberOfDaysRented)
+                    decimal itemTotal = 0;
+                    decimal amountPaid = 0;
+                    decimal rentalRate = this.theFurnitureController.GetRentalRateByFurnitureID(this.itemToReturn.FurnitureID);
+                    string itemTotalDisplay = "";
+                    if (rentalRate == -1)
                     {
-                        itemTotal = 0;
+                        this.errorMessageLabel.Text = "There was an issue getting the rental rate.";
                     }
-                    else if (numberOfDaysRented < plannedNumberOfDaysRented)
-                    { 
-                        itemTotal = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented - numberOfDaysRented), rentalRate);
-                    }
-                    else if (numberOfDaysOverdue > 0)
+                    else
                     {
-                        itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue + plannedNumberOfDaysRented), rentalRate);
+                        double numberOfDaysRented = Math.Round((DateTime.Now - this.itemToReturn.RentalDate).TotalDays);
+                        double plannedNumberOfDaysRented = Math.Round((this.itemToReturn.DueDate - this.itemToReturn.RentalDate).TotalDays);
+                        double numberOfDaysOverdue = Math.Round((DateTime.Now - this.itemToReturn.DueDate).TotalDays);
+                        amountPaid = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented), rentalRate);
+                        if (numberOfDaysRented == plannedNumberOfDaysRented)
+                        {
+                            itemTotal = 0;
+                        }
+                        else if (numberOfDaysRented < plannedNumberOfDaysRented)
+                        {
+                            itemTotal = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented - numberOfDaysRented), rentalRate);
+                        }
+                        else if (numberOfDaysOverdue > 0)
+                        {
+                            itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue + plannedNumberOfDaysRented), rentalRate);
+                        }
                     }
+                    if (itemTotal > amountPaid)
+                    {
+                        itemTotalDisplay = "-$" + itemTotal.ToString();
+                    }
+                    else if (itemTotal < amountPaid)
+                    {
+                        itemTotalDisplay = "+$" + itemTotal.ToString();
+                    }
+                    else
+                    {
+                        itemTotalDisplay = "$" + itemTotal.ToString();
+                    }
+                    this.itemTotalTextBox.Text = itemTotalDisplay;
+                    this.itemTotal = itemTotal;
+                    this.returnItemButton.Enabled = true;
                 }
-                if (itemTotal > amountPaid)
+                catch (Exception)
                 {
-                    itemTotalDisplay = "-$" + itemTotal.ToString();
+                    this.errorMessageLabel.Text = "There was an issue calculating the total.";
+                    this.errorMessageLabel.ForeColor = Color.Red;
                 }
-                else if (itemTotal < amountPaid)
-                {
-                    itemTotalDisplay = "+$" + itemTotal.ToString();
-                }
-                else
-                {
-                    itemTotalDisplay = "$" + itemTotal.ToString();
-                }
-                this.itemTotalTextBox.Text = itemTotalDisplay;
             }
-            catch (Exception ex)
+            else
             {
-                this.errorMessageLabel.Text = "There was an issue calculating the total." + ex.Message;
+                this.errorMessageLabel.Text = "Invalid quantity. Please adjust quantity to an amount less than or equal to the number of outstanding items and try again.";
                 this.errorMessageLabel.ForeColor = Color.Red;
             }
         }
@@ -112,6 +130,38 @@ namespace RentMe.View
         {
             this.quantityReturned = Convert.ToInt32(this.quantityTextBox.Text);
             this.DialogResult = DialogResult.OK;
+        }
+
+        /// <summary>
+        /// Resets the form.
+        /// </summary>
+        public void ResetForm()
+        {
+            this.errorMessageLabel.Text = "";
+            this.returnItemButton.Enabled = false;
+            this.quantityTextBox.Text = "";
+            this.furnitureIDValue.Text = "";
+            this.rentalTransactionIDValue.Text = "";
+            this.returnDateValue.Text = "";
+            this.itemTotalTextBox.Text = "";
+            this.quantityReturned = 0;
+            this.itemTotal = 0;
+            this.itemToReturn = null;
+        }
+
+        private void OnQuantityChanged(object sender, EventArgs e)
+        {
+            this.returnItemButton.Enabled = false;
+        }
+
+        private bool ValidateItemQuantity()
+        {
+            bool isValid = false;
+            if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity)
+            {
+                isValid = true;
+            }
+            return isValid;
         }
     }
 }

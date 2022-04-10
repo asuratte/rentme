@@ -112,6 +112,7 @@ namespace RentMe.View
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.Size = new System.Drawing.Size(100, 25);
             this.quantityTextBox.TabIndex = 1;
+            this.quantityTextBox.TextChanged += new System.EventHandler(this.OnQuantityChanged);
             // 
             // calculateCostButton
             // 
@@ -149,11 +150,10 @@ namespace RentMe.View
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(14, 204);
+            this.errorMessageLabel.Location = new System.Drawing.Point(14, 200);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(496, 27);
+            this.errorMessageLabel.Size = new System.Drawing.Size(496, 46);
             this.errorMessageLabel.TabIndex = 17;
-            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // returnItemButton
             // 

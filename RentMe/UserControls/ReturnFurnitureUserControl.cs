@@ -77,6 +77,7 @@ namespace RentMe.UserControls
             {
                 int i = e.RowIndex;
                 RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
+                this.theReturnItemForm.ResetForm();
                 this.theReturnItemForm.ItemToReturn = theRentalItem;
                 this.theReturnItemForm.ShowDialog();
                 if (this.theReturnItemForm.DialogResult == DialogResult.OK)
