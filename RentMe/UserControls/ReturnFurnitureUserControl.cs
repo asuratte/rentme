@@ -82,12 +82,16 @@ namespace RentMe.UserControls
                 this.theReturnItemForm.ShowDialog();
                 if (this.theReturnItemForm.DialogResult == DialogResult.OK)
                 {
-                    this.returnedItemsListView.Items.Add(new ListViewItem(theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned));
+                    ListViewItem itemToAdd = new ListViewItem();
+                    itemToAdd.Text = theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned;
+                    itemToAdd.Tag = theRentalItem;
+                    this.returnedItemsListView.Items.Add(itemToAdd);
                     if (this.returnedItemsListView.Items.Count > 0)
                     {
                         this.completeReturnTransactionButton.Enabled = true;
                     }
                 }
+                this.rentalItemDataGridView.Rows.RemoveAt(i);
             }
         }
 
