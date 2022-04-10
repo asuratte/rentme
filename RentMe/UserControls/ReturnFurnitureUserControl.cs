@@ -119,5 +119,10 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             this.errorMessageLabel.ForeColor = default(Color);
         }
+
+        private void OnClearFormButtonClick(object sender, EventArgs e)
+        {
+            this.ResetForm();
+        }
     }
 }
