@@ -31,12 +31,12 @@ namespace RentMe.UserControls
 
         private void MemberSearchButtonClick(object sender, System.EventArgs e)
         {
-            this.DataGridViewHeaderLabel.Text = "";
             if (this.memberIDTextBox.Text != null && this.memberIDTextBox.Text != "")
             {
                 try
                 {
                     int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
+                    this.ResetForm();
                     Member theMember = this.theMemberController.GetMemberByID(memberID);
                     if (theMember != null)
                     {
@@ -82,8 +82,25 @@ namespace RentMe.UserControls
                 if (this.theReturnItemForm.DialogResult == DialogResult.OK)
                 {
                     this.returnedItemsListView.Items.Add(new ListViewItem(theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned));
+                    if (this.returnedItemsListView.Items.Count > 0)
+                    {
+                        this.completeReturnTransactionButton.Enabled = true;
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Resets the form.
+        /// </summary>
+        public void ResetForm()
+        {
+            this.rentalItemBindingSource.Clear();
+            this.errorMessageLabel.Text = "";
+            this.memberIDTextBox.Text = "";
+            this.completeReturnTransactionButton.Enabled = false;
+            this.returnedItemsListView.Items.Clear();
+            this.DataGridViewHeaderLabel.Text = "";
         }
 
         private void ShowErrorMessage(string message)
