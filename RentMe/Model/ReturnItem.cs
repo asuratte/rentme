@@ -9,5 +9,6 @@
         public int RentalTransactionID { get; set; }
         public string FurnitureID { get; set; }
         public int Quantity { get; set; }
+        public decimal ItemTotal { get; set; }
     }
 }

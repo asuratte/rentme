@@ -14,9 +14,7 @@ namespace RentMe.View
     {
         private RentalItem itemToReturn;
         private FurnitureController theFurnitureController;
-        private int quantityReturned;
-        private decimal itemTotal;
-        private bool refundDue;
+        private ReturnItem theReturnedItem;
 
         public RentalItem ItemToReturn
         {
@@ -31,19 +29,9 @@ namespace RentMe.View
             }
         }
 
-        public int QuantityReturned
+        public ReturnItem TheReturnedItem
         {
-            get { return this.quantityReturned; }
-        }
-
-        public decimal ItemTotal
-        {
-            get { return this.itemTotal; }
-        }
-
-        public bool RefundDue
-        {
-            get { return this.refundDue; }
+            get { return this.theReturnedItem; }
         }
 
         /// <summary>
@@ -68,6 +56,14 @@ namespace RentMe.View
             this.DialogResult = DialogResult.Cancel;
         }
 
+        private void SetReturnedItem()
+        {
+            this.theReturnedItem = new ReturnItem();
+            this.theReturnedItem.RentalTransactionID = this.itemToReturn.TransactionID;
+            this.theReturnedItem.FurnitureID = this.itemToReturn.FurnitureID;
+            this.theReturnedItem.Quantity = Convert.ToInt32(this.quantityTextBox.Text);
+        }
+
         private void CalculateCostButtonClick(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
@@ -79,7 +75,7 @@ namespace RentMe.View
                     decimal itemTotal = 0;
                     decimal amountPaid = 0;
                     decimal rentalRate = this.theFurnitureController.GetRentalRateByFurnitureID(this.itemToReturn.FurnitureID);
-                    string itemTotalDisplay = "";
+                    
                     if (rentalRate == -1)
                     {
                         this.errorMessageLabel.Text = "There was an issue getting the rental rate.";
@@ -88,38 +84,26 @@ namespace RentMe.View
                     {
                         double numberOfDaysRented = Math.Round((DateTime.Now - this.itemToReturn.RentalDate).TotalDays);
                         double plannedNumberOfDaysRented = Math.Round((this.itemToReturn.DueDate - this.itemToReturn.RentalDate).TotalDays);
-                        double numberOfDaysOverdue = Math.Round((DateTime.Now - this.itemToReturn.DueDate).TotalDays);
+                        double numberOfDaysOverdue = Math.Round((DateTime.Now - (this.itemToReturn.DueDate.AddDays(1))).TotalDays);
                         amountPaid = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented), rentalRate);
+                        this.SetReturnedItem();
                         if (numberOfDaysRented == plannedNumberOfDaysRented)
                         {
                             itemTotal = 0;
+                            this.theReturnedItem.ItemTotal = itemTotal;
                         }
                         else if (numberOfDaysRented < plannedNumberOfDaysRented)
                         {
                             itemTotal = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented - numberOfDaysRented), rentalRate);
+                            this.theReturnedItem.ItemTotal = itemTotal;
                         }
                         else if (numberOfDaysOverdue > 0)
                         {
-                            itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue + plannedNumberOfDaysRented), rentalRate);
+                            itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue), rentalRate);
+                            this.theReturnedItem.ItemTotal = itemTotal * -1;
                         }
                     }
-                    if (itemTotal > amountPaid)
-                    {
-                        itemTotalDisplay = "-$" + itemTotal.ToString();
-                        this.refundDue = false;
-                    }
-                    else if (itemTotal < amountPaid)
-                    {
-                        itemTotalDisplay = "+$" + itemTotal.ToString();
-                        this.refundDue = true;
-                    }
-                    else
-                    {
-                        itemTotalDisplay = "$" + itemTotal.ToString();
-                        this.refundDue = false;
-                    }
-                    this.itemTotalTextBox.Text = itemTotalDisplay;
-                    this.itemTotal = itemTotal;
+                    this.DisplayItemTotal(itemTotal, amountPaid);
                     this.returnItemButton.Enabled = true;
                 }
                 catch (Exception)
@@ -135,9 +119,26 @@ namespace RentMe.View
             }
         }
 
+        private void DisplayItemTotal(decimal itemTotal, decimal amountPaid)
+        {
+            string itemTotalDisplay = "";
+            if (itemTotal > amountPaid)
+            {
+                itemTotalDisplay = "-$" + itemTotal.ToString();
+            }
+            else if (itemTotal < amountPaid)
+            {
+                itemTotalDisplay = "+$" + itemTotal.ToString();
+            }
+            else
+            {
+                itemTotalDisplay = "$" + itemTotal.ToString();
+            }
+            this.itemTotalTextBox.Text = itemTotalDisplay;
+        }
+
         private void OnReturnItemButtonClick(object sender, EventArgs e)
         {
-            this.quantityReturned = Convert.ToInt32(this.quantityTextBox.Text);
             this.DialogResult = DialogResult.OK;
         }
 
@@ -153,8 +154,7 @@ namespace RentMe.View
             this.rentalTransactionIDValue.Text = "";
             this.returnDateValue.Text = "";
             this.itemTotalTextBox.Text = "";
-            this.quantityReturned = 0;
-            this.itemTotal = 0;
+            this.theReturnedItem = null;
             this.itemToReturn = null;
         }
 

@@ -84,8 +84,8 @@ namespace RentMe.UserControls
                 if (this.theReturnItemForm.DialogResult == DialogResult.OK)
                 {
                     ListViewItem itemToAdd = new ListViewItem();
-                    itemToAdd.Text = theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned;
-                    itemToAdd.Tag = theRentalItem;
+                    itemToAdd.Text = this.theReturnItemForm.TheReturnedItem.FurnitureID + " x " + theReturnItemForm.TheReturnedItem.Quantity;
+                    itemToAdd.Tag = this.theReturnItemForm.TheReturnedItem;
                     this.returnedItemsListView.Items.Add(itemToAdd);
                     this.UpdateTotalAmount();
                     this.DisplayTotalAmount();
@@ -97,13 +97,13 @@ namespace RentMe.UserControls
 
         private void UpdateTotalAmount()
         {
-            if (this.theReturnItemForm.RefundDue == true)
+            if (this.theReturnItemForm.TheReturnedItem.ItemTotal > 0)
             {
-                this.theTotalAmount += this.theReturnItemForm.ItemTotal;
+                this.theTotalAmount += this.theReturnItemForm.TheReturnedItem.ItemTotal;
             }
-            else if (this.theReturnItemForm.RefundDue == false && this.theReturnItemForm.ItemTotal != 0)
+            else if (this.theReturnItemForm.TheReturnedItem.ItemTotal < 0)
             {
-                this.theTotalAmount -= this.theReturnItemForm.ItemTotal;
+                this.theTotalAmount += this.theReturnItemForm.TheReturnedItem.ItemTotal;
             }
         }
 
