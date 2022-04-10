@@ -201,14 +201,24 @@ namespace RentMe.UserControls
             {
                 int i = e.RowIndex;
                 Furniture theFurniture = (Furniture)furnitureBindingSource[i];
-                if (this.theCart.ContainsKey(theFurniture))
+                using (AddToCartForm theAddToCartForm = new AddToCartForm())
                 {
-                    this.theCart[theFurniture] += 2;
+                    theAddToCartForm.FurnitureID = theFurniture.FurnitureID;
+                    theAddToCartForm.FurnitureName = theFurniture.Name;
+                    DialogResult result = theAddToCartForm.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        if (this.theCart.ContainsKey(theFurniture))
+                        {
+                            this.theCart[theFurniture] += theAddToCartForm.Quantity;
+                        }
+                        else
+                        {
+                            this.theCart.Add(theFurniture, theAddToCartForm.Quantity);
+                        }
+                    }
                 }
-                else
-                {
-                    this.theCart.Add(theFurniture, 2);
-                }
+                    
                
             }
         }
