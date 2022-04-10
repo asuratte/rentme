@@ -201,7 +201,15 @@ namespace RentMe.UserControls
             {
                 int i = e.RowIndex;
                 Furniture theFurniture = (Furniture)furnitureBindingSource[i];
-                this.theCart.Add(theFurniture, 2);
+                if (this.theCart.ContainsKey(theFurniture))
+                {
+                    this.theCart[theFurniture] += 2;
+                }
+                else
+                {
+                    this.theCart.Add(theFurniture, 2);
+                }
+               
             }
         }
 

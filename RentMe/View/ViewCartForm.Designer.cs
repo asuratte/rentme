@@ -30,12 +30,14 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.orderForLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
             this.returnDateLabel = new System.Windows.Forms.Label();
             this.returnDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.rentalTotalLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rentalTotalTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
@@ -99,14 +101,14 @@ namespace RentMe.View
             this.rentalTotalLabel.TabIndex = 6;
             this.rentalTotalLabel.Text = "Rental Total:";
             // 
-            // textBox1
+            // rentalTotalTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(561, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(109, 25);
-            this.textBox1.TabIndex = 7;
+            this.rentalTotalTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rentalTotalTextBox.Location = new System.Drawing.Point(561, 48);
+            this.rentalTotalTextBox.Name = "rentalTotalTextBox";
+            this.rentalTotalTextBox.ReadOnly = true;
+            this.rentalTotalTextBox.Size = new System.Drawing.Size(109, 25);
+            this.rentalTotalTextBox.TabIndex = 7;
             // 
             // cancelButton
             // 
@@ -156,6 +158,7 @@ namespace RentMe.View
             this.QuantityColumn.HeaderText = "Quantity";
             this.QuantityColumn.Name = "QuantityColumn";
             this.QuantityColumn.ReadOnly = true;
+            this.QuantityColumn.Width = 80;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -170,6 +173,7 @@ namespace RentMe.View
             this.dataGridViewTextBoxColumn2.HeaderText = "Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 130;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -198,6 +202,9 @@ namespace RentMe.View
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn6.HeaderText = "RentalRate";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -212,6 +219,9 @@ namespace RentMe.View
             // 
             // SubtotalColumn
             // 
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.SubtotalColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.SubtotalColumn.HeaderText = "Subtotal";
             this.SubtotalColumn.Name = "SubtotalColumn";
             this.SubtotalColumn.ReadOnly = true;
@@ -221,6 +231,8 @@ namespace RentMe.View
             this.DeleteButtonColumn.HeaderText = "";
             this.DeleteButtonColumn.Name = "DeleteButtonColumn";
             this.DeleteButtonColumn.ReadOnly = true;
+            this.DeleteButtonColumn.Text = "Delete";
+            this.DeleteButtonColumn.UseColumnTextForButtonValue = true;
             // 
             // ViewCartForm
             // 
@@ -229,7 +241,7 @@ namespace RentMe.View
             this.ClientSize = new System.Drawing.Size(690, 426);
             this.Controls.Add(this.furnitureDataGridView);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.rentalTotalTextBox);
             this.Controls.Add(this.rentalTotalLabel);
             this.Controls.Add(this.returnDateTimePicker);
             this.Controls.Add(this.returnDateLabel);
@@ -253,7 +265,7 @@ namespace RentMe.View
         private System.Windows.Forms.Label returnDateLabel;
         private System.Windows.Forms.DateTimePicker returnDateTimePicker;
         private System.Windows.Forms.Label rentalTotalLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox rentalTotalTextBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.BindingSource furnitureBindingSource;
         private System.Windows.Forms.DataGridView furnitureDataGridView;

@@ -50,8 +50,7 @@ namespace RentMe.View
         private void OnViewCartFormLoad(object sender, EventArgs e)
         {
             this.memberNameLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
-            this.furnitureDataGridView.Rows.Clear();
-            this.RefreshDataGridView();
+            this.RefreshViewCartForm();
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
@@ -90,7 +89,19 @@ namespace RentMe.View
             }
         }
 
-        private void RefreshDataGridView()
+        private decimal CalculateRentalTotal()
+        {
+            int rowIndex = -1;
+            decimal rentalTotal = 0;
+            foreach (DataGridViewRow row in this.furnitureDataGridView.Rows)
+            {
+                rowIndex = row.Index;
+                rentalTotal += Convert.ToDecimal(row.Cells[8].Value);
+            }
+            return rentalTotal;
+        }
+
+        private void RefreshViewCartForm()
         {
             furnitureBindingSource.Clear();
             foreach (Furniture theFurniture in theFurnitureList.Keys.ToList())
@@ -99,6 +110,7 @@ namespace RentMe.View
                 this.DisplayQuantityByFurniture(theFurniture);
                 this.CalculateSubtotalByFurniture(theFurniture);
             }
+            this.rentalTotalTextBox.Text = "$" + this.CalculateRentalTotal().ToString();
         }
     }
 }
