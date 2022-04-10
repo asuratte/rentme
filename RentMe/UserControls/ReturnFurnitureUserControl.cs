@@ -17,6 +17,7 @@ namespace RentMe.UserControls
         private readonly RentalItemController theRentalItemController;
         private readonly MemberController theMemberController;
         private ReturnItemForm theReturnItemForm;
+        private decimal theTotalAmount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnFurnitureUserControl"/> class.
@@ -86,12 +87,39 @@ namespace RentMe.UserControls
                     itemToAdd.Text = theRentalItem.FurnitureID + " x " + theReturnItemForm.QuantityReturned;
                     itemToAdd.Tag = theRentalItem;
                     this.returnedItemsListView.Items.Add(itemToAdd);
-                    if (this.returnedItemsListView.Items.Count > 0)
-                    {
-                        this.completeReturnTransactionButton.Enabled = true;
-                    }
+                    this.UpdateTotalAmount();
+                    this.DisplayTotalAmount();
+                    this.completeReturnTransactionButton.Enabled = true;
+                    this.rentalItemDataGridView.Rows.RemoveAt(i);
                 }
-                this.rentalItemDataGridView.Rows.RemoveAt(i);
+            }
+        }
+
+        private void UpdateTotalAmount()
+        {
+            if (this.theReturnItemForm.RefundDue == true)
+            {
+                this.theTotalAmount += this.theReturnItemForm.ItemTotal;
+            }
+            else if (this.theReturnItemForm.RefundDue == false && this.theReturnItemForm.ItemTotal != 0)
+            {
+                this.theTotalAmount -= this.theReturnItemForm.ItemTotal;
+            }
+        }
+
+        private void DisplayTotalAmount()
+        {
+            if (this.theTotalAmount < 0)
+            {
+                this.transactionTotalAmountTextBox.Text = "-$" + (this.theTotalAmount * -1).ToString();
+            }
+            else if (this.theTotalAmount > 0)
+            {
+                this.transactionTotalAmountTextBox.Text = "+$" + this.theTotalAmount.ToString();
+            }
+            else
+            {
+                this.transactionTotalAmountTextBox.Text = "$" + this.theTotalAmount.ToString();
             }
         }
 
@@ -106,6 +134,8 @@ namespace RentMe.UserControls
             this.completeReturnTransactionButton.Enabled = false;
             this.returnedItemsListView.Items.Clear();
             this.DataGridViewHeaderLabel.Text = "";
+            this.transactionTotalAmountTextBox.Text = "";
+            this.theTotalAmount = 0;
         }
 
         private void ShowErrorMessage(string message)

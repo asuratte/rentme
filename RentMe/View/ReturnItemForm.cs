@@ -16,6 +16,7 @@ namespace RentMe.View
         private FurnitureController theFurnitureController;
         private int quantityReturned;
         private decimal itemTotal;
+        private bool refundDue;
 
         public RentalItem ItemToReturn
         {
@@ -38,6 +39,11 @@ namespace RentMe.View
         public decimal ItemTotal
         {
             get { return this.itemTotal; }
+        }
+
+        public bool RefundDue
+        {
+            get { return this.refundDue; }
         }
 
         /// <summary>
@@ -100,14 +106,17 @@ namespace RentMe.View
                     if (itemTotal > amountPaid)
                     {
                         itemTotalDisplay = "-$" + itemTotal.ToString();
+                        this.refundDue = false;
                     }
                     else if (itemTotal < amountPaid)
                     {
                         itemTotalDisplay = "+$" + itemTotal.ToString();
+                        this.refundDue = true;
                     }
                     else
                     {
                         itemTotalDisplay = "$" + itemTotal.ToString();
+                        this.refundDue = false;
                     }
                     this.itemTotalTextBox.Text = itemTotalDisplay;
                     this.itemTotal = itemTotal;
