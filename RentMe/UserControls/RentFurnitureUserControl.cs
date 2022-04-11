@@ -199,27 +199,32 @@ namespace RentMe.UserControls
         {
             if (e.ColumnIndex == 7)
             {
-                int i = e.RowIndex;
-                Furniture theFurniture = (Furniture)furnitureBindingSource[i];
-                using (AddToCartForm theAddToCartForm = new AddToCartForm())
+                if (this.theMember != null)
                 {
-                    theAddToCartForm.FurnitureID = theFurniture.FurnitureID;
-                    theAddToCartForm.FurnitureName = theFurniture.Name;
-                    DialogResult result = theAddToCartForm.ShowDialog();
-                    if (result == DialogResult.OK)
+                    int i = e.RowIndex;
+                    Furniture theFurniture = (Furniture)furnitureBindingSource[i];
+                    using (AddToCartForm theAddToCartForm = new AddToCartForm())
                     {
-                        if (this.theCart.ContainsKey(theFurniture))
+                        theAddToCartForm.FurnitureID = theFurniture.FurnitureID;
+                        theAddToCartForm.FurnitureName = theFurniture.Name;
+                        DialogResult result = theAddToCartForm.ShowDialog();
+                        if (result == DialogResult.OK && theAddToCartForm.Quantity > 0)
                         {
-                            this.theCart[theFurniture] += theAddToCartForm.Quantity;
-                        }
-                        else
-                        {
-                            this.theCart.Add(theFurniture, theAddToCartForm.Quantity);
+                            if (this.theCart.ContainsKey(theFurniture))
+                            {
+                                this.theCart[theFurniture] += theAddToCartForm.Quantity;
+                            }
+                            else
+                            {
+                                this.theCart.Add(theFurniture, theAddToCartForm.Quantity);
+                            }
                         }
                     }
                 }
-                    
-               
+                else
+                {
+                    this.ShowErrorMessage("A cart has not been created. Please choose a member to create a cart.");
+                }
             }
         }
 
