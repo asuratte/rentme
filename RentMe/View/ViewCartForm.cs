@@ -51,6 +51,8 @@ namespace RentMe.View
         {
             this.memberNameLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
             this.RefreshViewCartForm();
+            this.returnDateTimePicker.Value = DateTime.Today.AddDays(1);
+            this.errorMessageLabel.Text = "";
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
@@ -80,9 +82,10 @@ namespace RentMe.View
                 if (row.Cells[1].Value.ToString().Equals(theFurniture.FurnitureID))
                 {
                     rowIndex = row.Index;
-                    decimal quantity = Convert.ToDecimal(this.furnitureDataGridView.Rows[row.Index].Cells[0].Value);
+                    int quantity = Convert.ToInt32(this.furnitureDataGridView.Rows[row.Index].Cells[0].Value);
+                    int numberOfDays = (this.returnDateTimePicker.Value.Date - DateTime.Today).Days;
                     decimal rentalRate = Convert.ToDecimal(this.furnitureDataGridView.Rows[row.Index].Cells[6].Value);
-                    decimal subtotal = decimal.Multiply(quantity, theFurniture.RentalRate);
+                    decimal subtotal = quantity * rentalRate * numberOfDays;
                     this.furnitureDataGridView.Rows[row.Index].Cells[8].Value = subtotal;
                     break;
                 }
@@ -91,11 +94,9 @@ namespace RentMe.View
 
         private decimal CalculateRentalTotal()
         {
-            int rowIndex = -1;
             decimal rentalTotal = 0;
             foreach (DataGridViewRow row in this.furnitureDataGridView.Rows)
             {
-                rowIndex = row.Index;
                 rentalTotal += Convert.ToDecimal(row.Cells[8].Value);
             }
             return rentalTotal;
@@ -103,6 +104,7 @@ namespace RentMe.View
 
         private void RefreshViewCartForm()
         {
+            this.errorMessageLabel.Text = "";
             furnitureBindingSource.Clear();
             foreach (Furniture theFurniture in theFurnitureList.Keys.ToList())
             {
@@ -111,6 +113,26 @@ namespace RentMe.View
                 this.CalculateSubtotalByFurniture(theFurniture);
             }
             this.rentalTotalTextBox.Text = "$" + this.CalculateRentalTotal().ToString();
+        }
+
+        private void ReturnDateTimePickerOnValueChanged(object sender, EventArgs e)
+        {
+            if (this.returnDateTimePicker.Value.Date <= DateTime.Today)
+            {
+                this.returnDateTimePicker.Value = DateTime.Today.AddDays(1);
+                this.RefreshViewCartForm();
+                this.ShowErrorMessage("The return date must be after today's date.");
+            }
+            else
+            {
+                this.RefreshViewCartForm();
+            }
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
         }
     }
 }
