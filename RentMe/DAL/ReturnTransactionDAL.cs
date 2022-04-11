@@ -19,14 +19,14 @@ namespace RentMe.DAL
         /// <returns>The return transaction ID</returns>
         public int AddReturnTransactionAndItems(int memberID, int employeeID, ListView returnedItemsListView)
         {
-            string insertRentalTransactionStatement =
-                @"INSERT INTO rental_transaction (memberID, employeeID, returnDate) 
+            string insertReturnTransactionStatement =
+                @"INSERT INTO return_transaction (memberID, employeeID, returnDate) 
                 VALUES (@MemberID, @EmployeeID, @ReturnDate)";
 
             string selectTransactionID = "SELECT @@Identity";
 
-            string insertRentalItemStatement =
-                @"INSERT INTO rental_item (transactionID, rentalTransactionID, furnitureID, quantity) 
+            string insertReturnItemStatement =
+                @"INSERT INTO return_item (transactionID, rentalTransactionID, furnitureID, quantity) 
                 VALUES (@TransactionID, @RentalTransactionID, @FurnitureID, @Quantity)";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
@@ -36,8 +36,9 @@ namespace RentMe.DAL
                 int transactionID = 0;
                 try
                 {
-                    using (SqlCommand insertCommand = new SqlCommand(insertRentalTransactionStatement, connection))
+                    using (SqlCommand insertCommand = new SqlCommand(insertReturnTransactionStatement, connection))
                     {
+                        insertCommand.Transaction = transaction;
                         insertCommand.Parameters.Add("@MemberID", System.Data.SqlDbType.Int);
                         insertCommand.Parameters["@MemberID"].Value = memberID;
                         insertCommand.Parameters.Add("@EmployeeID", System.Data.SqlDbType.Int);
@@ -48,12 +49,14 @@ namespace RentMe.DAL
                     }
                     using (SqlCommand selectCommand = new SqlCommand(selectTransactionID, connection))
                     {
-                        transactionID = selectCommand.ExecuteNonQuery();
+                        selectCommand.Transaction = transaction;
+                        transactionID = Convert.ToInt32(selectCommand.ExecuteScalar());
                     }
-                    using (SqlCommand insertCommand = new SqlCommand(insertRentalItemStatement, connection))
+                    using (SqlCommand insertCommand = new SqlCommand(insertReturnItemStatement, connection))
                     {
                         for (int i = 0; i < returnedItemsListView.Items.Count; i++)
                         {
+                            insertCommand.Transaction = transaction;
                             ReturnItem theReturnedItem = (ReturnItem)returnedItemsListView.Items[i].Tag;
                             insertCommand.Parameters.Add("@TransactionID", System.Data.SqlDbType.Int);
                             insertCommand.Parameters["@TransactionID"].Value = transactionID;
@@ -68,7 +71,7 @@ namespace RentMe.DAL
                     }
                     transaction.Commit();
                 }
-                catch
+                catch (Exception)
                 {
                     transaction.Rollback();
                 }
