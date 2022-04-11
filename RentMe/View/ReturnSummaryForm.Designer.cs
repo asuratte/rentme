@@ -39,6 +39,8 @@ namespace RentMe.View
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.totalValue = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionNumberLabel
@@ -70,7 +72,7 @@ namespace RentMe.View
             // dateValue
             // 
             this.dateValue.AutoSize = true;
-            this.dateValue.Location = new System.Drawing.Point(429, 12);
+            this.dateValue.Location = new System.Drawing.Point(342, 12);
             this.dateValue.Name = "dateValue";
             this.dateValue.Size = new System.Drawing.Size(0, 19);
             this.dateValue.TabIndex = 4;
@@ -78,7 +80,7 @@ namespace RentMe.View
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(384, 12);
+            this.dateLabel.Location = new System.Drawing.Point(297, 12);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(41, 19);
             this.dateLabel.TabIndex = 3;
@@ -118,11 +120,23 @@ namespace RentMe.View
             this.totalLabel.TabIndex = 7;
             this.totalLabel.Text = "Total:";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 82);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(506, 187);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // ReturnSummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 311);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.totalValue);
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.employeeNameValue);
@@ -138,6 +152,8 @@ namespace RentMe.View
             this.Name = "ReturnSummaryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Return Summary";
+            this.Load += new System.EventHandler(this.OnReturnSummaryFormLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +170,6 @@ namespace RentMe.View
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label totalValue;
         private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
