@@ -11,5 +11,7 @@ namespace RentMe.Model
         public int MemberID { get; set; }
         public int EmployeeID { get; set; }
         public DateTime ReturnDate { get; set; }
+
+        public decimal TotalAmount { get; set; }
     }
 }

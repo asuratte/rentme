@@ -18,6 +18,7 @@ namespace RentMe.UserControls
         private readonly MemberController theMemberController;
         private readonly ReturnTransactionController theReturnTransactionController;
         private ReturnItemForm theReturnItemForm;
+        private ReturnSummaryForm theReturnSummaryForm;
         private decimal theTotalAmount;
         private Member theMember;
         private Employee theEmployee;
@@ -43,8 +44,9 @@ namespace RentMe.UserControls
             InitializeComponent();
             this.theRentalItemController = new RentalItemController();
             this.theMemberController = new MemberController();
-            this.theReturnItemForm = new ReturnItemForm();
             this.theReturnTransactionController = new ReturnTransactionController();
+            this.theReturnItemForm = new ReturnItemForm();
+            this.theReturnSummaryForm = new ReturnSummaryForm();
         }
 
         private void MemberSearchButtonClick(object sender, System.EventArgs e)
@@ -173,19 +175,35 @@ namespace RentMe.UserControls
             this.ResetForm();
         }
 
+        private ReturnTransaction CreateReturnTransaction(int returnTransactionID)
+        {
+            ReturnTransaction theReturnTransaction = new ReturnTransaction();
+            theReturnTransaction.TransactionID = returnTransactionID;
+            theReturnTransaction.MemberID = this.theMember.MemberID;
+            theReturnTransaction.EmployeeID = this.TheEmployee.EmployeeID;
+            theReturnTransaction.TotalAmount = this.theTotalAmount;
+            theReturnTransaction.ReturnDate = DateTime.Now;
+            return theReturnTransaction;
+        }
+
         private void OnCompleteReturnTransactionClick(object sender, EventArgs e)
         {
-            int returnTransactionID = 0;
             try
             {
                 ReturnItem testReturnItem = (ReturnItem)this.returnedItemsListView.Items[0].Tag;
-                returnTransactionID = this.theReturnTransactionController.AddReturnTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.returnedItemsListView);
+                int returnTransactionID = this.theReturnTransactionController.AddReturnTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.returnedItemsListView);
+                this.theReturnSummaryForm.ResetForm();
+                this.theReturnSummaryForm.TheMember = this.theMember;
+                this.theReturnSummaryForm.TheEmployee = this.TheEmployee;
+                this.theReturnSummaryForm.TheReturnTransaction = this.CreateReturnTransaction(returnTransactionID);
+                this.theReturnSummaryForm.TheReturnedItems = this.returnedItemsListView;
+                this.theReturnSummaryForm.ShowDialog();
+                this.ResetForm();
             }
             catch (Exception)
             {
                 this.ShowErrorMessage("There was an issue completing the return transaction.");
             }
-            // TODO launch order confirmation form and pass data to it including returnTransactionID returned from the insert method
         }
     }
 }
