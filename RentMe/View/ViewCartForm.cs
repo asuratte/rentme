@@ -21,6 +21,7 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.returnDate = DateTime.Today.AddDays(1);
+
         }
 
         public Dictionary<Furniture, int> TheFurnitureList
@@ -57,7 +58,7 @@ namespace RentMe.View
             this.RefreshViewCartForm();
         }
 
-        private void CancelButtonClick(object sender, EventArgs e)
+        private void CloseButtonClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
@@ -137,15 +138,38 @@ namespace RentMe.View
             this.errorMessageLabel.ForeColor = Color.Red;
         }
 
-        private void FurnitureDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void FurnitureDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
-                //Check if valid int (and quantity available), try catch error 
-                //Update dictionary
-                //refresh viewcartform
-                //if quantity 0 remove item
-                //reset error message on enter
+                int i = e.RowIndex;
+                try
+                {
+                    int newQuantity = Convert.ToInt32(this.furnitureDataGridView.Rows[i].Cells[0].Value);
+                    Furniture theFurniture = (Furniture)furnitureBindingSource[i];
+                    if (newQuantity > 0 && newQuantity <= theFurniture.TotalQuantity)
+                    {
+                        this.theFurnitureList[theFurniture] = newQuantity;
+                        this.RefreshViewCartForm();
+                    }
+                    else if (newQuantity <= 0)
+                    {
+                        this.RefreshViewCartForm();
+                        this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
+                    }
+                    else if (newQuantity > theFurniture.TotalQuantity)
+                    {
+                        this.RefreshViewCartForm();
+                        this.ShowErrorMessage("Only " + theFurniture.TotalQuantity + " " + theFurniture.Name + " items are currently in stock.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.RefreshViewCartForm();
+                    this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
+                    this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
+                }
+                this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
             }
         }
 
@@ -159,7 +183,5 @@ namespace RentMe.View
                 this.RefreshViewCartForm();
             }
         }
-
-        
     }
 }
