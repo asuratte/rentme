@@ -40,10 +40,10 @@ namespace RentMe.View
             this.rentalTotalTextBox = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.QuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubtotalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,15 +147,23 @@ namespace RentMe.View
             this.furnitureDataGridView.DataSource = this.furnitureBindingSource;
             this.furnitureDataGridView.Location = new System.Drawing.Point(16, 103);
             this.furnitureDataGridView.Name = "furnitureDataGridView";
-            this.furnitureDataGridView.ReadOnly = true;
             this.furnitureDataGridView.Size = new System.Drawing.Size(654, 220);
             this.furnitureDataGridView.TabIndex = 13;
+            this.furnitureDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FurnitureDataGridViewCellContentClick);
+            this.furnitureDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.FurnitureDataGridViewCellValueChanged);
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 334);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(569, 45);
+            this.errorMessageLabel.TabIndex = 16;
             // 
             // QuantityColumn
             // 
             this.QuantityColumn.HeaderText = "Quantity";
             this.QuantityColumn.Name = "QuantityColumn";
-            this.QuantityColumn.ReadOnly = true;
             this.QuantityColumn.Width = 80;
             // 
             // SubtotalColumn
@@ -174,14 +182,6 @@ namespace RentMe.View
             this.DeleteButtonColumn.ReadOnly = true;
             this.DeleteButtonColumn.Text = "Delete";
             this.DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            // 
-            // errorMessageLabel
-            // 
-            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(12, 334);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(569, 45);
-            this.errorMessageLabel.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -262,7 +262,7 @@ namespace RentMe.View
             this.Name = "ViewCartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Cart";
-            this.Load += new System.EventHandler(this.OnViewCartFormLoad);
+            this.Shown += new System.EventHandler(this.OnViewCartFormShown);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -280,6 +280,7 @@ namespace RentMe.View
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.BindingSource furnitureBindingSource;
         private System.Windows.Forms.DataGridView furnitureDataGridView;
+        private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -290,6 +291,5 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubtotalColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteButtonColumn;
-        private System.Windows.Forms.Label errorMessageLabel;
     }
 }

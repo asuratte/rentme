@@ -18,6 +18,7 @@ namespace RentMe.UserControls
         private readonly FurnitureStyleController theFurnitureStyleController;
         private readonly FurnitureController theFurnitureController;
         private readonly MemberController theMemberController;
+        private ViewCartForm theViewCartForm;
         private Member theMember;
         private Dictionary<Furniture, int> theCart;
 
@@ -31,6 +32,7 @@ namespace RentMe.UserControls
             this.theFurnitureStyleController = new FurnitureStyleController();
             this.theFurnitureController = new FurnitureController();
             this.theMemberController = new MemberController();
+            this.theViewCartForm = new ViewCartForm();
             this.theMember = null;
             this.theCart = new Dictionary<Furniture, int>();
         }
@@ -193,6 +195,8 @@ namespace RentMe.UserControls
             this.theMember = null;
             this.theCart.Clear();
             this.errorMessageLabel.Text = "";
+            this.theViewCartForm.Dispose();
+            this.theViewCartForm = new ViewCartForm();
         }
 
         private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -230,13 +234,12 @@ namespace RentMe.UserControls
 
         private void ViewCartButtonClick(object sender, EventArgs e)
         {
-            using (ViewCartForm theViewCartForm = new ViewCartForm())
             {
                 if (this.theCart.Count > 0)
                 {
                     theViewCartForm.TheFurnitureList = theCart;
                     theViewCartForm.TheMember = this.theMember;
-                    DialogResult result = theViewCartForm.ShowDialog();
+                    this.theViewCartForm.ShowDialog();
                 }
                 else
                 {

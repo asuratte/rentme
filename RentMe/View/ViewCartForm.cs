@@ -15,10 +15,12 @@ namespace RentMe.View
     {
         private Dictionary<Furniture, int> theFurnitureList;
         private Member theMember;
+        private DateTime returnDate; 
 
         public ViewCartForm()
         {
             InitializeComponent();
+            this.returnDate = DateTime.Today.AddDays(1);
         }
 
         public Dictionary<Furniture, int> TheFurnitureList
@@ -47,12 +49,12 @@ namespace RentMe.View
             }
         }
 
-        private void OnViewCartFormLoad(object sender, EventArgs e)
+        private void OnViewCartFormShown(object sender, EventArgs e)
         {
             this.memberNameLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
-            this.RefreshViewCartForm();
-            this.returnDateTimePicker.Value = DateTime.Today.AddDays(1);
             this.errorMessageLabel.Text = "";
+            this.returnDateTimePicker.Value = this.returnDate;
+            this.RefreshViewCartForm();
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
@@ -119,12 +121,12 @@ namespace RentMe.View
         {
             if (this.returnDateTimePicker.Value.Date <= DateTime.Today)
             {
-                this.returnDateTimePicker.Value = DateTime.Today.AddDays(1);
-                this.RefreshViewCartForm();
+                this.returnDateTimePicker.Value = this.returnDate;
                 this.ShowErrorMessage("The return date must be after today's date.");
             }
             else
             {
+                this.returnDate = this.returnDateTimePicker.Value;
                 this.RefreshViewCartForm();
             }
         }
@@ -134,5 +136,30 @@ namespace RentMe.View
             this.errorMessageLabel.Text = message;
             this.errorMessageLabel.ForeColor = Color.Red;
         }
+
+        private void FurnitureDataGridViewCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                //Check if valid int (and quantity available), try catch error 
+                //Update dictionary
+                //refresh viewcartform
+                //if quantity 0 remove item
+                //reset error message on enter
+            }
+        }
+
+        private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 9)
+            {
+                int i = e.RowIndex;
+                Furniture theFurniture = (Furniture)furnitureBindingSource[i];
+                this.theFurnitureList.Remove(theFurniture);
+                this.RefreshViewCartForm();
+            }
+        }
+
+        
     }
 }
