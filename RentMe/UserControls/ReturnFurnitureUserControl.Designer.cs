@@ -101,7 +101,6 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(424, 56);
             this.errorMessageLabel.TabIndex = 0;
-            this.errorMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // completeReturnTransactionButton
             // 

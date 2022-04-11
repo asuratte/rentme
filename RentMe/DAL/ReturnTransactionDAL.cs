@@ -54,9 +54,9 @@ namespace RentMe.DAL
                     }
                     using (SqlCommand insertCommand = new SqlCommand(insertReturnItemStatement, connection))
                     {
+                        insertCommand.Transaction = transaction;
                         for (int i = 0; i < returnedItemsListView.Items.Count; i++)
                         {
-                            insertCommand.Transaction = transaction;
                             ReturnItem theReturnedItem = (ReturnItem)returnedItemsListView.Items[i].Tag;
                             insertCommand.Parameters.Add("@TransactionID", System.Data.SqlDbType.Int);
                             insertCommand.Parameters["@TransactionID"].Value = transactionID;
@@ -67,6 +67,7 @@ namespace RentMe.DAL
                             insertCommand.Parameters.Add("@Quantity", System.Data.SqlDbType.Int);
                             insertCommand.Parameters["@Quantity"].Value = theReturnedItem.Quantity;
                             insertCommand.ExecuteNonQuery();
+                            insertCommand.Parameters.Clear();
                         }
                     }
                     transaction.Commit();
