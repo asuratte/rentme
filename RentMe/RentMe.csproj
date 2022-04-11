@@ -51,12 +51,14 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
     <Compile Include="Controller\RentalItemController.cs" />
+    <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\RentalItemDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
+    <Compile Include="DAL\ReturnTransactionDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StateController.cs" />

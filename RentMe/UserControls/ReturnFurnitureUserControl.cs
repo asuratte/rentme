@@ -16,8 +16,24 @@ namespace RentMe.UserControls
     {
         private readonly RentalItemController theRentalItemController;
         private readonly MemberController theMemberController;
+        private readonly ReturnTransactionController theReturnTransactionController;
         private ReturnItemForm theReturnItemForm;
         private decimal theTotalAmount;
+        private Member theMember;
+        private Employee theEmployee;
+
+        public Employee TheEmployee
+        {
+            get { return this.theEmployee; }
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("Employee not provided.");
+                }
+                this.theEmployee = value;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReturnFurnitureUserControl"/> class.
@@ -28,6 +44,7 @@ namespace RentMe.UserControls
             this.theRentalItemController = new RentalItemController();
             this.theMemberController = new MemberController();
             this.theReturnItemForm = new ReturnItemForm();
+            this.theReturnTransactionController = new ReturnTransactionController();
         }
 
         private void MemberSearchButtonClick(object sender, System.EventArgs e)
@@ -38,14 +55,14 @@ namespace RentMe.UserControls
                 {
                     int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
                     this.ResetForm();
-                    Member theMember = this.theMemberController.GetMemberByID(memberID);
-                    if (theMember != null)
+                    this.theMember = this.theMemberController.GetMemberByID(memberID);
+                    if (this.theMember != null)
                     {
                         List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
                         rentalItemBindingSource.Clear();
                         if (outstandingRentalItemsList.Count > 0)
                         {
-                            this.DataGridViewHeaderLabel.Text = "Items currently rented to " + theMember.FirstName + " " + theMember.LastName + ":";
+                            this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
                             foreach (RentalItem theRentalItem in outstandingRentalItemsList)
                             {
                                 rentalItemBindingSource.Add(theRentalItem);
@@ -136,6 +153,7 @@ namespace RentMe.UserControls
             this.DataGridViewHeaderLabel.Text = "";
             this.transactionTotalAmountTextBox.Text = "";
             this.theTotalAmount = 0;
+            this.theMember = null;
         }
 
         private void ShowErrorMessage(string message)
@@ -153,6 +171,21 @@ namespace RentMe.UserControls
         private void OnClearFormButtonClick(object sender, EventArgs e)
         {
             this.ResetForm();
+        }
+
+        private void OnCompleteReturnTransactionClick(object sender, EventArgs e)
+        {
+            int returnTransactionID = 0;
+            try
+            {
+                ReturnItem testReturnItem = (ReturnItem)this.returnedItemsListView.Items[0].Tag;
+                returnTransactionID = this.theReturnTransactionController.AddReturnTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.returnedItemsListView);
+            }
+            catch (Exception)
+            {
+                this.ShowErrorMessage("There was an issue completing the return transaction.");
+            }
+            // TODO launch order confirmation form and pass data to it including returnTransactionID returned from the insert method
         }
     }
 }
