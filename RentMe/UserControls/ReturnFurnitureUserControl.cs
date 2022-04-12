@@ -194,13 +194,20 @@ namespace RentMe.UserControls
             try
             {
                 int returnTransactionID = this.theReturnTransactionController.AddReturnTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.returnedItemsListView);
-                this.theReturnSummaryForm.ResetForm();
-                this.theReturnSummaryForm.TheMember = this.theMember;
-                this.theReturnSummaryForm.TheEmployee = this.TheEmployee;
-                this.theReturnSummaryForm.TheReturnTransaction = this.CreateReturnTransaction(returnTransactionID);
-                this.theReturnSummaryForm.TheReturnedItems = this.returnedItemsListView;
-                this.theReturnSummaryForm.ShowDialog();
-                this.ResetForm();
+                if (returnTransactionID != 0)
+                {
+                    this.theReturnSummaryForm.ResetForm();
+                    this.theReturnSummaryForm.TheMember = this.theMember;
+                    this.theReturnSummaryForm.TheEmployee = this.TheEmployee;
+                    this.theReturnSummaryForm.TheReturnTransaction = this.CreateReturnTransaction(returnTransactionID);
+                    this.theReturnSummaryForm.TheReturnedItems = this.returnedItemsListView;
+                    this.theReturnSummaryForm.ShowDialog();
+                    this.ResetForm();
+                }
+                else
+                {
+                    this.ShowErrorMessage("The transaction could not be processed. Please try again.");
+                }
             }
             catch (Exception)
             {
