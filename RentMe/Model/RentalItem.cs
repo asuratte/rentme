@@ -9,6 +9,7 @@ namespace RentMe.Model
     {
         public int TransactionID { get; set; }
         public string FurnitureID { get; set; }
+        public string FurnitureName { get; set; }
         public int Quantity { get; set; }
         public int MemberID { get; set; }
         public DateTime RentalDate { get; set; }
