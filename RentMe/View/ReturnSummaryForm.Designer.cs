@@ -43,12 +43,10 @@ namespace RentMe.View
             this.totalLabel = new System.Windows.Forms.Label();
             this.returnItemDataGridView = new System.Windows.Forms.DataGridView();
             this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewFurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewFineOrRefund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.returnItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -137,12 +135,10 @@ namespace RentMe.View
             this.returnItemDataGridView.AutoGenerateColumns = false;
             this.returnItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.returnItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
+            this.dataGridViewFurnitureID,
+            this.dataGridViewFurnitureName,
+            this.dataGridViewQuantity,
+            this.dataGridViewFineOrRefund});
             this.returnItemDataGridView.DataSource = this.returnItemBindingSource;
             this.returnItemDataGridView.Location = new System.Drawing.Point(16, 85);
             this.returnItemDataGridView.Name = "returnItemDataGridView";
@@ -154,55 +150,39 @@ namespace RentMe.View
             // 
             this.returnItemBindingSource.DataSource = typeof(RentMe.Model.ReturnItem);
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewFurnitureID
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewFurnitureID.DataPropertyName = "FurnitureID";
+            this.dataGridViewFurnitureID.HeaderText = "Furniture ID";
+            this.dataGridViewFurnitureID.Name = "dataGridViewFurnitureID";
+            this.dataGridViewFurnitureID.ReadOnly = true;
+            this.dataGridViewFurnitureID.Width = 120;
             // 
-            // dataGridViewTextBoxColumn2
+            // dataGridViewFurnitureName
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "RentalTransactionID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "RentalTransactionID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewFurnitureName.DataPropertyName = "FurnitureName";
+            this.dataGridViewFurnitureName.HeaderText = "Name";
+            this.dataGridViewFurnitureName.Name = "dataGridViewFurnitureName";
+            this.dataGridViewFurnitureName.ReadOnly = true;
+            this.dataGridViewFurnitureName.Width = 190;
             // 
-            // dataGridViewTextBoxColumn3
+            // dataGridViewQuantity
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "FurnitureID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Furniture ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 120;
+            this.dataGridViewQuantity.DataPropertyName = "Quantity";
+            this.dataGridViewQuantity.HeaderText = "Quantity";
+            this.dataGridViewQuantity.Name = "dataGridViewQuantity";
+            this.dataGridViewQuantity.ReadOnly = true;
+            this.dataGridViewQuantity.Width = 85;
             // 
-            // dataGridViewTextBoxColumn4
+            // dataGridViewFineOrRefund
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FurnitureName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 190;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 85;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "ItemTotal";
+            this.dataGridViewFineOrRefund.DataPropertyName = "ItemTotal";
             dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Fine/Refund";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 130;
+            this.dataGridViewFineOrRefund.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewFineOrRefund.HeaderText = "Fine/Refund";
+            this.dataGridViewFineOrRefund.Name = "dataGridViewFineOrRefund";
+            this.dataGridViewFineOrRefund.ReadOnly = true;
+            this.dataGridViewFineOrRefund.Width = 130;
             // 
             // ReturnSummaryForm
             // 
@@ -246,11 +226,9 @@ namespace RentMe.View
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.BindingSource returnItemBindingSource;
         private System.Windows.Forms.DataGridView returnItemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFurnitureID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFurnitureName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFineOrRefund;
     }
 }
