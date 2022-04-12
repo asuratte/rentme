@@ -83,9 +83,9 @@ namespace RentMe.View
                     }
                     else
                     {
-                        int numberOfDaysRented = Convert.ToInt32((DateTime.Now - this.itemToReturn.RentalDate).TotalDays);
-                        int plannedNumberOfDaysRented = Convert.ToInt32((this.itemToReturn.DueDate - this.itemToReturn.RentalDate).TotalDays);
-                        int numberOfDaysOverdue = Convert.ToInt32((DateTime.Now - this.itemToReturn.DueDate.AddDays(1)).TotalDays);
+                        int numberOfDaysRented = Convert.ToInt32((DateTime.Today - this.itemToReturn.RentalDate.Date).TotalDays);
+                        int plannedNumberOfDaysRented = Convert.ToInt32((this.itemToReturn.DueDate.Date - this.itemToReturn.RentalDate).TotalDays);
+                        int numberOfDaysOverdue = Convert.ToInt32((DateTime.Today - this.itemToReturn.DueDate.Date).TotalDays);
                         amountPaid = Decimal.Multiply(plannedNumberOfDaysRented, rentalRate);
                         this.SetReturnedItem();
                         if (numberOfDaysRented == plannedNumberOfDaysRented)
