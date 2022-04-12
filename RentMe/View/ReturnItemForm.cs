@@ -126,14 +126,17 @@ namespace RentMe.View
             if (itemTotal > amountPaid)
             {
                 itemTotalDisplay = "-$" + itemTotal.ToString();
+                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
             }
             else if (itemTotal < amountPaid)
             {
                 itemTotalDisplay = "+$" + itemTotal.ToString();
+                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
             }
             else
             {
                 itemTotalDisplay = "$" + itemTotal.ToString();
+                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
             }
             this.itemTotalTextBox.Text = itemTotalDisplay;
         }

@@ -11,5 +11,6 @@
         public string FurnitureName { get; set; }
         public int Quantity { get; set; }
         public decimal ItemTotal { get; set; }
+        public string ItemTotalDisplay { get; set; }
     }
 }

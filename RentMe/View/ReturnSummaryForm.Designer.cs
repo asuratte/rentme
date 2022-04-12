@@ -30,7 +30,6 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnSummaryForm));
             this.transactionNumberLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
@@ -43,10 +42,10 @@ namespace RentMe.View
             this.totalLabel = new System.Windows.Forms.Label();
             this.returnItemDataGridView = new System.Windows.Forms.DataGridView();
             this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewFurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewFineOrRefund = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnSummaryDataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnSummaryDataGridViewFurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnSummaryDataGridViewQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnSummaryDataGridViewFineOrRefund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.returnItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -135,10 +134,10 @@ namespace RentMe.View
             this.returnItemDataGridView.AutoGenerateColumns = false;
             this.returnItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.returnItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewFurnitureID,
-            this.dataGridViewFurnitureName,
-            this.dataGridViewQuantity,
-            this.dataGridViewFineOrRefund});
+            this.returnSummaryDataGridViewFurnitureID,
+            this.returnSummaryDataGridViewFurnitureName,
+            this.returnSummaryDataGridViewQuantity,
+            this.returnSummaryDataGridViewFineOrRefund});
             this.returnItemDataGridView.DataSource = this.returnItemBindingSource;
             this.returnItemDataGridView.Location = new System.Drawing.Point(16, 85);
             this.returnItemDataGridView.Name = "returnItemDataGridView";
@@ -150,39 +149,37 @@ namespace RentMe.View
             // 
             this.returnItemBindingSource.DataSource = typeof(RentMe.Model.ReturnItem);
             // 
-            // dataGridViewFurnitureID
+            // returnSummaryDataGridViewFurnitureID
             // 
-            this.dataGridViewFurnitureID.DataPropertyName = "FurnitureID";
-            this.dataGridViewFurnitureID.HeaderText = "Furniture ID";
-            this.dataGridViewFurnitureID.Name = "dataGridViewFurnitureID";
-            this.dataGridViewFurnitureID.ReadOnly = true;
-            this.dataGridViewFurnitureID.Width = 120;
+            this.returnSummaryDataGridViewFurnitureID.DataPropertyName = "FurnitureID";
+            this.returnSummaryDataGridViewFurnitureID.HeaderText = "Furniture ID";
+            this.returnSummaryDataGridViewFurnitureID.Name = "returnSummaryDataGridViewFurnitureID";
+            this.returnSummaryDataGridViewFurnitureID.ReadOnly = true;
+            this.returnSummaryDataGridViewFurnitureID.Width = 120;
             // 
-            // dataGridViewFurnitureName
+            // returnSummaryDataGridViewFurnitureName
             // 
-            this.dataGridViewFurnitureName.DataPropertyName = "FurnitureName";
-            this.dataGridViewFurnitureName.HeaderText = "Name";
-            this.dataGridViewFurnitureName.Name = "dataGridViewFurnitureName";
-            this.dataGridViewFurnitureName.ReadOnly = true;
-            this.dataGridViewFurnitureName.Width = 190;
+            this.returnSummaryDataGridViewFurnitureName.DataPropertyName = "FurnitureName";
+            this.returnSummaryDataGridViewFurnitureName.HeaderText = "Name";
+            this.returnSummaryDataGridViewFurnitureName.Name = "returnSummaryDataGridViewFurnitureName";
+            this.returnSummaryDataGridViewFurnitureName.ReadOnly = true;
+            this.returnSummaryDataGridViewFurnitureName.Width = 190;
             // 
-            // dataGridViewQuantity
+            // returnSummaryDataGridViewQuantity
             // 
-            this.dataGridViewQuantity.DataPropertyName = "Quantity";
-            this.dataGridViewQuantity.HeaderText = "Quantity";
-            this.dataGridViewQuantity.Name = "dataGridViewQuantity";
-            this.dataGridViewQuantity.ReadOnly = true;
-            this.dataGridViewQuantity.Width = 85;
+            this.returnSummaryDataGridViewQuantity.DataPropertyName = "Quantity";
+            this.returnSummaryDataGridViewQuantity.HeaderText = "Quantity";
+            this.returnSummaryDataGridViewQuantity.Name = "returnSummaryDataGridViewQuantity";
+            this.returnSummaryDataGridViewQuantity.ReadOnly = true;
+            this.returnSummaryDataGridViewQuantity.Width = 85;
             // 
-            // dataGridViewFineOrRefund
+            // returnSummaryDataGridViewFineOrRefund
             // 
-            this.dataGridViewFineOrRefund.DataPropertyName = "ItemTotal";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewFineOrRefund.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFineOrRefund.HeaderText = "Fine/Refund";
-            this.dataGridViewFineOrRefund.Name = "dataGridViewFineOrRefund";
-            this.dataGridViewFineOrRefund.ReadOnly = true;
-            this.dataGridViewFineOrRefund.Width = 130;
+            this.returnSummaryDataGridViewFineOrRefund.DataPropertyName = "ItemTotalDisplay";
+            this.returnSummaryDataGridViewFineOrRefund.HeaderText = "Fine/Refund";
+            this.returnSummaryDataGridViewFineOrRefund.Name = "returnSummaryDataGridViewFineOrRefund";
+            this.returnSummaryDataGridViewFineOrRefund.ReadOnly = true;
+            this.returnSummaryDataGridViewFineOrRefund.Width = 130;
             // 
             // ReturnSummaryForm
             // 
@@ -226,9 +223,9 @@ namespace RentMe.View
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.BindingSource returnItemBindingSource;
         private System.Windows.Forms.DataGridView returnItemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFurnitureID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFurnitureName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFineOrRefund;
+        private System.Windows.Forms.DataGridViewTextBoxColumn returnSummaryDataGridViewFurnitureID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn returnSummaryDataGridViewFurnitureName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn returnSummaryDataGridViewQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn returnSummaryDataGridViewFineOrRefund;
     }
 }
