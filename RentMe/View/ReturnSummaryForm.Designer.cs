@@ -29,6 +29,8 @@ namespace RentMe.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnSummaryForm));
             this.transactionNumberLabel = new System.Windows.Forms.Label();
             this.memberNameLabel = new System.Windows.Forms.Label();
@@ -39,8 +41,16 @@ namespace RentMe.View
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.totalValue = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.returnItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.returnItemDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // transactionNumberLabel
@@ -106,7 +116,7 @@ namespace RentMe.View
             // totalValue
             // 
             this.totalValue.AutoSize = true;
-            this.totalValue.Location = new System.Drawing.Point(429, 283);
+            this.totalValue.Location = new System.Drawing.Point(429, 347);
             this.totalValue.Name = "totalValue";
             this.totalValue.Size = new System.Drawing.Size(0, 19);
             this.totalValue.TabIndex = 8;
@@ -114,29 +124,92 @@ namespace RentMe.View
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(382, 283);
+            this.totalLabel.Location = new System.Drawing.Point(382, 347);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(41, 19);
             this.totalLabel.TabIndex = 7;
             this.totalLabel.Text = "Total:";
             // 
-            // dataGridView1
+            // returnItemDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 82);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(506, 187);
-            this.dataGridView1.TabIndex = 9;
+            this.returnItemDataGridView.AllowUserToAddRows = false;
+            this.returnItemDataGridView.AllowUserToDeleteRows = false;
+            this.returnItemDataGridView.AutoGenerateColumns = false;
+            this.returnItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.returnItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.returnItemDataGridView.DataSource = this.returnItemBindingSource;
+            this.returnItemDataGridView.Location = new System.Drawing.Point(16, 85);
+            this.returnItemDataGridView.Name = "returnItemDataGridView";
+            this.returnItemDataGridView.ReadOnly = true;
+            this.returnItemDataGridView.Size = new System.Drawing.Size(571, 246);
+            this.returnItemDataGridView.TabIndex = 9;
+            // 
+            // returnItemBindingSource
+            // 
+            this.returnItemBindingSource.DataSource = typeof(RentMe.Model.ReturnItem);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "RentalTransactionID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "RentalTransactionID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "FurnitureID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Furniture ID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FurnitureName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 190;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 85;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ItemTotal";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Fine/Refund";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 130;
             // 
             // ReturnSummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 311);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(599, 386);
+            this.Controls.Add(this.returnItemDataGridView);
             this.Controls.Add(this.totalValue);
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.employeeNameValue);
@@ -153,7 +226,8 @@ namespace RentMe.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Return Summary";
             this.Load += new System.EventHandler(this.OnReturnSummaryFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnItemDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +244,13 @@ namespace RentMe.View
         private System.Windows.Forms.Label employeeNameLabel;
         private System.Windows.Forms.Label totalValue;
         private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource returnItemBindingSource;
+        private System.Windows.Forms.DataGridView returnItemDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

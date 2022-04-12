@@ -93,6 +93,11 @@ namespace RentMe.View
             this.employeeNameValue.Text = this.theEmployee.FirstName + " " + this.theEmployee.LastName;
             this.transactionNumberLabel.Text = "Transaction #" + this.theReturnTransaction.TransactionID + " completed.";
             this.DisplayTotalAmount();
+            returnItemBindingSource.Clear();
+            for (int i = 0; i < theReturnedItems.Items.Count; i++)
+            {
+                returnItemBindingSource.Add(theReturnedItems.Items[i].Tag);
+            }
         }
 
         private void DisplayTotalAmount()
