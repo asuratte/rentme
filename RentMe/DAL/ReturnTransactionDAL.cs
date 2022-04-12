@@ -23,11 +23,16 @@ namespace RentMe.DAL
                 @"INSERT INTO return_transaction (memberID, employeeID, returnDate) 
                 VALUES (@MemberID, @EmployeeID, @ReturnDate)";
 
-            string selectTransactionID = "SELECT @@Identity";
+            string selectTransactionIDStatement = "SELECT @@Identity";
 
             string insertReturnItemStatement =
                 @"INSERT INTO return_item (transactionID, rentalTransactionID, furnitureID, quantity) 
                 VALUES (@TransactionID, @RentalTransactionID, @FurnitureID, @Quantity)";
+
+            string updateFurnitureInventoryStatement = 
+                @"UPDATE furniture SET
+                   totalQuantity = totalQuantity + @QuantityReturned
+                WHERE furnitureID = @FurnitureID";
 
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
@@ -47,7 +52,7 @@ namespace RentMe.DAL
                         insertCommand.Parameters["@ReturnDate"].Value = DateTime.Now;
                         insertCommand.ExecuteNonQuery();
                     }
-                    using (SqlCommand selectCommand = new SqlCommand(selectTransactionID, connection))
+                    using (SqlCommand selectCommand = new SqlCommand(selectTransactionIDStatement, connection))
                     {
                         selectCommand.Transaction = transaction;
                         transactionID = Convert.ToInt32(selectCommand.ExecuteScalar());
@@ -68,6 +73,20 @@ namespace RentMe.DAL
                             insertCommand.Parameters["@Quantity"].Value = theReturnedItem.Quantity;
                             insertCommand.ExecuteNonQuery();
                             insertCommand.Parameters.Clear();
+                        }
+                    }
+                    using (SqlCommand updateCommand = new SqlCommand(updateFurnitureInventoryStatement, connection))
+                    {
+                        updateCommand.Transaction = transaction;
+                        for (int i = 0; i < returnedItemsListView.Items.Count; i++)
+                        {
+                            ReturnItem theReturnedItem = (ReturnItem)returnedItemsListView.Items[i].Tag;
+                            updateCommand.Parameters.Add("@FurnitureID", System.Data.SqlDbType.VarChar);
+                            updateCommand.Parameters["@FurnitureID"].Value = theReturnedItem.FurnitureID;
+                            updateCommand.Parameters.Add("@QuantityReturned", System.Data.SqlDbType.Int);
+                            updateCommand.Parameters["@QuantityReturned"].Value = theReturnedItem.Quantity;
+                            updateCommand.ExecuteNonQuery();
+                            updateCommand.Parameters.Clear();
                         }
                     }
                     transaction.Commit();
