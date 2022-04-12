@@ -5,7 +5,6 @@
     /// </summary>
     public class ReturnItem
     {
-        public int TransactionID { get; set; }
         public int RentalTransactionID { get; set; }
         public string FurnitureID { get; set; }
         public string FurnitureName { get; set; }
