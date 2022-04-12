@@ -127,16 +127,22 @@ namespace RentMe.View
             {
                 itemTotalDisplay = "-$" + itemTotal.ToString();
                 this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                this.errorMessageLabel.Text = "Fine assessed for late return.";
+                this.errorMessageLabel.ForeColor = Color.Red;
             }
             else if (itemTotal < amountPaid)
             {
                 itemTotalDisplay = "+$" + itemTotal.ToString();
                 this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                this.errorMessageLabel.Text = "Refund due.";
+                this.errorMessageLabel.ForeColor = Color.Green;
             }
             else
             {
                 itemTotalDisplay = "$" + itemTotal.ToString();
                 this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                this.errorMessageLabel.Text = "Paid in full.";
+                this.errorMessageLabel.ForeColor = Color.Black;
             }
             this.itemTotalTextBox.Text = itemTotalDisplay;
         }
@@ -170,7 +176,7 @@ namespace RentMe.View
         private bool ValidateItemQuantity()
         {
             bool isValid = false;
-            if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity)
+            if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity && Convert.ToInt32(this.quantityTextBox.Text) != 0)
             {
                 isValid = true;
             }
