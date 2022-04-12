@@ -17,6 +17,7 @@ namespace RentMe.UserControls
         private readonly RentalItemController theRentalItemController;
         private readonly MemberController theMemberController;
         private readonly ReturnTransactionController theReturnTransactionController;
+        private readonly FurnitureController theFurnitureController;
         private ReturnItemForm theReturnItemForm;
         private ReturnSummaryForm theReturnSummaryForm;
         private decimal theTotalAmount;
@@ -45,6 +46,7 @@ namespace RentMe.UserControls
             this.theRentalItemController = new RentalItemController();
             this.theMemberController = new MemberController();
             this.theReturnTransactionController = new ReturnTransactionController();
+            this.theFurnitureController = new FurnitureController();
             this.theReturnItemForm = new ReturnItemForm();
             this.theReturnSummaryForm = new ReturnSummaryForm();
         }
@@ -97,6 +99,7 @@ namespace RentMe.UserControls
             {
                 int i = e.RowIndex;
                 RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
+                theRentalItem.FurnitureName = this.theFurnitureController.GetFurnitureByID(theRentalItem.FurnitureID).Name;
                 this.theReturnItemForm.ResetForm();
                 this.theReturnItemForm.ItemToReturn = theRentalItem;
                 this.theReturnItemForm.ShowDialog();
@@ -190,7 +193,6 @@ namespace RentMe.UserControls
         {
             try
             {
-                ReturnItem testReturnItem = (ReturnItem)this.returnedItemsListView.Items[0].Tag;
                 int returnTransactionID = this.theReturnTransactionController.AddReturnTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.returnedItemsListView);
                 this.theReturnSummaryForm.ResetForm();
                 this.theReturnSummaryForm.TheMember = this.theMember;

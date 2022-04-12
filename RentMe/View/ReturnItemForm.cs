@@ -61,6 +61,7 @@ namespace RentMe.View
             this.theReturnedItem = new ReturnItem();
             this.theReturnedItem.RentalTransactionID = this.itemToReturn.TransactionID;
             this.theReturnedItem.FurnitureID = this.itemToReturn.FurnitureID;
+            this.TheReturnedItem.FurnitureName = this.ItemToReturn.FurnitureName;
             this.theReturnedItem.Quantity = Convert.ToInt32(this.quantityTextBox.Text);
         }
 
