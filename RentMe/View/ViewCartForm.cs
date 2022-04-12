@@ -13,7 +13,7 @@ namespace RentMe.View
 {
     public partial class ViewCartForm : Form
     {
-        private Dictionary<Furniture, int> theFurnitureList;
+        private List<RentalItem> theRentalItemList;
         private Member theMember;
         private DateTime returnDate; 
 
@@ -21,19 +21,18 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.returnDate = DateTime.Today.AddDays(1);
-
         }
 
-        public Dictionary<Furniture, int> TheFurnitureList
+        public List<RentalItem> TheRentalItemList
         {
-            get { return this.theFurnitureList; }
+            get { return this.theRentalItemList; }
             set
             {
                 if (value == null || value.Count == 0)
                 {
-                    throw new Exception("Furniture list not provided");
+                    throw new Exception("Rental item list not provided");
                 }
-                this.theFurnitureList = value;
+                this.theRentalItemList = value;
             }
         }
 
@@ -58,33 +57,17 @@ namespace RentMe.View
             this.RefreshViewCartForm();
         }
 
-        private void DisplayQuantityByFurniture(Furniture theFurniture)
+        private void CalculateSubtotalByRentalItem(RentalItem theRentalItem)
         {
-            int rowIndex = -1;
-            foreach (DataGridViewRow row in this.furnitureDataGridView.Rows)
+            foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
             {
-                if (row.Cells[1].Value.ToString().Equals(theFurniture.FurnitureID))
+                if (row.Cells[2].Value.ToString().Equals(theRentalItem.FurnitureID))
                 {
-                    rowIndex = row.Index;
-                    this.furnitureDataGridView.Rows[row.Index].Cells[0].Value = this.theFurnitureList[theFurniture];
-                    break;
-                }
-            }
-        }
-
-        private void CalculateSubtotalByFurniture(Furniture theFurniture)
-        {
-            int rowIndex = -1;
-            foreach (DataGridViewRow row in this.furnitureDataGridView.Rows)
-            {
-                if (row.Cells[1].Value.ToString().Equals(theFurniture.FurnitureID))
-                {
-                    rowIndex = row.Index;
-                    int quantity = Convert.ToInt32(this.furnitureDataGridView.Rows[row.Index].Cells[0].Value);
+                    int quantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[row.Index].Cells[1].Value);
                     int numberOfDays = (this.returnDateTimePicker.Value.Date - DateTime.Today).Days;
-                    decimal rentalRate = Convert.ToDecimal(this.furnitureDataGridView.Rows[row.Index].Cells[6].Value);
+                    decimal rentalRate = Convert.ToDecimal(this.rentalItemDataGridView.Rows[row.Index].Cells[4].Value);
                     decimal subtotal = quantity * rentalRate * numberOfDays;
-                    this.furnitureDataGridView.Rows[row.Index].Cells[8].Value = subtotal;
+                    this.rentalItemDataGridView.Rows[row.Index].Cells[8].Value = subtotal;
                     break;
                 }
             }
@@ -93,7 +76,7 @@ namespace RentMe.View
         private decimal CalculateRentalTotal()
         {
             decimal rentalTotal = 0;
-            foreach (DataGridViewRow row in this.furnitureDataGridView.Rows)
+            foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
             {
                 rentalTotal += Convert.ToDecimal(row.Cells[8].Value);
             }
@@ -103,12 +86,11 @@ namespace RentMe.View
         private void RefreshViewCartForm()
         {
             this.errorMessageLabel.Text = "";
-            furnitureBindingSource.Clear();
-            foreach (Furniture theFurniture in theFurnitureList.Keys.ToList())
+            rentalItemBindingSource.Clear();
+            foreach (RentalItem theRentalItem in theRentalItemList)
             {
-                furnitureBindingSource.Add(theFurniture);
-                this.DisplayQuantityByFurniture(theFurniture);
-                this.CalculateSubtotalByFurniture(theFurniture);
+                rentalItemBindingSource.Add(theRentalItem);
+                this.CalculateSubtotalByRentalItem(theRentalItem);
             }
             this.rentalTotalTextBox.Text = "$" + this.CalculateRentalTotal().ToString();
         }
@@ -133,48 +115,49 @@ namespace RentMe.View
             this.errorMessageLabel.ForeColor = Color.Red;
         }
 
-        private void FurnitureDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int i = e.RowIndex;
-                try
-                {
-                    int newQuantity = Convert.ToInt32(this.furnitureDataGridView.Rows[i].Cells[0].Value);
-                    Furniture theFurniture = (Furniture)furnitureBindingSource[i];
-                    if (newQuantity > 0 && newQuantity <= theFurniture.TotalQuantity)
-                    {
-                        this.theFurnitureList[theFurniture] = newQuantity;
-                        this.RefreshViewCartForm();
-                    }
-                    else if (newQuantity <= 0)
-                    {
-                        this.RefreshViewCartForm();
-                        this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
-                    }
-                    else if (newQuantity > theFurniture.TotalQuantity)
-                    {
-                        this.RefreshViewCartForm();
-                        this.ShowErrorMessage("Only " + theFurniture.TotalQuantity + " " + theFurniture.Name + " items are currently in stock.");
-                    }
-                }
-                catch (Exception)
-                {
-                    this.RefreshViewCartForm();
-                    this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
-                    this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
-                }
-                this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
-            }
-        }
+        //private void FurnitureDataGridViewCellEndEdit(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.ColumnIndex == 1)
+        //    {
+        //        int i = e.RowIndex;
+        //        try
+        //        {
+        //            int newQuantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[i].Cells[1].Value);
+        //            RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
+        //            if (newQuantity > 0 && newQuantity <= theRentalItem.TotalQuantity)
+        //            {
+        //                //this.theRentalItemList[theFurniture] = newQuantity;
+        //                this.RefreshViewCartForm();
+        //            }
+        //            else if (newQuantity <= 0)
+        //            {
+        //                this.RefreshViewCartForm();
+        //                this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
+        //            }
+        //            else if (newQuantity > theFurniture.TotalQuantity)
+        //            {
+        //                this.RefreshViewCartForm();
+        //                this.ShowErrorMessage("Only " + theFurniture.TotalQuantity + " " + theFurniture.Name + " items are currently in stock.");
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            this.RefreshViewCartForm();
+        //            this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
+        //            this.ShowErrorMessage("The quantity you entered is invalid. Please enter a value greater than 0.");
+        //        }
+        //        this.furnitureDataGridView.CurrentCell = this.furnitureDataGridView.Rows[i].Cells[0];
+        //    }
+        //}
 
-        private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RentalItemDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 9)
             {
                 int i = e.RowIndex;
-                Furniture theFurniture = (Furniture)furnitureBindingSource[i];
-                this.theFurnitureList.Remove(theFurniture);
+                RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
+                RentalItem itemToRemove = this.theRentalItemList.Find(item => item.FurnitureID.Equals(theRentalItem.FurnitureID));
+                this.theRentalItemList.Remove(itemToRemove);
                 this.RefreshViewCartForm();
             }
         }

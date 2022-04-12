@@ -20,7 +20,7 @@ namespace RentMe.UserControls
         private readonly MemberController theMemberController;
         private ViewCartForm theViewCartForm;
         private Member theMember;
-        private Dictionary<Furniture, int> theCart;
+        private List<RentalItem> theCart;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -34,7 +34,7 @@ namespace RentMe.UserControls
             this.theMemberController = new MemberController();
             this.theViewCartForm = new ViewCartForm();
             this.theMember = null;
-            this.theCart = new Dictionary<Furniture, int>();
+            this.theCart = new List<RentalItem>();
         }
 
         private void LoadComboBoxes()
@@ -213,13 +213,21 @@ namespace RentMe.UserControls
                         DialogResult result = theAddToCartForm.ShowDialog();
                         if (result == DialogResult.OK && theAddToCartForm.Quantity > 0)
                         {
-                            if (this.theCart.ContainsKey(theFurniture))
+                            if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
                             {
-                                this.theCart[theFurniture] += theAddToCartForm.Quantity;
+                                RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
+                                theRentalItem.Quantity += theAddToCartForm.Quantity;
                             }
                             else
                             {
-                                this.theCart.Add(theFurniture, theAddToCartForm.Quantity);
+                                RentalItem theRentalItem = new RentalItem
+                                {
+                                    Quantity = theAddToCartForm.Quantity,
+                                    FurnitureID = theFurniture.FurnitureID,
+                                    FurnitureName = theFurniture.Name,
+                                    RentalRate = theFurniture.RentalRate
+                                };
+                                this.theCart.Add(theRentalItem);
                             }
                             this.errorMessageLabel.Text = theAddToCartForm.Quantity + " " + theFurniture.Name + " item(s) successfully added to cart.";
                             this.errorMessageLabel.ForeColor = Color.Green;
@@ -238,7 +246,7 @@ namespace RentMe.UserControls
             {
                 if (this.theCart.Count > 0)
                 {
-                    theViewCartForm.TheFurnitureList = theCart;
+                    theViewCartForm.TheRentalItemList = theCart;
                     theViewCartForm.TheMember = this.theMember;
                     this.theViewCartForm.ShowDialog();
                 }

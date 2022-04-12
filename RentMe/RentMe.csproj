@@ -64,6 +64,7 @@
     <Compile Include="Model\FurnitureCategory.cs" />
     <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
@@ -161,6 +162,7 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
