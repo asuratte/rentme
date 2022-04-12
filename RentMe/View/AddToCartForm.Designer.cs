@@ -44,6 +44,7 @@ namespace RentMe.View
             // 
             this.furnitureIDLabel.AutoSize = true;
             this.furnitureIDLabel.Location = new System.Drawing.Point(12, 12);
+            this.furnitureIDLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.furnitureIDLabel.Name = "furnitureIDLabel";
             this.furnitureIDLabel.Size = new System.Drawing.Size(86, 19);
             this.furnitureIDLabel.TabIndex = 0;
@@ -53,6 +54,7 @@ namespace RentMe.View
             // 
             this.furnitureNameLabel.AutoSize = true;
             this.furnitureNameLabel.Location = new System.Drawing.Point(12, 57);
+            this.furnitureNameLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.furnitureNameLabel.Name = "furnitureNameLabel";
             this.furnitureNameLabel.Size = new System.Drawing.Size(48, 19);
             this.furnitureNameLabel.TabIndex = 1;
@@ -73,21 +75,22 @@ namespace RentMe.View
             this.furnitureQuantityNumericUpDown.Name = "furnitureQuantityNumericUpDown";
             this.furnitureQuantityNumericUpDown.Size = new System.Drawing.Size(60, 25);
             this.furnitureQuantityNumericUpDown.TabIndex = 5;
+            this.furnitureQuantityNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // furnitureIDValueLabel
             // 
-            this.furnitureIDValueLabel.AutoSize = true;
-            this.furnitureIDValueLabel.Location = new System.Drawing.Point(104, 12);
+            this.furnitureIDValueLabel.Location = new System.Drawing.Point(98, 12);
+            this.furnitureIDValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.furnitureIDValueLabel.Name = "furnitureIDValueLabel";
-            this.furnitureIDValueLabel.Size = new System.Drawing.Size(0, 19);
+            this.furnitureIDValueLabel.Size = new System.Drawing.Size(75, 19);
             this.furnitureIDValueLabel.TabIndex = 6;
             // 
             // furnitureNameValueLabel
             // 
-            this.furnitureNameValueLabel.AutoSize = true;
-            this.furnitureNameValueLabel.Location = new System.Drawing.Point(66, 57);
+            this.furnitureNameValueLabel.Location = new System.Drawing.Point(60, 57);
+            this.furnitureNameValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.furnitureNameValueLabel.Name = "furnitureNameValueLabel";
-            this.furnitureNameValueLabel.Size = new System.Drawing.Size(0, 19);
+            this.furnitureNameValueLabel.Size = new System.Drawing.Size(249, 19);
             this.furnitureNameValueLabel.TabIndex = 7;
             // 
             // addToCartButton
@@ -138,6 +141,7 @@ namespace RentMe.View
             this.Name = "AddToCartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add to Cart";
+            this.Load += new System.EventHandler(this.AddToCartFormOnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureQuantityNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

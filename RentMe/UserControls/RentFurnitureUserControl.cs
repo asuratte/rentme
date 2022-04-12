@@ -209,8 +209,7 @@ namespace RentMe.UserControls
                     Furniture theFurniture = (Furniture)furnitureBindingSource[i];
                     using (AddToCartForm theAddToCartForm = new AddToCartForm())
                     {
-                        theAddToCartForm.FurnitureID = theFurniture.FurnitureID;
-                        theAddToCartForm.FurnitureName = theFurniture.Name;
+                        theAddToCartForm.TheFurniture = theFurniture;
                         DialogResult result = theAddToCartForm.ShowDialog();
                         if (result == DialogResult.OK && theAddToCartForm.Quantity > 0)
                         {
@@ -222,6 +221,8 @@ namespace RentMe.UserControls
                             {
                                 this.theCart.Add(theFurniture, theAddToCartForm.Quantity);
                             }
+                            this.errorMessageLabel.Text = theAddToCartForm.Quantity + " " + theFurniture.Name + " item(s) successfully added to cart.";
+                            this.errorMessageLabel.ForeColor = Color.Green;
                         }
                     }
                 }

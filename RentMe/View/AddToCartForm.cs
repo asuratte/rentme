@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RentMe.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,34 +13,20 @@ namespace RentMe.View
 {
     public partial class AddToCartForm : Form
     {
-        private string furnitureID;
-        private string furnitureName;
+        private Furniture theFurniture;
 
-        public string FurnitureID
+        public Furniture TheFurniture
         {
-            get { return this.furnitureID; }
+            get { return this.theFurniture; }
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (value == null)
                 {
-                    throw new Exception("Furniture ID not provided");
+                    throw new Exception("Furniture not provided");
                 }
-                this.furnitureID = value;
-                this.furnitureIDValueLabel.Text = this.furnitureID;
-            }
-        }
-
-        public string FurnitureName
-        {
-            get { return this.furnitureName; }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new Exception("Name not provided");
-                }
-                this.furnitureName = value;
-                this.furnitureNameValueLabel.Text = this.furnitureName;
+                this.theFurniture = value;
+                this.furnitureIDValueLabel.Text = this.theFurniture.FurnitureID;
+                this.furnitureNameValueLabel.Text = this.theFurniture.Name;
             }
         }
 
@@ -59,6 +46,11 @@ namespace RentMe.View
         {
             this.Quantity = Convert.ToInt32(this.furnitureQuantityNumericUpDown.Value);
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void AddToCartFormOnLoad(object sender, EventArgs e)
+        {
+            this.furnitureQuantityNumericUpDown.Maximum = this.theFurniture.TotalQuantity;
         }
     }
 }

@@ -58,11 +58,6 @@ namespace RentMe.View
             this.RefreshViewCartForm();
         }
 
-        private void CloseButtonClick(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
         private void DisplayQuantityByFurniture(Furniture theFurniture)
         {
             int rowIndex = -1;
@@ -182,6 +177,11 @@ namespace RentMe.View
                 this.theFurnitureList.Remove(theFurniture);
                 this.RefreshViewCartForm();
             }
+        }
+
+        private void CloseButtonClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
