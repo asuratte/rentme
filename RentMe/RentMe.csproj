@@ -60,6 +60,7 @@
     <Compile Include="Controller\StateController.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="DAL\StateDAL.cs" />
+    <Compile Include="Model\Encryptor.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\FurnitureCategory.cs" />
     <Compile Include="Model\FurnitureStyle.cs" />

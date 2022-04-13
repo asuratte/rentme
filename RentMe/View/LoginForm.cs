@@ -49,7 +49,7 @@ namespace RentMe.View
             }
             try
             {
-                bool validCredentials = this.employeeController.CheckLoginCredentials(usernameTextBox.Text, passwordTextBox.Text);
+                bool validCredentials = this.employeeController.CheckLoginCredentials(usernameTextBox.Text, Encryptor.EncryptString(passwordTextBox.Text));
                 if (validCredentials)
                 {
                     Employee employee = this.employeeController.GetEmployeeByUsername(usernameTextBox.Text);
