@@ -110,5 +110,40 @@ namespace RentMe.DAL
             return theFurnitureList;
         }
 
+        /// <summary>
+        /// Gets the furniture quantity by identifier.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <returns>The total quantity in stock for the furniture item.</returns>
+        public int GetFurnitureQuantityByID(string furnitureID)
+        {
+            string selectStatement =
+                @"SELECT totalQuantity
+                FROM furniture
+                WHERE furnitureID = @FurnitureID";
+
+            int quantity = 0;
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@FurnitureID", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@FurnitureID"].Value = furnitureID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            quantity = (int)reader["totalQuantity"];
+                        }
+                    }
+                }
+                return quantity;
+            }
+
+        }
     }
 }

@@ -151,11 +151,13 @@ namespace RentMe.View
             this.SubtotalColumn,
             this.RemoveColumn});
             this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
-            this.rentalItemDataGridView.Location = new System.Drawing.Point(21, 111);
+            this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 111);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(649, 220);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(654, 220);
             this.rentalItemDataGridView.TabIndex = 16;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
+            this.rentalItemDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.RentalItemDataGridViewCellValidating);
+            this.rentalItemDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.RentalItemDataGridViewDataError);
             // 
             // SubtotalColumn
             // 
