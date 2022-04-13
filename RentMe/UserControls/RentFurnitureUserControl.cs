@@ -203,6 +203,7 @@ namespace RentMe.UserControls
         {
             if (e.ColumnIndex == 7)
             {
+                this.errorMessageLabel.Text = "";
                 if (this.theMember != null)
                 {
                     int i = e.RowIndex;
@@ -210,26 +211,33 @@ namespace RentMe.UserControls
                     using (AddToCartForm theAddToCartForm = new AddToCartForm())
                     {
                         theAddToCartForm.TheFurniture = theFurniture;
+                        theAddToCartForm.QuantityAvailable = theFurniture.TotalQuantity;
+                        if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
+                        {
+                            RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
+                            theAddToCartForm.QuantityAvailable = theFurniture.TotalQuantity - theRentalItem.Quantity;
+                        }
+                            
                         DialogResult result = theAddToCartForm.ShowDialog();
-                        if (result == DialogResult.OK && theAddToCartForm.Quantity > 0)
+                        if (result == DialogResult.OK && theAddToCartForm.QuantityToAdd > 0)
                         {
                             if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
                             {
                                 RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
-                                theRentalItem.Quantity += theAddToCartForm.Quantity;
+                                theRentalItem.Quantity += theAddToCartForm.QuantityToAdd;
                             }
                             else
                             {
                                 RentalItem theRentalItem = new RentalItem
                                 {
-                                    Quantity = theAddToCartForm.Quantity,
+                                    Quantity = theAddToCartForm.QuantityToAdd,
                                     FurnitureID = theFurniture.FurnitureID,
                                     FurnitureName = theFurniture.Name,
                                     RentalRate = theFurniture.RentalRate
                                 };
                                 this.theCart.Add(theRentalItem);
                             }
-                            this.errorMessageLabel.Text = theAddToCartForm.Quantity + " " + theFurniture.Name + " item(s) successfully added to cart.";
+                            this.errorMessageLabel.Text = theAddToCartForm.QuantityToAdd + " " + theFurniture.Name + " item(s) successfully added to cart.";
                             this.errorMessageLabel.ForeColor = Color.Green;
                         }
                     }
@@ -243,8 +251,8 @@ namespace RentMe.UserControls
 
         private void ViewCartButtonClick(object sender, EventArgs e)
         {
-            {
-                if (this.theCart.Count > 0)
+            this.errorMessageLabel.Text = "";
+            if (this.theCart.Count > 0)
                 {
                     theViewCartForm.TheRentalItemList = theCart;
                     theViewCartForm.TheMember = this.theMember;
@@ -254,7 +262,7 @@ namespace RentMe.UserControls
                 {
                     this.ShowErrorMessage("The cart is currently empty.");
                 }
-            }
+            
             
         }
     }

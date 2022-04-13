@@ -30,7 +30,8 @@ namespace RentMe.View
             }
         }
 
-        public int Quantity { get; set; }
+        public int QuantityToAdd { get; set; }
+        public int QuantityAvailable { get; set; }
 
         public AddToCartForm()
         {
@@ -44,13 +45,13 @@ namespace RentMe.View
 
         private void AddToCartButtonClick(object sender, EventArgs e)
         {
-            this.Quantity = Convert.ToInt32(this.furnitureQuantityNumericUpDown.Value);
+            this.QuantityToAdd = Convert.ToInt32(this.furnitureQuantityNumericUpDown.Value);
             this.DialogResult = DialogResult.OK;
         }
 
         private void AddToCartFormOnLoad(object sender, EventArgs e)
         {
-            this.furnitureQuantityNumericUpDown.Maximum = this.theFurniture.TotalQuantity;
+            this.furnitureQuantityNumericUpDown.Maximum = this.QuantityAvailable;
         }
     }
 }
