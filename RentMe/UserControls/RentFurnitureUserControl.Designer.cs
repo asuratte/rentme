@@ -412,7 +412,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Button resetCartButton;
         private System.Windows.Forms.Label cartForMemberLabel;
         private System.Windows.Forms.Label horizontalDividerLineLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxQuantityInStockColumn;
         private System.Windows.Forms.Label memberNameValueLabel;
         private System.Windows.Forms.Label memberSearchDescriptionLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;

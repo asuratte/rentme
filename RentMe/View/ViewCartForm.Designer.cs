@@ -284,7 +284,6 @@ namespace RentMe.View
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.BindingSource rentalItemBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;

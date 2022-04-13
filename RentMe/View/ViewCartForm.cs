@@ -119,17 +119,14 @@ namespace RentMe.View
                             if (theEditCartForm.TheRentalItem.Quantity > 0)
                             {
                                 itemToUpdate.Quantity = theEditCartForm.TheRentalItem.Quantity;
-                                this.RefreshCart();
-                                this.errorMessageLabel.Text = "Item successfully updated.";
-                                this.errorMessageLabel.ForeColor = Color.Green;
                             }
                             else
                             {
                                 this.theRentalItemList.Remove(itemToUpdate);
-                                this.RefreshCart();
-                                this.errorMessageLabel.Text = "Item successfully removed from cart.";
-                                this.errorMessageLabel.ForeColor = Color.Green;
                             }
+                            this.RefreshCart();
+                            this.errorMessageLabel.Text = "Cart successfully updated.";
+                            this.errorMessageLabel.ForeColor = Color.Green;
                         }
                     }
                     catch (Exception)

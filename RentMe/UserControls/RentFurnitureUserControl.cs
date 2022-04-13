@@ -18,9 +18,19 @@ namespace RentMe.UserControls
         private readonly FurnitureStyleController theFurnitureStyleController;
         private readonly FurnitureController theFurnitureController;
         private readonly MemberController theMemberController;
+        private readonly List<RentalItem> theCart;
         private ViewCartForm theViewCartForm;
         private Member theMember;
-        private List<RentalItem> theCart;
+        private Employee theEmployee;
+
+        public Employee TheEmployee
+        {
+            get { return this.theEmployee; }
+            set
+            {
+                this.theEmployee = value ?? throw new Exception("Employee not provided.");
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -33,7 +43,6 @@ namespace RentMe.UserControls
             this.theFurnitureController = new FurnitureController();
             this.theMemberController = new MemberController();
             this.theViewCartForm = new ViewCartForm();
-            this.theMember = null;
             this.theCart = new List<RentalItem>();
         }
 
@@ -64,12 +73,6 @@ namespace RentMe.UserControls
             }
         }
 
-        private void ShowErrorMessage(string message)
-        {
-            this.errorMessageLabel.Text = message;
-            this.errorMessageLabel.ForeColor = Color.Red;
-        }
-
         private void FurnitureSearchButtonClick(object sender, EventArgs e)
         {
             furnitureBindingSource.Clear();
@@ -83,7 +86,7 @@ namespace RentMe.UserControls
                     if (furnitureItem != null)
                     {
                         furnitureBindingSource.Add(furnitureItem);
-                        this.ClearSearchFormInputs();
+                        this.ClearFurnitureSearchFormInputs();
                     }
                     else
                     {
@@ -107,7 +110,7 @@ namespace RentMe.UserControls
                         foreach (Furniture furnitureItem in theFurnitureList)
                         {
                             furnitureBindingSource.Add(furnitureItem);
-                            this.ClearSearchFormInputs();
+                            this.ClearFurnitureSearchFormInputs();
                         }
                     }
                     else
@@ -124,32 +127,6 @@ namespace RentMe.UserControls
             {
                 this.ShowErrorMessage("Please select either a Category or Style, or enter a Furniture ID before clicking Search.");
             }
-        }
-
-        private void ClearSearchFormInputs()
-        {
-            this.furnitureIDSearchTextBox.Text = "";
-            this.categoryComboBox.SelectedIndex = 0;
-            this.styleComboBox.SelectedIndex = 0;
-        }
-
-        private void OnSearchValueChanged(object sender, EventArgs e)
-        {
-            this.errorMessageLabel.Text = "";
-            this.errorMessageLabel.ForeColor = default(Color);
-        }
-
-        /// <summary>
-        /// Resets the form.
-        /// </summary>
-        public void ResetForm()
-        {
-            this.furnitureBindingSource.Clear();
-            this.LoadComboBoxes();
-            this.errorMessageLabel.Text = "";
-            this.ClearSearchFormInputs();
-            this.ResetCart();
-            this.memberIDSearchTextBox.Text = "";
         }
 
         private void MemberSearchButtonClick(object sender, EventArgs e)
@@ -178,25 +155,6 @@ namespace RentMe.UserControls
                     this.ShowErrorMessage("There was an issue retrieving member information by ID.");
                 }
             }
-        }
-
-        private void ResetCartButtonClick(object sender, EventArgs e)
-        {
-            this.ResetCart();
-            this.memberIDSearchTextBox.Text = "";
-        }
-
-        private void ResetCart()
-        {
-            this.cartForMemberLabel.Visible = false;
-            this.memberNameValueLabel.Text = "";
-            this.viewCartButton.Enabled = false;
-            this.resetCartButton.Enabled = false;
-            this.theMember = null;
-            this.theCart.Clear();
-            this.errorMessageLabel.Text = "";
-            this.theViewCartForm.Dispose();
-            this.theViewCartForm = new ViewCartForm();
         }
 
         private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -262,8 +220,57 @@ namespace RentMe.UserControls
                 {
                     this.ShowErrorMessage("The cart is currently empty.");
                 }
-            
-            
+        }
+
+        /// <summary>
+        /// Resets the form.
+        /// </summary>
+        public void ResetForm()
+        {
+            this.furnitureBindingSource.Clear();
+            this.LoadComboBoxes();
+            this.errorMessageLabel.Text = "";
+            this.ClearFurnitureSearchFormInputs();
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void ResetCartButtonClick(object sender, EventArgs e)
+        {
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void ResetCart()
+        {
+            this.cartForMemberLabel.Visible = false;
+            this.memberNameValueLabel.Text = "";
+            this.viewCartButton.Enabled = false;
+            this.resetCartButton.Enabled = false;
+            this.theMember = null;
+            this.theCart.Clear();
+            this.errorMessageLabel.Text = "";
+            this.theViewCartForm.Dispose();
+            this.theViewCartForm = new ViewCartForm();
+        }
+
+        private void ClearFurnitureSearchFormInputs()
+        {
+            this.furnitureIDSearchTextBox.Text = "";
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
+        }
+
+        private void OnSearchValueChanged(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default(Color);
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
         }
     }
 }
