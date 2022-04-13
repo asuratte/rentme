@@ -93,6 +93,12 @@
     <Compile Include="UserControls\MemberInformationUserControl.Designer.cs">
       <DependentUpon>MemberInformationUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ConfirmOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfirmOrderForm.Designer.cs">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EditCartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberInformationUserControl.resx">
       <DependentUpon>MemberInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfirmOrderForm.resx">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EditCartForm.resx">
       <DependentUpon>EditCartForm.cs</DependentUpon>
