@@ -11,14 +11,13 @@ namespace RentMe.View
     {
         private List<RentalItem> theRentalItemList;
         private Member theMember;
-        private DateTime theReturnDate;
         private readonly FurnitureController theFurnitureController;
 
         public ViewCartForm()
         {
             InitializeComponent();
             this.theFurnitureController = new FurnitureController();
-            this.theReturnDate = DateTime.Today.AddDays(1);
+            this.TheReturnDate = DateTime.Today.AddDays(1);
         }
 
         public List<RentalItem> TheRentalItemList
@@ -44,10 +43,14 @@ namespace RentMe.View
             }
         }
 
+        public Decimal TheRentalTotal { get; set; }
+
+        public DateTime TheReturnDate { get; set; }
+
         private void OnViewCartFormShown(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
-            this.returnDateTimePicker.Value = this.theReturnDate;
+            this.returnDateTimePicker.Value = this.TheReturnDate;
             this.RefreshCart();
         }
 
@@ -61,6 +64,14 @@ namespace RentMe.View
             this.CalculateSubtotals();
             this.CalculateRentalTotal();
             this.errorMessageLabel.Text = "";
+            if (this.theRentalItemList.Count > 0)
+            {
+                this.submitOrderButton.Enabled = true;
+            }
+            else
+            {
+                this.submitOrderButton.Enabled = false;
+            }
         }
 
         private void CalculateSubtotals()
@@ -77,24 +88,24 @@ namespace RentMe.View
 
         private void CalculateRentalTotal()
         {
-            decimal rentalTotal = 0;
+            this.TheRentalTotal = 0;
             foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
             {
-                rentalTotal += Convert.ToDecimal(row.Cells[8].Value);
+                this.TheRentalTotal += Convert.ToDecimal(row.Cells[8].Value);
             }
-            this.rentalTotalTextBox.Text = "$" + rentalTotal.ToString();
+            this.rentalTotalTextBox.Text = "$" + this.TheRentalTotal.ToString();
         }
 
         private void OnReturnDateTimePickerValueChanged(object sender, EventArgs e)
         {
             if (this.returnDateTimePicker.Value.Date <= DateTime.Today)
             {
-                this.returnDateTimePicker.Value = this.theReturnDate;
+                this.returnDateTimePicker.Value = this.TheReturnDate;
                 this.ShowErrorMessage("The return date must be after today's date.");
             }
             else
             {
-                this.theReturnDate = this.returnDateTimePicker.Value;
+                this.TheReturnDate = this.returnDateTimePicker.Value;
                 this.RefreshCart();
             }
         }
@@ -133,6 +144,21 @@ namespace RentMe.View
                     {
                         this.ShowErrorMessage("There was an issue retrieving the total quantity in stock. Editing unavailable.");
                     }
+                }
+            }
+        }
+
+        private void SubmitOrderButtonClick(object sender, EventArgs e)
+        {
+            using (ConfirmOrderForm theConfirmOrderForm = new ConfirmOrderForm())
+            {
+                theConfirmOrderForm.TheRentalItemList = this.theRentalItemList;
+                theConfirmOrderForm.TheRentalTotal = this.TheRentalTotal;
+                theConfirmOrderForm.TheReturnDate = this.TheReturnDate;
+                DialogResult result = theConfirmOrderForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
                 }
             }
         }

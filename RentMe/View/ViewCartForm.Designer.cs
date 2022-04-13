@@ -42,6 +42,7 @@ namespace RentMe.View
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.submitOrderButton = new System.Windows.Forms.Button();
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,7 +132,7 @@ namespace RentMe.View
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessageLabel.Location = new System.Drawing.Point(12, 334);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(569, 45);
+            this.errorMessageLabel.Size = new System.Drawing.Size(432, 45);
             this.errorMessageLabel.TabIndex = 16;
             // 
             // rentalItemDataGridView
@@ -162,6 +163,21 @@ namespace RentMe.View
             // rentalItemBindingSource
             // 
             this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            // 
+            // submitOrderButton
+            // 
+            this.submitOrderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.submitOrderButton.FlatAppearance.BorderSize = 0;
+            this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitOrderButton.ForeColor = System.Drawing.Color.White;
+            this.submitOrderButton.Location = new System.Drawing.Point(450, 352);
+            this.submitOrderButton.Name = "submitOrderButton";
+            this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
+            this.submitOrderButton.TabIndex = 20;
+            this.submitOrderButton.Text = "Submit Order";
+            this.submitOrderButton.UseVisualStyleBackColor = false;
+            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
             // 
             // transactionIDTextBoxColumn
             // 
@@ -242,6 +258,7 @@ namespace RentMe.View
             // 
             // EditButtonColumn
             // 
+            this.EditButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButtonColumn.HeaderText = "";
             this.EditButtonColumn.Name = "EditButtonColumn";
             this.EditButtonColumn.ReadOnly = true;
@@ -253,6 +270,7 @@ namespace RentMe.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 426);
+            this.Controls.Add(this.submitOrderButton);
             this.Controls.Add(this.rentalItemDataGridView);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.closeButton);
@@ -285,6 +303,7 @@ namespace RentMe.View
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.BindingSource rentalItemBindingSource;
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
+        private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;

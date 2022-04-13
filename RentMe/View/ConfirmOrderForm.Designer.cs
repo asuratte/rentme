@@ -29,47 +29,28 @@ namespace RentMe.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.furnitureIDColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.furnitureNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantityColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.dueDateColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.confirmOrderDetailsLabel = new System.Windows.Forms.Label();
             this.submitOrderButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
             this.totalValueLabel = new System.Windows.Forms.Label();
+            this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.dueDateLabel = new System.Windows.Forms.Label();
+            this.dueDateValueLabel = new System.Windows.Forms.Label();
+            this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.furnitureIDColumnHeader,
-            this.furnitureNameColumnHeader,
-            this.quantityColumnHeader,
-            this.dueDateColumnHeader});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 34);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(484, 206);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // furnitureIDColumnHeader
-            // 
-            this.furnitureIDColumnHeader.Text = "Furniture ID";
-            // 
-            // furnitureNameColumnHeader
-            // 
-            this.furnitureNameColumnHeader.Text = "Furniture Name";
-            // 
-            // quantityColumnHeader
-            // 
-            this.quantityColumnHeader.Text = "Quantity";
-            // 
-            // dueDateColumnHeader
-            // 
-            this.dueDateColumnHeader.Text = "Due Date";
             // 
             // confirmOrderDetailsLabel
             // 
@@ -88,7 +69,7 @@ namespace RentMe.View
             this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitOrderButton.ForeColor = System.Drawing.Color.White;
-            this.submitOrderButton.Location = new System.Drawing.Point(197, 303);
+            this.submitOrderButton.Location = new System.Drawing.Point(235, 334);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(168, 27);
             this.submitOrderButton.TabIndex = 19;
@@ -102,17 +83,19 @@ namespace RentMe.View
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(386, 303);
+            this.cancelButton.Location = new System.Drawing.Point(422, 334);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
             this.cancelButton.TabIndex = 20;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(357, 260);
+            this.totalLabel.Location = new System.Drawing.Point(12, 339);
+            this.totalLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(41, 19);
             this.totalLabel.TabIndex = 21;
@@ -121,44 +104,173 @@ namespace RentMe.View
             // totalValueLabel
             // 
             this.totalValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalValueLabel.Location = new System.Drawing.Point(404, 260);
+            this.totalValueLabel.Location = new System.Drawing.Point(82, 339);
+            this.totalValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.totalValueLabel.Name = "totalValueLabel";
-            this.totalValueLabel.Size = new System.Drawing.Size(92, 19);
+            this.totalValueLabel.Size = new System.Drawing.Size(98, 19);
             this.totalValueLabel.TabIndex = 22;
+            // 
+            // rentalItemDataGridView
+            // 
+            this.rentalItemDataGridView.AllowUserToAddRows = false;
+            this.rentalItemDataGridView.AllowUserToDeleteRows = false;
+            this.rentalItemDataGridView.AutoGenerateColumns = false;
+            this.rentalItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.rentalItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.transactionIDTextBoxColumn,
+            this.furnitureIDTextBoxColumn,
+            this.furnitureNameTextBoxColumn,
+            this.quantityTextBoxColumn,
+            this.rentalRateTextBoxColumn,
+            this.memberIDTextBoxColumn,
+            this.rentalDateTextBoxColumn,
+            this.dueDateTextBoxColumn});
+            this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
+            this.rentalItemDataGridView.Location = new System.Drawing.Point(12, 48);
+            this.rentalItemDataGridView.Name = "rentalItemDataGridView";
+            this.rentalItemDataGridView.ReadOnly = true;
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(520, 247);
+            this.rentalItemDataGridView.TabIndex = 23;
+            // 
+            // dueDateLabel
+            // 
+            this.dueDateLabel.AutoSize = true;
+            this.dueDateLabel.Location = new System.Drawing.Point(12, 311);
+            this.dueDateLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.dueDateLabel.Name = "dueDateLabel";
+            this.dueDateLabel.Size = new System.Drawing.Size(70, 19);
+            this.dueDateLabel.TabIndex = 24;
+            this.dueDateLabel.Text = "Due Date:";
+            // 
+            // dueDateValueLabel
+            // 
+            this.dueDateValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dueDateValueLabel.Location = new System.Drawing.Point(82, 311);
+            this.dueDateValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.dueDateValueLabel.Name = "dueDateValueLabel";
+            this.dueDateValueLabel.Size = new System.Drawing.Size(150, 19);
+            this.dueDateValueLabel.TabIndex = 25;
+            // 
+            // rentalRateTextBoxColumn
+            // 
+            this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rentalRateTextBoxColumn.FillWeight = 59.56007F;
+            this.rentalRateTextBoxColumn.HeaderText = "Rental Rate";
+            this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
+            this.rentalRateTextBoxColumn.ReadOnly = true;
+            this.rentalRateTextBoxColumn.Width = 106;
+            // 
+            // transactionIDTextBoxColumn
+            // 
+            this.transactionIDTextBoxColumn.DataPropertyName = "TransactionID";
+            this.transactionIDTextBoxColumn.HeaderText = "TransactionID";
+            this.transactionIDTextBoxColumn.Name = "transactionIDTextBoxColumn";
+            this.transactionIDTextBoxColumn.ReadOnly = true;
+            this.transactionIDTextBoxColumn.Visible = false;
+            // 
+            // furnitureIDTextBoxColumn
+            // 
+            this.furnitureIDTextBoxColumn.DataPropertyName = "FurnitureID";
+            this.furnitureIDTextBoxColumn.FillWeight = 221.3198F;
+            this.furnitureIDTextBoxColumn.HeaderText = "Furniture ID";
+            this.furnitureIDTextBoxColumn.Name = "furnitureIDTextBoxColumn";
+            this.furnitureIDTextBoxColumn.ReadOnly = true;
+            this.furnitureIDTextBoxColumn.Width = 110;
+            // 
+            // furnitureNameTextBoxColumn
+            // 
+            this.furnitureNameTextBoxColumn.DataPropertyName = "FurnitureName";
+            this.furnitureNameTextBoxColumn.FillWeight = 59.56007F;
+            this.furnitureNameTextBoxColumn.HeaderText = "Furniture Name";
+            this.furnitureNameTextBoxColumn.Name = "furnitureNameTextBoxColumn";
+            this.furnitureNameTextBoxColumn.ReadOnly = true;
+            this.furnitureNameTextBoxColumn.Width = 175;
+            // 
+            // quantityTextBoxColumn
+            // 
+            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityTextBoxColumn.FillWeight = 59.56007F;
+            this.quantityTextBoxColumn.HeaderText = "Quantity";
+            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
+            this.quantityTextBoxColumn.ReadOnly = true;
+            this.quantityTextBoxColumn.Width = 85;
+            // 
+            // memberIDTextBoxColumn
+            // 
+            this.memberIDTextBoxColumn.DataPropertyName = "MemberID";
+            this.memberIDTextBoxColumn.HeaderText = "MemberID";
+            this.memberIDTextBoxColumn.Name = "memberIDTextBoxColumn";
+            this.memberIDTextBoxColumn.ReadOnly = true;
+            this.memberIDTextBoxColumn.Visible = false;
+            // 
+            // rentalDateTextBoxColumn
+            // 
+            this.rentalDateTextBoxColumn.DataPropertyName = "RentalDate";
+            this.rentalDateTextBoxColumn.HeaderText = "RentalDate";
+            this.rentalDateTextBoxColumn.Name = "rentalDateTextBoxColumn";
+            this.rentalDateTextBoxColumn.ReadOnly = true;
+            this.rentalDateTextBoxColumn.Visible = false;
+            this.rentalDateTextBoxColumn.Width = 90;
+            // 
+            // dueDateTextBoxColumn
+            // 
+            this.dueDateTextBoxColumn.DataPropertyName = "DueDate";
+            this.dueDateTextBoxColumn.HeaderText = "DueDate";
+            this.dueDateTextBoxColumn.Name = "dueDateTextBoxColumn";
+            this.dueDateTextBoxColumn.ReadOnly = true;
+            this.dueDateTextBoxColumn.Visible = false;
+            // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // ConfirmOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 342);
+            this.ClientSize = new System.Drawing.Size(544, 372);
+            this.Controls.Add(this.dueDateValueLabel);
+            this.Controls.Add(this.dueDateLabel);
+            this.Controls.Add(this.rentalItemDataGridView);
             this.Controls.Add(this.totalValueLabel);
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submitOrderButton);
             this.Controls.Add(this.confirmOrderDetailsLabel);
-            this.Controls.Add(this.listView1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ConfirmOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirm Order";
+            this.Load += new System.EventHandler(this.OnConfirmOrderFormLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader furnitureIDColumnHeader;
-        private System.Windows.Forms.ColumnHeader furnitureNameColumnHeader;
-        private System.Windows.Forms.ColumnHeader quantityColumnHeader;
-        private System.Windows.Forms.ColumnHeader dueDateColumnHeader;
         private System.Windows.Forms.Label confirmOrderDetailsLabel;
         private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label totalValueLabel;
+        private System.Windows.Forms.BindingSource rentalItemBindingSource;
+        private System.Windows.Forms.DataGridView rentalItemDataGridView;
+        private System.Windows.Forms.Label dueDateLabel;
+        private System.Windows.Forms.Label dueDateValueLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn memberIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalDateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTextBoxColumn;
     }
 }

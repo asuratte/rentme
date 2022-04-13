@@ -53,6 +53,7 @@
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
+    <Compile Include="DAL\RentalTransactionDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
     <Compile Include="Model\Employee.cs" />
