@@ -125,9 +125,43 @@ namespace RentMe.View
             {
                 int i = e.RowIndex;
                 RentalItem theRentalItem = (RentalItem)rentalItemBindingSource[i];
-                RentalItem itemToRemove = this.theRentalItemList.Find(item => item.FurnitureID.Equals(theRentalItem.FurnitureID));
-                this.theRentalItemList.Remove(itemToRemove);
-                this.RefreshViewCartForm();
+                using (EditCartForm theEditCartForm = new EditCartForm())
+                {
+                    try
+                    {
+                        theEditCartForm.TheRentalItem = theRentalItem;
+                        theEditCartForm.QuantityInStock = this.theFurnitureController.GetFurnitureQuantityByID(theRentalItem.FurnitureID);
+                        DialogResult result = theEditCartForm.ShowDialog();
+
+                        if (result == DialogResult.OK)
+                        {
+                            if (theEditCartForm.TheRentalItem.Quantity > 0)
+                            {
+                                RentalItem itemToUpdate = this.theRentalItemList.Find(item => item.FurnitureID == theRentalItem.FurnitureID);
+                                itemToUpdate.Quantity = theEditCartForm.TheRentalItem.Quantity;
+                                this.RefreshViewCartForm();
+                                this.errorMessageLabel.Text = "Item successfully updated.";
+                                this.errorMessageLabel.ForeColor = Color.Green;
+                            }
+                            else if (theEditCartForm.TheRentalItem.Quantity == 0)
+                            {
+                                RentalItem itemToRemove = this.theRentalItemList.Find(item => item.FurnitureID == theRentalItem.FurnitureID);
+                                this.theRentalItemList.Remove(itemToRemove);
+                                this.RefreshViewCartForm();
+                                this.errorMessageLabel.Text = "Item successfully removed from cart.";
+                                this.errorMessageLabel.ForeColor = Color.Green;
+                            }
+                            
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        this.ShowErrorMessage("There was an issue retrieving the total quantity in stock. Editing unavailable.");
+                    }
+                   
+                }
+                    
+                
             }
         }
 
@@ -136,49 +170,9 @@ namespace RentMe.View
             this.DialogResult = DialogResult.Cancel;
         }
 
-        private void RentalItemDataGridViewDataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            if (e.Exception != null)
-            {
-                this.ShowErrorMessage("Invalid quantity. Please enter an integer value greater than 0.");
-                this.rentalItemDataGridView.RefreshEdit();
-                this.rentalItemDataGridView.EndEdit();
-            }
+        
         }
 
-        private void RentalItemDataGridViewCellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (e.ColumnIndex == 1)
-            {
-                try
-                {
-                    int newQuantity = Convert.ToInt32(e.FormattedValue.ToString());
-                    RentalItem currentRentalItem = (RentalItem)this.rentalItemBindingSource[e.RowIndex];
-                    int totalQuantity = this.theFurnitureController.GetFurnitureQuantityByID(currentRentalItem.FurnitureID);
-
-                    if (newQuantity <= 0)
-                    {
-                        this.ShowErrorMessage("Invalid quantity. Please enter a value greater than 0.");
-                        this.rentalItemDataGridView.RefreshEdit();
-                    }
-                    else if (newQuantity > totalQuantity)
-                    {
-                        this.ShowErrorMessage("There are only " + totalQuantity + " " + currentRentalItem.FurnitureName + " items in stock.");
-                        this.rentalItemDataGridView.RefreshEdit();
-                    }
-                    else
-                    {
-                        this.RefreshViewCartForm();
-                        this.rentalItemDataGridView.CurrentCell = this.rentalItemDataGridView.Rows[e.RowIndex].Cells[1];
-                    }
-
-
-                }
-                catch
-                {
-
-                }
-            }
-        }
+        
 
 }

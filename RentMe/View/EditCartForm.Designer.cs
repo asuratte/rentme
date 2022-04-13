@@ -87,6 +87,7 @@ namespace RentMe.View
             this.updateCartButton.TabIndex = 18;
             this.updateCartButton.Text = "Update Cart";
             this.updateCartButton.UseVisualStyleBackColor = false;
+            this.updateCartButton.Click += new System.EventHandler(this.UpdateCartButtonClick);
             // 
             // cancelButton
             // 
@@ -101,6 +102,7 @@ namespace RentMe.View
             this.cancelButton.TabIndex = 19;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
             // removeButton
             // 
@@ -115,6 +117,7 @@ namespace RentMe.View
             this.removeButton.TabIndex = 20;
             this.removeButton.Text = "Remove Item";
             this.removeButton.UseVisualStyleBackColor = false;
+            this.removeButton.Click += new System.EventHandler(this.RemoveItemButtonClick);
             // 
             // EditCartForm
             // 
@@ -133,6 +136,7 @@ namespace RentMe.View
             this.Name = "EditCartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Cart";
+            this.Load += new System.EventHandler(this.EditCartFormOnLoad);
             ((System.ComponentModel.ISupportInitialize)(this.furnitureQuantityNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

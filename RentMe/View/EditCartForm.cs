@@ -15,7 +15,6 @@ namespace RentMe.View
     public partial class EditCartForm : Form
     {
         private RentalItem theRentalItem;
-        private FurnitureController theFurnitureController;
 
         public RentalItem TheRentalItem
         {
@@ -32,12 +31,11 @@ namespace RentMe.View
             }
         }
 
-        public int TotalQuantity;
+        public int QuantityInStock;
 
         public EditCartForm()
         {
             InitializeComponent();
-            this.theFurnitureController = new FurnitureController();
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
@@ -58,5 +56,9 @@ namespace RentMe.View
             this.DialogResult = DialogResult.OK;
         }
 
+        private void EditCartFormOnLoad(object sender, EventArgs e)
+        {
+            this.furnitureQuantityNumericUpDown.Maximum = QuantityInStock;
+        }
     }
 }
