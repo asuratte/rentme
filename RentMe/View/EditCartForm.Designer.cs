@@ -32,7 +32,7 @@ namespace RentMe.View
             this.furnitureNameLabel = new System.Windows.Forms.Label();
             this.furnitureNameValueLabel = new System.Windows.Forms.Label();
             this.furnitureQuantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.quantityLabel = new System.Windows.Forms.Label();
+            this.furnitureQuantityLabel = new System.Windows.Forms.Label();
             this.updateCartButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
@@ -65,14 +65,14 @@ namespace RentMe.View
             this.furnitureQuantityNumericUpDown.TabIndex = 10;
             this.furnitureQuantityNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // quantityLabel
+            // furnitureQuantityLabel
             // 
-            this.quantityLabel.AutoSize = true;
-            this.quantityLabel.Location = new System.Drawing.Point(12, 37);
-            this.quantityLabel.Name = "quantityLabel";
-            this.quantityLabel.Size = new System.Drawing.Size(66, 19);
-            this.quantityLabel.TabIndex = 9;
-            this.quantityLabel.Text = "Quantity:";
+            this.furnitureQuantityLabel.AutoSize = true;
+            this.furnitureQuantityLabel.Location = new System.Drawing.Point(12, 37);
+            this.furnitureQuantityLabel.Name = "furnitureQuantityLabel";
+            this.furnitureQuantityLabel.Size = new System.Drawing.Size(66, 19);
+            this.furnitureQuantityLabel.TabIndex = 9;
+            this.furnitureQuantityLabel.Text = "Quantity:";
             // 
             // updateCartButton
             // 
@@ -128,10 +128,11 @@ namespace RentMe.View
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.updateCartButton);
             this.Controls.Add(this.furnitureQuantityNumericUpDown);
-            this.Controls.Add(this.quantityLabel);
+            this.Controls.Add(this.furnitureQuantityLabel);
             this.Controls.Add(this.furnitureNameValueLabel);
             this.Controls.Add(this.furnitureNameLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EditCartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -148,7 +149,7 @@ namespace RentMe.View
         private System.Windows.Forms.Label furnitureNameLabel;
         private System.Windows.Forms.Label furnitureNameValueLabel;
         private System.Windows.Forms.NumericUpDown furnitureQuantityNumericUpDown;
-        private System.Windows.Forms.Label quantityLabel;
+        private System.Windows.Forms.Label furnitureQuantityLabel;
         private System.Windows.Forms.Button updateCartButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button removeButton;

@@ -164,7 +164,7 @@ namespace RentMe.UserControls
                     if (this.theMember != null)
                     {
                         this.cartForMemberLabel.Visible = true;
-                        this.currentMemberNameLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
+                        this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
                         this.viewCartButton.Enabled = true;
                         this.resetCartButton.Enabled = true;
                     }
@@ -189,7 +189,7 @@ namespace RentMe.UserControls
         private void ResetCart()
         {
             this.cartForMemberLabel.Visible = false;
-            this.currentMemberNameLabel.Text = "";
+            this.memberNameValueLabel.Text = "";
             this.viewCartButton.Enabled = false;
             this.resetCartButton.Enabled = false;
             this.theMember = null;

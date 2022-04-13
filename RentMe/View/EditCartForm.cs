@@ -1,13 +1,5 @@
-﻿using RentMe.Controller;
-using RentMe.Model;
+﻿using RentMe.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -21,32 +13,27 @@ namespace RentMe.View
             get { return this.theRentalItem; }
             set
             {
-                if (value == null)
-                {
-                    throw new Exception("Furniture not provided");
-                }
-                this.theRentalItem = value;
+                this.theRentalItem = value ?? throw new Exception("Furniture not provided");
                 this.furnitureNameValueLabel.Text = this.theRentalItem.FurnitureName;
                 this.furnitureQuantityNumericUpDown.Value = this.theRentalItem.Quantity;
             }
         }
 
-        public int QuantityInStock;
+        public int QuantityInStock { get; set; }
 
         public EditCartForm()
         {
             InitializeComponent();
         }
 
-        private void CancelButtonClick(object sender, EventArgs e)
+        private void EditCartFormOnLoad(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            this.furnitureQuantityNumericUpDown.Maximum = QuantityInStock;
         }
 
         private void UpdateCartButtonClick(object sender, EventArgs e)
         {
-            int newQuantity = Convert.ToInt32(this.furnitureQuantityNumericUpDown.Value);
-            this.theRentalItem.Quantity = newQuantity;
+            this.theRentalItem.Quantity = Convert.ToInt32(this.furnitureQuantityNumericUpDown.Value);
             this.DialogResult = DialogResult.OK;
         }
 
@@ -56,9 +43,9 @@ namespace RentMe.View
             this.DialogResult = DialogResult.OK;
         }
 
-        private void EditCartFormOnLoad(object sender, EventArgs e)
+        private void CancelButtonClick(object sender, EventArgs e)
         {
-            this.furnitureQuantityNumericUpDown.Maximum = QuantityInStock;
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -30,10 +30,10 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.orderForLabel = new System.Windows.Forms.Label();
-            this.memberNameLabel = new System.Windows.Forms.Label();
+            this.memberNameValueLabel = new System.Windows.Forms.Label();
             this.returnDateLabel = new System.Windows.Forms.Label();
             this.returnDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.rentalTotalLabel = new System.Windows.Forms.Label();
@@ -42,15 +42,15 @@ namespace RentMe.View
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubtotalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubtotalTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
@@ -65,14 +65,13 @@ namespace RentMe.View
             this.orderForLabel.TabIndex = 2;
             this.orderForLabel.Text = "Order For:";
             // 
-            // memberNameLabel
+            // memberNameValueLabel
             // 
-            this.memberNameLabel.AutoSize = true;
-            this.memberNameLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberNameLabel.Location = new System.Drawing.Point(87, 9);
-            this.memberNameLabel.Name = "memberNameLabel";
-            this.memberNameLabel.Size = new System.Drawing.Size(0, 19);
-            this.memberNameLabel.TabIndex = 3;
+            this.memberNameValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberNameValueLabel.Location = new System.Drawing.Point(104, 9);
+            this.memberNameValueLabel.Name = "memberNameValueLabel";
+            this.memberNameValueLabel.Size = new System.Drawing.Size(371, 19);
+            this.memberNameValueLabel.TabIndex = 3;
             // 
             // returnDateLabel
             // 
@@ -91,7 +90,7 @@ namespace RentMe.View
             this.returnDateTimePicker.Name = "returnDateTimePicker";
             this.returnDateTimePicker.Size = new System.Drawing.Size(217, 25);
             this.returnDateTimePicker.TabIndex = 5;
-            this.returnDateTimePicker.ValueChanged += new System.EventHandler(this.ReturnDateTimePickerOnValueChanged);
+            this.returnDateTimePicker.ValueChanged += new System.EventHandler(this.OnReturnDateTimePickerValueChanged);
             // 
             // rentalTotalLabel
             // 
@@ -142,15 +141,15 @@ namespace RentMe.View
             this.rentalItemDataGridView.AutoGenerateColumns = false;
             this.rentalItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.SubtotalColumn,
+            this.transactionIDTextBoxColumn,
+            this.quantityTextBoxColumn,
+            this.furnitureIDTextBoxColumn,
+            this.furnitureNameTextBoxColumn,
+            this.rentalRateTextBoxColumn,
+            this.memberIDTextBoxColumn,
+            this.rentalDateTextBoxColumn,
+            this.dueDateTextBoxColumn,
+            this.SubtotalTextBoxColumn,
             this.EditButtonColumn});
             this.rentalItemDataGridView.DataSource = this.rentalItemBindingSource;
             this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 111);
@@ -164,82 +163,82 @@ namespace RentMe.View
             // 
             this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
-            // dataGridViewTextBoxColumn1
+            // transactionIDTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TransactionID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TransactionID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.transactionIDTextBoxColumn.DataPropertyName = "TransactionID";
+            this.transactionIDTextBoxColumn.HeaderText = "TransactionID";
+            this.transactionIDTextBoxColumn.Name = "transactionIDTextBoxColumn";
+            this.transactionIDTextBoxColumn.ReadOnly = true;
+            this.transactionIDTextBoxColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn4
+            // quantityTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 80;
+            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityTextBoxColumn.HeaderText = "Quantity";
+            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
+            this.quantityTextBoxColumn.ReadOnly = true;
+            this.quantityTextBoxColumn.Width = 80;
             // 
-            // dataGridViewTextBoxColumn2
+            // furnitureIDTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FurnitureID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Furniture ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 95;
+            this.furnitureIDTextBoxColumn.DataPropertyName = "FurnitureID";
+            this.furnitureIDTextBoxColumn.HeaderText = "Furniture ID";
+            this.furnitureIDTextBoxColumn.Name = "furnitureIDTextBoxColumn";
+            this.furnitureIDTextBoxColumn.ReadOnly = true;
+            this.furnitureIDTextBoxColumn.Width = 95;
             // 
-            // dataGridViewTextBoxColumn3
+            // furnitureNameTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "FurnitureName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Furniture Name";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 150;
+            this.furnitureNameTextBoxColumn.DataPropertyName = "FurnitureName";
+            this.furnitureNameTextBoxColumn.HeaderText = "Furniture Name";
+            this.furnitureNameTextBoxColumn.Name = "furnitureNameTextBoxColumn";
+            this.furnitureNameTextBoxColumn.ReadOnly = true;
+            this.furnitureNameTextBoxColumn.Width = 150;
             // 
-            // dataGridViewTextBoxColumn6
+            // rentalRateTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn6.HeaderText = "RentalRate";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 90;
+            this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.rentalRateTextBoxColumn.HeaderText = "RentalRate";
+            this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
+            this.rentalRateTextBoxColumn.ReadOnly = true;
+            this.rentalRateTextBoxColumn.Width = 90;
             // 
-            // dataGridViewTextBoxColumn7
+            // memberIDTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "MemberID";
-            this.dataGridViewTextBoxColumn7.HeaderText = "MemberID";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Visible = false;
+            this.memberIDTextBoxColumn.DataPropertyName = "MemberID";
+            this.memberIDTextBoxColumn.HeaderText = "MemberID";
+            this.memberIDTextBoxColumn.Name = "memberIDTextBoxColumn";
+            this.memberIDTextBoxColumn.ReadOnly = true;
+            this.memberIDTextBoxColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn8
+            // rentalDateTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "RentalDate";
-            this.dataGridViewTextBoxColumn8.HeaderText = "RentalDate";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Visible = false;
+            this.rentalDateTextBoxColumn.DataPropertyName = "RentalDate";
+            this.rentalDateTextBoxColumn.HeaderText = "RentalDate";
+            this.rentalDateTextBoxColumn.Name = "rentalDateTextBoxColumn";
+            this.rentalDateTextBoxColumn.ReadOnly = true;
+            this.rentalDateTextBoxColumn.Visible = false;
             // 
-            // dataGridViewTextBoxColumn9
+            // dueDateTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "DueDate";
-            this.dataGridViewTextBoxColumn9.HeaderText = "DueDate";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Visible = false;
+            this.dueDateTextBoxColumn.DataPropertyName = "DueDate";
+            this.dueDateTextBoxColumn.HeaderText = "DueDate";
+            this.dueDateTextBoxColumn.Name = "dueDateTextBoxColumn";
+            this.dueDateTextBoxColumn.ReadOnly = true;
+            this.dueDateTextBoxColumn.Visible = false;
             // 
-            // SubtotalColumn
+            // SubtotalTextBoxColumn
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.SubtotalColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.SubtotalColumn.HeaderText = "Subtotal";
-            this.SubtotalColumn.Name = "SubtotalColumn";
-            this.SubtotalColumn.ReadOnly = true;
-            this.SubtotalColumn.Width = 90;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.SubtotalTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SubtotalTextBoxColumn.HeaderText = "Subtotal";
+            this.SubtotalTextBoxColumn.Name = "SubtotalTextBoxColumn";
+            this.SubtotalTextBoxColumn.ReadOnly = true;
+            this.SubtotalTextBoxColumn.Width = 90;
             // 
             // EditButtonColumn
             // 
@@ -261,7 +260,7 @@ namespace RentMe.View
             this.Controls.Add(this.rentalTotalLabel);
             this.Controls.Add(this.returnDateTimePicker);
             this.Controls.Add(this.returnDateLabel);
-            this.Controls.Add(this.memberNameLabel);
+            this.Controls.Add(this.memberNameValueLabel);
             this.Controls.Add(this.orderForLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ViewCartForm";
@@ -277,7 +276,7 @@ namespace RentMe.View
 
         #endregion
         private System.Windows.Forms.Label orderForLabel;
-        private System.Windows.Forms.Label memberNameLabel;
+        private System.Windows.Forms.Label memberNameValueLabel;
         private System.Windows.Forms.Label returnDateLabel;
         private System.Windows.Forms.DateTimePicker returnDateTimePicker;
         private System.Windows.Forms.Label rentalTotalLabel;
@@ -287,15 +286,15 @@ namespace RentMe.View
         private System.Windows.Forms.BindingSource rentalItemBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubtotalColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn memberIDTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalDateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubtotalTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditButtonColumn;
     }
 }
