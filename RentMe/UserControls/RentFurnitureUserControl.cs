@@ -212,9 +212,14 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             if (this.theCart.Count > 0)
                 {
-                    theViewCartForm.TheRentalItemList = theCart;
-                    theViewCartForm.TheMember = this.theMember;
-                    this.theViewCartForm.ShowDialog();
+                    this.theViewCartForm.TheRentalItemList = theCart;
+                    this.theViewCartForm.TheMember = this.theMember;
+                    this.theViewCartForm.TheEmployee = this.theEmployee;
+                    DialogResult result = this.theViewCartForm.ShowDialog();
+                    if (result == DialogResult.OK) 
+                    {
+                        this.ResetForm();
+                    }
                 }
                 else
                 {

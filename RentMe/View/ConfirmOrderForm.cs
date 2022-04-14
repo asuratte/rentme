@@ -1,4 +1,5 @@
-﻿using RentMe.Model;
+﻿using RentMe.Controller;
+using RentMe.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,7 +9,6 @@ namespace RentMe.View
     public partial class ConfirmOrderForm : Form
     {
         private List<RentalItem> theRentalItemList;
-        private DateTime theReturnDate;
         private decimal theRentalTotal;
 
         public List<RentalItem> TheRentalItemList
@@ -24,19 +24,7 @@ namespace RentMe.View
             }
         }
 
-        public DateTime TheReturnDate
-        {
-            get { return this.theReturnDate; }
-            set
-            {
-                if (value == null)
-                {
-                    throw new Exception("Return date not provided");
-                }
-                this.theReturnDate = value;
-                this.dueDateValueLabel.Text = this.theReturnDate.Date.ToShortDateString();
-            }
-        }
+        public DateTime TheDueDate { get; set; }
 
         public decimal TheRentalTotal
         {
@@ -44,7 +32,6 @@ namespace RentMe.View
             set
             {
                 this.theRentalTotal = value;
-                this.totalValueLabel.Text = "$" + this.theRentalTotal.ToString();
             }
         }
 
@@ -56,6 +43,8 @@ namespace RentMe.View
         private void OnConfirmOrderFormLoad(object sender, EventArgs e)
         {
             this.DisplayOrder();
+            this.dueDateValueLabel.Text = this.TheDueDate.Date.ToShortDateString();
+            this.totalValueLabel.Text = "$" + this.theRentalTotal.ToString();
         }
 
         private void DisplayOrder()
@@ -64,12 +53,18 @@ namespace RentMe.View
             foreach (RentalItem theRentalItem in theRentalItemList)
             {
                 rentalItemBindingSource.Add(theRentalItem);
-            } 
+            }
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void SubmitButtonClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
     }
 }

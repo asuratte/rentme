@@ -21,7 +21,7 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Adds the return transaction and items to the database.
+        /// Adds the rental transaction and items to the database.
         /// </summary>
         /// <param name="memberID">The member identifier.</param>
         /// <param name="employeeID">The employee identifier.</param>
@@ -35,7 +35,7 @@ namespace RentMe.Controller
         /// or
         /// There must be at least one furniture item in the list.
         /// </exception>
-        public int AddReturnTransactionAndItems(int memberID, int employeeID, List<RentalItem> rentalItemsList, DateTime dueDate)
+        public int AddRentalTransactionAndItems(int memberID, int employeeID, List<RentalItem> rentalItemsList, DateTime dueDate)
         {
             if (memberID <= 0)
             {

@@ -11,12 +11,15 @@ namespace RentMe.View
     {
         private List<RentalItem> theRentalItemList;
         private Member theMember;
+        private Employee theEmployee;
+        private readonly RentalTransactionController theRentalTransactionController;
         private readonly FurnitureController theFurnitureController;
 
         public ViewCartForm()
         {
             InitializeComponent();
             this.theFurnitureController = new FurnitureController();
+            this.theRentalTransactionController = new RentalTransactionController();
             this.TheReturnDate = DateTime.Today.AddDays(1);
         }
 
@@ -38,14 +41,23 @@ namespace RentMe.View
             get { return this.theMember; }
             set
             {
-                this.theMember = value ?? throw new Exception("Member name not provided");
+                this.theMember = value ?? throw new Exception("Member not provided");
                 this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
+            }
+        }
+
+        public Employee TheEmployee
+        {
+            get { return this.theEmployee; }
+            set
+            {
+                this.theEmployee = value ?? throw new Exception("Employee not provided");
             }
         }
 
         public Decimal TheRentalTotal { get; set; }
 
-        public DateTime TheReturnDate { get; set; }
+        public DateTime TheReturnDate { get; set; } 
 
         private void OnViewCartFormShown(object sender, EventArgs e)
         {
@@ -154,11 +166,13 @@ namespace RentMe.View
             {
                 theConfirmOrderForm.TheRentalItemList = this.theRentalItemList;
                 theConfirmOrderForm.TheRentalTotal = this.TheRentalTotal;
-                theConfirmOrderForm.TheReturnDate = this.TheReturnDate;
+                theConfirmOrderForm.TheDueDate = this.TheReturnDate;
                 DialogResult result = theConfirmOrderForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-
+                    this.Hide();
+                    this.AddTransactionAndDisplaySummary();
+                    this.DialogResult = DialogResult.OK;
                 }
             }
         }
@@ -172,6 +186,45 @@ namespace RentMe.View
         private void CloseButtonClick(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private RentalTransaction CreateRentalTransaction(int rentalTransactionID)
+        {
+            RentalTransaction theRentalTransaction = new RentalTransaction();
+            theRentalTransaction.TransactionID = rentalTransactionID;
+            theRentalTransaction.MemberID = this.theMember.MemberID;
+            theRentalTransaction.EmployeeID = this.TheEmployee.EmployeeID;
+            theRentalTransaction.TotalValue = this.TheRentalTotal;
+            theRentalTransaction.RentalDate = DateTime.Now;
+            theRentalTransaction.DueDate = this.TheReturnDate;
+            return theRentalTransaction;
+        }
+
+        private void AddTransactionAndDisplaySummary()
+        {
+            try
+            {
+                int rentalTransactionID = this.theRentalTransactionController.AddRentalTransactionAndItems(this.theMember.MemberID, this.theEmployee.EmployeeID, this.theRentalItemList, this.TheReturnDate);
+                if (rentalTransactionID != 0)
+                {
+                    using (OrderSummaryForm theOrderSummaryForm = new OrderSummaryForm())
+                    {
+                        theOrderSummaryForm.TheMember = this.theMember;
+                        theOrderSummaryForm.TheEmployee = this.theEmployee;
+                        theOrderSummaryForm.TheRentalTransaction = this.CreateRentalTransaction(rentalTransactionID);
+                        theOrderSummaryForm.TheRentalItems = this.theRentalItemList;
+                        theOrderSummaryForm.ShowDialog();
+                    }
+                }
+                else
+                {
+                    this.ShowErrorMessage("The transaction could not be processed. Please try again.");
+                }
+            }
+            catch (Exception)
+            {
+                this.ShowErrorMessage("There was an issue completing the return transaction.");
+            }
         }
     }
 }

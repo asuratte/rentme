@@ -30,8 +30,7 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.memberLabel = new System.Windows.Forms.Label();
             this.memberNameValueLabel = new System.Windows.Forms.Label();
             this.dateValueLabel = new System.Windows.Forms.Label();
@@ -39,20 +38,19 @@ namespace RentMe.View
             this.employeeNameValueLabel = new System.Windows.Forms.Label();
             this.helpedByLabel = new System.Windows.Forms.Label();
             this.transactionNumberLabel = new System.Windows.Forms.Label();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.totalValueLabel = new System.Windows.Forms.Label();
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalLabel = new System.Windows.Forms.Label();
-            this.totalValueLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // memberLabel
@@ -121,10 +119,6 @@ namespace RentMe.View
             this.transactionNumberLabel.Size = new System.Drawing.Size(292, 19);
             this.transactionNumberLabel.TabIndex = 31;
             // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
-            // 
             // rentalItemDataGridView
             // 
             this.rentalItemDataGridView.AllowUserToAddRows = false;
@@ -136,7 +130,6 @@ namespace RentMe.View
             this.furnitureIDTextBoxColumn,
             this.furnitureNameTextBoxColumn,
             this.quantityTextBoxColumn,
-            this.rentalRateTextBoxColumn,
             this.memberIDTextBoxColumn,
             this.rentalDateTextBoxColumn,
             this.dueDateTextBoxColumn});
@@ -146,6 +139,25 @@ namespace RentMe.View
             this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(617, 220);
             this.rentalItemDataGridView.TabIndex = 32;
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(437, 334);
+            this.totalLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(41, 19);
+            this.totalLabel.TabIndex = 33;
+            this.totalLabel.Text = "Total:";
+            // 
+            // totalValueLabel
+            // 
+            this.totalValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalValueLabel.Location = new System.Drawing.Point(486, 334);
+            this.totalValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.totalValueLabel.Name = "totalValueLabel";
+            this.totalValueLabel.Size = new System.Drawing.Size(147, 19);
+            this.totalValueLabel.TabIndex = 34;
             // 
             // transactionIDTextBoxColumn
             // 
@@ -179,17 +191,6 @@ namespace RentMe.View
             this.quantityTextBoxColumn.ReadOnly = true;
             this.quantityTextBoxColumn.Width = 80;
             // 
-            // rentalRateTextBoxColumn
-            // 
-            this.rentalRateTextBoxColumn.DataPropertyName = "Rental Rate";
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.rentalRateTextBoxColumn.HeaderText = "Rental Rate";
-            this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
-            this.rentalRateTextBoxColumn.ReadOnly = true;
-            this.rentalRateTextBoxColumn.Width = 105;
-            // 
             // memberIDTextBoxColumn
             // 
             this.memberIDTextBoxColumn.DataPropertyName = "MemberID";
@@ -209,31 +210,16 @@ namespace RentMe.View
             // dueDateTextBoxColumn
             // 
             this.dueDateTextBoxColumn.DataPropertyName = "DueDate";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dueDateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dueDateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.dueDateTextBoxColumn.HeaderText = "Due Date";
             this.dueDateTextBoxColumn.Name = "dueDateTextBoxColumn";
             this.dueDateTextBoxColumn.ReadOnly = true;
             // 
-            // totalLabel
+            // rentalItemBindingSource
             // 
-            this.totalLabel.AutoSize = true;
-            this.totalLabel.Location = new System.Drawing.Point(437, 334);
-            this.totalLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(41, 19);
-            this.totalLabel.TabIndex = 33;
-            this.totalLabel.Text = "Total:";
-            // 
-            // totalValueLabel
-            // 
-            this.totalValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalValueLabel.Location = new System.Drawing.Point(486, 334);
-            this.totalValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.totalValueLabel.Name = "totalValueLabel";
-            this.totalValueLabel.Size = new System.Drawing.Size(147, 19);
-            this.totalValueLabel.TabIndex = 34;
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // OrderSummaryForm
             // 
@@ -256,8 +242,9 @@ namespace RentMe.View
             this.Name = "OrderSummaryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Summary";
-            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).EndInit();
+            this.Load += new System.EventHandler(this.OnOrderSummaryFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
