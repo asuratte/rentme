@@ -12,5 +12,6 @@ namespace RentMe.Model
         public int EmployeeID { get; set; }
         public DateTime RentalDate { get; set; }
         public DateTime DueDate { get; set; }
+        public int TotalValue { get; set; }
     }
 }

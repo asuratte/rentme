@@ -1,12 +1,6 @@
 ﻿using RentMe.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -37,7 +31,7 @@ namespace RentMe.View
             {
                 if (value == null)
                 {
-                    throw new Exception("Renturn date not provided");
+                    throw new Exception("Return date not provided");
                 }
                 this.theReturnDate = value;
                 this.dueDateValueLabel.Text = this.theReturnDate.Date.ToShortDateString();

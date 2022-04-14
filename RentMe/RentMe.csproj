@@ -132,6 +132,12 @@
     <Compile Include="View\MemberRegistrationConfirmationForm.Designer.cs">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\OrderSummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\OrderSummaryForm.Designer.cs">
+      <DependentUpon>OrderSummaryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewCartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OrderSummaryForm.resx">
+      <DependentUpon>OrderSummaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ViewCartForm.resx">
       <DependentUpon>ViewCartForm.cs</DependentUpon>
