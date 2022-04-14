@@ -177,7 +177,6 @@ namespace RentMe.View
                 DialogResult result = theConfirmOrderForm.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    this.Hide();
                     this.AddTransactionAndDisplaySummary();
                     this.DialogResult = DialogResult.OK;
                 }
