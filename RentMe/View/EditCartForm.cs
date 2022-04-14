@@ -14,8 +14,6 @@ namespace RentMe.View
             set
             {
                 this.theRentalItem = value ?? throw new Exception("Furniture not provided");
-                this.furnitureNameValueLabel.Text = this.theRentalItem.FurnitureName;
-                this.furnitureQuantityNumericUpDown.Value = this.theRentalItem.Quantity;
             }
         }
 
@@ -29,6 +27,8 @@ namespace RentMe.View
         private void EditCartFormOnLoad(object sender, EventArgs e)
         {
             this.furnitureQuantityNumericUpDown.Maximum = QuantityInStock;
+            this.furnitureNameValueLabel.Text = this.theRentalItem.FurnitureName;
+            this.furnitureQuantityNumericUpDown.Value = this.theRentalItem.Quantity;
         }
 
         private void UpdateCartButtonClick(object sender, EventArgs e)

@@ -269,7 +269,7 @@ namespace RentMe.UserControls
         private void OnSearchValueChanged(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
-            this.errorMessageLabel.ForeColor = default(Color);
+            this.errorMessageLabel.ForeColor = default;
         }
 
         private void ShowErrorMessage(string message)

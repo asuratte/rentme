@@ -42,7 +42,6 @@ namespace RentMe.View
             set
             {
                 this.theMember = value ?? throw new Exception("Member not provided");
-                this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
             }
         }
 
@@ -62,6 +61,7 @@ namespace RentMe.View
         private void OnViewCartFormShown(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
+            this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
             this.returnDateTimePicker.Value = this.TheReturnDate;
             this.RefreshCart();
         }
