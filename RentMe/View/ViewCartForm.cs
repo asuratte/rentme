@@ -7,6 +7,10 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Represents the view cart form of the RentMe Application
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ViewCartForm : Form
     {
         private List<RentalItem> theRentalItemList;
@@ -14,14 +18,6 @@ namespace RentMe.View
         private Employee theEmployee;
         private readonly RentalTransactionController theRentalTransactionController;
         private readonly FurnitureController theFurnitureController;
-
-        public ViewCartForm()
-        {
-            InitializeComponent();
-            this.theFurnitureController = new FurnitureController();
-            this.theRentalTransactionController = new RentalTransactionController();
-            this.TheReturnDate = DateTime.Today.AddDays(1);
-        }
 
         public List<RentalItem> TheRentalItemList
         {
@@ -56,7 +52,18 @@ namespace RentMe.View
 
         public Decimal TheRentalTotal { get; set; }
 
-        public DateTime TheReturnDate { get; set; } 
+        public DateTime TheReturnDate { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewCartForm"/> class.
+        /// </summary>
+        public ViewCartForm()
+        {
+            InitializeComponent();
+            this.theFurnitureController = new FurnitureController();
+            this.theRentalTransactionController = new RentalTransactionController();
+            this.TheReturnDate = DateTime.Today.AddDays(1);
+        }
 
         private void OnViewCartFormShown(object sender, EventArgs e)
         {

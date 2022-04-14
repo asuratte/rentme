@@ -5,6 +5,10 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Represents the confirm order form of the RentMe Application
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ConfirmOrderForm : Form
     {
         private List<RentalItem> theRentalItemList;
@@ -26,6 +30,9 @@ namespace RentMe.View
 
         public decimal TheRentalTotal { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfirmOrderForm"/> class.
+        /// </summary>
         public ConfirmOrderForm()
         {
             InitializeComponent();

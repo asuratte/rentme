@@ -5,6 +5,10 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Represents the order summary form of the RentMe Application
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class OrderSummaryForm : Form
     {
         private Member theMember;
@@ -47,6 +51,10 @@ namespace RentMe.View
                 this.theRentalItems = value ?? throw new Exception("Rental Items not provided.");
             }
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderSummaryForm"/> class.
+        /// </summary>
         public OrderSummaryForm()
         {
             InitializeComponent();
