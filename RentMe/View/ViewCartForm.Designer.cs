@@ -30,8 +30,8 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewCartForm));
             this.orderForLabel = new System.Windows.Forms.Label();
             this.memberNameValueLabel = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@ namespace RentMe.View
             this.memberNameValueLabel.Location = new System.Drawing.Point(104, 9);
             this.memberNameValueLabel.Name = "memberNameValueLabel";
             this.memberNameValueLabel.Size = new System.Drawing.Size(371, 19);
-            this.memberNameValueLabel.TabIndex = 1;
+            this.memberNameValueLabel.TabIndex = 0;
             // 
             // returnDateLabel
             // 
@@ -82,7 +82,7 @@ namespace RentMe.View
             this.returnDateLabel.Location = new System.Drawing.Point(12, 51);
             this.returnDateLabel.Name = "returnDateLabel";
             this.returnDateLabel.Size = new System.Drawing.Size(86, 19);
-            this.returnDateLabel.TabIndex = 2;
+            this.returnDateLabel.TabIndex = 0;
             this.returnDateLabel.Text = "Return Date:";
             // 
             // returnDateTimePicker
@@ -91,7 +91,7 @@ namespace RentMe.View
             this.returnDateTimePicker.Location = new System.Drawing.Point(104, 48);
             this.returnDateTimePicker.Name = "returnDateTimePicker";
             this.returnDateTimePicker.Size = new System.Drawing.Size(217, 25);
-            this.returnDateTimePicker.TabIndex = 3;
+            this.returnDateTimePicker.TabIndex = 1;
             this.returnDateTimePicker.ValueChanged += new System.EventHandler(this.OnReturnDateTimePickerValueChanged);
             // 
             // rentalTotalLabel
@@ -101,7 +101,7 @@ namespace RentMe.View
             this.rentalTotalLabel.Location = new System.Drawing.Point(472, 51);
             this.rentalTotalLabel.Name = "rentalTotalLabel";
             this.rentalTotalLabel.Size = new System.Drawing.Size(83, 19);
-            this.rentalTotalLabel.TabIndex = 4;
+            this.rentalTotalLabel.TabIndex = 0;
             this.rentalTotalLabel.Text = "Rental Total:";
             // 
             // rentalTotalTextBox
@@ -111,7 +111,7 @@ namespace RentMe.View
             this.rentalTotalTextBox.Name = "rentalTotalTextBox";
             this.rentalTotalTextBox.ReadOnly = true;
             this.rentalTotalTextBox.Size = new System.Drawing.Size(109, 25);
-            this.rentalTotalTextBox.TabIndex = 5;
+            this.rentalTotalTextBox.TabIndex = 2;
             // 
             // closeButton
             // 
@@ -123,7 +123,7 @@ namespace RentMe.View
             this.closeButton.Location = new System.Drawing.Point(587, 352);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(83, 27);
-            this.closeButton.TabIndex = 9;
+            this.closeButton.TabIndex = 4;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
@@ -134,7 +134,7 @@ namespace RentMe.View
             this.errorMessageLabel.Location = new System.Drawing.Point(12, 334);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(432, 45);
-            this.errorMessageLabel.TabIndex = 10;
+            this.errorMessageLabel.TabIndex = 0;
             // 
             // rentalItemDataGridView
             // 
@@ -158,7 +158,7 @@ namespace RentMe.View
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(654, 220);
-            this.rentalItemDataGridView.TabIndex = 6;
+            this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
             // 
             // transactionIDTextBoxColumn
@@ -196,9 +196,9 @@ namespace RentMe.View
             // rentalRateTextBoxColumn
             // 
             this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.rentalRateTextBoxColumn.HeaderText = "RentalRate";
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
             this.rentalRateTextBoxColumn.ReadOnly = true;
@@ -230,9 +230,9 @@ namespace RentMe.View
             // 
             // SubtotalTextBoxColumn
             // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.SubtotalTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.SubtotalTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.SubtotalTextBoxColumn.HeaderText = "Subtotal";
             this.SubtotalTextBoxColumn.Name = "SubtotalTextBoxColumn";
             this.SubtotalTextBoxColumn.ReadOnly = true;
@@ -261,7 +261,7 @@ namespace RentMe.View
             this.submitOrderButton.Location = new System.Drawing.Point(450, 352);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
-            this.submitOrderButton.TabIndex = 8;
+            this.submitOrderButton.TabIndex = 5;
             this.submitOrderButton.Text = "Submit Order";
             this.submitOrderButton.UseVisualStyleBackColor = false;
             this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);

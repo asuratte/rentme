@@ -75,7 +75,7 @@ namespace RentMe.UserControls
             this.categorySearchLabel.Location = new System.Drawing.Point(44, 93);
             this.categorySearchLabel.Name = "categorySearchLabel";
             this.categorySearchLabel.Size = new System.Drawing.Size(65, 19);
-            this.categorySearchLabel.TabIndex = 7;
+            this.categorySearchLabel.TabIndex = 0;
             this.categorySearchLabel.Text = "Category";
             // 
             // styleSearchLabel
@@ -85,7 +85,7 @@ namespace RentMe.UserControls
             this.styleSearchLabel.Location = new System.Drawing.Point(236, 93);
             this.styleSearchLabel.Name = "styleSearchLabel";
             this.styleSearchLabel.Size = new System.Drawing.Size(38, 19);
-            this.styleSearchLabel.TabIndex = 9;
+            this.styleSearchLabel.TabIndex = 0;
             this.styleSearchLabel.Text = "Style";
             // 
             // furnitureIDSearchTextBox
@@ -94,7 +94,7 @@ namespace RentMe.UserControls
             this.furnitureIDSearchTextBox.Location = new System.Drawing.Point(436, 115);
             this.furnitureIDSearchTextBox.Name = "furnitureIDSearchTextBox";
             this.furnitureIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
-            this.furnitureIDSearchTextBox.TabIndex = 12;
+            this.furnitureIDSearchTextBox.TabIndex = 7;
             this.furnitureIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureIDSearchLabel
@@ -104,7 +104,7 @@ namespace RentMe.UserControls
             this.furnitureIDSearchLabel.Location = new System.Drawing.Point(432, 93);
             this.furnitureIDSearchLabel.Name = "furnitureIDSearchLabel";
             this.furnitureIDSearchLabel.Size = new System.Drawing.Size(83, 19);
-            this.furnitureIDSearchLabel.TabIndex = 11;
+            this.furnitureIDSearchLabel.TabIndex = 0;
             this.furnitureIDSearchLabel.Text = "Furniture ID";
             // 
             // furnitureSearchButton
@@ -117,7 +117,7 @@ namespace RentMe.UserControls
             this.furnitureSearchButton.Location = new System.Drawing.Point(632, 114);
             this.furnitureSearchButton.Name = "furnitureSearchButton";
             this.furnitureSearchButton.Size = new System.Drawing.Size(79, 27);
-            this.furnitureSearchButton.TabIndex = 13;
+            this.furnitureSearchButton.TabIndex = 8;
             this.furnitureSearchButton.Text = "Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = false;
             this.furnitureSearchButton.Click += new System.EventHandler(this.FurnitureSearchButtonClick);
@@ -128,7 +128,7 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Location = new System.Drawing.Point(7, 382);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(756, 45);
-            this.errorMessageLabel.TabIndex = 14;
+            this.errorMessageLabel.TabIndex = 0;
             // 
             // categoryComboBox
             // 
@@ -138,7 +138,7 @@ namespace RentMe.UserControls
             this.categoryComboBox.Location = new System.Drawing.Point(48, 115);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(170, 25);
-            this.categoryComboBox.TabIndex = 8;
+            this.categoryComboBox.TabIndex = 5;
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // styleComboBox
@@ -149,7 +149,7 @@ namespace RentMe.UserControls
             this.styleComboBox.Location = new System.Drawing.Point(240, 115);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(170, 25);
-            this.styleComboBox.TabIndex = 10;
+            this.styleComboBox.TabIndex = 6;
             this.styleComboBox.SelectedIndexChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // furnitureDataGridView
@@ -173,7 +173,7 @@ namespace RentMe.UserControls
             this.furnitureDataGridView.Name = "furnitureDataGridView";
             this.furnitureDataGridView.ReadOnly = true;
             this.furnitureDataGridView.Size = new System.Drawing.Size(756, 210);
-            this.furnitureDataGridView.TabIndex = 5;
+            this.furnitureDataGridView.TabIndex = 9;
             this.furnitureDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FurnitureDataGridViewCellContentClick);
             // 
             // furnitureIDTextBoxColumn
@@ -268,7 +268,7 @@ namespace RentMe.UserControls
             this.memberIDSearchTextBox.Location = new System.Drawing.Point(88, 40);
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
             this.memberIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
-            this.memberIDSearchTextBox.TabIndex = 2;
+            this.memberIDSearchTextBox.TabIndex = 1;
             this.memberIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
             // memberIDSearchLabel
@@ -278,7 +278,7 @@ namespace RentMe.UserControls
             this.memberIDSearchLabel.Location = new System.Drawing.Point(3, 43);
             this.memberIDSearchLabel.Name = "memberIDSearchLabel";
             this.memberIDSearchLabel.Size = new System.Drawing.Size(79, 19);
-            this.memberIDSearchLabel.TabIndex = 1;
+            this.memberIDSearchLabel.TabIndex = 0;
             this.memberIDSearchLabel.Text = "Member ID";
             // 
             // memberSearchButton
@@ -291,7 +291,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.Location = new System.Drawing.Point(230, 39);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(79, 27);
-            this.memberSearchButton.TabIndex = 3;
+            this.memberSearchButton.TabIndex = 2;
             this.memberSearchButton.Text = "Search";
             this.memberSearchButton.UseVisualStyleBackColor = false;
             this.memberSearchButton.Click += new System.EventHandler(this.MemberSearchButtonClick);
@@ -306,7 +306,7 @@ namespace RentMe.UserControls
             this.viewCartButton.Location = new System.Drawing.Point(519, 39);
             this.viewCartButton.Name = "viewCartButton";
             this.viewCartButton.Size = new System.Drawing.Size(110, 27);
-            this.viewCartButton.TabIndex = 5;
+            this.viewCartButton.TabIndex = 3;
             this.viewCartButton.Text = "View Cart";
             this.viewCartButton.UseVisualStyleBackColor = false;
             this.viewCartButton.Click += new System.EventHandler(this.ViewCartButtonClick);
@@ -321,7 +321,7 @@ namespace RentMe.UserControls
             this.resetCartButton.Location = new System.Drawing.Point(653, 39);
             this.resetCartButton.Name = "resetCartButton";
             this.resetCartButton.Size = new System.Drawing.Size(110, 27);
-            this.resetCartButton.TabIndex = 6;
+            this.resetCartButton.TabIndex = 4;
             this.resetCartButton.Text = "Reset Cart";
             this.resetCartButton.UseVisualStyleBackColor = false;
             this.resetCartButton.Click += new System.EventHandler(this.ResetCartButtonClick);
@@ -333,7 +333,7 @@ namespace RentMe.UserControls
             this.cartForMemberLabel.Location = new System.Drawing.Point(515, 12);
             this.cartForMemberLabel.Name = "cartForMemberLabel";
             this.cartForMemberLabel.Size = new System.Drawing.Size(62, 19);
-            this.cartForMemberLabel.TabIndex = 4;
+            this.cartForMemberLabel.TabIndex = 0;
             this.cartForMemberLabel.Text = "Cart For:";
             // 
             // horizontalDividerLineLabel
@@ -350,7 +350,7 @@ namespace RentMe.UserControls
             this.memberNameValueLabel.Location = new System.Drawing.Point(583, 12);
             this.memberNameValueLabel.Name = "memberNameValueLabel";
             this.memberNameValueLabel.Size = new System.Drawing.Size(180, 19);
-            this.memberNameValueLabel.TabIndex = 23;
+            this.memberNameValueLabel.TabIndex = 0;
             // 
             // memberSearchDescriptionLabel
             // 

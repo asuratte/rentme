@@ -30,7 +30,7 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmOrderForm));
             this.confirmOrderDetailsLabel = new System.Windows.Forms.Label();
             this.submitOrderButton = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@ namespace RentMe.View
             this.submitOrderButton.Location = new System.Drawing.Point(235, 334);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(168, 27);
-            this.submitOrderButton.TabIndex = 4;
+            this.submitOrderButton.TabIndex = 3;
             this.submitOrderButton.Text = "Confirm && Submit";
             this.submitOrderButton.UseVisualStyleBackColor = false;
             this.submitOrderButton.Click += new System.EventHandler(this.SubmitButtonClick);
@@ -88,7 +88,7 @@ namespace RentMe.View
             this.cancelButton.Location = new System.Drawing.Point(422, 334);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
-            this.cancelButton.TabIndex = 5;
+            this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
@@ -100,7 +100,7 @@ namespace RentMe.View
             this.totalLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(41, 19);
-            this.totalLabel.TabIndex = 3;
+            this.totalLabel.TabIndex = 0;
             this.totalLabel.Text = "Total:";
             // 
             // totalValueLabel
@@ -110,7 +110,7 @@ namespace RentMe.View
             this.totalValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.totalValueLabel.Name = "totalValueLabel";
             this.totalValueLabel.Size = new System.Drawing.Size(98, 19);
-            this.totalValueLabel.TabIndex = 22;
+            this.totalValueLabel.TabIndex = 0;
             // 
             // rentalItemDataGridView
             // 
@@ -172,9 +172,9 @@ namespace RentMe.View
             // rentalRateTextBoxColumn
             // 
             this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.rentalRateTextBoxColumn.FillWeight = 59.56007F;
             this.rentalRateTextBoxColumn.HeaderText = "Rental Rate";
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
@@ -217,7 +217,7 @@ namespace RentMe.View
             this.dueDateLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(70, 19);
-            this.dueDateLabel.TabIndex = 2;
+            this.dueDateLabel.TabIndex = 0;
             this.dueDateLabel.Text = "Due Date:";
             // 
             // dueDateValueLabel
@@ -227,7 +227,7 @@ namespace RentMe.View
             this.dueDateValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.dueDateValueLabel.Name = "dueDateValueLabel";
             this.dueDateValueLabel.Size = new System.Drawing.Size(150, 19);
-            this.dueDateValueLabel.TabIndex = 25;
+            this.dueDateValueLabel.TabIndex = 0;
             // 
             // ConfirmOrderForm
             // 
