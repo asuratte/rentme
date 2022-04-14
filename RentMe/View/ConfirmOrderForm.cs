@@ -1,5 +1,4 @@
-﻿using RentMe.Controller;
-using RentMe.Model;
+﻿using RentMe.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

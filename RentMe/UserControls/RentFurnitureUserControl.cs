@@ -164,8 +164,7 @@ namespace RentMe.UserControls
                 this.errorMessageLabel.Text = "";
                 if (this.theMember != null)
                 {
-                    int i = e.RowIndex;
-                    Furniture theFurniture = (Furniture)furnitureBindingSource[i];
+                    Furniture theFurniture = (Furniture)furnitureBindingSource[e.RowIndex];
                     using (AddToCartForm theAddToCartForm = new AddToCartForm())
                     {
                         theAddToCartForm.TheFurniture = theFurniture;

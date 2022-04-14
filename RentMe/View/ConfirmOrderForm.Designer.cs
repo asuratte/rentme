@@ -30,7 +30,8 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmOrderForm));
             this.confirmOrderDetailsLabel = new System.Windows.Forms.Label();
             this.submitOrderButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -59,7 +60,7 @@ namespace RentMe.View
             this.confirmOrderDetailsLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.confirmOrderDetailsLabel.Name = "confirmOrderDetailsLabel";
             this.confirmOrderDetailsLabel.Size = new System.Drawing.Size(293, 19);
-            this.confirmOrderDetailsLabel.TabIndex = 1;
+            this.confirmOrderDetailsLabel.TabIndex = 0;
             this.confirmOrderDetailsLabel.Text = "Please confirm order details before submitting.";
             // 
             // submitOrderButton
@@ -72,7 +73,7 @@ namespace RentMe.View
             this.submitOrderButton.Location = new System.Drawing.Point(235, 334);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(168, 27);
-            this.submitOrderButton.TabIndex = 19;
+            this.submitOrderButton.TabIndex = 4;
             this.submitOrderButton.Text = "Confirm && Submit";
             this.submitOrderButton.UseVisualStyleBackColor = false;
             this.submitOrderButton.Click += new System.EventHandler(this.SubmitButtonClick);
@@ -87,7 +88,7 @@ namespace RentMe.View
             this.cancelButton.Location = new System.Drawing.Point(422, 334);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
-            this.cancelButton.TabIndex = 20;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
@@ -99,7 +100,7 @@ namespace RentMe.View
             this.totalLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(41, 19);
-            this.totalLabel.TabIndex = 21;
+            this.totalLabel.TabIndex = 3;
             this.totalLabel.Text = "Total:";
             // 
             // totalValueLabel
@@ -131,7 +132,7 @@ namespace RentMe.View
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(520, 247);
-            this.rentalItemDataGridView.TabIndex = 23;
+            this.rentalItemDataGridView.TabIndex = 1;
             // 
             // transactionIDTextBoxColumn
             // 
@@ -171,9 +172,9 @@ namespace RentMe.View
             // rentalRateTextBoxColumn
             // 
             this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.rentalRateTextBoxColumn.FillWeight = 59.56007F;
             this.rentalRateTextBoxColumn.HeaderText = "Rental Rate";
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
@@ -216,7 +217,7 @@ namespace RentMe.View
             this.dueDateLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.dueDateLabel.Name = "dueDateLabel";
             this.dueDateLabel.Size = new System.Drawing.Size(70, 19);
-            this.dueDateLabel.TabIndex = 24;
+            this.dueDateLabel.TabIndex = 2;
             this.dueDateLabel.Text = "Due Date:";
             // 
             // dueDateValueLabel
@@ -243,6 +244,7 @@ namespace RentMe.View
             this.Controls.Add(this.confirmOrderDetailsLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ConfirmOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

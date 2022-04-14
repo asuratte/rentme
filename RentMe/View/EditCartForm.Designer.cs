@@ -29,6 +29,7 @@ namespace RentMe.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditCartForm));
             this.furnitureNameLabel = new System.Windows.Forms.Label();
             this.furnitureNameValueLabel = new System.Windows.Forms.Label();
             this.furnitureQuantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -46,7 +47,7 @@ namespace RentMe.View
             this.furnitureNameLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.furnitureNameLabel.Name = "furnitureNameLabel";
             this.furnitureNameLabel.Size = new System.Drawing.Size(48, 19);
-            this.furnitureNameLabel.TabIndex = 2;
+            this.furnitureNameLabel.TabIndex = 0;
             this.furnitureNameLabel.Text = "Name:";
             // 
             // furnitureNameValueLabel
@@ -55,14 +56,14 @@ namespace RentMe.View
             this.furnitureNameValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.furnitureNameValueLabel.Name = "furnitureNameValueLabel";
             this.furnitureNameValueLabel.Size = new System.Drawing.Size(249, 19);
-            this.furnitureNameValueLabel.TabIndex = 8;
+            this.furnitureNameValueLabel.TabIndex = 1;
             // 
             // furnitureQuantityNumericUpDown
             // 
             this.furnitureQuantityNumericUpDown.Location = new System.Drawing.Point(84, 35);
             this.furnitureQuantityNumericUpDown.Name = "furnitureQuantityNumericUpDown";
             this.furnitureQuantityNumericUpDown.Size = new System.Drawing.Size(60, 25);
-            this.furnitureQuantityNumericUpDown.TabIndex = 10;
+            this.furnitureQuantityNumericUpDown.TabIndex = 3;
             this.furnitureQuantityNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // furnitureQuantityLabel
@@ -71,7 +72,7 @@ namespace RentMe.View
             this.furnitureQuantityLabel.Location = new System.Drawing.Point(12, 37);
             this.furnitureQuantityLabel.Name = "furnitureQuantityLabel";
             this.furnitureQuantityLabel.Size = new System.Drawing.Size(66, 19);
-            this.furnitureQuantityLabel.TabIndex = 9;
+            this.furnitureQuantityLabel.TabIndex = 2;
             this.furnitureQuantityLabel.Text = "Quantity:";
             // 
             // updateCartButton
@@ -84,7 +85,7 @@ namespace RentMe.View
             this.updateCartButton.Location = new System.Drawing.Point(16, 122);
             this.updateCartButton.Name = "updateCartButton";
             this.updateCartButton.Size = new System.Drawing.Size(110, 27);
-            this.updateCartButton.TabIndex = 18;
+            this.updateCartButton.TabIndex = 5;
             this.updateCartButton.Text = "Update Cart";
             this.updateCartButton.UseVisualStyleBackColor = false;
             this.updateCartButton.Click += new System.EventHandler(this.UpdateCartButtonClick);
@@ -99,7 +100,7 @@ namespace RentMe.View
             this.cancelButton.Location = new System.Drawing.Point(204, 122);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
-            this.cancelButton.TabIndex = 19;
+            this.cancelButton.TabIndex = 6;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
@@ -114,7 +115,7 @@ namespace RentMe.View
             this.removeButton.Location = new System.Drawing.Point(204, 33);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(110, 27);
-            this.removeButton.TabIndex = 20;
+            this.removeButton.TabIndex = 4;
             this.removeButton.Text = "Remove Item";
             this.removeButton.UseVisualStyleBackColor = false;
             this.removeButton.Click += new System.EventHandler(this.RemoveItemButtonClick);
@@ -133,6 +134,7 @@ namespace RentMe.View
             this.Controls.Add(this.furnitureNameLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EditCartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
