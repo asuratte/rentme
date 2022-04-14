@@ -30,8 +30,8 @@ namespace RentMe.View
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.orderForLabel = new System.Windows.Forms.Label();
             this.memberNameValueLabel = new System.Windows.Forms.Label();
             this.returnDateLabel = new System.Windows.Forms.Label();
@@ -41,7 +41,8 @@ namespace RentMe.View
             this.closeButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SubtotalTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.submitOrderButton = new System.Windows.Forms.Button();
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +52,7 @@ namespace RentMe.View
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubtotalTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -160,9 +160,24 @@ namespace RentMe.View
             this.rentalItemDataGridView.TabIndex = 16;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
             // 
-            // rentalItemBindingSource
+            // SubtotalTextBoxColumn
             // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.SubtotalTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SubtotalTextBoxColumn.HeaderText = "Subtotal";
+            this.SubtotalTextBoxColumn.Name = "SubtotalTextBoxColumn";
+            this.SubtotalTextBoxColumn.ReadOnly = true;
+            this.SubtotalTextBoxColumn.Width = 90;
+            // 
+            // EditButtonColumn
+            // 
+            this.EditButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditButtonColumn.HeaderText = "";
+            this.EditButtonColumn.Name = "EditButtonColumn";
+            this.EditButtonColumn.ReadOnly = true;
+            this.EditButtonColumn.Text = "Edit";
+            this.EditButtonColumn.UseColumnTextForButtonValue = true;
             // 
             // submitOrderButton
             // 
@@ -246,30 +261,15 @@ namespace RentMe.View
             this.dueDateTextBoxColumn.ReadOnly = true;
             this.dueDateTextBoxColumn.Visible = false;
             // 
-            // SubtotalTextBoxColumn
+            // rentalItemBindingSource
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.SubtotalTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SubtotalTextBoxColumn.HeaderText = "Subtotal";
-            this.SubtotalTextBoxColumn.Name = "SubtotalTextBoxColumn";
-            this.SubtotalTextBoxColumn.ReadOnly = true;
-            this.SubtotalTextBoxColumn.Width = 90;
-            // 
-            // EditButtonColumn
-            // 
-            this.EditButtonColumn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditButtonColumn.HeaderText = "";
-            this.EditButtonColumn.Name = "EditButtonColumn";
-            this.EditButtonColumn.ReadOnly = true;
-            this.EditButtonColumn.Text = "Edit";
-            this.EditButtonColumn.UseColumnTextForButtonValue = true;
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // ViewCartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 426);
+            this.ClientSize = new System.Drawing.Size(690, 408);
             this.Controls.Add(this.submitOrderButton);
             this.Controls.Add(this.rentalItemDataGridView);
             this.Controls.Add(this.errorMessageLabel);

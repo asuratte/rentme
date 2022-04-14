@@ -54,15 +54,29 @@ namespace RentMe.View
 
         private void OnOrderSummaryFormLoad(object sender, EventArgs e)
         {
-            this.dateValueLabel.Text = this.theRentalTransaction.RentalDate.ToShortDateString();
-            this.memberNameValueLabel.Text = this.TheMember.FirstName + " " + this.TheMember.LastName;
-            this.employeeNameValueLabel.Text = this.theEmployee.FirstName + " " + this.theEmployee.LastName;
+            this.dateValueLabel.Text = "Date: " + this.theRentalTransaction.RentalDate.ToShortDateString();
+            this.memberNameValueLabel.Text = "Member: " + this.TheMember.FirstName + " " + this.TheMember.LastName;
+            this.employeeNameValueLabel.Text = "Helped By: " + this.theEmployee.FirstName + " " + this.theEmployee.LastName;
             this.transactionNumberLabel.Text = "Transaction #" + this.theRentalTransaction.TransactionID + " completed.";
-            this.totalValueLabel.Text = "$ " + this.theRentalTransaction.TotalValue.ToString();
+            this.dueDateValueLabel.Text = "Due Date: " + this.theRentalTransaction.DueDate.ToShortDateString();
+            this.totalValueLabel.Text = "Total: $" + this.theRentalTransaction.TotalValue.ToString();
             rentalItemBindingSource.Clear();
             foreach (RentalItem theRentalItem in theRentalItems)
             {
                 rentalItemBindingSource.Add(theRentalItem);
+            }
+            this.CalculateSubtotals();
+        }
+
+        private void CalculateSubtotals()
+        {
+            foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
+            {
+                int quantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[row.Index].Cells[3].Value);
+                int numberOfDays = (this.theRentalTransaction.DueDate.Date - DateTime.Today).Days;
+                decimal rentalRate = Convert.ToDecimal(this.rentalItemDataGridView.Rows[row.Index].Cells[4].Value);
+                decimal subtotal = quantity * rentalRate * numberOfDays;
+                this.rentalItemDataGridView.Rows[row.Index].Cells[8].Value = subtotal;
             }
         }
     }

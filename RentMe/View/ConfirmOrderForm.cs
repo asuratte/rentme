@@ -9,7 +9,6 @@ namespace RentMe.View
     public partial class ConfirmOrderForm : Form
     {
         private List<RentalItem> theRentalItemList;
-        private decimal theRentalTotal;
 
         public List<RentalItem> TheRentalItemList
         {
@@ -26,14 +25,7 @@ namespace RentMe.View
 
         public DateTime TheDueDate { get; set; }
 
-        public decimal TheRentalTotal
-        {
-            get { return this.theRentalTotal; }
-            set
-            {
-                this.theRentalTotal = value;
-            }
-        }
+        public decimal TheRentalTotal { get; set; }
 
         public ConfirmOrderForm()
         {
@@ -44,7 +36,7 @@ namespace RentMe.View
         {
             this.DisplayOrder();
             this.dueDateValueLabel.Text = this.TheDueDate.Date.ToShortDateString();
-            this.totalValueLabel.Text = "$" + this.theRentalTotal.ToString();
+            this.totalValueLabel.Text = "$" + this.TheRentalTotal.ToString();
         }
 
         private void DisplayOrder()

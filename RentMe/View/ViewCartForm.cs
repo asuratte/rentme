@@ -190,13 +190,15 @@ namespace RentMe.View
 
         private RentalTransaction CreateRentalTransaction(int rentalTransactionID)
         {
-            RentalTransaction theRentalTransaction = new RentalTransaction();
-            theRentalTransaction.TransactionID = rentalTransactionID;
-            theRentalTransaction.MemberID = this.theMember.MemberID;
-            theRentalTransaction.EmployeeID = this.TheEmployee.EmployeeID;
-            theRentalTransaction.TotalValue = this.TheRentalTotal;
-            theRentalTransaction.RentalDate = DateTime.Now;
-            theRentalTransaction.DueDate = this.TheReturnDate;
+            RentalTransaction theRentalTransaction = new RentalTransaction
+            {
+                TransactionID = rentalTransactionID,
+                MemberID = this.theMember.MemberID,
+                EmployeeID = this.TheEmployee.EmployeeID,
+                TotalValue = this.TheRentalTotal,
+                RentalDate = DateTime.Now,
+                DueDate = this.TheReturnDate
+            };
             return theRentalTransaction;
         }
 
@@ -223,7 +225,7 @@ namespace RentMe.View
             }
             catch (Exception)
             {
-                this.ShowErrorMessage("There was an issue completing the return transaction.");
+                this.ShowErrorMessage("There was an issue completing the rental transaction.");
             }
         }
     }
