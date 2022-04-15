@@ -74,7 +74,7 @@ namespace RentMe.UserControls
                         }
                         else
                         {
-                            this.errorMessageLabel.Text = "Member currently has no oustanding rentals.";
+                            this.errorMessageLabel.Text = "Member currently has no outstanding rentals.";
                         }
                     }
                     else

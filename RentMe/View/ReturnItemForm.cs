@@ -115,7 +115,7 @@ namespace RentMe.View
             }
             else
             {
-                this.errorMessageLabel.Text = "Invalid quantity. Please adjust quantity to an amount less than or equal to the number of outstanding items and try again.";
+                this.errorMessageLabel.Text = "Invalid quantity. Please adjust quantity to a whole number less than or equal to the number of outstanding items and try again.";
                 this.errorMessageLabel.ForeColor = Color.Red;
             }
         }
@@ -176,9 +176,16 @@ namespace RentMe.View
         private bool ValidateItemQuantity()
         {
             bool isValid = false;
-            if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity && Convert.ToInt32(this.quantityTextBox.Text) != 0)
+            try
             {
-                isValid = true;
+                if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity && Convert.ToInt32(this.quantityTextBox.Text) != 0)
+                {
+                    isValid = true;
+                }
+            }
+            catch (Exception)
+            {
+                this.errorMessageLabel.Text = "Please enter a valid quantity as a whole number.";
             }
             return isValid;
         }

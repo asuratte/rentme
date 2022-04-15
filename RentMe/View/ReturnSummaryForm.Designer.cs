@@ -41,11 +41,11 @@ namespace RentMe.View
             this.totalValue = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
             this.returnItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.returnSummaryDataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnSummaryDataGridViewFurnitureName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnSummaryDataGridViewQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnSummaryDataGridViewFineOrRefund = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.returnItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -145,10 +145,6 @@ namespace RentMe.View
             this.returnItemDataGridView.Size = new System.Drawing.Size(571, 246);
             this.returnItemDataGridView.TabIndex = 9;
             // 
-            // returnItemBindingSource
-            // 
-            this.returnItemBindingSource.DataSource = typeof(RentMe.Model.ReturnItem);
-            // 
             // returnSummaryDataGridViewFurnitureID
             // 
             this.returnSummaryDataGridViewFurnitureID.DataPropertyName = "FurnitureID";
@@ -181,6 +177,10 @@ namespace RentMe.View
             this.returnSummaryDataGridViewFineOrRefund.ReadOnly = true;
             this.returnSummaryDataGridViewFineOrRefund.Width = 130;
             // 
+            // returnItemBindingSource
+            // 
+            this.returnItemBindingSource.DataSource = typeof(RentMe.Model.ReturnItem);
+            // 
             // ReturnSummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -197,6 +197,7 @@ namespace RentMe.View
             this.Controls.Add(this.memberNameLabel);
             this.Controls.Add(this.transactionNumberLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ReturnSummaryForm";
