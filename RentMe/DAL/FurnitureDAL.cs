@@ -1,4 +1,5 @@
 ﻿using RentMe.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -108,6 +109,45 @@ namespace RentMe.DAL
                 }
             }
             return theFurnitureList;
+        }
+
+        /// <summary>
+        /// Gets the rental rate by furnitureID
+        /// </summary>
+        /// <param name="furnitureID">The furnitureID</param>
+        /// <returns>Rental rate as decimal</returns>
+        public decimal GetRentalRateByFurnitureID(string furnitureID)
+        {
+            string selectStatement =
+                @"SELECT rentalRate
+                FROM furniture
+                WHERE furnitureID = @FurnitureID";
+
+            decimal rentalRate;
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@FurnitureID", System.Data.SqlDbType.VarChar);
+                    selectCommand.Parameters["@FurnitureID"].Value = furnitureID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            rentalRate = Convert.ToDecimal(reader["rentalRate"]);
+                        }
+                        else
+                        {
+                            rentalRate = -1;
+                        }
+                    }
+                }
+            }
+            return rentalRate;
         }
 
     }

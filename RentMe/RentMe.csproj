@@ -50,11 +50,15 @@
     <Compile Include="Controller\FurnitureCategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
+    <Compile Include="Controller\RentalItemController.cs" />
+    <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
+    <Compile Include="DAL\RentalItemDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
+    <Compile Include="DAL\ReturnTransactionDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StateController.cs" />
@@ -64,6 +68,9 @@
     <Compile Include="Model\FurnitureCategory.cs" />
     <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
+    <Compile Include="Model\ReturnItem.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
@@ -73,6 +80,12 @@
     </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.Designer.cs">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminInterface.cs">
       <SubType>Form</SubType>
@@ -110,6 +123,18 @@
     <Compile Include="View\MemberRegistrationConfirmationForm.Designer.cs">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnItemForm.Designer.cs">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReturnSummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnSummaryForm.Designer.cs">
+      <DependentUpon>ReturnSummaryForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -122,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnFurnitureUserControl.resx">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
@@ -141,8 +169,16 @@
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnItemForm.resx">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnSummaryForm.resx">
+      <DependentUpon>ReturnSummaryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalItem.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.ReturnItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

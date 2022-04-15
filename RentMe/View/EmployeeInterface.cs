@@ -8,6 +8,8 @@ namespace RentMe.View
     /// </summary>
     public partial class EmployeeInterface : Form
     {
+        private Employee theEmployee;
+
         /// <summary>
         /// Initialize the employee interface
         /// </summary>
@@ -24,6 +26,7 @@ namespace RentMe.View
         {
             this.employeeNameLabel.Text = employee.FirstName + " " + employee.LastName;
             this.employeeUsernameLabel.Text = employee.Username;
+            this.theEmployee = employee;
         }
 
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,6 +43,11 @@ namespace RentMe.View
             else if (e.TabPageIndex == 1)
             {
                 this.rentFurnitureUserControl.ResetForm();
+            }
+            else if (e.TabPageIndex == 2)
+            {
+                this.returnFurnitureUserControl.ResetForm();
+                this.returnFurnitureUserControl.TheEmployee = this.theEmployee;
             }
         }
 
