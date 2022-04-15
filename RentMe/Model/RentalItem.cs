@@ -3,7 +3,7 @@
 namespace RentMe.Model
 {
     /// <summary>
-    /// This class models a rental item
+    /// Defines a model class for a Rental Item.
     /// </summary>
     public class RentalItem
     {

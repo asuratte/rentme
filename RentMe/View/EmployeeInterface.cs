@@ -45,6 +45,11 @@ namespace RentMe.View
                 this.rentFurnitureUserControl.ResetForm();
                 this.rentFurnitureUserControl.TheEmployee = this.theEmployee;
             }
+            else if (e.TabPageIndex == 2)
+            {
+                this.returnFurnitureUserControl.ResetForm();
+                this.returnFurnitureUserControl.TheEmployee = this.theEmployee;
+            }
         }
 
         private void EmployeeInterfaceOnLoad(object sender, System.EventArgs e)
