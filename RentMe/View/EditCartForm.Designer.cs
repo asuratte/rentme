@@ -37,6 +37,7 @@ namespace RentMe.View
             this.updateCartButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureQuantityNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +66,7 @@ namespace RentMe.View
             this.furnitureQuantityNumericUpDown.Size = new System.Drawing.Size(60, 25);
             this.furnitureQuantityNumericUpDown.TabIndex = 1;
             this.furnitureQuantityNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.furnitureQuantityNumericUpDown.Enter += new System.EventHandler(this.FurnitureQuantityNumericUpDownEnter);
             // 
             // furnitureQuantityLabel
             // 
@@ -120,11 +122,21 @@ namespace RentMe.View
             this.removeButton.UseVisualStyleBackColor = false;
             this.removeButton.Click += new System.EventHandler(this.RemoveItemButtonClick);
             // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 76);
+            this.errorMessageLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(302, 33);
+            this.errorMessageLabel.TabIndex = 5;
+            // 
             // EditCartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(326, 161);
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.updateCartButton);
@@ -155,5 +167,6 @@ namespace RentMe.View
         private System.Windows.Forms.Button updateCartButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
