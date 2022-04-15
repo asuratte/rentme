@@ -74,7 +74,6 @@ namespace RentMe.View
                 try
                 {
                     decimal itemTotal = 0;
-                    decimal amountPaid = 0;
                     decimal rentalRate = this.theFurnitureController.GetRentalRateByFurnitureID(this.itemToReturn.FurnitureID);
                     
                     if (rentalRate == -1)
@@ -83,29 +82,12 @@ namespace RentMe.View
                     }
                     else
                     {
-                        int numberOfDaysRented = Convert.ToInt32((DateTime.Today - this.itemToReturn.RentalDate.Date).TotalDays);
-                        int plannedNumberOfDaysRented = Convert.ToInt32((this.itemToReturn.DueDate.Date - this.itemToReturn.RentalDate).TotalDays);
-                        int numberOfDaysOverdue = Convert.ToInt32((DateTime.Today - this.itemToReturn.DueDate.Date).TotalDays);
-                        amountPaid = Decimal.Multiply(plannedNumberOfDaysRented, rentalRate);
                         this.SetReturnedItem();
-                        if (numberOfDaysRented == plannedNumberOfDaysRented)
-                        {
-                            itemTotal = 0;
-                            this.theReturnedItem.ItemTotal = itemTotal;
-                        }
-                        else if (numberOfDaysRented < plannedNumberOfDaysRented)
-                        {
-                            itemTotal = Decimal.Multiply(Convert.ToDecimal(plannedNumberOfDaysRented - numberOfDaysRented), rentalRate);
-                            this.theReturnedItem.ItemTotal = itemTotal;
-                        }
-                        else if (numberOfDaysOverdue > 0)
-                        {
-                            itemTotal = Decimal.Multiply(Convert.ToDecimal(numberOfDaysOverdue), rentalRate);
-                            this.theReturnedItem.ItemTotal = itemTotal * -1;
-                        }
+                        itemTotal = (this.itemToReturn.DueDate.Date - DateTime.Today).Days * rentalRate * this.TheReturnedItem.Quantity;
+                        this.theReturnedItem.ItemTotal = itemTotal;
+                        this.DisplayItemTotal(itemTotal);
+                        this.returnItemButton.Enabled = true;
                     }
-                    this.DisplayItemTotal(itemTotal, amountPaid);
-                    this.returnItemButton.Enabled = true;
                 }
                 catch (Exception)
                 {
@@ -120,27 +102,27 @@ namespace RentMe.View
             }
         }
 
-        private void DisplayItemTotal(decimal itemTotal, decimal amountPaid)
+        private void DisplayItemTotal(decimal itemTotal)
         {
             string itemTotalDisplay = "";
-            if (itemTotal > amountPaid)
+            if (itemTotal < 0)
             {
-                itemTotalDisplay = "-$" + itemTotal.ToString();
-                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                itemTotalDisplay = "-$" + (-1 * itemTotal).ToString();
+                this.theReturnedItem.ItemTotalDisplay = itemTotalDisplay;
                 this.errorMessageLabel.Text = "Fine assessed for late return.";
                 this.errorMessageLabel.ForeColor = Color.Red;
             }
-            else if (itemTotal < amountPaid)
+            else if (itemTotal > 0)
             {
                 itemTotalDisplay = "+$" + itemTotal.ToString();
-                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                this.theReturnedItem.ItemTotalDisplay = itemTotalDisplay;
                 this.errorMessageLabel.Text = "Refund due.";
                 this.errorMessageLabel.ForeColor = Color.Green;
             }
             else
             {
                 itemTotalDisplay = "$" + itemTotal.ToString();
-                this.TheReturnedItem.ItemTotalDisplay = itemTotalDisplay;
+                this.theReturnedItem.ItemTotalDisplay = itemTotalDisplay;
                 this.errorMessageLabel.Text = "Paid in full.";
                 this.errorMessageLabel.ForeColor = Color.Black;
             }
