@@ -85,6 +85,7 @@ namespace RentMe.View
                     this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheRentalTransaction.EmployeeID);
                     this.dateValue.Text = this.TheRentalTransaction.RentalDate.ToShortDateString();
                     this.transactionNumberValue.Text = this.TheRentalTransaction.TransactionID.ToString();
+                    decimal transactionTotal = 0;
                     List<RentalItem> theRentalItems = this.theRentalItemController.GetRentalItemsByTransactionID(this.TheRentalTransaction.TransactionID);
                     for (int i = 0; i < theRentalItems.Count; i++)
                     {
@@ -95,7 +96,11 @@ namespace RentMe.View
                         row.Cells[2].Value = theRentalItems[i].FurnitureName;
                         row.Cells[3].Value = theRentalItems[i].RentalRate;
                         transactionDetailsDataGridView.Rows.Add(row);
+                        int numberOfDays = (theRentalItems[i].DueDate - theRentalItems[i].RentalDate).Days + 1;
+                        decimal subtotal = theRentalItems[i].Quantity * theRentalItems[i].RentalRate * numberOfDays;
+                        transactionTotal += subtotal;
                     }
+                    this.totalValue.Text = "$" + transactionTotal.ToString();
                 }
                 catch (Exception)
                 {
