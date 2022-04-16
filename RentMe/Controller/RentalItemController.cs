@@ -34,5 +34,20 @@ namespace RentMe.Controller
             }
             return this.rentalItemDAL.GetActiveRentalItemsByMemberID(memberID);
         }
+
+        /// <summary>
+        /// Gets the rental items by transactionID.
+        /// </summary>
+        /// <param name="transactionID">The transaction identifier.</param>
+        /// <returns>List of rental items for a given transaction ID</returns>
+        /// <exception cref="ArgumentException">Transaction ID must be a positive whole number.</exception>
+        public List<RentalItem> GetRentalItemsByTransactionID(int transactionID)
+        {
+            if (transactionID <= 0)
+            {
+                throw new ArgumentException("Transaction ID must be a positive whole number.");
+            }
+            return this.rentalItemDAL.GetRentalItemsByTransactionID(transactionID);
+        }
     }
 }

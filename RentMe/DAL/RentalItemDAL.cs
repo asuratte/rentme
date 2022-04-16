@@ -61,5 +61,47 @@ namespace RentMe.DAL
             }
             return theRentalItemList;
         }
+
+        /// <summary>
+        /// Gets the rental items by transactionID.
+        /// </summary>
+        /// <param name="transactionID">The transaction identifier.</param>
+        /// <returns>List of rental items for a given transaction ID</returns>
+        public List<RentalItem> GetRentalItemsByTransactionID(int transactionID)
+        {
+            string selectStatement =
+            @"SELECT ri.quantity, ri.furnitureID, f.name, f.rentalRate
+              FROM rental_item ri
+              JOIN furniture f ON ri.furnitureID = f.furnitureID
+              WHERE transactionID = @TransactionID";
+
+            List<RentalItem> theRentalItemList = new List<RentalItem>();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@TransactionID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@TransactionID"].Value = transactionID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalItem theRentalItem = new RentalItem();
+                            theRentalItem.TransactionID = transactionID;
+                            theRentalItem.FurnitureID = reader["furnitureID"].ToString();
+                            theRentalItem.FurnitureName = reader["name"].ToString();
+                            theRentalItem.Quantity = Convert.ToInt32(reader["quantity"]);
+                            theRentalItem.RentalRate = Convert.ToDecimal(reader["rentalRate"]);
+                            theRentalItemList.Add(theRentalItem);
+                        }
+                    }
+                }
+            }
+            return theRentalItemList;
+        }
     }
 }
