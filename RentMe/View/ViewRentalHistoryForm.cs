@@ -70,6 +70,11 @@ namespace RentMe.View
             this.errorMessageLabel.Text = "";
             this.DisplayRentalTransactionHistory();
             this.DisplayReturnTransactionHistory();
+            if (rentalTransactionDataGridView.Rows.Count < 1 && returnTransactionDataGridView.Rows.Count < 1)
+            {
+                this.errorMessageLabel.Text = "This member has not made any rental or return transactions.";
+                this.errorMessageLabel.ForeColor = Color.Black;
+            }
         }
 
         private void ShowErrorMessage(string message)
