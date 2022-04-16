@@ -96,7 +96,7 @@ namespace RentMe.View
                         row.Cells[2].Value = theRentalItems[i].FurnitureName;
                         row.Cells[3].Value = theRentalItems[i].RentalRate;
                         transactionDetailsDataGridView.Rows.Add(row);
-                        int numberOfDays = (theRentalItems[i].DueDate - theRentalItems[i].RentalDate).Days + 1;
+                        int numberOfDays = (theRentalItems[i].DueDate.Date - theRentalItems[i].RentalDate.Date).Days;
                         decimal subtotal = theRentalItems[i].Quantity * theRentalItems[i].RentalRate * numberOfDays;
                         transactionTotal += subtotal;
                     }
@@ -114,6 +114,7 @@ namespace RentMe.View
                     this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheReturnTransaction.EmployeeID);
                     this.dateValue.Text = this.TheReturnTransaction.ReturnDate.ToShortDateString();
                     this.transactionNumberValue.Text = this.TheReturnTransaction.TransactionID.ToString();
+                    decimal transactionTotal = 0;
                     List<ReturnItem> theReturnItems = this.theReturnItemController.GetReturnItemsByTransactionID(this.TheReturnTransaction.TransactionID);
                     for (int i = 0; i < theReturnItems.Count; i++)
                     {
@@ -124,7 +125,11 @@ namespace RentMe.View
                         row.Cells[2].Value = theReturnItems[i].FurnitureName;
                         row.Cells[3].Value = theReturnItems[i].RentalRate;
                         transactionDetailsDataGridView.Rows.Add(row);
+                        int numberOfDays = (theReturnItems[i].DueDate.Date - theReturnItems[i].ReturnDate.Date).Days;
+                        decimal subtotal = theReturnItems[i].Quantity * theReturnItems[i].RentalRate * numberOfDays;
+                        transactionTotal += subtotal;
                     }
+                    this.totalValue.Text = "$" + transactionTotal.ToString();
                 }
                 catch (Exception)
                 {
