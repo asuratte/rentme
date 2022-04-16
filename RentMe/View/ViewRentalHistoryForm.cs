@@ -15,6 +15,7 @@ namespace RentMe.View
     {
         private readonly RentalTransactionController theRentalTransactionController;
         private readonly ReturnTransactionController theReturnTransactionController;
+        private readonly ViewTransactionDetailsForm theViewTransactionDetailsForm;
 
         public int MemberID { get; set; }
 
@@ -26,6 +27,7 @@ namespace RentMe.View
             InitializeComponent();
             this.theRentalTransactionController = new RentalTransactionController();
             this.theReturnTransactionController = new ReturnTransactionController();
+            this.theViewTransactionDetailsForm = new ViewTransactionDetailsForm();
         }
 
         private void DisplayRentalTransactionHistory()
@@ -41,7 +43,7 @@ namespace RentMe.View
             }
             catch (Exception)
             {
-                this.ShowErrorMessage("There was an issue retrieving the member's transaction history.");
+                this.ShowErrorMessage("There was an issue retrieving the member's rental transaction history.");
             }
         }
 
@@ -58,7 +60,7 @@ namespace RentMe.View
             }
             catch (Exception)
             {
-                this.ShowErrorMessage("There was an issue retrieving the member's transaction history.");
+                this.ShowErrorMessage("There was an issue retrieving the member's return transaction history.");
             }
             
         }
@@ -76,5 +78,33 @@ namespace RentMe.View
             this.errorMessageLabel.ForeColor = Color.Red;
         }
 
+        private void CloseButtonOnClick(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void RentalTransactionDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                int i = e.RowIndex;
+                RentalTransaction selectedRentalTransaction = (RentalTransaction)rentalTransactionBindingSource[i];
+                this.theViewTransactionDetailsForm.ResetForm();
+                this.theViewTransactionDetailsForm.TheRentalTransaction = selectedRentalTransaction;
+                this.theViewTransactionDetailsForm.ShowDialog();
+            }
+        }
+
+        private void ReturnTransactionDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                int i = e.RowIndex;
+                ReturnTransaction selectedReturnTransaction = (ReturnTransaction)returnTransactionBindingSource[i];
+                this.theViewTransactionDetailsForm.ResetForm();
+                this.theViewTransactionDetailsForm.TheReturnTransaction = selectedReturnTransaction;
+                this.theViewTransactionDetailsForm.ShowDialog();
+            }
+        }
     }
 }
