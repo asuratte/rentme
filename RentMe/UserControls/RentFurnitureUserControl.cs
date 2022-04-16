@@ -1,5 +1,6 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
+using RentMe.View;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,6 +17,20 @@ namespace RentMe.UserControls
         private readonly FurnitureCategoryController theFurnitureCategoryController;
         private readonly FurnitureStyleController theFurnitureStyleController;
         private readonly FurnitureController theFurnitureController;
+        private readonly MemberController theMemberController;
+        private readonly List<RentalItem> theCart;
+        private ViewCartForm theViewCartForm;
+        private Member theMember;
+        private Employee theEmployee;
+
+        public Employee TheEmployee
+        {
+            get { return this.theEmployee; }
+            set
+            {
+                this.theEmployee = value ?? throw new Exception("Employee not provided.");
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentFurnitureUserControl"/> class.
@@ -26,6 +41,9 @@ namespace RentMe.UserControls
             this.theFurnitureCategoryController = new FurnitureCategoryController();
             this.theFurnitureStyleController = new FurnitureStyleController();
             this.theFurnitureController = new FurnitureController();
+            this.theMemberController = new MemberController();
+            this.theViewCartForm = new ViewCartForm();
+            this.theCart = new List<RentalItem>();
         }
 
         private void LoadComboBoxes()
@@ -55,12 +73,6 @@ namespace RentMe.UserControls
             }
         }
 
-        private void ShowErrorMessage(string message)
-        {
-            this.errorMessageLabel.Text = message;
-            this.errorMessageLabel.ForeColor = Color.Red;
-        }
-
         private void FurnitureSearchButtonClick(object sender, EventArgs e)
         {
             furnitureBindingSource.Clear();
@@ -74,7 +86,7 @@ namespace RentMe.UserControls
                     if (furnitureItem != null)
                     {
                         furnitureBindingSource.Add(furnitureItem);
-                        this.ClearSearchFormInputs();
+                        this.ClearFurnitureSearchFormInputs();
                     }
                     else
                     {
@@ -98,7 +110,7 @@ namespace RentMe.UserControls
                         foreach (Furniture furnitureItem in theFurnitureList)
                         {
                             furnitureBindingSource.Add(furnitureItem);
-                            this.ClearSearchFormInputs();
+                            this.ClearFurnitureSearchFormInputs();
                         }
                     }
                     else
@@ -117,17 +129,102 @@ namespace RentMe.UserControls
             }
         }
 
-        private void ClearSearchFormInputs()
+        private void MemberSearchButtonClick(object sender, EventArgs e)
         {
-            this.furnitureIDSearchTextBox.Text = "";
-            this.categoryComboBox.SelectedIndex = 0;
-            this.styleComboBox.SelectedIndex = 0;
+            this.ResetCart();
+            if (!String.IsNullOrEmpty(this.memberIDSearchTextBox.Text))
+            {
+                try
+                {
+                    int memberID = Convert.ToInt32(this.memberIDSearchTextBox.Text);
+                    this.theMember = this.theMemberController.GetMemberByID(memberID);
+                    if (this.theMember != null)
+                    {
+                        this.cartForMemberLabel.Visible = true;
+                        this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
+                        this.viewCartButton.Enabled = true;
+                        this.resetCartButton.Enabled = true;
+                    }
+                    else
+                    {
+                        this.ShowErrorMessage("Cannot find member with specified ID.");
+                    }
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue retrieving member information by ID.");
+                }
+            }
         }
 
-        private void OnSearchValueChanged(object sender, EventArgs e)
+        private void FurnitureDataGridViewCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7)
+            {
+                this.errorMessageLabel.Text = "";
+                if (this.theMember != null)
+                {
+                    Furniture theFurniture = (Furniture)furnitureBindingSource[e.RowIndex];
+                    using (AddToCartForm theAddToCartForm = new AddToCartForm())
+                    {
+                        theAddToCartForm.TheFurniture = theFurniture;
+                        theAddToCartForm.QuantityAvailable = theFurniture.TotalQuantity;
+                        if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
+                        {
+                            RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
+                            theAddToCartForm.QuantityAvailable = theFurniture.TotalQuantity - theRentalItem.Quantity;
+                        }
+                        DialogResult result = theAddToCartForm.ShowDialog();
+
+                        if (result == DialogResult.OK && theAddToCartForm.QuantityToAdd > 0)
+                        {
+                            RentalItem theRentalItem = null;
+                            if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
+                            {
+                                theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
+                                theRentalItem.Quantity += theAddToCartForm.QuantityToAdd;
+                            }
+                            else
+                            {
+                                theRentalItem = new RentalItem
+                                {
+                                    Quantity = theAddToCartForm.QuantityToAdd,
+                                    FurnitureID = theFurniture.FurnitureID,
+                                    FurnitureName = theFurniture.Name,
+                                    RentalRate = theFurniture.RentalRate
+                                };
+                                this.theCart.Add(theRentalItem);
+                            }
+                            this.errorMessageLabel.Text = theAddToCartForm.QuantityToAdd + " " + theFurniture.Name + " item(s) successfully added to cart.";
+                            this.errorMessageLabel.ForeColor = Color.Green;
+                        }
+                    }
+                }
+                else
+                {
+                    this.ShowErrorMessage("A cart has not been created. Please choose a member to create a cart.");
+                }
+            }
+        }
+
+        private void ViewCartButtonClick(object sender, EventArgs e)
         {
             this.errorMessageLabel.Text = "";
-            this.errorMessageLabel.ForeColor = default(Color);
+            if (this.theCart.Count > 0)
+                {
+                    this.theViewCartForm.TheRentalItemList = theCart;
+                    this.theViewCartForm.TheMember = this.theMember;
+                    this.theViewCartForm.TheEmployee = this.theEmployee;
+                    DialogResult result = this.theViewCartForm.ShowDialog();
+                    if (result == DialogResult.OK) 
+                    {
+                        this.ResetForm();
+                    }
+                }
+                else
+                {
+                    this.ShowErrorMessage("The cart is currently empty.");
+                }
         }
 
         /// <summary>
@@ -138,7 +235,47 @@ namespace RentMe.UserControls
             this.furnitureBindingSource.Clear();
             this.LoadComboBoxes();
             this.errorMessageLabel.Text = "";
-            this.ClearSearchFormInputs();
+            this.ClearFurnitureSearchFormInputs();
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void ResetCartButtonClick(object sender, EventArgs e)
+        {
+            this.ResetCart();
+            this.memberIDSearchTextBox.Text = "";
+        }
+
+        private void ResetCart()
+        {
+            this.cartForMemberLabel.Visible = false;
+            this.memberNameValueLabel.Text = "";
+            this.viewCartButton.Enabled = false;
+            this.resetCartButton.Enabled = false;
+            this.theMember = null;
+            this.theCart.Clear();
+            this.errorMessageLabel.Text = "";
+            this.theViewCartForm.Dispose();
+            this.theViewCartForm = new ViewCartForm();
+        }
+
+        private void ClearFurnitureSearchFormInputs()
+        {
+            this.furnitureIDSearchTextBox.Text = "";
+            this.categoryComboBox.SelectedIndex = 0;
+            this.styleComboBox.SelectedIndex = 0;
+        }
+
+        private void OnSearchValueChanged(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+            this.errorMessageLabel.ForeColor = default;
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
         }
     }
 }

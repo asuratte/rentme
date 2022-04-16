@@ -43,6 +43,7 @@ namespace RentMe.View
             else if (e.TabPageIndex == 1)
             {
                 this.rentFurnitureUserControl.ResetForm();
+                this.rentFurnitureUserControl.TheEmployee = this.theEmployee;
             }
             else if (e.TabPageIndex == 2)
             {
