@@ -174,19 +174,18 @@ namespace RentMe.UserControls
                             RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
                             theAddToCartForm.QuantityAvailable = theFurniture.TotalQuantity - theRentalItem.Quantity;
                         }
+                            
                         DialogResult result = theAddToCartForm.ShowDialog();
-
                         if (result == DialogResult.OK && theAddToCartForm.QuantityToAdd > 0)
                         {
-                            RentalItem theRentalItem = null;
                             if (this.theCart.Exists(item => item.FurnitureID == theFurniture.FurnitureID))
                             {
-                                theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
+                                RentalItem theRentalItem = this.theCart.Find(item => item.FurnitureID == theFurniture.FurnitureID);
                                 theRentalItem.Quantity += theAddToCartForm.QuantityToAdd;
                             }
                             else
                             {
-                                theRentalItem = new RentalItem
+                                RentalItem theRentalItem = new RentalItem
                                 {
                                     Quantity = theAddToCartForm.QuantityToAdd,
                                     FurnitureID = theFurniture.FurnitureID,
