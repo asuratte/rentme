@@ -2,12 +2,7 @@
 using RentMe.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -15,6 +10,7 @@ namespace RentMe.View
     public partial class ViewRentalHistoryForm : Form
     {
         private RentalTransactionController theRentalTransactionController;
+        private ReturnTransactionController theReturnTransactionController;
 
         public int MemberID { get; set; }
 
@@ -22,21 +18,56 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.theRentalTransactionController = new RentalTransactionController();
+            this.theReturnTransactionController = new ReturnTransactionController();
         }
 
-        private void DisplayTransactionHistory()
+        private void DisplayRentalTransactionHistory()
         {
             rentalTransactionBindingSource.Clear();
-            List<RentalTransaction> theRentalTransactionList = this.theRentalTransactionController.GetAllRentalTransactionsByMemberID(this.MemberID);
-            foreach (RentalTransaction theRentalTransaction in theRentalTransactionList)
+            try
             {
-                rentalTransactionBindingSource.Add(theRentalTransaction);
+                List<RentalTransaction> theRentalTransactionList = this.theRentalTransactionController.GetAllRentalTransactionsByMemberID(this.MemberID);
+                foreach (RentalTransaction theRentalTransaction in theRentalTransactionList)
+                {
+                    rentalTransactionBindingSource.Add(theRentalTransaction);
+                }
             }
+            catch (Exception)
+            {
+                this.ShowErrorMessage("There was an issue retrieving the member's transaction history.");
+            }
+        }
+
+        private void DisplayReturnTransactionHistory()
+        {
+            returnTransactionBindingSource.Clear();
+            try
+            {
+                List<ReturnTransaction> theReturnTransactionList = this.theReturnTransactionController.GetAllReturnTransactionsByMemberID(this.MemberID);
+                foreach (ReturnTransaction theReturnTransaction in theReturnTransactionList)
+                {
+                    returnTransactionBindingSource.Add(theReturnTransaction);
+                }
+            }
+            catch (Exception)
+            {
+                this.ShowErrorMessage("There was an issue retrieving the member's transaction history.");
+            }
+            
         }
 
         private void OnViewRentalHistoryFormLoad(object sender, EventArgs e)
         {
-            this.DisplayTransactionHistory();
+            this.errorMessageLabel.Text = "";
+            this.DisplayRentalTransactionHistory();
+            this.DisplayReturnTransactionHistory();
         }
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
+        }
+
     }
 }

@@ -131,7 +131,7 @@ namespace RentMe.DAL
                                 TransactionID = (int)reader["transactionID"],
                                 MemberID = memberID,
                                 EmployeeID = (int)reader["employeeID"],
-                                ReturnDate = (DateTime)reader["rentalDate"]
+                                ReturnDate = (DateTime)reader["returnDate"]
                             };
                             returnTransactionList.Add(theReturnTransaction);
                         }

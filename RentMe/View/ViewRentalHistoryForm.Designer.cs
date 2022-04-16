@@ -31,17 +31,14 @@ namespace RentMe.View
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRentalHistoryForm));
             this.rentalTransactionsLabel = new System.Windows.Forms.Label();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.returnTransactionsLabel = new System.Windows.Forms.Label();
-            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
             this.rentalTransactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalMemberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalEmployeeIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,11 @@ namespace RentMe.View
             this.rentalDueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalTotalValueTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalViewDetailsButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.returnTransactionsLabel = new System.Windows.Forms.Label();
+            this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
+            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.returnTransactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnMemberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnEmployeeIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,15 +59,15 @@ namespace RentMe.View
             this.returnViewDetailsButton = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rentalTransactionsLabel
             // 
             this.rentalTransactionsLabel.AutoSize = true;
             this.rentalTransactionsLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rentalTransactionsLabel.Location = new System.Drawing.Point(12, 9);
+            this.rentalTransactionsLabel.Location = new System.Drawing.Point(12, 15);
             this.rentalTransactionsLabel.Name = "rentalTransactionsLabel";
             this.rentalTransactionsLabel.Size = new System.Drawing.Size(137, 19);
             this.rentalTransactionsLabel.TabIndex = 0;
@@ -94,57 +96,11 @@ namespace RentMe.View
             this.rentalTotalValueTextBoxColumn,
             this.rentalViewDetailsButton});
             this.rentalTransactionDataGridView.DataSource = this.rentalTransactionBindingSource;
-            this.rentalTransactionDataGridView.Location = new System.Drawing.Point(16, 34);
+            this.rentalTransactionDataGridView.Location = new System.Drawing.Point(16, 40);
             this.rentalTransactionDataGridView.Name = "rentalTransactionDataGridView";
             this.rentalTransactionDataGridView.ReadOnly = true;
             this.rentalTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
             this.rentalTransactionDataGridView.TabIndex = 2;
-            // 
-            // rentalTransactionBindingSource
-            // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
-            // 
-            // returnTransactionsLabel
-            // 
-            this.returnTransactionsLabel.AutoSize = true;
-            this.returnTransactionsLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnTransactionsLabel.Location = new System.Drawing.Point(12, 283);
-            this.returnTransactionsLabel.Name = "returnTransactionsLabel";
-            this.returnTransactionsLabel.Size = new System.Drawing.Size(139, 19);
-            this.returnTransactionsLabel.TabIndex = 3;
-            this.returnTransactionsLabel.Text = "Return Transactions";
-            // 
-            // returnTransactionBindingSource
-            // 
-            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
-            // 
-            // returnTransactionDataGridView
-            // 
-            this.returnTransactionDataGridView.AllowUserToAddRows = false;
-            this.returnTransactionDataGridView.AllowUserToDeleteRows = false;
-            this.returnTransactionDataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.returnTransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.returnTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.returnTransactionIDTextBoxColumn,
-            this.returnMemberIDTextBoxColumn,
-            this.returnEmployeeIDTextBoxColumn,
-            this.returnDateTextBoxColumn,
-            this.returnTotalAmountTextBoxColumn,
-            this.returnViewDetailsButton});
-            this.returnTransactionDataGridView.DataSource = this.returnTransactionBindingSource;
-            this.returnTransactionDataGridView.Location = new System.Drawing.Point(16, 308);
-            this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
-            this.returnTransactionDataGridView.ReadOnly = true;
-            this.returnTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
-            this.returnTransactionDataGridView.TabIndex = 3;
             // 
             // rentalTransactionIDTextBoxColumn
             // 
@@ -209,6 +165,60 @@ namespace RentMe.View
             this.rentalViewDetailsButton.UseColumnTextForButtonValue = true;
             this.rentalViewDetailsButton.Width = 110;
             // 
+            // rentalTransactionBindingSource
+            // 
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
+            // 
+            // returnTransactionsLabel
+            // 
+            this.returnTransactionsLabel.AutoSize = true;
+            this.returnTransactionsLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnTransactionsLabel.Location = new System.Drawing.Point(12, 289);
+            this.returnTransactionsLabel.Name = "returnTransactionsLabel";
+            this.returnTransactionsLabel.Size = new System.Drawing.Size(139, 19);
+            this.returnTransactionsLabel.TabIndex = 3;
+            this.returnTransactionsLabel.Text = "Return Transactions";
+            // 
+            // returnTransactionDataGridView
+            // 
+            this.returnTransactionDataGridView.AllowUserToAddRows = false;
+            this.returnTransactionDataGridView.AllowUserToDeleteRows = false;
+            this.returnTransactionDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.returnTransactionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.returnTransactionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.returnTransactionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.returnTransactionIDTextBoxColumn,
+            this.returnMemberIDTextBoxColumn,
+            this.returnEmployeeIDTextBoxColumn,
+            this.returnDateTextBoxColumn,
+            this.returnTotalAmountTextBoxColumn,
+            this.returnViewDetailsButton});
+            this.returnTransactionDataGridView.DataSource = this.returnTransactionBindingSource;
+            this.returnTransactionDataGridView.Location = new System.Drawing.Point(16, 314);
+            this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
+            this.returnTransactionDataGridView.ReadOnly = true;
+            this.returnTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
+            this.returnTransactionDataGridView.TabIndex = 3;
+            // 
+            // returnTransactionBindingSource
+            // 
+            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 553);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(457, 45);
+            this.errorMessageLabel.TabIndex = 4;
+            // 
             // returnTransactionIDTextBoxColumn
             // 
             this.returnTransactionIDTextBoxColumn.DataPropertyName = "TransactionID";
@@ -237,6 +247,8 @@ namespace RentMe.View
             // returnDateTextBoxColumn
             // 
             this.returnDateTextBoxColumn.DataPropertyName = "ReturnDate";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.returnDateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.returnDateTextBoxColumn.HeaderText = "Date";
             this.returnDateTextBoxColumn.Name = "returnDateTextBoxColumn";
             this.returnDateTextBoxColumn.ReadOnly = true;
@@ -258,13 +270,14 @@ namespace RentMe.View
             this.returnViewDetailsButton.ReadOnly = true;
             this.returnViewDetailsButton.Text = "View Details";
             this.returnViewDetailsButton.UseColumnTextForButtonValue = true;
-            this.returnViewDetailsButton.Width = 120;
+            this.returnViewDetailsButton.Width = 110;
             // 
             // ViewRentalHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 607);
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.returnTransactionDataGridView);
             this.Controls.Add(this.returnTransactionsLabel);
             this.Controls.Add(this.rentalTransactionDataGridView);
@@ -279,8 +292,8 @@ namespace RentMe.View
             this.Load += new System.EventHandler(this.OnViewRentalHistoryFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,6 +314,7 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridViewButtonColumn rentalViewDetailsButton;
         private System.Windows.Forms.BindingSource returnTransactionBindingSource;
         private System.Windows.Forms.DataGridView returnTransactionDataGridView;
+        private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnTransactionIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnMemberIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn returnEmployeeIDTextBoxColumn;
