@@ -38,6 +38,7 @@ namespace RentMe.View
             this.furnitureNameValueLabel = new System.Windows.Forms.Label();
             this.addToCartButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureQuantityNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@ namespace RentMe.View
             // furnitureNameLabel
             // 
             this.furnitureNameLabel.AutoSize = true;
-            this.furnitureNameLabel.Location = new System.Drawing.Point(12, 57);
+            this.furnitureNameLabel.Location = new System.Drawing.Point(12, 52);
             this.furnitureNameLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.furnitureNameLabel.Name = "furnitureNameLabel";
             this.furnitureNameLabel.Size = new System.Drawing.Size(48, 19);
@@ -77,6 +78,7 @@ namespace RentMe.View
             this.furnitureQuantityNumericUpDown.Size = new System.Drawing.Size(60, 25);
             this.furnitureQuantityNumericUpDown.TabIndex = 1;
             this.furnitureQuantityNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.furnitureQuantityNumericUpDown.Enter += new System.EventHandler(this.FurnitureQuantityNumericUpDownEnter);
             // 
             // furnitureIDValueLabel
             // 
@@ -88,7 +90,7 @@ namespace RentMe.View
             // 
             // furnitureNameValueLabel
             // 
-            this.furnitureNameValueLabel.Location = new System.Drawing.Point(60, 57);
+            this.furnitureNameValueLabel.Location = new System.Drawing.Point(60, 52);
             this.furnitureNameValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.furnitureNameValueLabel.Name = "furnitureNameValueLabel";
             this.furnitureNameValueLabel.Size = new System.Drawing.Size(249, 19);
@@ -101,7 +103,7 @@ namespace RentMe.View
             this.addToCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addToCartButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addToCartButton.ForeColor = System.Drawing.Color.White;
-            this.addToCartButton.Location = new System.Drawing.Point(70, 116);
+            this.addToCartButton.Location = new System.Drawing.Point(16, 130);
             this.addToCartButton.Name = "addToCartButton";
             this.addToCartButton.Size = new System.Drawing.Size(110, 27);
             this.addToCartButton.TabIndex = 3;
@@ -116,7 +118,7 @@ namespace RentMe.View
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(199, 116);
+            this.cancelButton.Location = new System.Drawing.Point(199, 130);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
             this.cancelButton.TabIndex = 2;
@@ -124,11 +126,21 @@ namespace RentMe.View
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 88);
+            this.errorMessageLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(297, 33);
+            this.errorMessageLabel.TabIndex = 4;
+            // 
             // AddToCartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(321, 155);
+            this.ClientSize = new System.Drawing.Size(321, 169);
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.addToCartButton);
             this.Controls.Add(this.furnitureNameValueLabel);
@@ -161,5 +173,6 @@ namespace RentMe.View
         private System.Windows.Forms.Label furnitureNameValueLabel;
         private System.Windows.Forms.Button addToCartButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
