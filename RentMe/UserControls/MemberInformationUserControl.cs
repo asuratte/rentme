@@ -49,6 +49,7 @@ namespace RentMe.UserControls
             this.ClearMemberFormInputs();
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = false;
+            this.viewRentalHistoryButton.Enabled = false;
         }
 
         private void ClearMemberFormInputs()
@@ -235,6 +236,7 @@ namespace RentMe.UserControls
                         this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
                         this.ClearSearchFormInputs();
                         this.updateMemberInformationButton.Enabled = true;
+                        this.viewRentalHistoryButton.Enabled = true;
                     }
                     else
                     {
@@ -399,6 +401,23 @@ namespace RentMe.UserControls
         {
             this.errorMessageLabel.Text = "";
             this.errorMessageLabel.ForeColor = default(Color);
+        }
+
+        private void ViewRentalHistoryButtonClick(object sender, EventArgs e)
+        {
+            try
+            {
+                int memberID = Convert.ToInt32(this.memberIDFormValue.Text);
+                using (ViewRentalHistoryForm theViewRentalHistoryForm = new ViewRentalHistoryForm())
+                {
+                    theViewRentalHistoryForm.ShowDialog();
+                }
+            }
+            catch (Exception)
+            {
+                this.errorMessageLabel.Text = "There was an issue retrieving the transaction history.";
+                this.errorMessageLabel.ForeColor = Color.Red;
+            }
         }
     }
 }
