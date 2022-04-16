@@ -1,6 +1,7 @@
 ﻿using RentMe.Controller;
 using RentMe.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RentMe.View
@@ -14,6 +15,7 @@ namespace RentMe.View
         private RentalTransaction theRentalTransaction;
         private ReturnTransaction theReturnTransaction;
         private readonly EmployeeController theEmployeeController;
+        private readonly RentalItemController theRentalItemController;
 
         public RentalTransaction TheRentalTransaction
         {
@@ -48,6 +50,7 @@ namespace RentMe.View
         {
             InitializeComponent();
             this.theEmployeeController = new EmployeeController();
+            this.theRentalItemController = new RentalItemController();
         }
 
         private void CloseButtonOnClick(object sender, EventArgs e)
@@ -67,6 +70,8 @@ namespace RentMe.View
             this.errorMessageLabel.Text = "";
             this.theRentalTransaction = null;
             this.theReturnTransaction = null;
+            transactionDetailsDataGridView.Rows.Clear();
+            transactionDetailsDataGridView.Refresh();
         }
 
         private void ViewTransactionDetailsFormOnLoad(object sender, EventArgs e)
@@ -78,6 +83,17 @@ namespace RentMe.View
                     this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheRentalTransaction.EmployeeID);
                     this.dateValue.Text = this.TheRentalTransaction.RentalDate.ToShortDateString();
                     this.transactionNumberValue.Text = this.TheRentalTransaction.TransactionID.ToString();
+                    List<RentalItem> theRentalItems = this.theRentalItemController.GetRentalItemsByTransactionID(this.TheRentalTransaction.TransactionID);
+                    for (int i = 0; i < theRentalItems.Count; i++)
+                    {
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.CreateCells(transactionDetailsDataGridView);
+                        row.Cells[0].Value = theRentalItems[i].Quantity;
+                        row.Cells[1].Value = theRentalItems[i].FurnitureID;
+                        row.Cells[2].Value = theRentalItems[i].FurnitureName;
+                        row.Cells[3].Value = theRentalItems[i].RentalRate;
+                        transactionDetailsDataGridView.Rows.Add(row);
+                    }
                 }
                 catch (Exception)
                 {

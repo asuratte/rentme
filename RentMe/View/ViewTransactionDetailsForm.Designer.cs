@@ -29,6 +29,8 @@ namespace RentMe.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewTransactionDetailsForm));
             this.totalLabel = new System.Windows.Forms.Label();
             this.employeeNameLabel = new System.Windows.Forms.Label();
@@ -40,6 +42,12 @@ namespace RentMe.View
             this.dateValue = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.transactionDetailsDataGridView = new System.Windows.Forms.DataGridView();
+            this.quantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureIDColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.furnitureNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalRateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // totalLabel
@@ -133,11 +141,65 @@ namespace RentMe.View
             this.errorMessageLabel.Size = new System.Drawing.Size(429, 45);
             this.errorMessageLabel.TabIndex = 18;
             // 
+            // transactionDetailsDataGridView
+            // 
+            this.transactionDetailsDataGridView.AllowUserToAddRows = false;
+            this.transactionDetailsDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionDetailsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.transactionDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.transactionDetailsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.quantityColumn,
+            this.furnitureIDColumn,
+            this.furnitureNameColumn,
+            this.rentalRateColumn});
+            this.transactionDetailsDataGridView.Location = new System.Drawing.Point(14, 134);
+            this.transactionDetailsDataGridView.Name = "transactionDetailsDataGridView";
+            this.transactionDetailsDataGridView.ReadOnly = true;
+            this.transactionDetailsDataGridView.Size = new System.Drawing.Size(530, 239);
+            this.transactionDetailsDataGridView.TabIndex = 19;
+            // 
+            // quantityColumn
+            // 
+            this.quantityColumn.HeaderText = "Quantity";
+            this.quantityColumn.Name = "quantityColumn";
+            this.quantityColumn.ReadOnly = true;
+            this.quantityColumn.Width = 85;
+            // 
+            // furnitureIDColumn
+            // 
+            this.furnitureIDColumn.HeaderText = "Furniture ID";
+            this.furnitureIDColumn.Name = "furnitureIDColumn";
+            this.furnitureIDColumn.ReadOnly = true;
+            // 
+            // furnitureNameColumn
+            // 
+            this.furnitureNameColumn.HeaderText = "Name";
+            this.furnitureNameColumn.Name = "furnitureNameColumn";
+            this.furnitureNameColumn.ReadOnly = true;
+            this.furnitureNameColumn.Width = 170;
+            // 
+            // rentalRateColumn
+            // 
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.rentalRateColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rentalRateColumn.HeaderText = "Rental Rate";
+            this.rentalRateColumn.Name = "rentalRateColumn";
+            this.rentalRateColumn.ReadOnly = true;
+            // 
             // ViewTransactionDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 436);
+            this.Controls.Add(this.transactionDetailsDataGridView);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.dateValue);
@@ -156,6 +218,7 @@ namespace RentMe.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Transaction Details";
             this.Load += new System.EventHandler(this.ViewTransactionDetailsFormOnLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.transactionDetailsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +236,10 @@ namespace RentMe.View
         private System.Windows.Forms.Label dateValue;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.DataGridView transactionDetailsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateColumn;
     }
 }
