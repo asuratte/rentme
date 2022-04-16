@@ -1,5 +1,6 @@
 ﻿using RentMe.Model;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -97,6 +98,47 @@ namespace RentMe.DAL
                 }
                 return transactionID;
             }
+        }
+
+        /// <summary>
+        /// Gets all return transactions by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>The list of return transactions for the specified member ID.</returns>
+        public List<ReturnTransaction> GetAllReturnTransactionsByMemberID(int memberID)
+        {
+            List<ReturnTransaction> returnTransactionList = new List<ReturnTransaction>();
+
+            string selectStatement =
+                @"SELECT transactionID, memberID, employeeID, returnDate
+                FROM return_transaction
+                WHERE memberID = @MemberID";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@MemberID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@MemberID"].Value = memberID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ReturnTransaction theReturnTransaction = new ReturnTransaction
+                            {
+                                TransactionID = (int)reader["transactionID"],
+                                MemberID = memberID,
+                                EmployeeID = (int)reader["employeeID"],
+                                ReturnDate = (DateTime)reader["rentalDate"]
+                            };
+                            returnTransactionList.Add(theReturnTransaction);
+                        }
+                    }
+                }
+            }
+            return returnTransactionList;
         }
     }
 }

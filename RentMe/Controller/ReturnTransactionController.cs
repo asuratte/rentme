@@ -1,5 +1,7 @@
 ﻿using RentMe.DAL;
+using RentMe.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace RentMe.Controller
@@ -41,6 +43,21 @@ namespace RentMe.Controller
                 throw new ArgumentException("There must be at least one furniture item in the list.");
             }
             return this.returnTransactionDAL.AddReturnTransactionAndItems(memberID, employeeID, returnedItemsListView);
+        }
+
+        /// <summary>
+        /// Gets all return transactions by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>The list of return transactions for the specified member ID.</returns>
+        /// <exception cref="System.ArgumentException">Member ID must be a positive whole number.</exception>
+        public List<ReturnTransaction> GetAllReturnTransactionsByMemberID(int memberID)
+        {
+            if (memberID <= 0)
+            {
+                throw new ArgumentException("Member ID must be a positive whole number.");
+            }
+            return this.returnTransactionDAL.GetAllReturnTransactionsByMemberID(memberID);
         }
     }
 }
