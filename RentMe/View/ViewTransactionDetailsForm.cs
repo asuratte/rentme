@@ -16,6 +16,7 @@ namespace RentMe.View
         private ReturnTransaction theReturnTransaction;
         private readonly EmployeeController theEmployeeController;
         private readonly RentalItemController theRentalItemController;
+        private readonly ReturnItemController theReturnItemController;
 
         public RentalTransaction TheRentalTransaction
         {
@@ -51,6 +52,7 @@ namespace RentMe.View
             InitializeComponent();
             this.theEmployeeController = new EmployeeController();
             this.theRentalItemController = new RentalItemController();
+            this.theReturnItemController = new ReturnItemController();
         }
 
         private void CloseButtonOnClick(object sender, EventArgs e)
@@ -107,6 +109,17 @@ namespace RentMe.View
                     this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheReturnTransaction.EmployeeID);
                     this.dateValue.Text = this.TheReturnTransaction.ReturnDate.ToShortDateString();
                     this.transactionNumberValue.Text = this.TheReturnTransaction.TransactionID.ToString();
+                    List<ReturnItem> theReturnItems = this.theReturnItemController.GetReturnItemsByTransactionID(this.TheReturnTransaction.TransactionID);
+                    for (int i = 0; i < theReturnItems.Count; i++)
+                    {
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.CreateCells(transactionDetailsDataGridView);
+                        row.Cells[0].Value = theReturnItems[i].Quantity;
+                        row.Cells[1].Value = theReturnItems[i].FurnitureID;
+                        row.Cells[2].Value = theReturnItems[i].FurnitureName;
+                        row.Cells[3].Value = theReturnItems[i].RentalRate;
+                        transactionDetailsDataGridView.Rows.Add(row);
+                    }
                 }
                 catch (Exception)
                 {
