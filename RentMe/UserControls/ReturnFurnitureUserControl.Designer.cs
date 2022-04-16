@@ -46,7 +46,7 @@ namespace RentMe.UserControls
             this.returnedItemsListView = new System.Windows.Forms.ListView();
             this.returnedItemsListViewColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataGridViewHeaderLabel = new System.Windows.Forms.Label();
             this.clearFormButton = new System.Windows.Forms.Button();
             this.dataGridViewMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +55,7 @@ namespace RentMe.UserControls
             this.dataGridViewQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRentalDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewDueDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -177,14 +177,9 @@ namespace RentMe.UserControls
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridViewCellContentClick);
             // 
-            // ReturnItemButton
+            // rentalItemBindingSource
             // 
-            this.ReturnItemButton.HeaderText = "";
-            this.ReturnItemButton.Name = "ReturnItemButton";
-            this.ReturnItemButton.ReadOnly = true;
-            this.ReturnItemButton.Text = "Return Item";
-            this.ReturnItemButton.UseColumnTextForButtonValue = true;
-            this.ReturnItemButton.Width = 80;
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // DataGridViewHeaderLabel
             // 
@@ -228,7 +223,7 @@ namespace RentMe.UserControls
             this.dataGridViewFurnitureID.HeaderText = "Furniture ID";
             this.dataGridViewFurnitureID.Name = "dataGridViewFurnitureID";
             this.dataGridViewFurnitureID.ReadOnly = true;
-            this.dataGridViewFurnitureID.Width = 85;
+            this.dataGridViewFurnitureID.Width = 78;
             // 
             // dataGridViewRentalTransactionID
             // 
@@ -272,11 +267,16 @@ namespace RentMe.UserControls
             this.dataGridViewDueDateColumn.HeaderText = "Due Date";
             this.dataGridViewDueDateColumn.Name = "dataGridViewDueDateColumn";
             this.dataGridViewDueDateColumn.ReadOnly = true;
-            this.dataGridViewDueDateColumn.Width = 90;
+            this.dataGridViewDueDateColumn.Width = 82;
             // 
-            // rentalItemBindingSource
+            // ReturnItemButton
             // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            this.ReturnItemButton.HeaderText = "";
+            this.ReturnItemButton.Name = "ReturnItemButton";
+            this.ReturnItemButton.ReadOnly = true;
+            this.ReturnItemButton.Text = "Return Item";
+            this.ReturnItemButton.UseColumnTextForButtonValue = true;
+            this.ReturnItemButton.Width = 80;
             // 
             // ReturnFurnitureUserControl
             // 
@@ -317,6 +317,7 @@ namespace RentMe.UserControls
         private System.Windows.Forms.BindingSource rentalItemBindingSource;
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
         private System.Windows.Forms.Label DataGridViewHeaderLabel;
+        private System.Windows.Forms.Button clearFormButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewMemberID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewFurnitureID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewRentalTransactionID;
@@ -324,6 +325,5 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewRentalDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewDueDateColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ReturnItemButton;
-        private System.Windows.Forms.Button clearFormButton;
     }
 }

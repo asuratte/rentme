@@ -49,14 +49,14 @@ namespace RentMe.View
             this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.returnTransactionsLabel = new System.Windows.Forms.Label();
             this.returnTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.returnTransactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnMemberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnEmployeeIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnTotalAmountTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.returnViewDetailsButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.returnTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnTransactionDataGridView)).BeginInit();
@@ -99,7 +99,7 @@ namespace RentMe.View
             this.rentalTransactionDataGridView.Location = new System.Drawing.Point(16, 40);
             this.rentalTransactionDataGridView.Name = "rentalTransactionDataGridView";
             this.rentalTransactionDataGridView.ReadOnly = true;
-            this.rentalTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
+            this.rentalTransactionDataGridView.Size = new System.Drawing.Size(471, 220);
             this.rentalTransactionDataGridView.TabIndex = 2;
             // 
             // rentalTransactionIDTextBoxColumn
@@ -204,20 +204,8 @@ namespace RentMe.View
             this.returnTransactionDataGridView.Location = new System.Drawing.Point(16, 314);
             this.returnTransactionDataGridView.Name = "returnTransactionDataGridView";
             this.returnTransactionDataGridView.ReadOnly = true;
-            this.returnTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
+            this.returnTransactionDataGridView.Size = new System.Drawing.Size(471, 220);
             this.returnTransactionDataGridView.TabIndex = 3;
-            // 
-            // returnTransactionBindingSource
-            // 
-            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
-            // 
-            // errorMessageLabel
-            // 
-            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(12, 553);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(457, 45);
-            this.errorMessageLabel.TabIndex = 4;
             // 
             // returnTransactionIDTextBoxColumn
             // 
@@ -272,11 +260,23 @@ namespace RentMe.View
             this.returnViewDetailsButton.UseColumnTextForButtonValue = true;
             this.returnViewDetailsButton.Width = 110;
             // 
+            // returnTransactionBindingSource
+            // 
+            this.returnTransactionBindingSource.DataSource = typeof(RentMe.Model.ReturnTransaction);
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 553);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(457, 45);
+            this.errorMessageLabel.TabIndex = 4;
+            // 
             // ViewRentalHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 607);
+            this.ClientSize = new System.Drawing.Size(501, 607);
             this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.returnTransactionDataGridView);
             this.Controls.Add(this.returnTransactionsLabel);
