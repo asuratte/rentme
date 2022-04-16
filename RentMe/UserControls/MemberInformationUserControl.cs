@@ -410,6 +410,7 @@ namespace RentMe.UserControls
                 int memberID = Convert.ToInt32(this.memberIDFormValue.Text);
                 using (ViewRentalHistoryForm theViewRentalHistoryForm = new ViewRentalHistoryForm())
                 {
+                    theViewRentalHistoryForm.MemberID = memberID;
                     theViewRentalHistoryForm.ShowDialog();
                 }
             }

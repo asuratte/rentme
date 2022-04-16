@@ -35,14 +35,14 @@ namespace RentMe.View
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rentalTransactionsLabel = new System.Windows.Forms.Label();
             this.rentalTransactionDataGridView = new System.Windows.Forms.DataGridView();
-            this.viewDetailsButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalValueTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalTransactionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.viewDetailsButton = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -83,22 +83,17 @@ namespace RentMe.View
             this.rentalTransactionDataGridView.Location = new System.Drawing.Point(16, 31);
             this.rentalTransactionDataGridView.Name = "rentalTransactionDataGridView";
             this.rentalTransactionDataGridView.ReadOnly = true;
-            this.rentalTransactionDataGridView.Size = new System.Drawing.Size(425, 220);
+            this.rentalTransactionDataGridView.Size = new System.Drawing.Size(453, 220);
             this.rentalTransactionDataGridView.TabIndex = 2;
             // 
-            // viewDetailsButton
+            // rentalTransactionBindingSource
             // 
-            this.viewDetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewDetailsButton.HeaderText = "";
-            this.viewDetailsButton.Name = "viewDetailsButton";
-            this.viewDetailsButton.ReadOnly = true;
-            this.viewDetailsButton.Text = "View Details";
-            this.viewDetailsButton.UseColumnTextForButtonValue = true;
+            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
             // 
             // transactionIDTextBoxColumn
             // 
             this.transactionIDTextBoxColumn.DataPropertyName = "TransactionID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.transactionIDTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.transactionIDTextBoxColumn.HeaderText = "TransactionID";
             this.transactionIDTextBoxColumn.Name = "transactionIDTextBoxColumn";
@@ -123,14 +118,14 @@ namespace RentMe.View
             // rentalDateTextBoxColumn
             // 
             this.rentalDateTextBoxColumn.DataPropertyName = "RentalDate";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle3.Format = "g";
             dataGridViewCellStyle3.NullValue = null;
             this.rentalDateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.rentalDateTextBoxColumn.HeaderText = "Date";
             this.rentalDateTextBoxColumn.Name = "rentalDateTextBoxColumn";
             this.rentalDateTextBoxColumn.ReadOnly = true;
-            this.rentalDateTextBoxColumn.Width = 180;
+            this.rentalDateTextBoxColumn.Width = 200;
             // 
             // dueDateTextBoxColumn
             // 
@@ -148,15 +143,21 @@ namespace RentMe.View
             this.totalValueTextBoxColumn.ReadOnly = true;
             this.totalValueTextBoxColumn.Visible = false;
             // 
-            // rentalTransactionBindingSource
+            // viewDetailsButton
             // 
-            this.rentalTransactionBindingSource.DataSource = typeof(RentMe.Model.RentalTransaction);
+            this.viewDetailsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewDetailsButton.HeaderText = "";
+            this.viewDetailsButton.Name = "viewDetailsButton";
+            this.viewDetailsButton.ReadOnly = true;
+            this.viewDetailsButton.Text = "View Details";
+            this.viewDetailsButton.UseColumnTextForButtonValue = true;
+            this.viewDetailsButton.Width = 110;
             // 
             // ViewRentalHistoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 270);
+            this.ClientSize = new System.Drawing.Size(484, 270);
             this.Controls.Add(this.rentalTransactionDataGridView);
             this.Controls.Add(this.rentalTransactionsLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,6 +166,7 @@ namespace RentMe.View
             this.Name = "ViewRentalHistoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View Rental History";
+            this.Load += new System.EventHandler(this.OnViewRentalHistoryFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalTransactionBindingSource)).EndInit();
             this.ResumeLayout(false);
