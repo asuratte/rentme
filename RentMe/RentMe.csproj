@@ -51,6 +51,7 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
     <Compile Include="Controller\RentalItemController.cs" />
+    <Compile Include="Controller\ReturnItemController.cs" />
     <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="Controller\RentalTransactionController.cs" />
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="DAL\RentalTransactionDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
+    <Compile Include="DAL\ReturnItemDAL.cs" />
     <Compile Include="DAL\ReturnTransactionDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
