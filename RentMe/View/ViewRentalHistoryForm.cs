@@ -7,13 +7,20 @@ using System.Windows.Forms;
 
 namespace RentMe.View
 {
+    /// <summary>
+    /// Represents the view rental history form of the RentMe Application.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ViewRentalHistoryForm : Form
     {
-        private RentalTransactionController theRentalTransactionController;
-        private ReturnTransactionController theReturnTransactionController;
+        private readonly RentalTransactionController theRentalTransactionController;
+        private readonly ReturnTransactionController theReturnTransactionController;
 
         public int MemberID { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewRentalHistoryForm"/> class.
+        /// </summary>
         public ViewRentalHistoryForm()
         {
             InitializeComponent();
