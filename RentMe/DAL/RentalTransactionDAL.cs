@@ -97,5 +97,47 @@ namespace RentMe.DAL
                 return transactionID;
             }
         }
+
+        /// <summary>
+        /// Gets all rental transactions by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>The list of rental transactions for the specified member ID.</returns>
+        public List<RentalTransaction> GetAllRentalTransactionsByMemberID(int memberID)
+        {
+            List<RentalTransaction> rentalTransactionList = new List<RentalTransaction>();
+
+            string selectStatement =
+                @"SELECT transactionID, memberID, employeeID, rentalDate, dueDate
+                FROM rental_transaction
+                WHERE memberID = @MemberID";
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@MemberID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@MemberID"].Value = memberID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalTransaction theRentalTransaction = new RentalTransaction
+                            {
+                                TransactionID = (int)reader["transactionID"],
+                                MemberID = memberID,
+                                EmployeeID = (int)reader["employeeID"],
+                                RentalDate = (DateTime)reader["rentalDate"],
+                                DueDate = (DateTime)reader["dueDate"]
+                            };
+                            rentalTransactionList.Add(theRentalTransaction);
+                        }
+                    }
+                }
+            }
+            return rentalTransactionList;
+        }
     }
 }
