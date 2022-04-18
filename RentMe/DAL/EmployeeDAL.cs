@@ -125,5 +125,40 @@ namespace RentMe.DAL
                 return false;
             }
         }
+
+        /// <summary>
+        /// Gets the employee first and last name by employeeID.
+        /// </summary>
+        /// <param name="employeeID">The employee identifier.</param>
+        /// <returns>First and last name for the given employee</returns>
+        public string GetEmployeeFirstAndLastNameByID(int employeeID)
+        {
+            string employeeName = "";
+
+            string selectStatement =
+                @"SELECT firstName, lastName
+                FROM employee 
+                WHERE employeeID = @EmployeeID";
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@EmployeeID", System.Data.SqlDbType.NVarChar);
+                    selectCommand.Parameters["@EmployeeID"].Value = employeeID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            employeeName = reader["firstName"].ToString() + " " + reader["lastName"].ToString();
+                        }
+                    }
+                }
+            }
+            return employeeName;
+        }
     }
 }

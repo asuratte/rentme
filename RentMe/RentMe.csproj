@@ -51,6 +51,7 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
     <Compile Include="Controller\RentalItemController.cs" />
+    <Compile Include="Controller\ReturnItemController.cs" />
     <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="Controller\RentalTransactionController.cs" />
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="DAL\RentalTransactionDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
+    <Compile Include="DAL\ReturnItemDAL.cs" />
     <Compile Include="DAL\ReturnTransactionDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
@@ -168,6 +170,18 @@
     <Compile Include="View\ViewCartForm.Designer.cs">
       <DependentUpon>ViewCartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewRentalHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewRentalHistoryForm.Designer.cs">
+      <DependentUpon>ViewRentalHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTransactionDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewTransactionDetailsForm.Designer.cs">
+      <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -223,10 +237,18 @@
     <EmbeddedResource Include="View\ViewCartForm.resx">
       <DependentUpon>ViewCartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewRentalHistoryForm.resx">
+      <DependentUpon>ViewRentalHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewTransactionDetailsForm.resx">
+      <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.RentalItem.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalTransaction.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.ReturnItem.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.ReturnTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

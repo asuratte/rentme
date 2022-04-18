@@ -67,6 +67,7 @@
             this.lastNameSearchLabel = new System.Windows.Forms.Label();
             this.clearFormButton = new System.Windows.Forms.Button();
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.viewRentalHistoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.memberBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -469,10 +470,26 @@
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(182, 25);
             this.dateOfBirthDateTimePicker.TabIndex = 7;
             // 
+            // viewRentalHistoryButton
+            // 
+            this.viewRentalHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.viewRentalHistoryButton.FlatAppearance.BorderSize = 0;
+            this.viewRentalHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewRentalHistoryButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewRentalHistoryButton.ForeColor = System.Drawing.Color.White;
+            this.viewRentalHistoryButton.Location = new System.Drawing.Point(440, 390);
+            this.viewRentalHistoryButton.Name = "viewRentalHistoryButton";
+            this.viewRentalHistoryButton.Size = new System.Drawing.Size(157, 27);
+            this.viewRentalHistoryButton.TabIndex = 20;
+            this.viewRentalHistoryButton.Text = "View Rental History";
+            this.viewRentalHistoryButton.UseVisualStyleBackColor = false;
+            this.viewRentalHistoryButton.Click += new System.EventHandler(this.ViewRentalHistoryButtonClick);
+            // 
             // MemberInformationUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.viewRentalHistoryButton);
             this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.clearFormButton);
             this.Controls.Add(this.lastNameSearchTextBox);
@@ -559,5 +576,6 @@
         private System.Windows.Forms.Label lastNameSearchLabel;
         private System.Windows.Forms.Button clearFormButton;
         private System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
+        private System.Windows.Forms.Button viewRentalHistoryButton;
     }
 }

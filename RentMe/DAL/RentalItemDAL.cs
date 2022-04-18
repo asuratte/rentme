@@ -61,5 +61,50 @@ namespace RentMe.DAL
             }
             return theRentalItemList;
         }
+
+        /// <summary>
+        /// Gets the rental items by transactionID.
+        /// </summary>
+        /// <param name="transactionID">The transaction identifier.</param>
+        /// <returns>List of rental items for a given transaction ID</returns>
+        public List<RentalItem> GetRentalItemsByTransactionID(int transactionID)
+        {
+            string selectStatement =
+            @"SELECT ri.quantity, ri.furnitureID, f.name, f.rentalRate, rt.rentalDate, rt.dueDate
+              FROM rental_item ri
+              JOIN furniture f ON ri.furnitureID = f.furnitureID
+              JOIN rental_transaction rt ON ri.transactionID = rt.transactionID
+              WHERE ri.transactionID = @TransactionID";
+
+            List<RentalItem> theRentalItemList = new List<RentalItem>();
+
+            using (SqlConnection connection = RentMeDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.Add("@TransactionID", System.Data.SqlDbType.Int);
+                    selectCommand.Parameters["@TransactionID"].Value = transactionID;
+
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RentalItem theRentalItem = new RentalItem();
+                            theRentalItem.TransactionID = transactionID;
+                            theRentalItem.FurnitureID = reader["furnitureID"].ToString();
+                            theRentalItem.FurnitureName = reader["name"].ToString();
+                            theRentalItem.Quantity = Convert.ToInt32(reader["quantity"]);
+                            theRentalItem.RentalRate = Convert.ToDecimal(reader["rentalRate"]);
+                            theRentalItem.RentalDate = Convert.ToDateTime(reader["rentalDate"]);
+                            theRentalItem.DueDate = Convert.ToDateTime(reader["dueDate"]);
+                            theRentalItemList.Add(theRentalItem);
+                        }
+                    }
+                }
+            }
+            return theRentalItemList;
+        }
     }
 }

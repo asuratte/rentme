@@ -51,5 +51,20 @@ namespace RentMe.Controller
             }
             return this.rentalTransactionDAL.AddRentalTransactionAndItems(memberID, employeeID, rentalItemsList, dueDate);
         }
+
+        /// <summary>
+        /// Gets all rental transactions by member identifier.
+        /// </summary>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>The list of rental transactions for the specified member ID.</returns>
+        /// <exception cref="System.ArgumentException">Member ID must be a positive whole number.</exception>
+        public List<RentalTransaction> GetAllRentalTransactionsByMemberID(int memberID)
+        {
+            if (memberID <= 0)
+            {
+                throw new ArgumentException("Member ID must be a positive whole number.");
+            }
+            return this.rentalTransactionDAL.GetAllRentalTransactionsByMemberID(memberID);
+        }
     }
 }
