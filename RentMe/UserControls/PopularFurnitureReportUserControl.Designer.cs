@@ -29,12 +29,31 @@ namespace RentMe.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.getMostPopularFurnitureDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cs6232_g1DataSet = new RentMe.cs6232_g1DataSet();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.generateReportButton = new System.Windows.Forms.Button();
+            this.popularFurnitureReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.getMostPopularFurnitureDuringDatesTableAdapter = new RentMe.cs6232_g1DataSetTableAdapters.getMostPopularFurnitureDuringDatesTableAdapter();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.getMostPopularFurnitureDuringDatesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cs6232_g1DataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // getMostPopularFurnitureDuringDatesBindingSource
+            // 
+            this.getMostPopularFurnitureDuringDatesBindingSource.DataMember = "getMostPopularFurnitureDuringDates";
+            this.getMostPopularFurnitureDuringDatesBindingSource.DataSource = this.cs6232_g1DataSet;
+            // 
+            // cs6232_g1DataSet
+            // 
+            this.cs6232_g1DataSet.DataSetName = "cs6232_g1DataSet";
+            this.cs6232_g1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // startDateTimePicker
             // 
@@ -85,12 +104,39 @@ namespace RentMe.UserControls
             this.generateReportButton.TabIndex = 6;
             this.generateReportButton.Text = "Generate Report";
             this.generateReportButton.UseVisualStyleBackColor = false;
-            this.generateReportButton.Click += new System.EventHandler(this.generateReportButton_Click);
+            this.generateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
+            // 
+            // popularFurnitureReportViewer
+            // 
+            this.popularFurnitureReportViewer.AutoScroll = true;
+            reportDataSource3.Name = "PopularFurnitureDataSet";
+            reportDataSource3.Value = this.getMostPopularFurnitureDuringDatesBindingSource;
+            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            this.popularFurnitureReportViewer.LocalReport.ReportEmbeddedResource = "RentMe.PopularFurnitureReport.rdlc";
+            this.popularFurnitureReportViewer.Location = new System.Drawing.Point(16, 71);
+            this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";
+            this.popularFurnitureReportViewer.ServerReport.BearerToken = null;
+            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(747, 293);
+            this.popularFurnitureReportViewer.TabIndex = 7;
+            // 
+            // getMostPopularFurnitureDuringDatesTableAdapter
+            // 
+            this.getMostPopularFurnitureDuringDatesTableAdapter.ClearBeforeFill = true;
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 378);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(751, 45);
+            this.errorMessageLabel.TabIndex = 8;
             // 
             // PopularFurnitureReportUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.errorMessageLabel);
+            this.Controls.Add(this.popularFurnitureReportViewer);
             this.Controls.Add(this.generateReportButton);
             this.Controls.Add(this.endDateTimePicker);
             this.Controls.Add(this.endDateLabel);
@@ -99,6 +145,8 @@ namespace RentMe.UserControls
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PopularFurnitureReportUserControl";
             this.Size = new System.Drawing.Size(784, 437);
+            ((System.ComponentModel.ISupportInitialize)(this.getMostPopularFurnitureDuringDatesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cs6232_g1DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +159,10 @@ namespace RentMe.UserControls
         private System.Windows.Forms.Label endDateLabel;
         private System.Windows.Forms.DateTimePicker endDateTimePicker;
         private System.Windows.Forms.Button generateReportButton;
+        private Microsoft.Reporting.WinForms.ReportViewer popularFurnitureReportViewer;
+        private cs6232_g1DataSetTableAdapters.getMostPopularFurnitureDuringDatesTableAdapter getMostPopularFurnitureDuringDatesTableAdapter;
+        private cs6232_g1DataSet cs6232_g1DataSet;
+        private System.Windows.Forms.BindingSource getMostPopularFurnitureDuringDatesBindingSource;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
