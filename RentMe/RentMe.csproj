@@ -80,6 +80,12 @@
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\PopularFurnitureReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PopularFurnitureReportUserControl.Designer.cs">
+      <DependentUpon>PopularFurnitureReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +198,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\PopularFurnitureReportUserControl.resx">
+      <DependentUpon>PopularFurnitureReportUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
     </EmbeddedResource>

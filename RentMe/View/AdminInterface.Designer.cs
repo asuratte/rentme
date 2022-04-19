@@ -37,7 +37,9 @@ namespace RentMe.View
             this.adminInterfaceTabControl = new System.Windows.Forms.TabControl();
             this.mostPopularFurnitureDuringDatesTabPage = new System.Windows.Forms.TabPage();
             this.rentMeLogo = new System.Windows.Forms.PictureBox();
+            this.popularFurnitureReportUserControl = new RentMe.UserControls.PopularFurnitureReportUserControl();
             this.adminInterfaceTabControl.SuspendLayout();
+            this.mostPopularFurnitureDuringDatesTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +98,7 @@ namespace RentMe.View
             // 
             // mostPopularFurnitureDuringDatesTabPage
             // 
+            this.mostPopularFurnitureDuringDatesTabPage.Controls.Add(this.popularFurnitureReportUserControl);
             this.mostPopularFurnitureDuringDatesTabPage.Location = new System.Drawing.Point(4, 26);
             this.mostPopularFurnitureDuringDatesTabPage.Name = "mostPopularFurnitureDuringDatesTabPage";
             this.mostPopularFurnitureDuringDatesTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -112,6 +115,14 @@ namespace RentMe.View
             this.rentMeLogo.Size = new System.Drawing.Size(100, 75);
             this.rentMeLogo.TabIndex = 12;
             this.rentMeLogo.TabStop = false;
+            // 
+            // popularFurnitureReportUserControl
+            // 
+            this.popularFurnitureReportUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(0, 0);
+            this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
+            this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(770, 425);
+            this.popularFurnitureReportUserControl.TabIndex = 0;
             // 
             // AdminInterface
             // 
@@ -131,6 +142,7 @@ namespace RentMe.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe Admin Interface";
             this.adminInterfaceTabControl.ResumeLayout(false);
+            this.mostPopularFurnitureDuringDatesTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +158,6 @@ namespace RentMe.View
         private System.Windows.Forms.TabControl adminInterfaceTabControl;
         private System.Windows.Forms.TabPage mostPopularFurnitureDuringDatesTabPage;
         private System.Windows.Forms.PictureBox rentMeLogo;
+        private UserControls.PopularFurnitureReportUserControl popularFurnitureReportUserControl;
     }
 }
