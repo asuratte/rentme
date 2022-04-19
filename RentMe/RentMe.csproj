@@ -54,6 +54,11 @@
     <Compile Include="Controller\ReturnItemController.cs" />
     <Compile Include="Controller\ReturnTransactionController.cs" />
     <Compile Include="Controller\RentalTransactionController.cs" />
+    <Compile Include="cs6232_g1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
@@ -252,6 +257,17 @@
     <EmbeddedResource Include="View\ViewTransactionDetailsForm.resx">
       <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="cs6232_g1DataSet.xsc">
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="cs6232_g1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cs6232_g1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cs6232_g1DataSet.xss">
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.RentalItem.datasource" />
