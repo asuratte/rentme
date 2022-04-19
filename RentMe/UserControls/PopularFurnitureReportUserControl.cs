@@ -22,15 +22,24 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             DateTime startDate = this.startDateTimePicker.Value;
             DateTime endDate = this.endDateTimePicker.Value;
-            try
+
+            if (startDate > endDate)
             {
-                this.getMostPopularFurnitureDuringDatesTableAdapter.Fill(this.cs6232_g1DataSet.getMostPopularFurnitureDuringDates, startDate, endDate);
-                this.popularFurnitureReportViewer.RefreshReport();
+                this.ShowErrorMessage("The start date must be before the end date.");
             }
-            catch (Exception)
+            else
             {
-                this.ShowErrorMessage("There was an issue retrieving the data for the report.");
+                try
+                {
+                    this.getMostPopularFurnitureDuringDatesTableAdapter.Fill(this.cs6232_g1DataSet.getMostPopularFurnitureDuringDates, startDate, endDate);
+                    this.popularFurnitureReportViewer.RefreshReport();
+                }
+                catch (Exception)
+                {
+                    this.ShowErrorMessage("There was an issue retrieving the data for the report.");
+                }
             }
+            
         }
     }
 }
