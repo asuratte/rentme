@@ -450,8 +450,8 @@
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontSize>9pt</FontSize>
-                                    <FontWeight>Normal</FontWeight>
-                                    <Color>#333333</Color>
+                                    <FontWeight>SemiBold</FontWeight>
+                                    <Color>#086788</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -465,7 +465,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -502,7 +502,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -539,7 +539,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -576,7 +576,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -613,7 +613,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -651,7 +651,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -689,7 +689,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -727,7 +727,7 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>White</BackgroundColor>
+                            <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "WhiteSmoke","White")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -763,7 +763,6 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>PopularFurnitureDataSet</DataSetName>
-            <Left>0in</Left>
             <Height>1.25in</Height>
             <Width>7.4479in</Width>
             <Visibility>
@@ -785,7 +784,7 @@
                     <Value>=IIf(CountRows()&gt;0, "","There were no qualified furniture items rented during this time period.")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <Color>Red</Color>
+                      <Color>#dd1c1a</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -795,7 +794,6 @@
               </Paragraph>
             </Paragraphs>
             <Top>1.27778in</Top>
-            <Left>0in</Left>
             <Height>0.25in</Height>
             <Width>7.44792in</Width>
             <ZIndex>1</ZIndex>
@@ -881,7 +879,7 @@
               <Value>rentme_logo_login</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.10292in</Top>
-              <Left>0.17708in</Left>
+              <Left>0.125in</Left>
               <Height>0.60417in</Height>
               <Width>0.94792in</Width>
               <ZIndex>1</ZIndex>
@@ -913,7 +911,16 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Report Prepared On: </Value>
+                      <Value>Report Prepared On:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>SemiBold</FontWeight>
+                        <Color>#666666</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -926,7 +933,7 @@
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
                         <Format>f</Format>
-                        <Color>#666666</Color>
+                        <Color>#086788</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -934,7 +941,6 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.06944in</Top>
-              <Left>0in</Left>
               <Height>0.20833in</Height>
               <Width>4.72655in</Width>
               <Style>
@@ -955,7 +961,16 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Created By: </Value>
+                      <Value>Created By:</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>SemiBold</FontWeight>
+                        <Color>#666666</Color>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value xml:space="preserve"> </Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -967,7 +982,7 @@
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>8pt</FontSize>
-                        <Color>#666666</Color>
+                        <Color>#086788</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>

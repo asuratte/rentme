@@ -117,7 +117,7 @@ namespace RentMe.UserControls
             this.popularFurnitureReportViewer.Location = new System.Drawing.Point(16, 71);
             this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";
             this.popularFurnitureReportViewer.ServerReport.BearerToken = null;
-            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(747, 293);
+            this.popularFurnitureReportViewer.Size = new System.Drawing.Size(747, 310);
             this.popularFurnitureReportViewer.TabIndex = 4;
             // 
             // getMostPopularFurnitureDuringDatesTableAdapter
@@ -127,9 +127,9 @@ namespace RentMe.UserControls
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(12, 378);
+            this.errorMessageLabel.Location = new System.Drawing.Point(16, 394);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(751, 45);
+            this.errorMessageLabel.Size = new System.Drawing.Size(747, 34);
             this.errorMessageLabel.TabIndex = 0;
             // 
             // PopularFurnitureReportUserControl
