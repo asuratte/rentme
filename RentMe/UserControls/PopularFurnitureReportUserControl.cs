@@ -23,10 +23,8 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = "";
             DateTime startDate = this.startDateTimePicker.Value;
             DateTime endDate = this.endDateTimePicker.Value;
-            ReportParameter[] reportParameters = new ReportParameter[2];
-            reportParameters[0] = new ReportParameter("StartDateReportParameter", startDate.ToShortDateString());
-            reportParameters[1] = new ReportParameter("EndDateReportParameter", endDate.ToShortDateString());
-            if (startDate > endDate)
+            this.SetReportParameters(startDate, endDate);
+            if (startDate.Date > endDate.Date)
             {
                 this.ShowErrorMessage("The start date must be before the end date.");
             }
@@ -35,7 +33,6 @@ namespace RentMe.UserControls
                 try
                 {
                     this.getMostPopularFurnitureDuringDatesTableAdapter.Fill(this.cs6232_g1DataSet.getMostPopularFurnitureDuringDates, startDate, endDate);
-                    this.popularFurnitureReportViewer.LocalReport.SetParameters(reportParameters);
                     this.popularFurnitureReportViewer.RefreshReport();
                 }
                 catch (Exception)
@@ -43,7 +40,14 @@ namespace RentMe.UserControls
                     this.ShowErrorMessage("There was an issue retrieving the data for the report.");
                 }
             }
-            
+        }
+
+        private void SetReportParameters(DateTime startDate, DateTime endDate)
+        {
+            ReportParameter[] reportParameters = new ReportParameter[2];
+            reportParameters[0] = new ReportParameter("StartDateReportParameter", startDate.ToShortDateString());
+            reportParameters[1] = new ReportParameter("EndDateReportParameter", endDate.ToShortDateString());
+            this.popularFurnitureReportViewer.LocalReport.SetParameters(reportParameters);
         }
     }
 }
