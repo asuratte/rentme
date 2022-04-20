@@ -114,7 +114,7 @@ namespace RentMe.View
             this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
             this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(770, 425);
             this.popularFurnitureReportUserControl.TabIndex = 2;
-            this.popularFurnitureReportUserControl.TheEmployee = null;
+            this.popularFurnitureReportUserControl.Load += new System.EventHandler(this.PopularFurnitureReportUserControlOnLoad);
             // 
             // rentMeLogo
             // 
@@ -142,7 +142,6 @@ namespace RentMe.View
             this.Name = "AdminInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentMe Admin Interface";
-            this.Load += new System.EventHandler(this.AdminInterfaceOnLoad);
             this.adminInterfaceTabControl.ResumeLayout(false);
             this.mostPopularFurnitureDuringDatesTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();

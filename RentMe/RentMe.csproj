@@ -212,7 +212,7 @@
     <Compile Include="View\ViewTransactionDetailsForm.Designer.cs">
       <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reports\PopularFurnitureReport.rdlc" />
+    <EmbeddedResource Include="PopularFurnitureReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

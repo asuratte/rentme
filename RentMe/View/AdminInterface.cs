@@ -34,7 +34,7 @@ namespace RentMe.View
             this.DialogResult = DialogResult.OK;
         }
 
-        private void AdminInterfaceOnLoad(object sender, System.EventArgs e)
+        private void PopularFurnitureReportUserControlOnLoad(object sender, System.EventArgs e)
         {
             this.popularFurnitureReportUserControl.TheEmployee = this.theEmployee;
         }
