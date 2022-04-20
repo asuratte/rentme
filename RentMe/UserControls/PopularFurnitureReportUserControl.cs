@@ -5,17 +5,18 @@ using System.Windows.Forms;
 
 namespace RentMe.UserControls
 {
+    /// <summary>
+    /// Represents the popular furniture report user interface
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class PopularFurnitureReportUserControl : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PopularFurnitureReportUserControl"/> class.
+        /// </summary>
         public PopularFurnitureReportUserControl()
         {
             InitializeComponent();
-        }
-
-        private void ShowErrorMessage(string message)
-        {
-            this.errorMessageLabel.Text = message;
-            this.errorMessageLabel.ForeColor = Color.Red;
         }
 
         private void GenerateReportButton_Click(object sender, EventArgs e)
@@ -48,6 +49,24 @@ namespace RentMe.UserControls
             reportParameters[0] = new ReportParameter("StartDateReportParameter", startDate.ToShortDateString());
             reportParameters[1] = new ReportParameter("EndDateReportParameter", endDate.ToShortDateString());
             this.popularFurnitureReportViewer.LocalReport.SetParameters(reportParameters);
+        }
+
+
+        private void ShowErrorMessage(string message)
+        {
+            this.errorMessageLabel.Text = message;
+            this.errorMessageLabel.ForeColor = Color.Red;
+        }
+
+        private void OnDateTimePickerValueChanged(object sender, EventArgs e)
+        {
+            this.errorMessageLabel.Text = "";
+        }
+
+        private void OnPopularFurnitureReportUserControlLoad(object sender, EventArgs e)
+        {
+            this.startDateTimePicker.Value = DateTime.Today.AddDays(-7);
+            this.endDateTimePicker.Value = DateTime.Today;
         }
     }
 }

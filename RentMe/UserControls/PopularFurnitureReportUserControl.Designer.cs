@@ -62,6 +62,7 @@ namespace RentMe.UserControls
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(217, 25);
             this.startDateTimePicker.TabIndex = 3;
+            this.startDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateTimePickerValueChanged);
             // 
             // startDateLabel
             // 
@@ -145,6 +146,7 @@ namespace RentMe.UserControls
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PopularFurnitureReportUserControl";
             this.Size = new System.Drawing.Size(784, 437);
+            this.Load += new System.EventHandler(this.OnPopularFurnitureReportUserControlLoad);
             ((System.ComponentModel.ISupportInitialize)(this.getMostPopularFurnitureDuringDatesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cs6232_g1DataSet)).EndInit();
             this.ResumeLayout(false);
