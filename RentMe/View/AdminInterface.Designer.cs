@@ -49,7 +49,7 @@ namespace RentMe.View
             this.employeeUsernameLabel.Location = new System.Drawing.Point(273, 42);
             this.employeeUsernameLabel.Name = "employeeUsernameLabel";
             this.employeeUsernameLabel.Size = new System.Drawing.Size(179, 19);
-            this.employeeUsernameLabel.TabIndex = 10;
+            this.employeeUsernameLabel.TabIndex = 0;
             this.employeeUsernameLabel.Text = "Employee Username";
             // 
             // employeeNameSeparatorLabel
@@ -58,7 +58,7 @@ namespace RentMe.View
             this.employeeNameSeparatorLabel.Location = new System.Drawing.Point(259, 42);
             this.employeeNameSeparatorLabel.Name = "employeeNameSeparatorLabel";
             this.employeeNameSeparatorLabel.Size = new System.Drawing.Size(12, 19);
-            this.employeeNameSeparatorLabel.TabIndex = 9;
+            this.employeeNameSeparatorLabel.TabIndex = 0;
             this.employeeNameSeparatorLabel.Text = "|";
             this.employeeNameSeparatorLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -68,7 +68,7 @@ namespace RentMe.View
             this.employeeNameLabel.Location = new System.Drawing.Point(140, 42);
             this.employeeNameLabel.Name = "employeeNameLabel";
             this.employeeNameLabel.Size = new System.Drawing.Size(117, 19);
-            this.employeeNameLabel.TabIndex = 8;
+            this.employeeNameLabel.TabIndex = 0;
             this.employeeNameLabel.Text = "Employee Name";
             this.employeeNameLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
@@ -80,7 +80,7 @@ namespace RentMe.View
             this.logoutLinkLabel.Location = new System.Drawing.Point(720, 12);
             this.logoutLinkLabel.Name = "logoutLinkLabel";
             this.logoutLinkLabel.Size = new System.Drawing.Size(56, 19);
-            this.logoutLinkLabel.TabIndex = 6;
+            this.logoutLinkLabel.TabIndex = 3;
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
@@ -94,7 +94,7 @@ namespace RentMe.View
             this.adminInterfaceTabControl.Name = "adminInterfaceTabControl";
             this.adminInterfaceTabControl.SelectedIndex = 0;
             this.adminInterfaceTabControl.Size = new System.Drawing.Size(784, 461);
-            this.adminInterfaceTabControl.TabIndex = 11;
+            this.adminInterfaceTabControl.TabIndex = 1;
             // 
             // mostPopularFurnitureDuringDatesTabPage
             // 
@@ -113,7 +113,8 @@ namespace RentMe.View
             this.popularFurnitureReportUserControl.Location = new System.Drawing.Point(0, 0);
             this.popularFurnitureReportUserControl.Name = "popularFurnitureReportUserControl";
             this.popularFurnitureReportUserControl.Size = new System.Drawing.Size(770, 425);
-            this.popularFurnitureReportUserControl.TabIndex = 0;
+            this.popularFurnitureReportUserControl.TabIndex = 2;
+            this.popularFurnitureReportUserControl.TheEmployee = null;
             // 
             // rentMeLogo
             // 

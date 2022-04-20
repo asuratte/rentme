@@ -30,7 +30,7 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.getMostPopularFurnitureDuringDatesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cs6232_g1DataSet = new RentMe.cs6232_g1DataSet();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -61,7 +61,7 @@ namespace RentMe.UserControls
             this.startDateTimePicker.Location = new System.Drawing.Point(16, 34);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(217, 25);
-            this.startDateTimePicker.TabIndex = 3;
+            this.startDateTimePicker.TabIndex = 1;
             this.startDateTimePicker.ValueChanged += new System.EventHandler(this.OnDateTimePickerValueChanged);
             // 
             // startDateLabel
@@ -71,7 +71,7 @@ namespace RentMe.UserControls
             this.startDateLabel.Location = new System.Drawing.Point(12, 12);
             this.startDateLabel.Name = "startDateLabel";
             this.startDateLabel.Size = new System.Drawing.Size(71, 19);
-            this.startDateLabel.TabIndex = 2;
+            this.startDateLabel.TabIndex = 0;
             this.startDateLabel.Text = "Start Date";
             // 
             // endDateLabel
@@ -81,7 +81,7 @@ namespace RentMe.UserControls
             this.endDateLabel.Location = new System.Drawing.Point(269, 12);
             this.endDateLabel.Name = "endDateLabel";
             this.endDateLabel.Size = new System.Drawing.Size(65, 19);
-            this.endDateLabel.TabIndex = 4;
+            this.endDateLabel.TabIndex = 0;
             this.endDateLabel.Text = "End Date";
             // 
             // endDateTimePicker
@@ -90,7 +90,7 @@ namespace RentMe.UserControls
             this.endDateTimePicker.Location = new System.Drawing.Point(273, 34);
             this.endDateTimePicker.Name = "endDateTimePicker";
             this.endDateTimePicker.Size = new System.Drawing.Size(217, 25);
-            this.endDateTimePicker.TabIndex = 5;
+            this.endDateTimePicker.TabIndex = 2;
             // 
             // generateReportButton
             // 
@@ -102,7 +102,7 @@ namespace RentMe.UserControls
             this.generateReportButton.Location = new System.Drawing.Point(529, 33);
             this.generateReportButton.Name = "generateReportButton";
             this.generateReportButton.Size = new System.Drawing.Size(143, 27);
-            this.generateReportButton.TabIndex = 6;
+            this.generateReportButton.TabIndex = 3;
             this.generateReportButton.Text = "Generate Report";
             this.generateReportButton.UseVisualStyleBackColor = false;
             this.generateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
@@ -110,15 +110,15 @@ namespace RentMe.UserControls
             // popularFurnitureReportViewer
             // 
             this.popularFurnitureReportViewer.AutoScroll = true;
-            reportDataSource3.Name = "PopularFurnitureDataSet";
-            reportDataSource3.Value = this.getMostPopularFurnitureDuringDatesBindingSource;
-            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            reportDataSource1.Name = "PopularFurnitureDataSet";
+            reportDataSource1.Value = this.getMostPopularFurnitureDuringDatesBindingSource;
+            this.popularFurnitureReportViewer.LocalReport.DataSources.Add(reportDataSource1);
             this.popularFurnitureReportViewer.LocalReport.ReportEmbeddedResource = "RentMe.PopularFurnitureReport.rdlc";
             this.popularFurnitureReportViewer.Location = new System.Drawing.Point(16, 71);
             this.popularFurnitureReportViewer.Name = "popularFurnitureReportViewer";
             this.popularFurnitureReportViewer.ServerReport.BearerToken = null;
             this.popularFurnitureReportViewer.Size = new System.Drawing.Size(747, 293);
-            this.popularFurnitureReportViewer.TabIndex = 7;
+            this.popularFurnitureReportViewer.TabIndex = 4;
             // 
             // getMostPopularFurnitureDuringDatesTableAdapter
             // 
@@ -130,7 +130,7 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Location = new System.Drawing.Point(12, 378);
             this.errorMessageLabel.Name = "errorMessageLabel";
             this.errorMessageLabel.Size = new System.Drawing.Size(751, 45);
-            this.errorMessageLabel.TabIndex = 8;
+            this.errorMessageLabel.TabIndex = 0;
             // 
             // PopularFurnitureReportUserControl
             // 
