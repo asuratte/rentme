@@ -1,4 +1,5 @@
 ﻿using Microsoft.Reporting.WinForms;
+using RentMe.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -11,6 +12,17 @@ namespace RentMe.UserControls
     /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class PopularFurnitureReportUserControl : UserControl
     {
+        private Employee theEmployee;
+
+        public Employee TheEmployee
+        {
+            get { return this.theEmployee; }
+            set
+            {
+                this.theEmployee = value ?? throw new Exception("Employee not provided.");
+            }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PopularFurnitureReportUserControl"/> class.
         /// </summary>
@@ -28,6 +40,7 @@ namespace RentMe.UserControls
             if (startDate.Date > endDate.Date)
             {
                 this.ShowErrorMessage("The start date must be before the end date.");
+                this.popularFurnitureReportViewer.Clear();
             }
             else
             {
@@ -45,9 +58,10 @@ namespace RentMe.UserControls
 
         private void SetReportParameters(DateTime startDate, DateTime endDate)
         {
-            ReportParameter[] reportParameters = new ReportParameter[2];
+            ReportParameter[] reportParameters = new ReportParameter[3];
             reportParameters[0] = new ReportParameter("StartDateReportParameter", startDate.ToShortDateString());
             reportParameters[1] = new ReportParameter("EndDateReportParameter", endDate.ToShortDateString());
+            reportParameters[2] = new ReportParameter("EmployeeReportParameter", theEmployee.FirstName + " " + theEmployee.LastName);
             this.popularFurnitureReportViewer.LocalReport.SetParameters(reportParameters);
         }
 
