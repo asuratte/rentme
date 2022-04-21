@@ -118,6 +118,7 @@ namespace RentMe.View
             this.dueDateLabel.Visible = true;
             this.dueDateValue.Text = this.theRentalTransaction.DueDate.ToShortDateString();
             decimal transactionTotal = 0;
+            
             List<RentalItem> theRentalItems = this.theRentalItemController.GetRentalItemsByTransactionID(this.TheRentalTransaction.TransactionID);
             for (int i = 0; i < theRentalItems.Count; i++)
             {
@@ -127,11 +128,11 @@ namespace RentMe.View
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(transactionDetailsDataGridView);
-                row.Cells[0].Value = theRentalItems[i].FurnitureID;
-                row.Cells[1].Value = theRentalItems[i].FurnitureName;
-                row.Cells[2].Value = theRentalItems[i].RentalRate;
-                row.Cells[3].Value = theRentalItems[i].Quantity;
-                row.Cells[4].Value = subtotal;
+                row.Cells[1].Value = theRentalItems[i].FurnitureID;
+                row.Cells[2].Value = theRentalItems[i].FurnitureName;
+                row.Cells[3].Value = theRentalItems[i].RentalRate;
+                row.Cells[4].Value = theRentalItems[i].Quantity;
+                row.Cells[5].Value = subtotal;
                 transactionDetailsDataGridView.Rows.Add(row);
             }
             this.totalValue.Text = "$" + transactionTotal.ToString();
@@ -144,20 +145,23 @@ namespace RentMe.View
             this.transactionNumberValue.Text = this.TheReturnTransaction.TransactionID.ToString();
             this.transactionTypeValue.Text = "Return";
             decimal transactionTotal = 0;
+            this.DisplayRentalTransactionIDColumn();
+
             List<ReturnItem> theReturnItems = this.theReturnItemController.GetReturnItemsByTransactionID(this.TheReturnTransaction.TransactionID);
             for (int i = 0; i < theReturnItems.Count; i++)
             {
                 int numberOfDays = (theReturnItems[i].DueDate.Date - theReturnItems[i].ReturnDate.Date).Days;
                 decimal subtotal = theReturnItems[i].Quantity * theReturnItems[i].RentalRate * numberOfDays;
                 transactionTotal += subtotal;
-
+              
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(transactionDetailsDataGridView);
-                row.Cells[0].Value = theReturnItems[i].FurnitureID;
-                row.Cells[1].Value = theReturnItems[i].FurnitureName;
-                row.Cells[2].Value = theReturnItems[i].RentalRate;
-                row.Cells[3].Value = theReturnItems[i].Quantity;
-                row.Cells[4].Value = subtotal;
+                row.Cells[0].Value = theReturnItems[i].RentalTransactionID;
+                row.Cells[1].Value = theReturnItems[i].FurnitureID;
+                row.Cells[2].Value = theReturnItems[i].FurnitureName;
+                row.Cells[3].Value = theReturnItems[i].RentalRate;
+                row.Cells[4].Value = theReturnItems[i].Quantity;
+                row.Cells[5].Value = subtotal;
                 transactionDetailsDataGridView.Rows.Add(row);
             }
             if (transactionTotal < 0)
@@ -172,6 +176,16 @@ namespace RentMe.View
             {
                 this.totalValue.Text = "$" + transactionTotal.ToString();
             }
+        }
+
+        private void DisplayRentalTransactionIDColumn()
+        {
+            transactionDetailsDataGridView.Columns[0].Visible = true;
+            transactionDetailsDataGridView.Columns[1].Width = 80;
+            transactionDetailsDataGridView.Columns[2].Width = 170;
+            transactionDetailsDataGridView.Columns[3].Width = 85;
+            transactionDetailsDataGridView.Columns[4].Width = 75;
+            transactionDetailsDataGridView.Columns[5].Width = 90;
         }
     }
 }
