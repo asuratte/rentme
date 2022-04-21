@@ -70,6 +70,9 @@ namespace RentMe.View
             this.totalValue.Text = "";
             this.transactionNumberValue.Text = "";
             this.errorMessageLabel.Text = "";
+            this.transactionTypeValue.Text = "";
+            this.dueDateLabel.Visible = false;
+            this.dueDateValue.Text = "";
             this.theRentalTransaction = null;
             this.theReturnTransaction = null;
             transactionDetailsDataGridView.Rows.Clear();
@@ -111,6 +114,9 @@ namespace RentMe.View
             this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheRentalTransaction.EmployeeID);
             this.dateValue.Text = this.TheRentalTransaction.RentalDate.ToShortDateString();
             this.transactionNumberValue.Text = this.TheRentalTransaction.TransactionID.ToString();
+            this.transactionTypeValue.Text = "Rental";
+            this.dueDateLabel.Visible = true;
+            this.dueDateValue.Text = this.theRentalTransaction.DueDate.ToShortDateString();
             decimal transactionTotal = 0;
             List<RentalItem> theRentalItems = this.theRentalItemController.GetRentalItemsByTransactionID(this.TheRentalTransaction.TransactionID);
             for (int i = 0; i < theRentalItems.Count; i++)
@@ -121,10 +127,10 @@ namespace RentMe.View
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(transactionDetailsDataGridView);
-                row.Cells[0].Value = theRentalItems[i].Quantity;
-                row.Cells[1].Value = theRentalItems[i].FurnitureID;
-                row.Cells[2].Value = theRentalItems[i].FurnitureName;
-                row.Cells[3].Value = theRentalItems[i].RentalRate;
+                row.Cells[0].Value = theRentalItems[i].FurnitureID;
+                row.Cells[1].Value = theRentalItems[i].FurnitureName;
+                row.Cells[2].Value = theRentalItems[i].RentalRate;
+                row.Cells[3].Value = theRentalItems[i].Quantity;
                 row.Cells[4].Value = subtotal;
                 transactionDetailsDataGridView.Rows.Add(row);
             }
@@ -136,6 +142,7 @@ namespace RentMe.View
             this.employeeNameValue.Text = this.theEmployeeController.GetEmployeeFirstAndLastNameByID(this.TheReturnTransaction.EmployeeID);
             this.dateValue.Text = this.TheReturnTransaction.ReturnDate.ToShortDateString();
             this.transactionNumberValue.Text = this.TheReturnTransaction.TransactionID.ToString();
+            this.transactionTypeValue.Text = "Return";
             decimal transactionTotal = 0;
             List<ReturnItem> theReturnItems = this.theReturnItemController.GetReturnItemsByTransactionID(this.TheReturnTransaction.TransactionID);
             for (int i = 0; i < theReturnItems.Count; i++)
@@ -146,10 +153,10 @@ namespace RentMe.View
 
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(transactionDetailsDataGridView);
-                row.Cells[0].Value = theReturnItems[i].Quantity;
-                row.Cells[1].Value = theReturnItems[i].FurnitureID;
-                row.Cells[2].Value = theReturnItems[i].FurnitureName;
-                row.Cells[3].Value = theReturnItems[i].RentalRate;
+                row.Cells[0].Value = theReturnItems[i].FurnitureID;
+                row.Cells[1].Value = theReturnItems[i].FurnitureName;
+                row.Cells[2].Value = theReturnItems[i].RentalRate;
+                row.Cells[3].Value = theReturnItems[i].Quantity;
                 row.Cells[4].Value = subtotal;
                 transactionDetailsDataGridView.Rows.Add(row);
             }
