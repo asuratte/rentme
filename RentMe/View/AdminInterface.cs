@@ -8,6 +8,8 @@ namespace RentMe.View
     /// </summary>
     public partial class AdminInterface : Form
     {
+        private Employee theEmployee;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AdminInterface"/> class.
         /// </summary>
@@ -24,11 +26,17 @@ namespace RentMe.View
         {
             this.employeeNameLabel.Text = employee.FirstName + " " + employee.LastName;
             this.employeeUsernameLabel.Text = employee.Username;
+            this.theEmployee = employee;
         }
 
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void PopularFurnitureReportUserControlOnLoad(object sender, System.EventArgs e)
+        {
+            this.popularFurnitureReportUserControl.TheEmployee = this.theEmployee;
         }
     }
 }
