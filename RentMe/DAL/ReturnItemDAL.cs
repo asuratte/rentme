@@ -18,7 +18,7 @@ namespace RentMe.DAL
         public List<ReturnItem> GetReturnItemsByTransactionID(int transactionID)
         {
             string selectStatement =
-            @"SELECT ri.quantity, ri.furnitureID, f.name, f.rentalRate, rt.returnDate, rlt.dueDate
+            @"SELECT ri.quantity, ri.furnitureID, ri.rentalTransactionID, f.name, f.rentalRate, rt.returnDate, rlt.dueDate
               FROM return_item ri
               JOIN furniture f ON ri.furnitureID = f.furnitureID
               JOIN return_transaction rt ON ri.transactionID = rt.transactionID
@@ -42,6 +42,7 @@ namespace RentMe.DAL
                         {
                             ReturnItem theReturnItem = new ReturnItem();
                             theReturnItem.TransactionID = transactionID;
+                            theReturnItem.RentalTransactionID = Convert.ToInt32(reader["rentalTransactionID"]);
                             theReturnItem.FurnitureID = reader["furnitureID"].ToString();
                             theReturnItem.FurnitureName = reader["name"].ToString();
                             theReturnItem.Quantity = Convert.ToInt32(reader["quantity"]);

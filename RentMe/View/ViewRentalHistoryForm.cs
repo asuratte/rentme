@@ -15,7 +15,6 @@ namespace RentMe.View
     {
         private readonly RentalTransactionController theRentalTransactionController;
         private readonly ReturnTransactionController theReturnTransactionController;
-        private readonly ViewTransactionDetailsForm theViewTransactionDetailsForm;
 
         public int MemberID { get; set; }
 
@@ -27,7 +26,6 @@ namespace RentMe.View
             InitializeComponent();
             this.theRentalTransactionController = new RentalTransactionController();
             this.theReturnTransactionController = new ReturnTransactionController();
-            this.theViewTransactionDetailsForm = new ViewTransactionDetailsForm();
         }
 
         private void DisplayRentalTransactionHistory()
@@ -94,9 +92,12 @@ namespace RentMe.View
             {
                 int i = e.RowIndex;
                 RentalTransaction selectedRentalTransaction = (RentalTransaction)rentalTransactionBindingSource[i];
-                this.theViewTransactionDetailsForm.ResetForm();
-                this.theViewTransactionDetailsForm.TheRentalTransaction = selectedRentalTransaction;
-                this.theViewTransactionDetailsForm.ShowDialog();
+                using (ViewTransactionDetailsForm theViewTransactionDetailsForm = new ViewTransactionDetailsForm())
+                {
+                    theViewTransactionDetailsForm.ResetForm();
+                    theViewTransactionDetailsForm.TheRentalTransaction = selectedRentalTransaction;
+                    DialogResult result = theViewTransactionDetailsForm.ShowDialog();
+                }
             }
         }
 
@@ -106,9 +107,12 @@ namespace RentMe.View
             {
                 int i = e.RowIndex;
                 ReturnTransaction selectedReturnTransaction = (ReturnTransaction)returnTransactionBindingSource[i];
-                this.theViewTransactionDetailsForm.ResetForm();
-                this.theViewTransactionDetailsForm.TheReturnTransaction = selectedReturnTransaction;
-                this.theViewTransactionDetailsForm.ShowDialog();
+                using (ViewTransactionDetailsForm theViewTransactionDetailsForm = new ViewTransactionDetailsForm())
+                {
+                    theViewTransactionDetailsForm.ResetForm();
+                    theViewTransactionDetailsForm.TheReturnTransaction = selectedReturnTransaction;
+                    DialogResult result = theViewTransactionDetailsForm.ShowDialog();
+                }
             }
         }
     }
