@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,11 +68,24 @@
     <Compile Include="Controller\FurnitureCategoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\FurnitureStyleController.cs" />
+    <Compile Include="Controller\RentalItemController.cs" />
+    <Compile Include="Controller\ReturnItemController.cs" />
+    <Compile Include="Controller\ReturnTransactionController.cs" />
+    <Compile Include="Controller\RentalTransactionController.cs" />
+    <Compile Include="cs6232_g1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL\FurnitureCategoryDAL.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\FurnitureDAL.cs" />
+    <Compile Include="DAL\RentalItemDAL.cs" />
+    <Compile Include="DAL\RentalTransactionDAL.cs" />
     <Compile Include="DAL\RentMeDBConnection.cs" />
     <Compile Include="DAL\FurnitureStyleDAL.cs" />
+    <Compile Include="DAL\ReturnItemDAL.cs" />
+    <Compile Include="DAL\ReturnTransactionDAL.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Controller\MemberController.cs" />
     <Compile Include="Controller\StateController.cs" />
@@ -65,15 +96,38 @@
     <Compile Include="Model\FurnitureCategory.cs" />
     <Compile Include="Model\FurnitureStyle.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
+    <Compile Include="Model\ReturnItem.cs" />
+    <Compile Include="Model\ReturnTransaction.cs" />
+    <Compile Include="Model\RentalTransaction.cs" />
     <Compile Include="Model\State.cs" />
     <Compile Include="Model\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\PopularFurnitureReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PopularFurnitureReportUserControl.Designer.cs">
+      <DependentUpon>PopularFurnitureReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\RentFurnitureUserControl.Designer.cs">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ReturnFurnitureUserControl.Designer.cs">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddToCartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddToCartForm.Designer.cs">
+      <DependentUpon>AddToCartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AdminInterface.cs">
       <SubType>Form</SubType>
@@ -86,6 +140,18 @@
     </Compile>
     <Compile Include="UserControls\MemberInformationUserControl.Designer.cs">
       <DependentUpon>MemberInformationUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfirmOrderForm.Designer.cs">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditCartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EditCartForm.Designer.cs">
+      <DependentUpon>EditCartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\EmployeeInterface.cs">
       <SubType>Form</SubType>
@@ -111,6 +177,43 @@
     <Compile Include="View\MemberRegistrationConfirmationForm.Designer.cs">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ReturnItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnItemForm.Designer.cs">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReturnSummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ReturnSummaryForm.Designer.cs">
+      <DependentUpon>ReturnSummaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderSummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\OrderSummaryForm.Designer.cs">
+      <DependentUpon>OrderSummaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewCartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewCartForm.Designer.cs">
+      <DependentUpon>ViewCartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewRentalHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewRentalHistoryForm.Designer.cs">
+      <DependentUpon>ViewRentalHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTransactionDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewTransactionDetailsForm.Designer.cs">
+      <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PopularFurnitureReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -121,14 +224,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\PopularFurnitureReportUserControl.resx">
+      <DependentUpon>PopularFurnitureReportUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\RentFurnitureUserControl.resx">
       <DependentUpon>RentFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ReturnFurnitureUserControl.resx">
+      <DependentUpon>ReturnFurnitureUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddToCartForm.resx">
+      <DependentUpon>AddToCartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\MemberInformationUserControl.resx">
       <DependentUpon>MemberInformationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfirmOrderForm.resx">
+      <DependentUpon>ConfirmOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EditCartForm.resx">
+      <DependentUpon>EditCartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmployeeInterface.resx">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
@@ -142,8 +260,42 @@
     <EmbeddedResource Include="View\MemberRegistrationConfirmationForm.resx">
       <DependentUpon>MemberRegistrationConfirmationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnItemForm.resx">
+      <DependentUpon>ReturnItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ReturnSummaryForm.resx">
+      <DependentUpon>ReturnSummaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OrderSummaryForm.resx">
+      <DependentUpon>OrderSummaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewCartForm.resx">
+      <DependentUpon>ViewCartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewRentalHistoryForm.resx">
+      <DependentUpon>ViewRentalHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewTransactionDetailsForm.resx">
+      <DependentUpon>ViewTransactionDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="cs6232_g1DataSet.xsc">
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="cs6232_g1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cs6232_g1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cs6232_g1DataSet.xss">
+      <DependentUpon>cs6232_g1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\RentMe.Model.Furniture.datasource" />
     <None Include="Properties\DataSources\RentMe.Model.Member.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalItem.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.RentalTransaction.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.ReturnItem.datasource" />
+    <None Include="Properties\DataSources\RentMe.Model.ReturnTransaction.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,7 +312,21 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="DB\createDBScript.sql" />
+    <Content Include="DB\sp_getMostPopularFurnitureDuringDates.sql" />
     <Content Include="Images\rentme_logo_login.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Images\rentme_logo_header.png" />
     <Content Include="Images\rentme_icon.ico" />
     <Content Include="Images\rentme_logo_header.png" />

@@ -65,5 +65,19 @@ namespace RentMe.Controller
             }
             return this.employeeDAL.CheckIfEmployeeIsAdmin(employeeID);
         }
+
+        /// <summary>
+        /// Gets the employee first and last name by employeeID.
+        /// </summary>
+        /// <param name="employeeID">The employee identifier.</param>
+        /// <returns>First and last name for the given employee</returns>
+        public string GetEmployeeFirstAndLastNameByID(int employeeID)
+        {
+            if (employeeID < 0)
+            {
+                throw new ArgumentException("EmployeeID must be a positive whole number");
+            }
+            return this.employeeDAL.GetEmployeeFirstAndLastNameByID(employeeID);
+        }
     }
 }

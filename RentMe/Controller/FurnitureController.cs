@@ -56,5 +56,35 @@ namespace RentMe.Controller
             }
             return this.furnitureDAL.GetFurnitureByCategoryAndStyle(category, style);
         }
+
+        /// <summary>
+        /// Gets the rental rate by furnitureID
+        /// </summary>
+        /// <param name="furnitureID">The furnitureID</param>
+        /// <returns>Rental rate as decimal</returns>
+        /// <exception cref="ArgumentNullException">Furniture ID must not be null.</exception>
+        public decimal GetRentalRateByFurnitureID(string furnitureID)
+        {
+            if (furnitureID == null || furnitureID == "")
+            {
+                throw new ArgumentNullException("Furniture ID must not be null.");
+            }
+            return this.furnitureDAL.GetRentalRateByFurnitureID(furnitureID);
+        }
+
+        /// <summary>
+        /// Gets the furniture quantity by identifier.
+        /// </summary>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <returns>The quantity of furniture in stock for the given ID.</returns>
+        /// <exception cref="ArgumentNullException">Furniture ID must not be null.</exception>
+        public int GetFurnitureQuantityByID(string furnitureID)
+        {
+            if (furnitureID == null)
+            {
+                throw new ArgumentNullException("Furniture ID must not be null.");
+            }
+            return this.furnitureDAL.GetFurnitureQuantityByID(furnitureID);
+        }
     }
 }

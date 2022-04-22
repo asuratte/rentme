@@ -31,18 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeInterface));
             this.employeeInterfaceTabControl = new System.Windows.Forms.TabControl();
             this.memberInformationTabPage = new System.Windows.Forms.TabPage();
+            this.memberInformationUserControl = new RentMe.UserControls.MemberInformationUserControl();
             this.rentFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.rentFurnitureUserControl = new RentMe.UserControls.RentFurnitureUserControl();
             this.returnFurnitureTabPage = new System.Windows.Forms.TabPage();
+            this.returnFurnitureUserControl = new RentMe.UserControls.ReturnFurnitureUserControl();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.rentMeLogo = new System.Windows.Forms.PictureBox();
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.employeeNameSeparatorLabel = new System.Windows.Forms.Label();
             this.employeeUsernameLabel = new System.Windows.Forms.Label();
-            this.memberInformationUserControl = new RentMe.UserControls.MemberInformationUserControl();
-            this.rentFurnitureUserControl = new RentMe.UserControls.RentFurnitureUserControl();
+            this.rentMeLogo = new System.Windows.Forms.PictureBox();
             this.employeeInterfaceTabControl.SuspendLayout();
             this.memberInformationTabPage.SuspendLayout();
             this.rentFurnitureTabPage.SuspendLayout();
+            this.returnFurnitureTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +74,14 @@
             this.memberInformationTabPage.Text = "Member Information";
             this.memberInformationTabPage.UseVisualStyleBackColor = true;
             // 
+            // memberInformationUserControl
+            // 
+            this.memberInformationUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberInformationUserControl.Location = new System.Drawing.Point(0, 0);
+            this.memberInformationUserControl.Name = "memberInformationUserControl";
+            this.memberInformationUserControl.Size = new System.Drawing.Size(770, 425);
+            this.memberInformationUserControl.TabIndex = 0;
+            // 
             // rentFurnitureTabPage
             // 
             this.rentFurnitureTabPage.Controls.Add(this.rentFurnitureUserControl);
@@ -84,8 +94,17 @@
             this.rentFurnitureTabPage.Text = "Rent Furniture";
             this.rentFurnitureTabPage.UseVisualStyleBackColor = true;
             // 
+            // rentFurnitureUserControl
+            // 
+            this.rentFurnitureUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rentFurnitureUserControl.Location = new System.Drawing.Point(4, 3);
+            this.rentFurnitureUserControl.Name = "rentFurnitureUserControl";
+            this.rentFurnitureUserControl.Size = new System.Drawing.Size(770, 425);
+            this.rentFurnitureUserControl.TabIndex = 0;
+            // 
             // returnFurnitureTabPage
             // 
+            this.returnFurnitureTabPage.Controls.Add(this.returnFurnitureUserControl);
             this.returnFurnitureTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnFurnitureTabPage.ForeColor = System.Drawing.SystemColors.ControlText;
             this.returnFurnitureTabPage.Location = new System.Drawing.Point(4, 26);
@@ -94,6 +113,14 @@
             this.returnFurnitureTabPage.TabIndex = 2;
             this.returnFurnitureTabPage.Text = "Return Furniture";
             this.returnFurnitureTabPage.UseVisualStyleBackColor = true;
+            // 
+            // returnFurnitureUserControl
+            // 
+            this.returnFurnitureUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnFurnitureUserControl.Location = new System.Drawing.Point(0, 0);
+            this.returnFurnitureUserControl.Name = "returnFurnitureUserControl";
+            this.returnFurnitureUserControl.Size = new System.Drawing.Size(784, 437);
+            this.returnFurnitureUserControl.TabIndex = 0;
             // 
             // logoutLinkLabel
             // 
@@ -108,15 +135,6 @@
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
-            // 
-            // rentMeLogo
-            // 
-            this.rentMeLogo.Image = ((System.Drawing.Image)(resources.GetObject("rentMeLogo.Image")));
-            this.rentMeLogo.Location = new System.Drawing.Point(8, 12);
-            this.rentMeLogo.Name = "rentMeLogo";
-            this.rentMeLogo.Size = new System.Drawing.Size(100, 75);
-            this.rentMeLogo.TabIndex = 2;
-            this.rentMeLogo.TabStop = false;
             // 
             // employeeNameLabel
             // 
@@ -147,20 +165,14 @@
             this.employeeUsernameLabel.TabIndex = 5;
             this.employeeUsernameLabel.Text = "Employee Username";
             // 
-            // memberInformationUserControl
+            // rentMeLogo
             // 
-            this.memberInformationUserControl.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberInformationUserControl.Location = new System.Drawing.Point(0, 0);
-            this.memberInformationUserControl.Name = "memberInformationUserControl";
-            this.memberInformationUserControl.Size = new System.Drawing.Size(770, 425);
-            this.memberInformationUserControl.TabIndex = 0;
-            // 
-            // rentFurnitureUserControl
-            // 
-            this.rentFurnitureUserControl.Location = new System.Drawing.Point(4, 3);
-            this.rentFurnitureUserControl.Name = "rentFurnitureUserControl";
-            this.rentFurnitureUserControl.Size = new System.Drawing.Size(770, 425);
-            this.rentFurnitureUserControl.TabIndex = 0;
+            this.rentMeLogo.Image = ((System.Drawing.Image)(resources.GetObject("rentMeLogo.Image")));
+            this.rentMeLogo.Location = new System.Drawing.Point(8, 12);
+            this.rentMeLogo.Name = "rentMeLogo";
+            this.rentMeLogo.Size = new System.Drawing.Size(100, 75);
+            this.rentMeLogo.TabIndex = 2;
+            this.rentMeLogo.TabStop = false;
             // 
             // EmployeeInterface
             // 
@@ -182,6 +194,7 @@
             this.employeeInterfaceTabControl.ResumeLayout(false);
             this.memberInformationTabPage.ResumeLayout(false);
             this.rentFurnitureTabPage.ResumeLayout(false);
+            this.returnFurnitureTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rentMeLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,5 +214,6 @@
         private System.Windows.Forms.Label employeeUsernameLabel;
         private UserControls.MemberInformationUserControl memberInformationUserControl;
         private UserControls.RentFurnitureUserControl rentFurnitureUserControl;
+        private UserControls.ReturnFurnitureUserControl returnFurnitureUserControl;
     }
 }
