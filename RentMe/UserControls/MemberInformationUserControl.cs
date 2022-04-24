@@ -119,10 +119,10 @@ namespace RentMe.UserControls
                         if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
                         {
                             Member newMember = this.CreateNewMember();
-                            this.theMemberController.AddMember(newMember);
-                            this.ClearMemberFormInputs();
+                            this.memberIDFormValue.Text = this.theMemberController.AddMember(newMember).ToString();
                             this.errorMessageLabel.Text = "Member successfully added.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            this.updateMemberInformationButton.Enabled = true;
                         }
                     }
                 }
