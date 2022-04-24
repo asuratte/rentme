@@ -222,6 +222,8 @@ namespace RentMe.UserControls
         {
             this.ClearMemberFormInputs();
             this.errorMessageLabel.Text = "";
+            this.viewRentalHistoryButton.Enabled = false;
+            this.updateMemberInformationButton.Enabled = false;
             if (this.memberIDSearchTextBox.Text != null && this.memberIDSearchTextBox.Text != "")
             {
                 try
@@ -379,6 +381,7 @@ namespace RentMe.UserControls
             this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = true;
+            this.viewRentalHistoryButton.Enabled = true;
         }
 
         private void ShowMemberLookupForm(List<Member> theMemberList)
