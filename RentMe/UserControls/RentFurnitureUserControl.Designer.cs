@@ -64,6 +64,7 @@ namespace RentMe.UserControls
             this.horizontalDividerLineLabel = new System.Windows.Forms.Label();
             this.memberNameValueLabel = new System.Windows.Forms.Label();
             this.memberSearchDescriptionLabel = new System.Windows.Forms.Label();
+            this.loadMemberFromLookupButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -265,7 +266,7 @@ namespace RentMe.UserControls
             // memberIDSearchTextBox
             // 
             this.memberIDSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memberIDSearchTextBox.Location = new System.Drawing.Point(88, 40);
+            this.memberIDSearchTextBox.Location = new System.Drawing.Point(85, 40);
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
             this.memberIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
             this.memberIDSearchTextBox.TabIndex = 1;
@@ -288,7 +289,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.memberSearchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberSearchButton.ForeColor = System.Drawing.Color.White;
-            this.memberSearchButton.Location = new System.Drawing.Point(230, 39);
+            this.memberSearchButton.Location = new System.Drawing.Point(222, 39);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(79, 27);
             this.memberSearchButton.TabIndex = 2;
@@ -362,10 +363,26 @@ namespace RentMe.UserControls
             this.memberSearchDescriptionLabel.TabIndex = 0;
             this.memberSearchDescriptionLabel.Text = "Search for member by ID to create a cart:";
             // 
+            // loadMemberFromLookupButton
+            // 
+            this.loadMemberFromLookupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.loadMemberFromLookupButton.FlatAppearance.BorderSize = 0;
+            this.loadMemberFromLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadMemberFromLookupButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadMemberFromLookupButton.ForeColor = System.Drawing.Color.White;
+            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(309, 39);
+            this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
+            this.loadMemberFromLookupButton.Size = new System.Drawing.Size(176, 28);
+            this.loadMemberFromLookupButton.TabIndex = 23;
+            this.loadMemberFromLookupButton.Text = "Load Member From Lookup";
+            this.loadMemberFromLookupButton.UseVisualStyleBackColor = false;
+            this.loadMemberFromLookupButton.Click += new System.EventHandler(this.LoadMemberFromLookupButtonClick);
+            // 
             // RentFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.loadMemberFromLookupButton);
             this.Controls.Add(this.memberSearchDescriptionLabel);
             this.Controls.Add(this.memberNameValueLabel);
             this.Controls.Add(this.horizontalDividerLineLabel);
@@ -422,5 +439,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityInStockTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn addToCartButtonColumn;
+        private System.Windows.Forms.Button loadMemberFromLookupButton;
     }
 }

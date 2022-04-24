@@ -214,5 +214,32 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("There was an issue completing the return transaction.");
             }
         }
+
+        private void LoadMemberFromLookupButtonClick(object sender, EventArgs e)
+        {
+            this.ResetForm();
+            if (MemberInformationUserControl.MemberFromLookup != null)
+            {
+                this.theMember = MemberInformationUserControl.MemberFromLookup;
+                List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(this.theMember.MemberID);
+                rentalItemBindingSource.Clear();
+                if (outstandingRentalItemsList.Count > 0)
+                {
+                    this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
+                    foreach (RentalItem theRentalItem in outstandingRentalItemsList)
+                    {
+                        rentalItemBindingSource.Add(theRentalItem);
+                    }
+                }
+                else
+                {
+                    this.errorMessageLabel.Text = "Member currently has no outstanding rentals.";
+                }
+            }
+            else
+            {
+                this.ShowErrorMessage("Please look up a member in the Member Information tab before trying to load.");
+            }
+        }
     }
 }

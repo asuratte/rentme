@@ -18,6 +18,12 @@ namespace RentMe.UserControls
         private readonly StateController theStateController;
         private MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
         private MemberLookupForm theMemberLookupForm;
+        private static Member memberFromLookup = null;
+
+        public static Member MemberFromLookup
+        {
+            get { return memberFromLookup; }
+        }
 
         /// <summary>
         /// Initialize the member information user interface
@@ -50,6 +56,7 @@ namespace RentMe.UserControls
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = false;
             this.viewRentalHistoryButton.Enabled = false;
+            memberFromLookup = null;
         }
 
         private void ClearMemberFormInputs()
@@ -123,6 +130,7 @@ namespace RentMe.UserControls
                             this.ClearMemberFormInputs();
                             this.errorMessageLabel.Text = "Member successfully added.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            memberFromLookup = newMember;
                         }
                     }
                 }
@@ -237,6 +245,7 @@ namespace RentMe.UserControls
                         this.ClearSearchFormInputs();
                         this.updateMemberInformationButton.Enabled = true;
                         this.viewRentalHistoryButton.Enabled = true;
+                        memberFromLookup = theMember;
                     }
                     else
                     {
@@ -379,6 +388,7 @@ namespace RentMe.UserControls
             this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = true;
+            memberFromLookup = theMember;
         }
 
         private void ShowMemberLookupForm(List<Member> theMemberList)
