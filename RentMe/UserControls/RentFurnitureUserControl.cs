@@ -144,6 +144,8 @@ namespace RentMe.UserControls
                         this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
                         this.viewCartButton.Enabled = true;
                         this.resetCartButton.Enabled = true;
+                        this.cartIconLabel.Text = "\ue7bf";
+                        this.UpdateCartQuantityDisplay();
                     }
                     else
                     {
@@ -197,6 +199,7 @@ namespace RentMe.UserControls
                             }
                             this.errorMessageLabel.Text = theAddToCartForm.QuantityToAdd + " " + theFurniture.Name + " item(s) successfully added to cart.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            this.UpdateCartQuantityDisplay();
                         }
                     }
                 }
@@ -211,20 +214,21 @@ namespace RentMe.UserControls
         {
             this.errorMessageLabel.Text = "";
             if (this.theCart.Count > 0)
+            {
+                this.theViewCartForm.TheRentalItemList = theCart;
+                this.theViewCartForm.TheMember = this.theMember;
+                this.theViewCartForm.TheEmployee = this.theEmployee;
+                DialogResult result = this.theViewCartForm.ShowDialog();
+                this.UpdateCartQuantityDisplay();
+                if (result == DialogResult.OK) 
                 {
-                    this.theViewCartForm.TheRentalItemList = theCart;
-                    this.theViewCartForm.TheMember = this.theMember;
-                    this.theViewCartForm.TheEmployee = this.theEmployee;
-                    DialogResult result = this.theViewCartForm.ShowDialog();
-                    if (result == DialogResult.OK) 
-                    {
-                        this.ResetForm();
-                    }
+                    this.ResetForm();
                 }
-                else
-                {
-                    this.ShowErrorMessage("The cart is currently empty.");
-                }
+            }
+            else
+            {
+                this.ShowErrorMessage("The cart is currently empty.");
+            }
         }
 
         /// <summary>
@@ -255,6 +259,8 @@ namespace RentMe.UserControls
             this.theMember = null;
             this.theCart.Clear();
             this.errorMessageLabel.Text = "";
+            this.cartIconLabel.Text = "";
+            this.cartQuantityLabel.Text = "";
             this.theViewCartForm.Dispose();
             this.theViewCartForm = new ViewCartForm();
         }
@@ -289,11 +295,40 @@ namespace RentMe.UserControls
                 this.viewCartButton.Enabled = true;
                 this.resetCartButton.Enabled = true;
                 this.memberIDSearchTextBox.Text = this.theMember.MemberID.ToString();
+                this.cartIconLabel.Text = "\ue7bf";
+                this.UpdateCartQuantityDisplay();
             }
             else
             {
                 this.ShowErrorMessage("Please look up a member in the Member Information tab before trying to load.");
             }
+        }
+
+        private void UpdateCartQuantityDisplay()
+        {
+            int totalItemsInCart = this.GetTotalItemsInCart();
+            if (totalItemsInCart == 0)
+            {
+                this.cartQuantityLabel.Text = "Empty";
+            }
+            else if (totalItemsInCart == 1)
+            {
+                this.cartQuantityLabel.Text = "1 Item";
+            }
+            else
+            {
+                this.cartQuantityLabel.Text = totalItemsInCart + " Items";
+            }
+        }
+
+        private int GetTotalItemsInCart()
+        {
+            int totalItems = 0;
+            foreach (RentalItem theRentalItem in this.theCart)
+            {
+                totalItems += theRentalItem.Quantity;
+            }
+            return totalItems;
         }
     }
 }
