@@ -70,7 +70,7 @@ namespace RentMe.View
             this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitOrderButton.ForeColor = System.Drawing.Color.White;
-            this.submitOrderButton.Location = new System.Drawing.Point(235, 334);
+            this.submitOrderButton.Location = new System.Drawing.Point(255, 334);
             this.submitOrderButton.Name = "submitOrderButton";
             this.submitOrderButton.Size = new System.Drawing.Size(168, 27);
             this.submitOrderButton.TabIndex = 3;
@@ -85,7 +85,7 @@ namespace RentMe.View
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(422, 334);
+            this.cancelButton.Location = new System.Drawing.Point(442, 334);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(110, 27);
             this.cancelButton.TabIndex = 2;
@@ -131,7 +131,7 @@ namespace RentMe.View
             this.rentalItemDataGridView.Location = new System.Drawing.Point(12, 48);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(520, 247);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(540, 247);
             this.rentalItemDataGridView.TabIndex = 1;
             // 
             // transactionIDTextBoxColumn
@@ -233,7 +233,7 @@ namespace RentMe.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 372);
+            this.ClientSize = new System.Drawing.Size(564, 372);
             this.Controls.Add(this.dueDateValueLabel);
             this.Controls.Add(this.dueDateLabel);
             this.Controls.Add(this.rentalItemDataGridView);
