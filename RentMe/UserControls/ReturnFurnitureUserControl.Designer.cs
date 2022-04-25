@@ -98,9 +98,9 @@ namespace RentMe.UserControls
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(12, 58);
+            this.errorMessageLabel.Location = new System.Drawing.Point(521, 19);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(747, 24);
+            this.errorMessageLabel.Size = new System.Drawing.Size(243, 63);
             this.errorMessageLabel.TabIndex = 0;
             // 
             // completeReturnTransactionButton
@@ -218,9 +218,9 @@ namespace RentMe.UserControls
             this.loadMemberFromLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadMemberFromLookupButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadMemberFromLookupButton.ForeColor = System.Drawing.Color.White;
-            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(329, 19);
+            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(333, 19);
             this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
-            this.loadMemberFromLookupButton.Size = new System.Drawing.Size(176, 28);
+            this.loadMemberFromLookupButton.Size = new System.Drawing.Size(176, 27);
             this.loadMemberFromLookupButton.TabIndex = 24;
             this.loadMemberFromLookupButton.Text = "Load Member From Lookup";
             this.loadMemberFromLookupButton.UseVisualStyleBackColor = false;
