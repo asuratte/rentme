@@ -228,7 +228,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.memberSearchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberSearchButton.ForeColor = System.Drawing.Color.White;
-            this.memberSearchButton.Location = new System.Drawing.Point(130, 61);
+            this.memberSearchButton.Location = new System.Drawing.Point(131, 61);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(79, 27);
             this.memberSearchButton.TabIndex = 2;
@@ -309,7 +309,7 @@ namespace RentMe.UserControls
             this.loadMemberFromLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadMemberFromLookupButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadMemberFromLookupButton.ForeColor = System.Drawing.Color.White;
-            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(225, 61);
+            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(226, 61);
             this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
             this.loadMemberFromLookupButton.Size = new System.Drawing.Size(212, 27);
             this.loadMemberFromLookupButton.TabIndex = 23;
