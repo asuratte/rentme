@@ -14,11 +14,13 @@ namespace RentMe.DAL
         /// Add member to the database
         /// </summary>
         /// <param name="theMember"></param>
-        public void AddMember(Member theMember)
+        public int AddMember(Member theMember)
         {
             string insertStatement =
                 @"INSERT INTO member (sex, dateOfBirth, firstName, lastName, phone, address1, address2, city, state, zipCode) 
                 VALUES (@Sex, @DateOfBirth, @FirstName, @LastName, @Phone, @Address1, @Address2, @City, @State, @ZipCode)";
+            string selectStatement = "SELECT @@Identity";
+            int memberID = 0;
             using (SqlConnection connection = RentMeDBConnection.GetConnection())
             {
                 connection.Open();
@@ -55,7 +57,12 @@ namespace RentMe.DAL
                     insertCommand.Parameters["@ZipCode"].Value = theMember.ZipCode;
                     insertCommand.ExecuteNonQuery();
                 }
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    memberID = Convert.ToInt32(selectCommand.ExecuteScalar());
+                }
             }
+            return memberID;
         }
 
         /// <summary>

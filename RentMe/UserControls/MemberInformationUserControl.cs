@@ -126,10 +126,11 @@ namespace RentMe.UserControls
                         if (this.theMemberRegistrationConfirmationForm.DialogResult == DialogResult.OK)
                         {
                             Member newMember = this.CreateNewMember();
-                            this.theMemberController.AddMember(newMember);
-                            this.ClearMemberFormInputs();
+                            this.memberIDFormValue.Text = this.theMemberController.AddMember(newMember).ToString();
                             this.errorMessageLabel.Text = "Member successfully added.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            memberFromLookup = newMember;
+                            this.updateMemberInformationButton.Enabled = true;
                             memberFromLookup = newMember;
                         }
                     }
@@ -230,6 +231,8 @@ namespace RentMe.UserControls
         {
             this.ClearMemberFormInputs();
             this.errorMessageLabel.Text = "";
+            this.viewRentalHistoryButton.Enabled = false;
+            this.updateMemberInformationButton.Enabled = false;
             if (this.memberIDSearchTextBox.Text != null && this.memberIDSearchTextBox.Text != "")
             {
                 try
@@ -388,6 +391,8 @@ namespace RentMe.UserControls
             this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = true;
+            memberFromLookup = theMember;
+            this.viewRentalHistoryButton.Enabled = true;
             memberFromLookup = theMember;
         }
 

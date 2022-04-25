@@ -24,13 +24,13 @@ namespace RentMe.Controller
         /// Add member to the database
         /// </summary>
         /// <param name="theMember"></param>
-        public void AddMember(Member theMember)
+        public int AddMember(Member theMember)
         {
             if (theMember == null) 
             {
                 throw new ArgumentNullException("Member must not be null.");
             }
-            this.memberDAL.AddMember(theMember);
+            return this.memberDAL.AddMember(theMember);
         }
 
         /// <summary>
