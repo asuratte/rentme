@@ -14,6 +14,7 @@ namespace RentMe.DAL
         /// Add member to the database
         /// </summary>
         /// <param name="theMember"></param>
+        /// <returns>Member ID of newly inserted member</returns>
         public int AddMember(Member theMember)
         {
             string insertStatement =
