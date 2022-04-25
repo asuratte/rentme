@@ -145,7 +145,7 @@ namespace RentMe.UserControls
                         this.viewCartButton.Enabled = true;
                         this.resetCartButton.Enabled = true;
                         this.cartIconLabel.Text = "\ue7bf";
-                        this.updateCartQuantityDisplay();
+                        this.UpdateCartQuantityDisplay();
                     }
                     else
                     {
@@ -199,7 +199,7 @@ namespace RentMe.UserControls
                             }
                             this.errorMessageLabel.Text = theAddToCartForm.QuantityToAdd + " " + theFurniture.Name + " item(s) successfully added to cart.";
                             this.errorMessageLabel.ForeColor = Color.Green;
-                            this.updateCartQuantityDisplay();
+                            this.UpdateCartQuantityDisplay();
                         }
                     }
                 }
@@ -219,7 +219,7 @@ namespace RentMe.UserControls
                 this.theViewCartForm.TheMember = this.theMember;
                 this.theViewCartForm.TheEmployee = this.theEmployee;
                 DialogResult result = this.theViewCartForm.ShowDialog();
-                this.updateCartQuantityDisplay();
+                this.UpdateCartQuantityDisplay();
                 if (result == DialogResult.OK) 
                 {
                     this.ResetForm();
@@ -296,7 +296,7 @@ namespace RentMe.UserControls
                 this.resetCartButton.Enabled = true;
                 this.memberIDSearchTextBox.Text = this.theMember.MemberID.ToString();
                 this.cartIconLabel.Text = "\ue7bf";
-                this.updateCartQuantityDisplay();
+                this.UpdateCartQuantityDisplay();
             }
             else
             {
@@ -304,9 +304,9 @@ namespace RentMe.UserControls
             }
         }
 
-        private void updateCartQuantityDisplay()
+        private void UpdateCartQuantityDisplay()
         {
-            int totalItemsInCart = this.getTotalItemsInCart();
+            int totalItemsInCart = this.GetTotalItemsInCart();
             if (totalItemsInCart == 0)
             {
                 this.cartQuantityLabel.Text = "Empty";
@@ -321,7 +321,7 @@ namespace RentMe.UserControls
             }
         }
 
-        private int getTotalItemsInCart()
+        private int GetTotalItemsInCart()
         {
             int totalItems = 0;
             foreach (RentalItem theRentalItem in this.theCart)
