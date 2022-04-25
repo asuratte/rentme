@@ -30,13 +30,13 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.categorySearchLabel = new System.Windows.Forms.Label();
             this.styleSearchLabel = new System.Windows.Forms.Label();
             this.furnitureIDSearchTextBox = new System.Windows.Forms.TextBox();
@@ -59,6 +59,8 @@ namespace RentMe.UserControls
             this.memberSearchDescriptionLabel = new System.Windows.Forms.Label();
             this.loadMemberFromLookupButton = new System.Windows.Forms.Button();
             this.furnitureSearchDescriptionLabel = new System.Windows.Forms.Label();
+            this.cartIconLabel = new System.Windows.Forms.Label();
+            this.cartQuantityLabel = new System.Windows.Forms.Label();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,8 +68,6 @@ namespace RentMe.UserControls
             this.styleTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cartIconLabel = new System.Windows.Forms.Label();
-            this.cartQuantityLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -183,8 +183,8 @@ namespace RentMe.UserControls
             // quantityInStockTextBoxColumn
             // 
             this.quantityInStockTextBoxColumn.DataPropertyName = "TotalQuantity";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.quantityInStockTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.quantityInStockTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.quantityInStockTextBoxColumn.HeaderText = "Quantity In Stock";
             this.quantityInStockTextBoxColumn.Name = "quantityInStockTextBoxColumn";
             this.quantityInStockTextBoxColumn.ReadOnly = true;
@@ -207,7 +207,7 @@ namespace RentMe.UserControls
             this.memberIDSearchTextBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberIDSearchTextBox.Location = new System.Drawing.Point(3, 62);
             this.memberIDSearchTextBox.Name = "memberIDSearchTextBox";
-            this.memberIDSearchTextBox.Size = new System.Drawing.Size(131, 25);
+            this.memberIDSearchTextBox.Size = new System.Drawing.Size(120, 25);
             this.memberIDSearchTextBox.TabIndex = 1;
             this.memberIDSearchTextBox.TextChanged += new System.EventHandler(this.OnSearchValueChanged);
             // 
@@ -228,7 +228,7 @@ namespace RentMe.UserControls
             this.memberSearchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.memberSearchButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberSearchButton.ForeColor = System.Drawing.Color.White;
-            this.memberSearchButton.Location = new System.Drawing.Point(140, 61);
+            this.memberSearchButton.Location = new System.Drawing.Point(130, 61);
             this.memberSearchButton.Name = "memberSearchButton";
             this.memberSearchButton.Size = new System.Drawing.Size(79, 27);
             this.memberSearchButton.TabIndex = 2;
@@ -309,7 +309,7 @@ namespace RentMe.UserControls
             this.loadMemberFromLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadMemberFromLookupButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadMemberFromLookupButton.ForeColor = System.Drawing.Color.White;
-            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(233, 61);
+            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(225, 61);
             this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
             this.loadMemberFromLookupButton.Size = new System.Drawing.Size(212, 27);
             this.loadMemberFromLookupButton.TabIndex = 23;
@@ -327,11 +327,27 @@ namespace RentMe.UserControls
             this.furnitureSearchDescriptionLabel.TabIndex = 24;
             this.furnitureSearchDescriptionLabel.Text = "Search for Furniture:";
             // 
+            // cartIconLabel
+            // 
+            this.cartIconLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartIconLabel.Location = new System.Drawing.Point(515, 32);
+            this.cartIconLabel.Name = "cartIconLabel";
+            this.cartIconLabel.Size = new System.Drawing.Size(26, 20);
+            this.cartIconLabel.TabIndex = 25;
+            // 
+            // cartQuantityLabel
+            // 
+            this.cartQuantityLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartQuantityLabel.Location = new System.Drawing.Point(542, 32);
+            this.cartQuantityLabel.Name = "cartQuantityLabel";
+            this.cartQuantityLabel.Size = new System.Drawing.Size(219, 20);
+            this.cartQuantityLabel.TabIndex = 26;
+            // 
             // furnitureIDTextBoxColumn
             // 
             this.furnitureIDTextBoxColumn.DataPropertyName = "FurnitureID";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.furnitureIDTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.furnitureIDTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.furnitureIDTextBoxColumn.HeaderText = "Furniture ID";
             this.furnitureIDTextBoxColumn.Name = "furnitureIDTextBoxColumn";
             this.furnitureIDTextBoxColumn.ReadOnly = true;
@@ -340,8 +356,8 @@ namespace RentMe.UserControls
             // nameTextBoxColumn
             // 
             this.nameTextBoxColumn.DataPropertyName = "Name";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.nameTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.nameTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.nameTextBoxColumn.HeaderText = "Name";
             this.nameTextBoxColumn.Name = "nameTextBoxColumn";
             this.nameTextBoxColumn.ReadOnly = true;
@@ -350,8 +366,8 @@ namespace RentMe.UserControls
             // descriptionTextBoxColumn
             // 
             this.descriptionTextBoxColumn.DataPropertyName = "Description";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.descriptionTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.descriptionTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descriptionTextBoxColumn.HeaderText = "Description";
             this.descriptionTextBoxColumn.Name = "descriptionTextBoxColumn";
             this.descriptionTextBoxColumn.ReadOnly = true;
@@ -361,8 +377,8 @@ namespace RentMe.UserControls
             // categoryTextBoxColumn
             // 
             this.categoryTextBoxColumn.DataPropertyName = "Category";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.categoryTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.categoryTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.categoryTextBoxColumn.HeaderText = "Category";
             this.categoryTextBoxColumn.Name = "categoryTextBoxColumn";
             this.categoryTextBoxColumn.ReadOnly = true;
@@ -370,8 +386,8 @@ namespace RentMe.UserControls
             // styleTextBoxColumn
             // 
             this.styleTextBoxColumn.DataPropertyName = "Style";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.styleTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.styleTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.styleTextBoxColumn.HeaderText = "Style";
             this.styleTextBoxColumn.Name = "styleTextBoxColumn";
             this.styleTextBoxColumn.ReadOnly = true;
@@ -379,10 +395,10 @@ namespace RentMe.UserControls
             // rentalRateTextBoxColumn
             // 
             this.rentalRateTextBoxColumn.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Format = "C2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "C2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.rentalRateTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.rentalRateTextBoxColumn.HeaderText = "Rental Rate";
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
             this.rentalRateTextBoxColumn.ReadOnly = true;
@@ -391,22 +407,6 @@ namespace RentMe.UserControls
             // furnitureBindingSource
             // 
             this.furnitureBindingSource.DataSource = typeof(RentMe.Model.Furniture);
-            // 
-            // cartIconLabel
-            // 
-            this.cartIconLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cartIconLabel.Location = new System.Drawing.Point(515, 31);
-            this.cartIconLabel.Name = "cartIconLabel";
-            this.cartIconLabel.Size = new System.Drawing.Size(20, 20);
-            this.cartIconLabel.TabIndex = 25;
-            // 
-            // cartQuantityLabel
-            // 
-            this.cartQuantityLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cartQuantityLabel.Location = new System.Drawing.Point(541, 31);
-            this.cartQuantityLabel.Name = "cartQuantityLabel";
-            this.cartQuantityLabel.Size = new System.Drawing.Size(220, 20);
-            this.cartQuantityLabel.TabIndex = 26;
             // 
             // RentFurnitureUserControl
             // 
