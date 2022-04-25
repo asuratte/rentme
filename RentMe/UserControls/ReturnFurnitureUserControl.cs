@@ -59,6 +59,7 @@ namespace RentMe.UserControls
                 {
                     int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
                     this.ResetForm();
+                    this.memberIDTextBox.Text = memberID.ToString();
                     this.theMember = this.theMemberController.GetMemberByID(memberID);
                     if (this.theMember != null)
                     {
@@ -230,6 +231,7 @@ namespace RentMe.UserControls
                     {
                         rentalItemBindingSource.Add(theRentalItem);
                     }
+                    this.memberIDTextBox.Text = this.theMember.MemberID.ToString();
                 }
                 else
                 {

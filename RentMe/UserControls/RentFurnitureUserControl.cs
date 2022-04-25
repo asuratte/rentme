@@ -288,6 +288,7 @@ namespace RentMe.UserControls
                 this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
                 this.viewCartButton.Enabled = true;
                 this.resetCartButton.Enabled = true;
+                this.memberIDSearchTextBox.Text = this.theMember.MemberID.ToString();
             }
             else
             {
