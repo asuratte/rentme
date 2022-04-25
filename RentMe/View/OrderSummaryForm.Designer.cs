@@ -44,8 +44,8 @@ namespace RentMe.View
             this.transactionNumberLabel = new System.Windows.Forms.Label();
             this.totalValueLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dueDateValueLabel = new System.Windows.Forms.Label();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +71,7 @@ namespace RentMe.View
             // dateValueLabel
             // 
             this.dateValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateValueLabel.Location = new System.Drawing.Point(361, 9);
+            this.dateValueLabel.Location = new System.Drawing.Point(381, 9);
             this.dateValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.dateValueLabel.Name = "dateValueLabel";
             this.dateValueLabel.Size = new System.Drawing.Size(288, 19);
@@ -81,7 +81,7 @@ namespace RentMe.View
             // employeeNameValueLabel
             // 
             this.employeeNameValueLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeNameValueLabel.Location = new System.Drawing.Point(361, 43);
+            this.employeeNameValueLabel.Location = new System.Drawing.Point(381, 43);
             this.employeeNameValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.employeeNameValueLabel.Name = "employeeNameValueLabel";
             this.employeeNameValueLabel.Size = new System.Drawing.Size(288, 19);
@@ -100,7 +100,7 @@ namespace RentMe.View
             // totalValueLabel
             // 
             this.totalValueLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalValueLabel.Location = new System.Drawing.Point(418, 334);
+            this.totalValueLabel.Location = new System.Drawing.Point(438, 334);
             this.totalValueLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.totalValueLabel.Name = "totalValueLabel";
             this.totalValueLabel.Size = new System.Drawing.Size(231, 19);
@@ -135,12 +135,8 @@ namespace RentMe.View
             this.rentalItemDataGridView.Location = new System.Drawing.Point(16, 82);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(633, 234);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(653, 234);
             this.rentalItemDataGridView.TabIndex = 1;
-            // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // dueDateValueLabel
             // 
@@ -150,6 +146,10 @@ namespace RentMe.View
             this.dueDateValueLabel.Name = "dueDateValueLabel";
             this.dueDateValueLabel.Size = new System.Drawing.Size(231, 19);
             this.dueDateValueLabel.TabIndex = 0;
+            // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // transactionIDTextBoxColumn
             // 
@@ -187,7 +187,7 @@ namespace RentMe.View
             this.quantityTextBoxColumn.HeaderText = "Quantity";
             this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
             this.quantityTextBoxColumn.ReadOnly = true;
-            this.quantityTextBoxColumn.Width = 80;
+            this.quantityTextBoxColumn.Width = 81;
             // 
             // RentalRate
             // 
@@ -199,7 +199,7 @@ namespace RentMe.View
             this.RentalRate.HeaderText = "Rental Rate";
             this.RentalRate.Name = "RentalRate";
             this.RentalRate.ReadOnly = true;
-            this.RentalRate.Width = 108;
+            this.RentalRate.Width = 109;
             // 
             // memberIDTextBoxColumn
             // 
@@ -239,13 +239,13 @@ namespace RentMe.View
             this.SubtotalTextBoxColumn.HeaderText = "Subtotal";
             this.SubtotalTextBoxColumn.Name = "SubtotalTextBoxColumn";
             this.SubtotalTextBoxColumn.ReadOnly = true;
-            this.SubtotalTextBoxColumn.Width = 110;
+            this.SubtotalTextBoxColumn.Width = 111;
             // 
             // OrderSummaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 378);
+            this.ClientSize = new System.Drawing.Size(681, 378);
             this.Controls.Add(this.dueDateValueLabel);
             this.Controls.Add(this.rentalItemDataGridView);
             this.Controls.Add(this.totalValueLabel);
