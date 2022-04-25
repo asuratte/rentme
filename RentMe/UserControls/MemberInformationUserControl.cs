@@ -129,9 +129,9 @@ namespace RentMe.UserControls
                             this.memberIDFormValue.Text = this.theMemberController.AddMember(newMember).ToString();
                             this.errorMessageLabel.Text = "Member successfully added.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            newMember.MemberID = Convert.ToInt32(memberIDFormValue.Text);
                             memberFromLookup = newMember;
                             this.updateMemberInformationButton.Enabled = true;
-                            memberFromLookup = newMember;
                         }
                     }
                 }
@@ -393,7 +393,6 @@ namespace RentMe.UserControls
             this.updateMemberInformationButton.Enabled = true;
             memberFromLookup = theMember;
             this.viewRentalHistoryButton.Enabled = true;
-            memberFromLookup = theMember;
         }
 
         private void ShowMemberLookupForm(List<Member> theMemberList)
