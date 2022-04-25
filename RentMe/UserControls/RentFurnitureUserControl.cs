@@ -295,6 +295,8 @@ namespace RentMe.UserControls
                 this.viewCartButton.Enabled = true;
                 this.resetCartButton.Enabled = true;
                 this.memberIDSearchTextBox.Text = this.theMember.MemberID.ToString();
+                this.cartIconLabel.Text = "\ue7bf";
+                this.updateCartQuantityDisplay();
             }
             else
             {
