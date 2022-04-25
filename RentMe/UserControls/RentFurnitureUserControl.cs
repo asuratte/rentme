@@ -277,5 +277,23 @@ namespace RentMe.UserControls
             this.errorMessageLabel.Text = message;
             this.errorMessageLabel.ForeColor = Color.Red;
         }
+
+        private void LoadMemberFromLookupButtonClick(object sender, EventArgs e)
+        {
+            this.ResetCart();
+            if (MemberInformationUserControl.MemberFromLookup != null)
+            {
+                this.theMember = MemberInformationUserControl.MemberFromLookup;
+                this.cartForMemberLabel.Visible = true;
+                this.memberNameValueLabel.Text = this.theMember.FirstName + " " + this.theMember.LastName;
+                this.viewCartButton.Enabled = true;
+                this.resetCartButton.Enabled = true;
+                this.memberIDSearchTextBox.Text = this.theMember.MemberID.ToString();
+            }
+            else
+            {
+                this.ShowErrorMessage("Please look up a member in the Member Information tab before trying to load.");
+            }
+        }
     }
 }

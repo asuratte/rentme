@@ -18,6 +18,12 @@ namespace RentMe.UserControls
         private readonly StateController theStateController;
         private MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
         private MemberLookupForm theMemberLookupForm;
+        private static Member memberFromLookup = null;
+
+        public static Member MemberFromLookup
+        {
+            get { return memberFromLookup; }
+        }
 
         /// <summary>
         /// Initialize the member information user interface
@@ -50,6 +56,7 @@ namespace RentMe.UserControls
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = false;
             this.viewRentalHistoryButton.Enabled = false;
+            memberFromLookup = null;
         }
 
         private void ClearMemberFormInputs()
@@ -122,6 +129,8 @@ namespace RentMe.UserControls
                             this.memberIDFormValue.Text = this.theMemberController.AddMember(newMember).ToString();
                             this.errorMessageLabel.Text = "Member successfully added.";
                             this.errorMessageLabel.ForeColor = Color.Green;
+                            newMember.MemberID = Convert.ToInt32(memberIDFormValue.Text);
+                            memberFromLookup = newMember;
                             this.updateMemberInformationButton.Enabled = true;
                         }
                     }
@@ -239,6 +248,7 @@ namespace RentMe.UserControls
                         this.ClearSearchFormInputs();
                         this.updateMemberInformationButton.Enabled = true;
                         this.viewRentalHistoryButton.Enabled = true;
+                        memberFromLookup = theMember;
                     }
                     else
                     {
@@ -381,6 +391,7 @@ namespace RentMe.UserControls
             this.memberIDFormValue.Text = Convert.ToString(theMember.MemberID);
             this.ClearSearchFormInputs();
             this.updateMemberInformationButton.Enabled = true;
+            memberFromLookup = theMember;
             this.viewRentalHistoryButton.Enabled = true;
         }
 

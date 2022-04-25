@@ -59,23 +59,11 @@ namespace RentMe.UserControls
                 {
                     int memberID = Convert.ToInt32(this.memberIDTextBox.Text);
                     this.ResetForm();
+                    this.memberIDTextBox.Text = memberID.ToString();
                     this.theMember = this.theMemberController.GetMemberByID(memberID);
                     if (this.theMember != null)
                     {
-                        List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
-                        rentalItemBindingSource.Clear();
-                        if (outstandingRentalItemsList.Count > 0)
-                        {
-                            this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
-                            foreach (RentalItem theRentalItem in outstandingRentalItemsList)
-                            {
-                                rentalItemBindingSource.Add(theRentalItem);
-                            }
-                        }
-                        else
-                        {
-                            this.errorMessageLabel.Text = "Member currently has no outstanding rentals.";
-                        }
+                        this.RenderOutstandingRentalItems(memberID);
                     }
                     else
                     {
@@ -212,6 +200,39 @@ namespace RentMe.UserControls
             catch (Exception)
             {
                 this.ShowErrorMessage("There was an issue completing the return transaction.");
+            }
+        }
+
+        private void LoadMemberFromLookupButtonClick(object sender, EventArgs e)
+        {
+            this.ResetForm();
+            if (MemberInformationUserControl.MemberFromLookup != null)
+            {
+                this.theMember = MemberInformationUserControl.MemberFromLookup;
+                this.memberIDTextBox.Text = this.theMember.MemberID.ToString(); 
+                this.RenderOutstandingRentalItems(this.theMember.MemberID);
+            }
+            else
+            {
+                this.ShowErrorMessage("Please look up a member in the Member Information tab before trying to load.");
+            }
+        }
+
+        private void RenderOutstandingRentalItems(int memberID)
+        {
+            List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
+            rentalItemBindingSource.Clear();
+            if (outstandingRentalItemsList.Count > 0)
+            {
+                this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
+                foreach (RentalItem theRentalItem in outstandingRentalItemsList)
+                {
+                    rentalItemBindingSource.Add(theRentalItem);
+                }
+            }
+            else
+            {
+                this.errorMessageLabel.Text = "Member currently has no outstanding rentals.";
             }
         }
     }

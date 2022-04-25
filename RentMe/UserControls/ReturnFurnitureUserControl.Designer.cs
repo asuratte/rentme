@@ -46,16 +46,17 @@ namespace RentMe.UserControls
             this.returnedItemsListView = new System.Windows.Forms.ListView();
             this.returnedItemsListViewColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DataGridViewHeaderLabel = new System.Windows.Forms.Label();
             this.clearFormButton = new System.Windows.Forms.Button();
+            this.loadMemberFromLookupButton = new System.Windows.Forms.Button();
             this.dataGridViewMemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewFurnitureID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRentalTransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewQuantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRentalDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewDueDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReturnItemButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -97,9 +98,9 @@ namespace RentMe.UserControls
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(344, 19);
+            this.errorMessageLabel.Location = new System.Drawing.Point(521, 19);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(424, 56);
+            this.errorMessageLabel.Size = new System.Drawing.Size(243, 63);
             this.errorMessageLabel.TabIndex = 0;
             // 
             // completeReturnTransactionButton
@@ -177,9 +178,14 @@ namespace RentMe.UserControls
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridViewCellContentClick);
             // 
-            // rentalItemBindingSource
+            // ReturnItemButton
             // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            this.ReturnItemButton.HeaderText = "";
+            this.ReturnItemButton.Name = "ReturnItemButton";
+            this.ReturnItemButton.ReadOnly = true;
+            this.ReturnItemButton.Text = "Return Item";
+            this.ReturnItemButton.UseColumnTextForButtonValue = true;
+            this.ReturnItemButton.Width = 80;
             // 
             // DataGridViewHeaderLabel
             // 
@@ -204,6 +210,21 @@ namespace RentMe.UserControls
             this.clearFormButton.Text = "Clear Form";
             this.clearFormButton.UseVisualStyleBackColor = false;
             this.clearFormButton.Click += new System.EventHandler(this.OnClearFormButtonClick);
+            // 
+            // loadMemberFromLookupButton
+            // 
+            this.loadMemberFromLookupButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.loadMemberFromLookupButton.FlatAppearance.BorderSize = 0;
+            this.loadMemberFromLookupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadMemberFromLookupButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadMemberFromLookupButton.ForeColor = System.Drawing.Color.White;
+            this.loadMemberFromLookupButton.Location = new System.Drawing.Point(333, 19);
+            this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
+            this.loadMemberFromLookupButton.Size = new System.Drawing.Size(176, 27);
+            this.loadMemberFromLookupButton.TabIndex = 24;
+            this.loadMemberFromLookupButton.Text = "Load Member From Lookup";
+            this.loadMemberFromLookupButton.UseVisualStyleBackColor = false;
+            this.loadMemberFromLookupButton.Click += new System.EventHandler(this.LoadMemberFromLookupButtonClick);
             // 
             // dataGridViewMemberID
             // 
@@ -269,19 +290,15 @@ namespace RentMe.UserControls
             this.dataGridViewDueDateColumn.ReadOnly = true;
             this.dataGridViewDueDateColumn.Width = 82;
             // 
-            // ReturnItemButton
+            // rentalItemBindingSource
             // 
-            this.ReturnItemButton.HeaderText = "";
-            this.ReturnItemButton.Name = "ReturnItemButton";
-            this.ReturnItemButton.ReadOnly = true;
-            this.ReturnItemButton.Text = "Return Item";
-            this.ReturnItemButton.UseColumnTextForButtonValue = true;
-            this.ReturnItemButton.Width = 80;
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // ReturnFurnitureUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.loadMemberFromLookupButton);
             this.Controls.Add(this.clearFormButton);
             this.Controls.Add(this.DataGridViewHeaderLabel);
             this.Controls.Add(this.rentalItemDataGridView);
@@ -325,5 +342,6 @@ namespace RentMe.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewRentalDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewDueDateColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ReturnItemButton;
+        private System.Windows.Forms.Button loadMemberFromLookupButton;
     }
 }
