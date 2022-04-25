@@ -243,7 +243,7 @@ namespace RentMe.UserControls
             this.viewCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewCartButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewCartButton.ForeColor = System.Drawing.Color.White;
-            this.viewCartButton.Location = new System.Drawing.Point(519, 60);
+            this.viewCartButton.Location = new System.Drawing.Point(519, 61);
             this.viewCartButton.Name = "viewCartButton";
             this.viewCartButton.Size = new System.Drawing.Size(110, 27);
             this.viewCartButton.TabIndex = 3;
@@ -258,7 +258,7 @@ namespace RentMe.UserControls
             this.resetCartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetCartButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetCartButton.ForeColor = System.Drawing.Color.White;
-            this.resetCartButton.Location = new System.Drawing.Point(653, 60);
+            this.resetCartButton.Location = new System.Drawing.Point(653, 61);
             this.resetCartButton.Name = "resetCartButton";
             this.resetCartButton.Size = new System.Drawing.Size(110, 27);
             this.resetCartButton.TabIndex = 4;
@@ -324,24 +324,24 @@ namespace RentMe.UserControls
             this.furnitureSearchDescriptionLabel.Location = new System.Drawing.Point(1, 139);
             this.furnitureSearchDescriptionLabel.Name = "furnitureSearchDescriptionLabel";
             this.furnitureSearchDescriptionLabel.Size = new System.Drawing.Size(133, 19);
-            this.furnitureSearchDescriptionLabel.TabIndex = 24;
+            this.furnitureSearchDescriptionLabel.TabIndex = 0;
             this.furnitureSearchDescriptionLabel.Text = "Search for Furniture:";
             // 
             // cartIconLabel
             // 
-            this.cartIconLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cartIconLabel.Location = new System.Drawing.Point(515, 32);
+            this.cartIconLabel.Font = new System.Drawing.Font("Segoe MDL2 Assets", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartIconLabel.Location = new System.Drawing.Point(517, 35);
             this.cartIconLabel.Name = "cartIconLabel";
-            this.cartIconLabel.Size = new System.Drawing.Size(26, 20);
-            this.cartIconLabel.TabIndex = 25;
+            this.cartIconLabel.Size = new System.Drawing.Size(22, 18);
+            this.cartIconLabel.TabIndex = 0;
             // 
             // cartQuantityLabel
             // 
             this.cartQuantityLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cartQuantityLabel.Location = new System.Drawing.Point(542, 32);
+            this.cartQuantityLabel.Location = new System.Drawing.Point(542, 33);
             this.cartQuantityLabel.Name = "cartQuantityLabel";
             this.cartQuantityLabel.Size = new System.Drawing.Size(219, 20);
-            this.cartQuantityLabel.TabIndex = 26;
+            this.cartQuantityLabel.TabIndex = 0;
             // 
             // furnitureIDTextBoxColumn
             // 
