@@ -25,6 +25,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="theMember"></param>
         /// <returns>Member ID of newly inserted member</returns>
+        /// <exception cref="System.ArgumentException">Member must not be null.</exception>
         public int AddMember(Member theMember)
         {
             if (theMember == null) 
@@ -38,6 +39,7 @@ namespace RentMe.Controller
         /// Gets member matching specific ID 
         /// </summary>
         /// <returns>Member matching specific ID</returns>
+        /// <exception cref="System.ArgumentException">Member ID must be a positive whole number.</exception>
         public Member GetMemberByID(int memberID)
         {
             if (memberID <= 0)
@@ -51,6 +53,7 @@ namespace RentMe.Controller
         /// Gets members matching specific phone number
         /// </summary>
         /// <returns>Members matching specific phone number</returns>
+        /// <exception cref="System.ArgumentException">Phone number must not be null.</exception>
         public List<Member> GetMembersByPhoneNumber(string phoneNumber)
         {
             if (phoneNumber == null)
@@ -64,6 +67,9 @@ namespace RentMe.Controller
         /// Gets members matching specific first and last name
         /// </summary>
         /// <returns>Members matching specific first and last name</returns>
+        /// <exception cref="System.ArgumentException">First Name must not be null.
+        /// OR Last Name must not be null.
+        /// </exception>
         public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
         {
             if (firstName == null)
@@ -84,6 +90,10 @@ namespace RentMe.Controller
         /// <param name="lastName"></param>
         /// <param name="phoneNumber"></param>
         /// <returns>True if exists, false if not</returns>
+        /// <exception cref="System.ArgumentException">First Name must not be null.
+        /// OR Last Name must not be null.
+        /// OR Phone Number must not be null.
+        /// </exception>
         public bool CheckMemberExists(string firstName, string lastName, string phoneNumber)
         {
             if (firstName == null)
@@ -107,15 +117,18 @@ namespace RentMe.Controller
         /// <param name="oldMember"></param>
         /// <param name="newMember"></param>
         /// <returns>True if successful, false if not</returns>
+        /// <exception cref="System.ArgumentException">Old Member must not be null.
+        /// OR New Member must not be null.
+        /// </exception>
         public bool UpdateMember(Member oldMember, Member newMember)
         {
             if (oldMember == null)
             {
-                throw new ArgumentNullException("Old incident must not be null.");
+                throw new ArgumentNullException("Old member must not be null.");
             }
             if (newMember == null)
             {
-                throw new ArgumentNullException("New incident must not be null.");
+                throw new ArgumentNullException("New member must not be null.");
             }
             return this.memberDAL.UpdateMember(oldMember, newMember);
         }
