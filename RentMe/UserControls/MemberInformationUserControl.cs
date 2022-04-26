@@ -208,7 +208,7 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("Please enter a valid 5 digit zip code.");
                 return false;
             }
-            else if (this.dateOfBirthDateTimePicker.Text == DateTime.Now.ToShortDateString())
+            else if (Convert.ToDateTime(this.dateOfBirthDateTimePicker.Text) >= DateTime.Now)
             {
                 this.ShowErrorMessage("Please choose a valid date of birth.");
                 return false;
