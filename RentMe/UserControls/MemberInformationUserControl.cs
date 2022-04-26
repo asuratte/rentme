@@ -188,12 +188,12 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("This is a required field.");
                 return false;
             }
-            else if (this.sexFormComboBox.SelectedIndex == 0)
+            else if (this.sexFormComboBox.SelectedIndex == 0 || this.sexFormComboBox.Text == "")
             {
                 this.ShowErrorMessage("Please select a Sex.");
                 return false;
             }
-            else if (this.stateFormComboBox.SelectedIndex == 0)
+            else if (this.stateFormComboBox.SelectedIndex == 0 || this.stateFormComboBox.Text == "")
             {
                 this.ShowErrorMessage("Please select a State.");
                 return false;
