@@ -13,7 +13,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Add member to the database
         /// </summary>
-        /// <param name="theMember"></param>
+        /// <param name="theMember">The member to add.</param>
         /// <returns>Member ID of newly inserted member</returns>
         public int AddMember(Member theMember)
         {
@@ -69,6 +69,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets member matching specific ID 
         /// </summary>
+        /// <param name="memberID">The member identifier.</param>
         /// <returns>Member matching specific ID</returns>
         public Member GetMemberByID(int memberID)
         {
@@ -120,6 +121,7 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets members matching specific phone number
         /// </summary>
+        /// <param name="phoneNumber">The phone number.</param>
         /// <returns>Members matching specific phone number</returns>
         public List<Member> GetMembersByPhoneNumber(string phoneNumber)
         {
@@ -169,6 +171,8 @@ namespace RentMe.DAL
         /// <summary>
         /// Gets members matching specific first and last name
         /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
         /// <returns>Members matching specific first and last name</returns>
         public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
         {
@@ -221,9 +225,9 @@ namespace RentMe.DAL
         /// <summary>
         /// Check if a member exists using a combination of first name, last name, and phone
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="phoneNumber"></param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="phoneNumber">The phone number.</param>
         /// <returns>True if exists, false if not</returns>
         public bool CheckMemberExists(string firstName, string lastName, string phoneNumber)
         {
@@ -262,8 +266,8 @@ namespace RentMe.DAL
         /// <summary>
         /// Update existing member in the database
         /// </summary>
-        /// <param name="oldMember"></param>
-        /// <param name="newMember"></param>
+        /// <param name="oldMember">The old member.</param>
+        /// <param name="newMember">The new member.</param>
         /// <returns>True if successful, false if not</returns>
         public bool UpdateMember(Member oldMember, Member newMember)
         {

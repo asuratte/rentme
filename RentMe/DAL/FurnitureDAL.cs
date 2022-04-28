@@ -11,9 +11,10 @@ namespace RentMe.DAL
     public class FurnitureDAL
     {
         /// <summary>
-        /// Gets furniture matching specific ID 
+        /// Gets the furniture by specific identifier.
         /// </summary>
-        /// <returns>Furniture matching specific ID</returns>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <returns>Furniture by specific identifier.</returns>
         public Furniture GetFurnitureByID(string furnitureID)
         {
             string selectStatement =

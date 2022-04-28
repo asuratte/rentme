@@ -21,10 +21,11 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets furniture matching specific ID
+        /// Gets the furniture by identifier.
         /// </summary>
-        /// <returns>Furniture matching specific ID</returns>
-        /// <exception cref="System.ArgumentException">FurnitureID must not be null.</exception>
+        /// <param name="furnitureID">The furniture identifier.</param>
+        /// <returns>Furniture matching specific identifier.</returns>
+        /// <exception cref="ArgumentNullException">Furniture ID must not be null.</exception>
         public Furniture GetFurnitureByID(string furnitureID)
         {
             if (furnitureID == null)
@@ -61,7 +62,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Gets the rental rate by furnitureID
         /// </summary>
-        /// <param name="furnitureID">The furnitureID</param>
+        /// <param name="furnitureID">The furniture identifier.</param>
         /// <returns>Rental rate as decimal</returns>
         /// <exception cref="ArgumentNullException">Furniture ID must not be null.</exception>
         public decimal GetRentalRateByFurnitureID(string furnitureID)

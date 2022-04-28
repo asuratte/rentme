@@ -23,7 +23,7 @@ namespace RentMe.Controller
         /// <summary>
         /// Add member to the database
         /// </summary>
-        /// <param name="theMember"></param>
+        /// <param name="theMember">The member to add.</param>
         /// <returns>Member ID of newly inserted member</returns>
         /// <exception cref="System.ArgumentException">Member must not be null.</exception>
         public int AddMember(Member theMember)
@@ -36,10 +36,11 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets member matching specific ID 
+        /// Gets the member by identifier.
         /// </summary>
-        /// <returns>Member matching specific ID</returns>
-        /// <exception cref="System.ArgumentException">Member ID must be a positive whole number.</exception>
+        /// <param name="memberID">The member identifier.</param>
+        /// <returns>The member matching the specific identifier.</returns>
+        /// <exception cref="ArgumentException">Member ID must be a positive whole number.</exception>
         public Member GetMemberByID(int memberID)
         {
             if (memberID <= 0)
@@ -49,11 +50,13 @@ namespace RentMe.Controller
             return this.memberDAL.GetMemberByID(memberID);
         }
 
+
         /// <summary>
-        /// Gets members matching specific phone number
+        /// Gets the members by phone number.
         /// </summary>
-        /// <returns>Members matching specific phone number</returns>
-        /// <exception cref="System.ArgumentException">Phone number must not be null.</exception>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <returns>Members matching specific phone number.</returns>
+        /// <exception cref="ArgumentNullException">Phone number must not be null.</exception>
         public List<Member> GetMembersByPhoneNumber(string phoneNumber)
         {
             if (phoneNumber == null)
@@ -64,11 +67,15 @@ namespace RentMe.Controller
         }
 
         /// <summary>
-        /// Gets members matching specific first and last name
+        /// Gets members matching specific first and last name.
         /// </summary>
-        /// <returns>Members matching specific first and last name</returns>
-        /// <exception cref="System.ArgumentException">First Name must not be null.
-        /// OR Last Name must not be null.
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <returns>Members matching specific first and last name.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// First Name must not be null.
+        /// or
+        /// Last Name must not be null.
         /// </exception>
         public List<Member> GetMembersByFirstAndLastName(string firstName, string lastName)
         {
@@ -86,9 +93,9 @@ namespace RentMe.Controller
         /// <summary>
         /// Check if a member exists using a combination of first name, last name, and phone
         /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
-        /// <param name="phoneNumber"></param>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="phoneNumber">The phone number.</param>
         /// <returns>True if exists, false if not</returns>
         /// <exception cref="System.ArgumentException">First Name must not be null.
         /// OR Last Name must not be null.
@@ -114,8 +121,8 @@ namespace RentMe.Controller
         /// <summary>
         /// Update existing member in the database
         /// </summary>
-        /// <param name="oldMember"></param>
-        /// <param name="newMember"></param>
+        /// <param name="oldMember">The old member.</param>
+        /// <param name="newMember">The new member.</param>
         /// <returns>True if successful, false if not</returns>
         /// <exception cref="System.ArgumentException">Old Member must not be null.
         /// OR New Member must not be null.
