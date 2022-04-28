@@ -480,7 +480,7 @@
             this.viewRentalHistoryButton.Location = new System.Drawing.Point(440, 390);
             this.viewRentalHistoryButton.Name = "viewRentalHistoryButton";
             this.viewRentalHistoryButton.Size = new System.Drawing.Size(157, 27);
-            this.viewRentalHistoryButton.TabIndex = 20;
+            this.viewRentalHistoryButton.TabIndex = 18;
             this.viewRentalHistoryButton.Text = "View Rental History";
             this.viewRentalHistoryButton.UseVisualStyleBackColor = false;
             this.viewRentalHistoryButton.Click += new System.EventHandler(this.ViewRentalHistoryButtonClick);
