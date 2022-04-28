@@ -222,9 +222,9 @@ namespace RentMe.UserControls
         {
             List<RentalItem> outstandingRentalItemsList = this.theRentalItemController.GetActiveRentalItemsByMemberID(memberID);
             rentalItemBindingSource.Clear();
+            this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
             if (outstandingRentalItemsList.Count > 0)
             {
-                this.DataGridViewHeaderLabel.Text = "Items currently rented to " + this.theMember.FirstName + " " + this.theMember.LastName + ":";
                 foreach (RentalItem theRentalItem in outstandingRentalItemsList)
                 {
                     rentalItemBindingSource.Add(theRentalItem);
