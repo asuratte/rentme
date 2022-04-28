@@ -28,6 +28,10 @@ namespace RentMe.Controller
         /// <param name="employeeID">The employee identifier.</param>
         /// <param name="returnedItemsListView">The returned items ListView.</param>
         /// <returns>The return transaction ID</returns>
+        /// <exception cref="System.ArgumentException">Member ID must be a positive whole number.
+        /// OR Employee ID must be a positive whole number.
+        /// OR There must be at least one furniture item in the list.
+        /// </exception>
         public int AddReturnTransactionAndItems(int memberID, int employeeID, ListView returnedItemsListView)
         {
             if (memberID <= 0)

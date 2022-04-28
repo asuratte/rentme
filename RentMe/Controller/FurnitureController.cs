@@ -24,6 +24,7 @@ namespace RentMe.Controller
         /// Gets furniture matching specific ID
         /// </summary>
         /// <returns>Furniture matching specific ID</returns>
+        /// <exception cref="System.ArgumentException">FurnitureID must not be null.</exception>
         public Furniture GetFurnitureByID(string furnitureID)
         {
             if (furnitureID == null)

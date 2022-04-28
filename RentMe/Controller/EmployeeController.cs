@@ -25,6 +25,9 @@ namespace RentMe.Controller
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>True if credentials are valid.</returns>
+        /// <exception cref="System.ArgumentException">Username must not be null.
+        /// OR Password must not be null.
+        /// </exception>
         public bool CheckLoginCredentials(string username, string password)
         {
             if (username == null)
@@ -43,6 +46,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="username">The username.</param>
         /// <returns>Employee with the specified username.</returns>
+        /// <exception cref="System.ArgumentException">Password must not be null.</exception>
         public Employee GetEmployeeByUsername(string username)
         {
             if (username == null)
@@ -57,6 +61,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="employeeID">The employee identifier.</param>
         /// <returns>True if employee is admin.</returns>
+        /// <exception cref="System.ArgumentException">EmployeeID must be a positive whole number.</exception>
         public bool CheckIfEmployeeIsAdmin(int employeeID)
         {
             if (employeeID < 0)
@@ -71,6 +76,7 @@ namespace RentMe.Controller
         /// </summary>
         /// <param name="employeeID">The employee identifier.</param>
         /// <returns>First and last name for the given employee</returns>
+        /// <exception cref="System.ArgumentException">EmployeeID must be a positive whole number.</exception>
         public string GetEmployeeFirstAndLastNameByID(int employeeID)
         {
             if (employeeID < 0)

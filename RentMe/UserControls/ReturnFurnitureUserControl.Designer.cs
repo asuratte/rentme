@@ -30,12 +30,12 @@ namespace RentMe.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.memberIDLabel = new System.Windows.Forms.Label();
             this.memberIDTextBox = new System.Windows.Forms.TextBox();
             this.memberIDSearchButton = new System.Windows.Forms.Button();
@@ -98,9 +98,9 @@ namespace RentMe.UserControls
             // errorMessageLabel
             // 
             this.errorMessageLabel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.Location = new System.Drawing.Point(521, 19);
+            this.errorMessageLabel.Location = new System.Drawing.Point(12, 344);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(243, 63);
+            this.errorMessageLabel.Size = new System.Drawing.Size(752, 45);
             this.errorMessageLabel.TabIndex = 0;
             // 
             // completeReturnTransactionButton
@@ -144,7 +144,7 @@ namespace RentMe.UserControls
             this.returnedItemsListViewColumn});
             this.returnedItemsListView.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnedItemsListView.HideSelection = false;
-            this.returnedItemsListView.Location = new System.Drawing.Point(638, 118);
+            this.returnedItemsListView.Location = new System.Drawing.Point(638, 103);
             this.returnedItemsListView.Name = "returnedItemsListView";
             this.returnedItemsListView.Size = new System.Drawing.Size(126, 209);
             this.returnedItemsListView.TabIndex = 4;
@@ -174,15 +174,15 @@ namespace RentMe.UserControls
             this.rentalItemDataGridView.Location = new System.Drawing.Point(15, 85);
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
-            this.rentalItemDataGridView.Size = new System.Drawing.Size(604, 274);
+            this.rentalItemDataGridView.Size = new System.Drawing.Size(604, 242);
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridViewCellContentClick);
             // 
             // dataGridViewMemberID
             // 
             this.dataGridViewMemberID.DataPropertyName = "MemberID";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewMemberID.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewMemberID.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMemberID.HeaderText = "Member ID";
             this.dataGridViewMemberID.Name = "dataGridViewMemberID";
             this.dataGridViewMemberID.ReadOnly = true;
@@ -191,8 +191,8 @@ namespace RentMe.UserControls
             // dataGridViewFurnitureID
             // 
             this.dataGridViewFurnitureID.DataPropertyName = "FurnitureID";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewFurnitureID.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewFurnitureID.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewFurnitureID.HeaderText = "Furniture ID";
             this.dataGridViewFurnitureID.Name = "dataGridViewFurnitureID";
             this.dataGridViewFurnitureID.ReadOnly = true;
@@ -201,8 +201,8 @@ namespace RentMe.UserControls
             // dataGridViewRentalTransactionID
             // 
             this.dataGridViewRentalTransactionID.DataPropertyName = "TransactionID";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewRentalTransactionID.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewRentalTransactionID.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewRentalTransactionID.HeaderText = "Rental Transaction ID";
             this.dataGridViewRentalTransactionID.Name = "dataGridViewRentalTransactionID";
             this.dataGridViewRentalTransactionID.ReadOnly = true;
@@ -211,8 +211,8 @@ namespace RentMe.UserControls
             // dataGridViewQuantityColumn
             // 
             this.dataGridViewQuantityColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewQuantityColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewQuantityColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewQuantityColumn.HeaderText = "Quantity";
             this.dataGridViewQuantityColumn.Name = "dataGridViewQuantityColumn";
             this.dataGridViewQuantityColumn.ReadOnly = true;
@@ -221,10 +221,10 @@ namespace RentMe.UserControls
             // dataGridViewRentalDateColumn
             // 
             this.dataGridViewRentalDateColumn.DataPropertyName = "RentalDate";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.Format = "d";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dataGridViewRentalDateColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewRentalDateColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewRentalDateColumn.HeaderText = "Rental Date";
             this.dataGridViewRentalDateColumn.Name = "dataGridViewRentalDateColumn";
             this.dataGridViewRentalDateColumn.ReadOnly = true;
@@ -233,10 +233,10 @@ namespace RentMe.UserControls
             // dataGridViewDueDateColumn
             // 
             this.dataGridViewDueDateColumn.DataPropertyName = "DueDate";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.dataGridViewDueDateColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewDueDateColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewDueDateColumn.HeaderText = "Due Date";
             this.dataGridViewDueDateColumn.Name = "dataGridViewDueDateColumn";
             this.dataGridViewDueDateColumn.ReadOnly = true;

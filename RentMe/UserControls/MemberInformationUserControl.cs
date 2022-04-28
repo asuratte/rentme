@@ -188,12 +188,12 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("This is a required field.");
                 return false;
             }
-            else if (this.sexFormComboBox.SelectedIndex == 0)
+            else if (this.sexFormComboBox.SelectedIndex == 0 || this.sexFormComboBox.Text == "")
             {
                 this.ShowErrorMessage("Please select a Sex.");
                 return false;
             }
-            else if (this.stateFormComboBox.SelectedIndex == 0)
+            else if (this.stateFormComboBox.SelectedIndex == 0 || this.stateFormComboBox.Text == "")
             {
                 this.ShowErrorMessage("Please select a State.");
                 return false;
@@ -208,7 +208,7 @@ namespace RentMe.UserControls
                 this.ShowErrorMessage("Please enter a valid 5 digit zip code.");
                 return false;
             }
-            else if (this.dateOfBirthDateTimePicker.Text == DateTime.Now.ToShortDateString())
+            else if (Convert.ToDateTime(this.dateOfBirthDateTimePicker.Text) >= DateTime.Now)
             {
                 this.ShowErrorMessage("Please choose a valid date of birth.");
                 return false;
