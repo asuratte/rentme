@@ -16,8 +16,8 @@ namespace RentMe.UserControls
         private readonly SortedDictionary<string, string> sexList;
         private readonly MemberController theMemberController;
         private readonly StateController theStateController;
-        private MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
-        private MemberLookupForm theMemberLookupForm;
+        private readonly MemberRegistrationConfirmationForm theMemberRegistrationConfirmationForm;
+        private readonly MemberLookupForm theMemberLookupForm;
         private static Member memberFromLookup = null;
 
         public static Member MemberFromLookup
@@ -166,13 +166,12 @@ namespace RentMe.UserControls
 
         private string FormatPhoneNumber(string phoneNumber)
         {
-            string formattedPhoneNumber = "";
             phoneNumber = this.UnformatPhoneNumber(phoneNumber);
             if (phoneNumber.Length == 10)
             {
-                formattedPhoneNumber = phoneNumber.Substring(0, 3) +
-                    "-" + phoneNumber.Substring(3, 3) +
-                    "-" + phoneNumber.Substring(6, 4);
+                string formattedPhoneNumber = phoneNumber.Substring(0, 3) +
+                "-" + phoneNumber.Substring(3, 3) +
+                "-" + phoneNumber.Substring(6, 4);
                 return formattedPhoneNumber;
             }
             return null;

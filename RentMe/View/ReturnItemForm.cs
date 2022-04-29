@@ -104,7 +104,7 @@ namespace RentMe.View
 
         private void DisplayItemTotal(decimal itemTotal)
         {
-            string itemTotalDisplay = "";
+            string itemTotalDisplay;
             if (itemTotal < 0)
             {
                 itemTotalDisplay = "-$" + (-1 * itemTotal).ToString();
