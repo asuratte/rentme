@@ -42,8 +42,6 @@ namespace RentMe.View
             this.closeButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.submitOrderButton = new System.Windows.Forms.Button();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +52,8 @@ namespace RentMe.View
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubtotalTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.submitOrderButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +111,7 @@ namespace RentMe.View
             this.rentalTotalTextBox.Name = "rentalTotalTextBox";
             this.rentalTotalTextBox.ReadOnly = true;
             this.rentalTotalTextBox.Size = new System.Drawing.Size(109, 25);
-            this.rentalTotalTextBox.TabIndex = 2;
+            this.rentalTotalTextBox.TabIndex = 0;
             // 
             // closeButton
             // 
@@ -160,25 +160,6 @@ namespace RentMe.View
             this.rentalItemDataGridView.Size = new System.Drawing.Size(672, 220);
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
-            // 
-            // submitOrderButton
-            // 
-            this.submitOrderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
-            this.submitOrderButton.FlatAppearance.BorderSize = 0;
-            this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitOrderButton.ForeColor = System.Drawing.Color.White;
-            this.submitOrderButton.Location = new System.Drawing.Point(468, 352);
-            this.submitOrderButton.Name = "submitOrderButton";
-            this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
-            this.submitOrderButton.TabIndex = 5;
-            this.submitOrderButton.Text = "Submit Order";
-            this.submitOrderButton.UseVisualStyleBackColor = false;
-            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
-            // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // transactionIDTextBoxColumn
             // 
@@ -265,6 +246,25 @@ namespace RentMe.View
             this.EditButtonColumn.ReadOnly = true;
             this.EditButtonColumn.Text = "Edit";
             this.EditButtonColumn.UseColumnTextForButtonValue = true;
+            // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            // 
+            // submitOrderButton
+            // 
+            this.submitOrderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.submitOrderButton.FlatAppearance.BorderSize = 0;
+            this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitOrderButton.ForeColor = System.Drawing.Color.White;
+            this.submitOrderButton.Location = new System.Drawing.Point(468, 352);
+            this.submitOrderButton.Name = "submitOrderButton";
+            this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
+            this.submitOrderButton.TabIndex = 5;
+            this.submitOrderButton.Text = "Submit Order";
+            this.submitOrderButton.UseVisualStyleBackColor = false;
+            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
             // 
             // ViewCartForm
             // 

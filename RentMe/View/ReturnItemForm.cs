@@ -13,7 +13,7 @@ namespace RentMe.View
     public partial class ReturnItemForm : Form
     {
         private RentalItem itemToReturn;
-        private FurnitureController theFurnitureController;
+        private readonly FurnitureController theFurnitureController;
         private ReturnItem theReturnedItem;
 
         public RentalItem ItemToReturn
