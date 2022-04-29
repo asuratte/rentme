@@ -49,8 +49,8 @@ namespace RentMe.View
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,8 +125,8 @@ namespace RentMe.View
             this.transactionIDTextBoxColumn,
             this.furnitureIDTextBoxColumn,
             this.furnitureNameTextBoxColumn,
-            this.quantityTextBoxColumn,
             this.RentalRate,
+            this.quantityTextBoxColumn,
             this.memberIDTextBoxColumn,
             this.rentalDateTextBoxColumn,
             this.dueDateTextBoxColumn,
@@ -179,27 +179,27 @@ namespace RentMe.View
             this.furnitureNameTextBoxColumn.ReadOnly = true;
             this.furnitureNameTextBoxColumn.Width = 183;
             // 
-            // quantityTextBoxColumn
-            // 
-            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.quantityTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.quantityTextBoxColumn.HeaderText = "Quantity";
-            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
-            this.quantityTextBoxColumn.ReadOnly = true;
-            this.quantityTextBoxColumn.Width = 81;
-            // 
             // RentalRate
             // 
             this.RentalRate.DataPropertyName = "RentalRate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.RentalRate.DefaultCellStyle = dataGridViewCellStyle4;
             this.RentalRate.HeaderText = "Rental Rate";
             this.RentalRate.Name = "RentalRate";
             this.RentalRate.ReadOnly = true;
             this.RentalRate.Width = 109;
+            // 
+            // quantityTextBoxColumn
+            // 
+            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.quantityTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.quantityTextBoxColumn.HeaderText = "Quantity";
+            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
+            this.quantityTextBoxColumn.ReadOnly = true;
+            this.quantityTextBoxColumn.Width = 81;
             // 
             // memberIDTextBoxColumn
             // 
@@ -279,8 +279,8 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RentalRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memberIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalDateTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTextBoxColumn;

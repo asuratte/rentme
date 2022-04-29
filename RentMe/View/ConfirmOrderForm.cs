@@ -52,6 +52,19 @@ namespace RentMe.View
             {
                 rentalItemBindingSource.Add(theRentalItem);
             }
+            this.CalculateSubtotals();
+        }
+
+        private void CalculateSubtotals()
+        {
+            foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
+            {
+                int quantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[row.Index].Cells[4].Value);
+                int numberOfDays = (this.TheDueDate.Date - DateTime.Today).Days;
+                decimal rentalRate = Convert.ToDecimal(this.rentalItemDataGridView.Rows[row.Index].Cells[3].Value);
+                decimal subtotal = quantity * rentalRate * numberOfDays;
+                this.rentalItemDataGridView.Rows[row.Index].Cells[5].Value = subtotal;
+            }
         }
 
         private void CancelButtonClick(object sender, EventArgs e)

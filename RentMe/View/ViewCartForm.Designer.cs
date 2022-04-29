@@ -42,18 +42,18 @@ namespace RentMe.View
             this.closeButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.submitOrderButton = new System.Windows.Forms.Button();
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubtotalTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.submitOrderButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalItemBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -144,10 +144,10 @@ namespace RentMe.View
             this.rentalItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.transactionIDTextBoxColumn,
-            this.quantityTextBoxColumn,
             this.furnitureIDTextBoxColumn,
             this.furnitureNameTextBoxColumn,
             this.rentalRateTextBoxColumn,
+            this.quantityTextBoxColumn,
             this.memberIDTextBoxColumn,
             this.rentalDateTextBoxColumn,
             this.dueDateTextBoxColumn,
@@ -161,6 +161,25 @@ namespace RentMe.View
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
             // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
+            // 
+            // submitOrderButton
+            // 
+            this.submitOrderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
+            this.submitOrderButton.FlatAppearance.BorderSize = 0;
+            this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitOrderButton.ForeColor = System.Drawing.Color.White;
+            this.submitOrderButton.Location = new System.Drawing.Point(468, 352);
+            this.submitOrderButton.Name = "submitOrderButton";
+            this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
+            this.submitOrderButton.TabIndex = 5;
+            this.submitOrderButton.Text = "Submit Order";
+            this.submitOrderButton.UseVisualStyleBackColor = false;
+            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
+            // 
             // transactionIDTextBoxColumn
             // 
             this.transactionIDTextBoxColumn.DataPropertyName = "TransactionID";
@@ -168,14 +187,6 @@ namespace RentMe.View
             this.transactionIDTextBoxColumn.Name = "transactionIDTextBoxColumn";
             this.transactionIDTextBoxColumn.ReadOnly = true;
             this.transactionIDTextBoxColumn.Visible = false;
-            // 
-            // quantityTextBoxColumn
-            // 
-            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityTextBoxColumn.HeaderText = "Quantity";
-            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
-            this.quantityTextBoxColumn.ReadOnly = true;
-            this.quantityTextBoxColumn.Width = 81;
             // 
             // furnitureIDTextBoxColumn
             // 
@@ -203,6 +214,14 @@ namespace RentMe.View
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
             this.rentalRateTextBoxColumn.ReadOnly = true;
             this.rentalRateTextBoxColumn.Width = 91;
+            // 
+            // quantityTextBoxColumn
+            // 
+            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityTextBoxColumn.HeaderText = "Quantity";
+            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
+            this.quantityTextBoxColumn.ReadOnly = true;
+            this.quantityTextBoxColumn.Width = 81;
             // 
             // memberIDTextBoxColumn
             // 
@@ -247,25 +266,6 @@ namespace RentMe.View
             this.EditButtonColumn.Text = "Edit";
             this.EditButtonColumn.UseColumnTextForButtonValue = true;
             // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
-            // 
-            // submitOrderButton
-            // 
-            this.submitOrderButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(103)))), ((int)(((byte)(136)))));
-            this.submitOrderButton.FlatAppearance.BorderSize = 0;
-            this.submitOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitOrderButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitOrderButton.ForeColor = System.Drawing.Color.White;
-            this.submitOrderButton.Location = new System.Drawing.Point(468, 352);
-            this.submitOrderButton.Name = "submitOrderButton";
-            this.submitOrderButton.Size = new System.Drawing.Size(122, 27);
-            this.submitOrderButton.TabIndex = 5;
-            this.submitOrderButton.Text = "Submit Order";
-            this.submitOrderButton.UseVisualStyleBackColor = false;
-            this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
-            // 
             // ViewCartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,10 +308,10 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
         private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memberIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalDateTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTextBoxColumn;

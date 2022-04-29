@@ -97,9 +97,9 @@ namespace RentMe.View
         {
             foreach (DataGridViewRow row in this.rentalItemDataGridView.Rows)
             {
-                int quantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[row.Index].Cells[1].Value);
+                int quantity = Convert.ToInt32(this.rentalItemDataGridView.Rows[row.Index].Cells[4].Value);
                 int numberOfDays = (this.returnDateTimePicker.Value.Date - DateTime.Today).Days;
-                decimal rentalRate = Convert.ToDecimal(this.rentalItemDataGridView.Rows[row.Index].Cells[4].Value);
+                decimal rentalRate = Convert.ToDecimal(this.rentalItemDataGridView.Rows[row.Index].Cells[3].Value);
                 decimal subtotal = quantity * rentalRate * numberOfDays;
                 this.rentalItemDataGridView.Rows[row.Index].Cells[8].Value = subtotal;
             }
