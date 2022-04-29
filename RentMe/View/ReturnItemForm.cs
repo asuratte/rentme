@@ -160,7 +160,7 @@ namespace RentMe.View
             bool isValid = false;
             try
             {
-                if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity && Convert.ToInt32(this.quantityTextBox.Text) != 0)
+                if (Convert.ToInt32(this.quantityTextBox.Text) <= itemToReturn.Quantity && Convert.ToInt32(this.quantityTextBox.Text) > 0)
                 {
                     isValid = true;
                 }
