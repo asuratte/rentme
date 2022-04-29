@@ -94,7 +94,7 @@ namespace RentMe.DAL
         /// Checks if employee is admin by ID.
         /// </summary>
         /// <param name="employeeID">The employee identifier.</param>
-        /// <returns>True if employee is admin</returns>
+        /// <returns>True if employee is admin, false if not.</returns>
         public bool CheckIfEmployeeIsAdmin(int employeeID)
         {
             int count;

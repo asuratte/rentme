@@ -113,7 +113,7 @@ namespace RentMe.UserControls
             this.completeReturnTransactionButton.Location = new System.Drawing.Point(409, 390);
             this.completeReturnTransactionButton.Name = "completeReturnTransactionButton";
             this.completeReturnTransactionButton.Size = new System.Drawing.Size(229, 27);
-            this.completeReturnTransactionButton.TabIndex = 5;
+            this.completeReturnTransactionButton.TabIndex = 6;
             this.completeReturnTransactionButton.Text = "Complete Return Transaction";
             this.completeReturnTransactionButton.UseVisualStyleBackColor = false;
             this.completeReturnTransactionButton.Click += new System.EventHandler(this.OnCompleteReturnTransactionClick);
@@ -147,7 +147,7 @@ namespace RentMe.UserControls
             this.returnedItemsListView.Location = new System.Drawing.Point(638, 103);
             this.returnedItemsListView.Name = "returnedItemsListView";
             this.returnedItemsListView.Size = new System.Drawing.Size(126, 209);
-            this.returnedItemsListView.TabIndex = 4;
+            this.returnedItemsListView.TabIndex = 5;
             this.returnedItemsListView.UseCompatibleStateImageBehavior = false;
             this.returnedItemsListView.View = System.Windows.Forms.View.Details;
             // 
@@ -175,7 +175,7 @@ namespace RentMe.UserControls
             this.rentalItemDataGridView.Name = "rentalItemDataGridView";
             this.rentalItemDataGridView.ReadOnly = true;
             this.rentalItemDataGridView.Size = new System.Drawing.Size(604, 242);
-            this.rentalItemDataGridView.TabIndex = 3;
+            this.rentalItemDataGridView.TabIndex = 4;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnsDataGridViewCellContentClick);
             // 
             // dataGridViewMemberID
@@ -274,7 +274,7 @@ namespace RentMe.UserControls
             this.clearFormButton.Location = new System.Drawing.Point(659, 390);
             this.clearFormButton.Name = "clearFormButton";
             this.clearFormButton.Size = new System.Drawing.Size(105, 27);
-            this.clearFormButton.TabIndex = 22;
+            this.clearFormButton.TabIndex = 7;
             this.clearFormButton.Text = "Clear Form";
             this.clearFormButton.UseVisualStyleBackColor = false;
             this.clearFormButton.Click += new System.EventHandler(this.OnClearFormButtonClick);
@@ -289,7 +289,7 @@ namespace RentMe.UserControls
             this.loadMemberFromLookupButton.Location = new System.Drawing.Point(339, 19);
             this.loadMemberFromLookupButton.Name = "loadMemberFromLookupButton";
             this.loadMemberFromLookupButton.Size = new System.Drawing.Size(212, 27);
-            this.loadMemberFromLookupButton.TabIndex = 24;
+            this.loadMemberFromLookupButton.TabIndex = 3;
             this.loadMemberFromLookupButton.Text = "Load Member From Lookup";
             this.loadMemberFromLookupButton.UseVisualStyleBackColor = false;
             this.loadMemberFromLookupButton.Click += new System.EventHandler(this.LoadMemberFromLookupButtonClick);

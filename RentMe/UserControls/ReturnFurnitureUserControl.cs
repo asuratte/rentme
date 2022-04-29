@@ -18,8 +18,8 @@ namespace RentMe.UserControls
         private readonly MemberController theMemberController;
         private readonly ReturnTransactionController theReturnTransactionController;
         private readonly FurnitureController theFurnitureController;
-        private ReturnItemForm theReturnItemForm;
-        private ReturnSummaryForm theReturnSummaryForm;
+        private readonly ReturnItemForm theReturnItemForm;
+        private readonly ReturnSummaryForm theReturnSummaryForm;
         private decimal theTotalAmount;
         private Member theMember;
         private Employee theEmployee;

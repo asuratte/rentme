@@ -42,13 +42,13 @@ namespace RentMe.View
             this.closeButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.rentalItemDataGridView = new System.Windows.Forms.DataGridView();
-            this.submitOrderButton = new System.Windows.Forms.Button();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.submitOrderButton = new System.Windows.Forms.Button();
             this.transactionIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureNameTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalRateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberIDTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dueDateTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,7 +111,7 @@ namespace RentMe.View
             this.rentalTotalTextBox.Name = "rentalTotalTextBox";
             this.rentalTotalTextBox.ReadOnly = true;
             this.rentalTotalTextBox.Size = new System.Drawing.Size(109, 25);
-            this.rentalTotalTextBox.TabIndex = 2;
+            this.rentalTotalTextBox.TabIndex = 0;
             // 
             // closeButton
             // 
@@ -144,10 +144,10 @@ namespace RentMe.View
             this.rentalItemDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.rentalItemDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.transactionIDTextBoxColumn,
-            this.quantityTextBoxColumn,
             this.furnitureIDTextBoxColumn,
             this.furnitureNameTextBoxColumn,
             this.rentalRateTextBoxColumn,
+            this.quantityTextBoxColumn,
             this.memberIDTextBoxColumn,
             this.rentalDateTextBoxColumn,
             this.dueDateTextBoxColumn,
@@ -160,6 +160,10 @@ namespace RentMe.View
             this.rentalItemDataGridView.Size = new System.Drawing.Size(672, 220);
             this.rentalItemDataGridView.TabIndex = 3;
             this.rentalItemDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RentalItemDataGridViewCellContentClick);
+            // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
             // 
             // submitOrderButton
             // 
@@ -176,10 +180,6 @@ namespace RentMe.View
             this.submitOrderButton.UseVisualStyleBackColor = false;
             this.submitOrderButton.Click += new System.EventHandler(this.SubmitOrderButtonClick);
             // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMe.Model.RentalItem);
-            // 
             // transactionIDTextBoxColumn
             // 
             this.transactionIDTextBoxColumn.DataPropertyName = "TransactionID";
@@ -187,14 +187,6 @@ namespace RentMe.View
             this.transactionIDTextBoxColumn.Name = "transactionIDTextBoxColumn";
             this.transactionIDTextBoxColumn.ReadOnly = true;
             this.transactionIDTextBoxColumn.Visible = false;
-            // 
-            // quantityTextBoxColumn
-            // 
-            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityTextBoxColumn.HeaderText = "Quantity";
-            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
-            this.quantityTextBoxColumn.ReadOnly = true;
-            this.quantityTextBoxColumn.Width = 81;
             // 
             // furnitureIDTextBoxColumn
             // 
@@ -222,6 +214,14 @@ namespace RentMe.View
             this.rentalRateTextBoxColumn.Name = "rentalRateTextBoxColumn";
             this.rentalRateTextBoxColumn.ReadOnly = true;
             this.rentalRateTextBoxColumn.Width = 91;
+            // 
+            // quantityTextBoxColumn
+            // 
+            this.quantityTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityTextBoxColumn.HeaderText = "Quantity";
+            this.quantityTextBoxColumn.Name = "quantityTextBoxColumn";
+            this.quantityTextBoxColumn.ReadOnly = true;
+            this.quantityTextBoxColumn.Width = 81;
             // 
             // memberIDTextBoxColumn
             // 
@@ -308,10 +308,10 @@ namespace RentMe.View
         private System.Windows.Forms.DataGridView rentalItemDataGridView;
         private System.Windows.Forms.Button submitOrderButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn furnitureNameTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalRateTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn memberIDTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rentalDateTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dueDateTextBoxColumn;
